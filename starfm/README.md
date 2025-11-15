@@ -58,3 +58,12 @@ All Tailwind `text-*`, `bg-*`, and `border-*` utilities map to the tokens throug
 5. **Document additions**: if you introduce a new token, declare it in `src/index.css` and map it through `tailwind.config.js` immediately so every page can access it.
 
 Following the steps above ensures the landing page look extends naturally to membership, events, or training sub-pages without restyling from scratch.
+
+## Hero: 'What StarFM Is'
+
+The hero is driven by `src/components/Hero.tsx` and uses brand surfaces plus a short mission statement to introduce visitors to StarFM's purpose. It highlights three quick stats and includes two CTAs: `Become a Member` and `Learn More`.
+
+Design notes:
+- Use `bg-hero-glow` for premium hero backgrounds
+- Use `.glass-panel` for spotlight cards and membership highlights
+- Keep headings in `font-display` and body copy in `font-sans`

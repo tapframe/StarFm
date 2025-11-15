@@ -1,6 +1,7 @@
 import { Navbar } from "@/components/Navbar"
 import { Hero } from "@/components/Hero"
 import { Stats } from "@/components/Stats"
+import { Services } from "@/components/Services"
 import "./App.css"
 
 function App() {
@@ -10,6 +11,7 @@ function App() {
       <main className="space-y-24 pb-24 pt-6">
         <Hero />
         <Stats />
+        <Services />
       </main>
     </div>
   )

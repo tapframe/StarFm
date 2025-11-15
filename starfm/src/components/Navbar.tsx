@@ -10,6 +10,7 @@ export function Navbar({ className }: NavbarProps) {
     { label: "About", href: "#about" },
     { label: "Membership", href: "#membership" },
     { label: "Training Center", href: "#training" },
+    { label: "Our Services", href: "#services" },
     { label: "Members Portal", href: "#portal" },
     { label: "Programs", href: "#programs" },
     { label: "Contact", href: "#contact" },
