@@ -1,0 +1,120 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Fraunces:wght@400;600;700;900&display=swap');
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    --radius: 0.75rem;
+    --font-display: "Fraunces", serif;
+    --font-body: "Inter", system-ui, -apple-system, BlinkMacSystemFont, sans-serif;
+
+    --background: 44 40% 96%;
+    --foreground: 153 27% 14%;
+    --card: 0 0% 100%;
+    --card-foreground: 153 27% 14%;
+    --popover: 0 0% 100%;
+    --popover-foreground: 153 27% 14%;
+    --primary: 152 52% 26%;
+    --primary-foreground: 144 44% 94%;
+    --secondary: 47 40% 91%;
+    --secondary-foreground: 154 24% 26%;
+    --muted: 46 28% 90%;
+    --muted-foreground: 152 12% 37%;
+    --accent: 40 78% 60%;
+    --accent-foreground: 151 22% 18%;
+    --destructive: 2 78% 56%;
+    --destructive-foreground: 0 0% 100%;
+    --border: 46 26% 84%;
+    --input: 46 26% 84%;
+    --ring: 153 42% 32%;
+
+    --brand-deep: 155 42% 18%;
+    --brand-forest: 152 45% 22%;
+    --brand-moss: 151 36% 34%;
+    --brand-gold: 40 80% 60%;
+    --brand-sand: 46 38% 92%;
+    --brand-cream: 46 52% 96%;
+
+    --surface: 0 0% 100%;
+    --surface-muted: 46 35% 93%;
+    --surface-contrast: 154 40% 18%;
+
+    --chart-1: 152 45% 32%;
+    --chart-2: 153 35% 40%;
+    --chart-3: 30 78% 55%;
+    --chart-4: 197 35% 32%;
+    --chart-5: 43 74% 62%;
+  }
+
+  .dark {
+    --background: 153 28% 8%;
+    --foreground: 46 52% 96%;
+    --card: 152 33% 12%;
+    --card-foreground: 46 52% 96%;
+    --popover: 152 33% 10%;
+    --popover-foreground: 46 52% 96%;
+    --primary: 40 80% 62%;
+    --primary-foreground: 152 36% 14%;
+    --secondary: 151 22% 18%;
+    --secondary-foreground: 46 52% 96%;
+    --muted: 152 18% 22%;
+    --muted-foreground: 46 32% 82%;
+    --accent: 46 72% 68%;
+    --accent-foreground: 151 22% 18%;
+    --destructive: 2 78% 56%;
+    --destructive-foreground: 0 0% 100%;
+    --border: 152 18% 28%;
+    --input: 152 18% 28%;
+    --ring: 40 78% 60%;
+  }
+
+  * {
+    border-color: hsl(var(--border));
+  }
+
+  body {
+    font-family: var(--font-body);
+    background-color: hsl(var(--background));
+    color: hsl(var(--foreground));
+    min-height: 100vh;
+    background-image:
+      radial-gradient(circle at 18% 20%, rgba(255, 255, 255, 0.9), transparent 45%),
+      radial-gradient(circle at 78% 0%, rgba(232, 244, 236, 0.75), transparent 55%),
+      radial-gradient(circle at 90% 38%, rgba(240, 214, 170, 0.65), transparent 50%),
+      linear-gradient(180deg, #fdfcf7 0%, #f5f1e8 55%, #ffffff 100%);
+    background-attachment: fixed;
+    font-feature-settings: "liga" on, "calt" on;
+    -webkit-font-smoothing: antialiased;
+  }
+
+  h1,
+  h2,
+  h3,
+  h4,
+  h5,
+  h6 {
+    font-family: var(--font-display);
+    letter-spacing: -0.01em;
+    color: hsl(var(--foreground));
+  }
+
+  p,
+  span,
+  a,
+  li {
+    font-family: var(--font-body);
+  }
+
+  ::selection {
+    background-color: hsla(var(--brand-gold), 0.35);
+    color: hsl(var(--primary));
+  }
+}
+
+@layer components {
+  .glass-panel {
+    @apply rounded-[1.75rem] border border-white/40 bg-white/70 shadow-brand backdrop-blur-xl;
+  }
+}
