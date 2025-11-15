@@ -1,7 +1,11 @@
 import { motion } from "framer-motion"
 import { Building2, Mail, Phone, MapPin, Facebook, Twitter, Linkedin, Instagram } from "lucide-react"
 
-export function Footer() {
+interface FooterProps {
+  onContactClick?: () => void
+}
+
+export function Footer({ onContactClick }: FooterProps) {
   return (
     <footer className="relative border-t border-white/10 bg-gradient-to-b from-brand-deep to-brand-forest">
       {/* Decorative Elements */}
@@ -58,7 +62,6 @@ export function Footer() {
                 { label: "About", href: "#about" },
                 { label: "Our Services", href: "#services" },
                 { label: "Programs", href: "#programs" },
-                { label: "Contact", href: "#contact" },
               ].map((item) => (
                 <li key={item.label}>
                   <a
@@ -69,6 +72,14 @@ export function Footer() {
                   </a>
                 </li>
               ))}
+              <li>
+                <button
+                  onClick={onContactClick}
+                  className="text-sm text-brand-cream/80 transition-colors hover:text-brand-gold text-left"
+                >
+                  Contact
+                </button>
+              </li>
             </ul>
           </motion.div>
 

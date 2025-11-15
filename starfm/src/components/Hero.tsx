@@ -232,117 +232,166 @@ export function Hero() {
             transition={{ duration: 0.8, delay: 0.3, ease: "easeOut" }}
             className="relative"
           >
-            {/* Glow effect behind panel */}
-            <div className="absolute -inset-1 bg-gradient-to-r from-brand-gold/20 to-brand-moss/20 rounded-3xl blur-2xl opacity-60 -z-10" />
+            {/* Enhanced glow effects */}
+            <div className="absolute -inset-4 bg-gradient-to-r from-brand-gold/30 via-brand-sand/20 to-brand-moss/30 rounded-[2rem] blur-3xl opacity-70 -z-10 animate-pulse" />
+            <div className="absolute -inset-2 bg-gradient-to-br from-white/40 to-white/10 rounded-[1.75rem] blur-xl -z-10" />
 
-            <div className="glass-panel relative overflow-hidden rounded-3xl border border-white/20 shadow-2xl min-h-[500px] flex flex-col">
-              {/* Background Image with Overlay */}
+            <div className="relative overflow-hidden rounded-[1.75rem] border border-white/30 bg-white/95 backdrop-blur-2xl shadow-[0_20px_80px_-20px_rgba(0,0,0,0.25)] min-h-[580px] flex flex-col">
+              {/* Background Image with Modern Overlay */}
               <AnimatePresence mode="wait">
                 <motion.div
                   key={`bg-${currentSlide}`}
-                  initial={{ opacity: 0, scale: 1.1 }}
+                  initial={{ opacity: 0, scale: 1.05 }}
                   animate={{ opacity: 1, scale: 1 }}
-                  exit={{ opacity: 0, scale: 0.95 }}
-                  transition={{ duration: 0.8 }}
-                  className="absolute inset-0"
+                  exit={{ opacity: 0, scale: 0.98 }}
+                  transition={{ duration: 0.7, ease: "easeInOut" }}
+                  className="absolute inset-0 rounded-[1.75rem] overflow-hidden"
                 >
                   <img 
                     src={carouselSlides[currentSlide].bgImage}
                     alt={carouselSlides[currentSlide].title}
                     className="h-full w-full object-cover"
                   />
-                  <div className="absolute inset-0 bg-black/40 backdrop-blur-sm" />
+                  <div className="absolute inset-0 bg-gradient-to-br from-brand-deep/95 via-brand-forest/90 to-brand-moss/85 mix-blend-multiply" />
+                  <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent" />
+                  
+                  {/* Decorative mesh pattern */}
+                  <div className="absolute inset-0 opacity-[0.03]" style={{
+                    backgroundImage: `url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%23ffffff' fill-opacity='1'%3E%3Cpath d='M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E")`
+                  }} />
                 </motion.div>
               </AnimatePresence>
 
-              <div className="relative z-10 flex-1 flex flex-col p-8">
+              <div className="relative z-10 flex-1 flex flex-col p-10">
                 <AnimatePresence mode="wait">
                   <motion.div
                     key={currentSlide}
-                    initial={{ opacity: 0, x: 100 }}
-                    animate={{ opacity: 1, x: 0 }}
-                    exit={{ opacity: 0, x: -100 }}
-                    transition={{ duration: 0.6, ease: "easeInOut" }}
+                    initial={{ opacity: 0, y: 20 }}
+                    animate={{ opacity: 1, y: 0 }}
+                    exit={{ opacity: 0, y: -20 }}
+                    transition={{ duration: 0.5, ease: "easeOut" }}
                     className="flex-1 flex flex-col"
                   >
-                    {/* Header */}
-                    <div className="mb-8">
-                      <div className="flex items-center gap-2 mb-4">
-                        <div className="h-1.5 w-1.5 rounded-full bg-brand-gold animate-pulse" />
-                        <span className="text-xs font-semibold uppercase tracking-widest text-brand-gold">Our Services</span>
-                      </div>
-                      <div className="flex items-center gap-4 mb-3">
+                    {/* Modern Header */}
+                    <div className="mb-10">
+                      <motion.div 
+                        initial={{ opacity: 0, x: -10 }}
+                        animate={{ opacity: 1, x: 0 }}
+                        transition={{ delay: 0.1 }}
+                        className="flex items-center gap-3 mb-6"
+                      >
+                        <div className="flex items-center gap-2 px-3 py-1.5 rounded-full bg-brand-gold/20 border border-brand-gold/30 backdrop-blur-sm">
+                          <div className="h-1.5 w-1.5 rounded-full bg-brand-gold animate-pulse" />
+                          <span className="text-[10px] font-bold uppercase tracking-[0.15em] text-brand-gold">Our Services</span>
+                        </div>
+                      </motion.div>
+                      
+                      <div className="flex items-start gap-5">
                         <motion.div
-                          initial={{ scale: 0, rotate: 90, opacity: 0 }}
-                          animate={{ scale: 1, rotate: 0, opacity: 1 }}
-                          exit={{ scale: 0, rotate: -90, opacity: 0 }}
-                          transition={{ duration: 0.6, delay: 0.2, type: "spring", stiffness: 100 }}
-                          className={`flex h-14 w-14 items-center justify-center rounded-xl bg-gradient-to-br ${carouselSlides[currentSlide].color} shadow-lg ring-2 ring-white/20`}
+                          initial={{ scale: 0, rotate: -180 }}
+                          animate={{ scale: 1, rotate: 0 }}
+                          exit={{ scale: 0, rotate: 180 }}
+                          transition={{ duration: 0.6, type: "spring", stiffness: 120 }}
+                          className={`relative flex h-16 w-16 sm:h-20 sm:w-20 items-center justify-center rounded-2xl bg-gradient-to-br ${carouselSlides[currentSlide].color} shadow-2xl ring-4 ring-white/30`}
                         >
+                          <div className="absolute inset-0 rounded-2xl bg-white/20 backdrop-blur-sm" />
                           {(() => {
                             const Icon = carouselSlides[currentSlide].icon
-                            return <Icon className="h-7 w-7 text-white" />
+                            return <Icon className="relative h-8 w-8 sm:h-10 sm:w-10 text-white drop-shadow-lg" strokeWidth={2} />
                           })()}
                         </motion.div>
-                        <h2 className="font-display text-2xl sm:text-3xl text-white font-black leading-tight">
-                          {carouselSlides[currentSlide].title}
-                        </h2>
+                        
+                        <div className="flex-1">
+                          <h2 className="font-display text-3xl sm:text-4xl text-white font-black leading-[1.1] mb-3 drop-shadow-lg">
+                            {carouselSlides[currentSlide].title}
+                          </h2>
+                          <p className="text-sm sm:text-base text-white/90 leading-relaxed font-medium">
+                            {carouselSlides[currentSlide].description}
+                          </p>
+                        </div>
                       </div>
                     </div>
 
-                    {/* Description */}
-                    <p className="text-base text-brand-cream/90 leading-relaxed mb-10 font-semibold">
-                      {carouselSlides[currentSlide].description}
-                    </p>
-
-                    {/* Stats Card */}
+                    {/* Modern Stats Badge */}
                     <motion.div
                       initial={{ opacity: 0, y: 20 }}
                       animate={{ opacity: 1, y: 0 }}
-                      transition={{ duration: 0.5, delay: 0.3 }}
-                      className="rounded-xl border border-brand-gold/30 bg-gradient-to-br from-brand-gold/15 to-transparent p-7 backdrop-blur-lg shadow-xl mb-8"
+                      transition={{ duration: 0.5, delay: 0.2 }}
+                      className="relative rounded-2xl border border-brand-gold/40 bg-gradient-to-br from-brand-gold/25 via-brand-gold/15 to-transparent backdrop-blur-xl p-6 mb-8 overflow-hidden"
                     >
-                      <div className="flex items-end gap-3">
-                        <div className="font-display text-4xl font-black text-brand-gold">
+                      <div className="absolute inset-0 bg-gradient-to-br from-white/10 to-transparent" />
+                      <div className="relative flex items-baseline gap-3">
+                        <div className="font-display text-5xl sm:text-6xl font-black bg-gradient-to-br from-brand-gold via-brand-sand to-brand-gold bg-clip-text text-transparent drop-shadow-sm">
                           {carouselSlides[currentSlide].stats.value}
                         </div>
-                        <div className="text-sm font-bold text-brand-cream/85 pb-1.5">
-                          {carouselSlides[currentSlide].stats.label}
+                        <div className="flex flex-col">
+                          <div className="text-sm font-bold text-white/95 uppercase tracking-wide">
+                            {carouselSlides[currentSlide].stats.label}
+                          </div>
+                          <div className="text-xs text-white/70 font-medium">and growing</div>
                         </div>
                       </div>
+                      
+                      {/* Decorative corner accent */}
+                      <div className="absolute -top-8 -right-8 h-24 w-24 rounded-full bg-brand-gold/20 blur-2xl" />
                     </motion.div>
 
-                    {/* CTA Button */}
+                    {/* Modern CTA Button */}
                     <motion.button
                       initial={{ opacity: 0, y: 10 }}
                       animate={{ opacity: 1, y: 0 }}
-                      transition={{ duration: 0.5, delay: 0.4 }}
-                      whileHover={{ scale: 1.04, y: -3 }}
-                      whileTap={{ scale: 0.96 }}
-                      className="group w-full rounded-xl bg-gradient-to-r from-brand-gold via-brand-sand to-brand-gold py-4 px-6 font-black text-brand-deep text-base transition-all duration-300 hover:shadow-2xl hover:shadow-brand-gold/50 relative overflow-hidden uppercase tracking-wide shadow-lg"
+                      transition={{ duration: 0.5, delay: 0.3 }}
+                      whileHover={{ scale: 1.02, y: -2 }}
+                      whileTap={{ scale: 0.98 }}
+                      className="group relative w-full rounded-2xl bg-gradient-to-r from-brand-gold via-brand-sand to-brand-gold py-5 px-8 font-black text-brand-deep text-base shadow-[0_10px_40px_-15px_rgba(231,180,89,0.6)] transition-all duration-300 hover:shadow-[0_20px_60px_-15px_rgba(231,180,89,0.8)] uppercase tracking-wider overflow-hidden"
                     >
-                      <span className="relative z-10 flex items-center justify-center gap-2 text-base">
-                        Learn More
-                        <ArrowRight className="h-5 w-5 transition-transform group-hover:translate-x-2" />
+                      <span className="relative z-10 flex items-center justify-center gap-3">
+                        Discover More
+                        <motion.div
+                          animate={{ x: [0, 4, 0] }}
+                          transition={{ duration: 1.5, repeat: Infinity, ease: "easeInOut" }}
+                        >
+                          <ArrowRight className="h-5 w-5" strokeWidth={3} />
+                        </motion.div>
                       </span>
-                      <div className="absolute inset-0 bg-gradient-to-r from-brand-sand to-brand-gold opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
+                      <motion.div 
+                        className="absolute inset-0 bg-gradient-to-r from-brand-sand to-brand-gold opacity-0 group-hover:opacity-100 transition-opacity duration-300"
+                        initial={false}
+                      />
+                      
+                      {/* Shimmer effect */}
+                      <motion.div
+                        className="absolute inset-0 -translate-x-full bg-gradient-to-r from-transparent via-white/30 to-transparent"
+                        animate={{ x: ["0%", "200%"] }}
+                        transition={{ duration: 2, repeat: Infinity, ease: "linear", repeatDelay: 1 }}
+                      />
                     </motion.button>
                   </motion.div>
                 </AnimatePresence>
 
-                {/* Carousel Indicators */}
-                <div className="flex items-center justify-center gap-2.5 mt-6">
+                {/* Modern Carousel Indicators */}
+                <div className="flex items-center justify-center gap-2 mt-8 pt-6 border-t border-white/10">
                   {carouselSlides.map((_, index) => (
-                    <button
+                    <motion.button
                       key={index}
                       onClick={() => setCurrentSlide(index)}
-                      className={`h-2 rounded-full transition-all duration-500 ${
+                      whileHover={{ scale: 1.2 }}
+                      whileTap={{ scale: 0.9 }}
+                      className={`relative rounded-full transition-all duration-500 ${
                         index === currentSlide
-                          ? "w-10 bg-brand-gold shadow-lg shadow-brand-gold/50"
-                          : "w-2 bg-brand-cream/30 hover:bg-brand-cream/60 hover:w-4"
+                          ? "h-2.5 w-12 bg-brand-gold shadow-[0_0_20px_rgba(231,180,89,0.6)]"
+                          : "h-2 w-2 bg-white/40 hover:bg-white/70"
                       }`}
                       aria-label={`Go to slide ${index + 1}`}
-                    />
+                    >
+                      {index === currentSlide && (
+                        <motion.div
+                          layoutId="activeIndicator"
+                          className="absolute inset-0 rounded-full bg-brand-gold"
+                          transition={{ type: "spring", stiffness: 300, damping: 30 }}
+                        />
+                      )}
+                    </motion.button>
                   ))}
                 </div>
               </div>

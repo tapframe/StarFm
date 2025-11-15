@@ -3,7 +3,11 @@ import { motion, AnimatePresence } from "framer-motion"
 import { Button } from "@/components/ui/button"
 import { Menu, X, Sparkles } from "lucide-react"
 
-export function Navbar() {
+interface NavbarProps {
+  onContactClick?: () => void
+}
+
+export function Navbar({ onContactClick }: NavbarProps) {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false)
   const [scrolled, setScrolled] = useState(false)
 
@@ -19,7 +23,6 @@ export function Navbar() {
     { label: "About", href: "#about" },
     { label: "Our Services", href: "#services" },
     { label: "Programs", href: "#programs" },
-    { label: "Contact", href: "#contact" },
   ]
 
   return (
@@ -109,9 +112,12 @@ export function Navbar() {
           </motion.div>
 
           <motion.div whileHover={{ scale: 1.05 }} whileTap={{ scale: 0.95 }}>
-            <Button className="group relative hidden overflow-hidden rounded-full bg-gradient-to-r from-brand-gold via-brand-sand to-brand-gold px-6 py-2.5 font-bold uppercase tracking-wide text-brand-deep shadow-lg transition-all duration-300 hover:shadow-2xl hover:shadow-brand-gold/40 sm:inline-flex">
+            <Button 
+              onClick={onContactClick}
+              className="group relative hidden overflow-hidden rounded-full bg-gradient-to-r from-brand-gold via-brand-sand to-brand-gold px-6 py-2.5 font-bold uppercase tracking-wide text-brand-deep shadow-lg transition-all duration-300 hover:shadow-2xl hover:shadow-brand-gold/40 sm:inline-flex"
+            >
               <span className="relative z-10 flex items-center gap-2">
-                Join Now
+                Contact Us
                 <motion.span
                   animate={{ x: [0, 4, 0] }}
                   transition={{ duration: 1.5, repeat: Infinity }}
@@ -195,8 +201,14 @@ export function Navbar() {
                   animate={{ opacity: 1, y: 0 }}
                   transition={{ duration: 0.3, delay: navItems.length * 0.1 }}
                 >
-                  <Button className="mt-3 w-full rounded-xl bg-gradient-to-r from-brand-gold via-brand-sand to-brand-gold py-4 font-black uppercase tracking-wide text-brand-deep shadow-lg hover:shadow-2xl hover:shadow-brand-gold/40">
-                    Join Now
+                  <Button 
+                    onClick={() => {
+                      setMobileMenuOpen(false);
+                      onContactClick?.();
+                    }}
+                    className="mt-3 w-full rounded-xl bg-gradient-to-r from-brand-gold via-brand-sand to-brand-gold py-4 font-black uppercase tracking-wide text-brand-deep shadow-lg hover:shadow-2xl hover:shadow-brand-gold/40"
+                  >
+                    Contact Us
                   </Button>
                 </motion.div>
               </div>

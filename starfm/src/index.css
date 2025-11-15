@@ -1,4 +1,4 @@
-@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Fraunces:wght@400;600;700;900&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700;800;900&display=swap');
 
 @tailwind base;
 @tailwind components;
@@ -7,8 +7,8 @@
 @layer base {
   :root {
     --radius: 0.75rem;
-    --font-display: "Fraunces", serif;
-    --font-body: "Inter", system-ui, -apple-system, BlinkMacSystemFont, sans-serif;
+    --font-display: "Montserrat", sans-serif;
+    --font-body: "Montserrat", system-ui, -apple-system, BlinkMacSystemFont, sans-serif;
 
     --background: 44 40% 96%;
     --foreground: 153 27% 14%;
