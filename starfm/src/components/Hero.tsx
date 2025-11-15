@@ -3,7 +3,11 @@ import { motion, AnimatePresence } from "framer-motion"
 import { Button } from "@/components/ui/button"
 import { Building2, ArrowRight, Sparkles, Home, Hotel, Trees, Wrench, Shield } from "lucide-react"
 
-export function Hero() {
+interface HeroProps {
+  onServicesClick?: () => void
+}
+
+export function Hero({ onServicesClick }: HeroProps) {
   const [currentSlide, setCurrentSlide] = useState(0)
 
   const carouselSlides = [
@@ -135,7 +139,7 @@ export function Hero() {
             >
               Elevating
               <span className="relative block mt-2">
-                <span className="bg-gradient-to-r from-brand-gold via-brand-sand to-brand-gold bg-clip-text text-transparent">
+                <span className="gradient-text">
                   Facilities Management
                 </span>
                 <motion.div
@@ -165,12 +169,7 @@ export function Hero() {
               <Button
                 size="lg"
                 className="group relative overflow-hidden rounded-full bg-gradient-to-r from-brand-gold to-brand-sand px-8 py-3.5 text-brand-deep font-bold text-base shadow-lg transition-all duration-300 hover:shadow-2xl hover:shadow-brand-gold/40 uppercase tracking-wide"
-                onClick={() => {
-                  const serviceSection = document.getElementById('services');
-                  if (serviceSection) {
-                    serviceSection.scrollIntoView({ behavior: 'smooth', block: 'start' });
-                  }
-                }}
+                onClick={onServicesClick}
               >
                 <span className="relative z-10 flex items-center justify-center gap-2">
                   View Our Services
@@ -321,7 +320,7 @@ export function Hero() {
                     >
                       <div className="absolute inset-0 bg-gradient-to-br from-white/10 to-transparent" />
                       <div className="relative flex items-baseline gap-3">
-                        <div className="font-display text-5xl sm:text-6xl font-black bg-gradient-to-br from-brand-gold via-brand-sand to-brand-gold bg-clip-text text-transparent drop-shadow-sm">
+                        <div className="font-display text-5xl sm:text-6xl font-black gradient-text drop-shadow-sm">
                           {carouselSlides[currentSlide].stats.value}
                         </div>
                         <div className="flex flex-col">

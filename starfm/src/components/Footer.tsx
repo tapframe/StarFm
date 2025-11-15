@@ -3,9 +3,10 @@ import { Building2, Mail, Phone, MapPin, Facebook, Twitter, Linkedin, Instagram 
 
 interface FooterProps {
   onContactClick?: () => void
+  onServicesClick?: () => void
 }
 
-export function Footer({ onContactClick }: FooterProps) {
+export function Footer({ onContactClick, onServicesClick }: FooterProps) {
   return (
     <footer className="relative border-t border-white/10 bg-gradient-to-b from-brand-deep to-brand-forest">
       {/* Decorative Elements */}
@@ -60,7 +61,6 @@ export function Footer({ onContactClick }: FooterProps) {
             <ul className="space-y-3">
               {[
                 { label: "About", href: "#about" },
-                { label: "Our Services", href: "#services" },
                 { label: "Programs", href: "#programs" },
               ].map((item) => (
                 <li key={item.label}>
@@ -72,6 +72,14 @@ export function Footer({ onContactClick }: FooterProps) {
                   </a>
                 </li>
               ))}
+              <li>
+                <button
+                  onClick={onServicesClick}
+                  className="text-sm text-brand-cream/80 transition-colors hover:text-brand-gold text-left"
+                >
+                  Our Services
+                </button>
+              </li>
               <li>
                 <button
                   onClick={onContactClick}

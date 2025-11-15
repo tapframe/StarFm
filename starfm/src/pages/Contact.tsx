@@ -99,7 +99,7 @@ export function Contact({ onBack }: ContactProps) {
 
           <h1 className="mb-6 font-display text-5xl font-black leading-tight text-brand-deep sm:text-6xl lg:text-7xl">
             Contact
-            <span className="block bg-gradient-to-r from-brand-gold via-brand-sand to-brand-gold bg-clip-text text-transparent mt-2">
+            <span className="block gradient-text mt-2">
               Our Team
             </span>
           </h1>

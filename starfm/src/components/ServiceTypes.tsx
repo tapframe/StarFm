@@ -65,8 +65,8 @@ export function ServiceTypes() {
           <h2 className="mb-6 font-display text-4xl font-black leading-tight text-brand-deep sm:text-5xl lg:text-6xl">
             Experience exceptional{" "}
             <span className="relative inline-block">
-              <span className="bg-gradient-to-r from-brand-gold via-brand-sand to-brand-gold bg-clip-text text-transparent">
-                ProFM services
+                            <span className="gradient-text">
+                Our Service Types
               </span>
               <motion.div
                 initial={{ scaleX: 0 }}

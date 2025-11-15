@@ -64,7 +64,7 @@ export function About() {
               className="mb-6 font-display text-4xl font-black leading-tight text-brand-deep sm:text-5xl lg:text-6xl"
             >
               Your Trusted Partner in
-              <span className="block bg-gradient-to-r from-brand-gold via-brand-sand to-brand-gold bg-clip-text text-transparent mt-2">
+              <span className="block gradient-text mt-2">
                 Facilities Excellence
               </span>
             </motion.h2>

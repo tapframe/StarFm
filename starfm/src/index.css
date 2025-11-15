@@ -117,4 +117,11 @@
   .glass-panel {
     @apply rounded-[1.75rem] border border-white/40 bg-white/70 shadow-brand backdrop-blur-xl;
   }
+
+  .gradient-text {
+    background: linear-gradient(to right, #d97706, #eab308, #d97706);
+    -webkit-background-clip: text;
+    background-clip: text;
+    -webkit-text-fill-color: transparent;
+  }
 }

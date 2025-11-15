@@ -5,9 +5,10 @@ import { Menu, X, Sparkles } from "lucide-react"
 
 interface NavbarProps {
   onContactClick?: () => void
+  onServicesClick?: () => void
 }
 
-export function Navbar({ onContactClick }: NavbarProps) {
+export function Navbar({ onContactClick, onServicesClick }: NavbarProps) {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false)
   const [scrolled, setScrolled] = useState(false)
 
@@ -21,7 +22,6 @@ export function Navbar({ onContactClick }: NavbarProps) {
 
   const navItems = [
     { label: "About", href: "#about" },
-    { label: "Our Services", href: "#services" },
     { label: "Programs", href: "#programs" },
   ]
 
@@ -93,6 +93,19 @@ export function Navbar({ onContactClick }: NavbarProps) {
               <span className="absolute inset-0 -z-10 scale-0 rounded-lg bg-brand-gold/10 transition-transform duration-300 group-hover:scale-100" />
             </motion.a>
           ))}
+          
+          {/* Services Link */}
+          <motion.button
+            onClick={onServicesClick}
+            initial={{ opacity: 0, y: -10 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.4, delay: navItems.length * 0.1 }}
+            className="group relative text-sm font-bold uppercase tracking-wide text-brand-deep/70 transition-all duration-300 hover:text-brand-deep"
+          >
+            <span className="relative z-10">Our Services</span>
+            <span className="absolute -bottom-1 left-0 h-[3px] w-0 rounded-full bg-gradient-to-r from-brand-gold via-brand-sand to-brand-gold transition-all duration-300 group-hover:w-full" />
+            <span className="absolute inset-0 -z-10 scale-0 rounded-lg bg-brand-gold/10 transition-transform duration-300 group-hover:scale-100" />
+          </motion.button>
         </div>
 
         {/* CTA Section */}
@@ -196,10 +209,26 @@ export function Navbar({ onContactClick }: NavbarProps) {
                     <div className="absolute inset-0 -z-10 translate-x-[-100%] bg-gradient-to-r from-brand-gold/10 to-transparent transition-transform duration-300 group-hover:translate-x-0" />
                   </motion.a>
                 ))}
+                
+                {/* Services Button */}
+                <motion.button
+                  onClick={() => {
+                    setMobileMenuOpen(false);
+                    onServicesClick?.();
+                  }}
+                  initial={{ opacity: 0, x: -20 }}
+                  animate={{ opacity: 1, x: 0 }}
+                  transition={{ duration: 0.3, delay: navItems.length * 0.1 }}
+                  className="group relative overflow-hidden rounded-xl border-2 border-brand-deep/10 bg-white px-5 py-4 text-base font-bold uppercase tracking-wide text-brand-deep/70 transition-all duration-300 hover:border-brand-gold/30 hover:bg-brand-gold/5 hover:text-brand-deep text-left"
+                >
+                  <span className="relative z-10">Our Services</span>
+                  <div className="absolute inset-0 -z-10 translate-x-[-100%] bg-gradient-to-r from-brand-gold/10 to-transparent transition-transform duration-300 group-hover:translate-x-0" />
+                </motion.button>
+                
                 <motion.div
                   initial={{ opacity: 0, y: 20 }}
                   animate={{ opacity: 1, y: 0 }}
-                  transition={{ duration: 0.3, delay: navItems.length * 0.1 }}
+                  transition={{ duration: 0.3, delay: (navItems.length + 1) * 0.1 }}
                 >
                   <Button 
                     onClick={() => {
