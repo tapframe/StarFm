@@ -16,6 +16,10 @@ import {
 
 gsap.registerPlugin(ScrollTrigger)
 
+interface ServicesProps {
+  onServicesPageClick?: () => void
+}
+
 const services = [
   {
     title: "Facilities Management",
@@ -59,7 +63,7 @@ const services = [
   },
 ]
 
-export function Services() {
+export function Services({ onServicesPageClick }: ServicesProps) {
   const [currentIndex, setCurrentIndex] = useState(0)
   const [direction, setDirection] = useState(0)
   
@@ -461,7 +465,7 @@ export function Services() {
                       </div>
 
                       <div>
-                        <Button ref={buttonRef} className="group w-full rounded-full bg-gradient-to-r from-primary to-brand-forest px-4 shadow-lg transition-all duration-300 hover:scale-105 hover:shadow-xl sm:w-auto sm:px-6">
+                        <Button ref={buttonRef} onClick={onServicesPageClick} className="group w-full rounded-full bg-gradient-to-r from-primary to-brand-forest px-4 shadow-lg transition-all duration-300 hover:scale-105 hover:shadow-xl sm:w-auto sm:px-6">
                           Learn More
                           <ArrowUpRight className="ml-2 h-4 w-4 transition-transform group-hover:translate-x-1 group-hover:-translate-y-1" />
                         </Button>

@@ -652,6 +652,7 @@ export function Hero({ onServicesClick }: HeroProps) {
                   {/* Modern CTA Button */}
                   <button
                     ref={ctaButtonRef}
+                    onClick={onServicesClick}
                     className="group relative w-full rounded-xl sm:rounded-2xl bg-gradient-to-r from-brand-gold via-brand-sand to-brand-gold py-4 sm:py-5 px-6 sm:px-8 font-black text-brand-deep text-sm sm:text-base shadow-[0_10px_40px_-15px_rgba(231,180,89,0.6)] transition-all duration-300 hover:shadow-[0_20px_60px_-15px_rgba(231,180,89,0.8)] uppercase tracking-wider overflow-hidden"
                   >
                     <span className="relative z-10 flex items-center justify-center gap-3">

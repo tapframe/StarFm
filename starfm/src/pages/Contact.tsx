@@ -46,6 +46,9 @@ export function Contact({ onBack }: ContactProps) {
   ]
 
   useEffect(() => {
+    // Ensure page starts at top
+    window.scrollTo({ top: 0, behavior: "instant" })
+    
     // Page fade in
     if (pageRef.current) {
       gsap.fromTo(pageRef.current,

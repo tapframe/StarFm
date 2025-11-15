@@ -210,6 +210,9 @@ export function ServicesPage({ onBack, onContactClick }: ServicesPageProps) {
   }, [])
 
   useEffect(() => {
+    // Ensure page starts at top
+    window.scrollTo({ top: 0, behavior: "instant" })
+    
     // Set GSAP defaults for better performance
     gsap.config({
       nullTargetWarn: false

@@ -74,6 +74,16 @@ function App() {
     }
   }, [currentPage, prevPage])
 
+  // Ensure contact and services pages start at top
+  useEffect(() => {
+    if (currentPage === "contact" || currentPage === "services") {
+      // Use setTimeout to ensure the page has rendered before scrolling
+      setTimeout(() => {
+        window.scrollTo({ top: 0, behavior: "instant" })
+      }, 100)
+    }
+  }, [currentPage])
+
   return (
     <div className="min-h-screen">
       {currentPage === "home" ? (
@@ -84,7 +94,7 @@ function App() {
             <About />
             <ServiceTypes />
             <Stats />
-            <Services />
+            <Services onServicesPageClick={handleServicesClick} />
           </main>
           <Footer onContactClick={handleContactClick} onServicesClick={handleServicesClick} />
         </div>
