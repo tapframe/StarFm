@@ -95,27 +95,50 @@ export function Services() {
   const currentService = services[currentIndex]
 
   return (
-    <section id="services" className="relative overflow-hidden py-12 sm:py-16 lg:py-24">
+    <section id="services" className="relative overflow-hidden py-16 sm:py-20 lg:py-28">
       <div className="pointer-events-none absolute inset-0">
-        <div className="absolute -left-10 top-20 h-48 w-48 rounded-full bg-brand-gold/20 blur-3xl sm:h-72 sm:w-72" />
-        <div className="absolute -right-10 bottom-20 h-48 w-48 rounded-full bg-brand-forest/20 blur-3xl sm:h-72 sm:w-72" />
+        <div className="absolute -left-10 top-20 h-72 w-72 rounded-full bg-brand-gold/15 blur-3xl" />
+        <div className="absolute -right-10 bottom-20 h-72 w-72 rounded-full bg-brand-forest/15 blur-3xl" />
+        <div className="absolute left-1/2 top-1/2 h-96 w-96 -translate-x-1/2 -translate-y-1/2 rounded-full bg-brand-moss/10 blur-3xl" />
       </div>
 
       <div className="container relative px-4 sm:px-6">
         <motion.div
-          initial={{ opacity: 0, y: 20 }}
+          initial={{ opacity: 0, y: 40 }}
           whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
-          transition={{ duration: 0.6 }}
-          className="mb-8 text-center sm:mb-12"
+          viewport={{ once: true, margin: "-100px" }}
+          transition={{ duration: 0.7, ease: "easeOut" }}
+          className="mb-12 text-center sm:mb-16"
         >
-          <p className="mb-2 text-xs font-semibold uppercase tracking-[0.3em] text-muted-foreground sm:mb-3 sm:text-sm">
-            What We Offer
-          </p>
-          <h2 className="mb-3 text-3xl text-foreground sm:text-4xl sm:mb-4 lg:text-5xl">Our Services</h2>
-          <p className="mx-auto max-w-2xl text-base text-foreground/70 sm:text-lg">
-            Comprehensive facilities management solutions tailored to elevate your operations and exceed industry standards.
-          </p>
+          <motion.div
+            initial={{ scale: 0.8, opacity: 0 }}
+            whileInView={{ scale: 1, opacity: 1 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.6, delay: 0.2 }}
+            className="mb-4 inline-block"
+          >
+            <span className="rounded-full border border-brand-gold/30 bg-brand-gold/10 px-4 py-1.5 text-xs font-semibold uppercase tracking-widest text-brand-gold backdrop-blur-sm">
+              What We Offer
+            </span>
+          </motion.div>
+          <motion.h2
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.6, delay: 0.3 }}
+            className="mb-4 bg-gradient-to-r from-foreground via-foreground to-foreground/70 bg-clip-text text-4xl font-bold text-transparent sm:text-5xl lg:text-6xl"
+          >
+            Our Services
+          </motion.h2>
+          <motion.p
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.6, delay: 0.4 }}
+            className="mx-auto max-w-2xl text-base text-foreground/70 sm:text-lg"
+          >
+            Comprehensive facilities management solutions tailored to elevate your operations
+          </motion.p>
         </motion.div>
 
         <div className="relative">
@@ -148,8 +171,11 @@ export function Services() {
                   }}
                   className="absolute w-full"
                 >
-                <Card className="group relative overflow-hidden border-none bg-white/90 shadow-card backdrop-blur-xl">
-                  <div className="grid gap-0 lg:grid-cols-[1.2fr_0.8fr]">
+                <Card className="group relative overflow-hidden border border-white/10 bg-white/95 shadow-2xl backdrop-blur-xl">
+                  {/* Subtle glow effect */}
+                  <div className="absolute inset-0 bg-gradient-to-br from-brand-gold/5 via-transparent to-brand-forest/5 opacity-0 transition-opacity duration-500 group-hover:opacity-100" />
+                  
+                  <div className="relative grid gap-0 lg:grid-cols-[1.2fr_0.8fr]">
                     {/* Image Section */}
                     <div className="relative h-[240px] overflow-hidden sm:h-[280px] lg:h-[500px]">
                       <motion.div
@@ -239,19 +265,19 @@ export function Services() {
           </div>
 
           {/* Navigation Buttons */}
-          <div className="mt-6 flex items-center justify-center gap-3 sm:mt-8 sm:gap-4">
+          <div className="mt-8 flex items-center justify-center gap-4 sm:mt-10">
             <motion.button
               whileHover={{ scale: 1.1 }}
               whileTap={{ scale: 0.9 }}
               onClick={() => paginate(-1)}
-              className="flex h-10 w-10 items-center justify-center rounded-full border border-white/40 bg-white/80 shadow-sm backdrop-blur-xl transition-colors hover:bg-white sm:h-12 sm:w-12"
+              className="flex h-12 w-12 items-center justify-center rounded-full border-2 border-brand-forest/20 bg-white shadow-lg backdrop-blur-xl transition-all hover:border-brand-gold hover:bg-brand-gold/10 hover:shadow-xl"
               aria-label="Previous service"
             >
-              <ChevronLeft className="h-4 w-4 text-primary sm:h-5 sm:w-5" />
+              <ChevronLeft className="h-5 w-5 text-brand-forest" />
             </motion.button>
 
             {/* Dots */}
-            <div className="flex gap-1.5 sm:gap-2">
+            <div className="flex gap-2">
               {services.map((_, idx) => (
                 <motion.button
                   key={idx}
@@ -259,12 +285,12 @@ export function Services() {
                     setDirection(idx > currentIndex ? 1 : -1)
                     setCurrentIndex(idx)
                   }}
-                  className={`h-1.5 rounded-full transition-all duration-300 sm:h-2 ${
+                  className={`h-2 rounded-full transition-all duration-300 ${
                     idx === currentIndex
-                      ? "w-6 bg-primary sm:w-8"
-                      : "w-1.5 bg-primary/30 hover:bg-primary/50 sm:w-2"
+                      ? "w-8 bg-brand-gold"
+                      : "w-2 bg-brand-forest/30 hover:bg-brand-gold/50"
                   }`}
-                  whileHover={{ scale: 1.2 }}
+                  whileHover={{ scale: 1.3 }}
                   whileTap={{ scale: 0.9 }}
                   aria-label={`Go to service ${idx + 1}`}
                 />
@@ -275,10 +301,10 @@ export function Services() {
               whileHover={{ scale: 1.1 }}
               whileTap={{ scale: 0.9 }}
               onClick={() => paginate(1)}
-              className="flex h-10 w-10 items-center justify-center rounded-full border border-white/40 bg-white/80 shadow-sm backdrop-blur-xl transition-colors hover:bg-white sm:h-12 sm:w-12"
+              className="flex h-12 w-12 items-center justify-center rounded-full border-2 border-brand-forest/20 bg-white shadow-lg backdrop-blur-xl transition-all hover:border-brand-gold hover:bg-brand-gold/10 hover:shadow-xl"
               aria-label="Next service"
             >
-              <ChevronRight className="h-4 w-4 text-primary sm:h-5 sm:w-5" />
+              <ChevronRight className="h-5 w-5 text-brand-forest" />
             </motion.button>
           </div>
         </div>

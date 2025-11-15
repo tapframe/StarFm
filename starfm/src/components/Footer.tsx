@@ -1,3 +1,4 @@
+import { motion } from "framer-motion"
 import { Building2, Mail, Phone, MapPin, Facebook, Twitter, Linkedin, Instagram } from "lucide-react"
 
 export function Footer() {
@@ -12,7 +13,13 @@ export function Footer() {
       <div className="container relative py-12 lg:py-16">
         <div className="grid gap-12 lg:grid-cols-4">
           {/* Brand Section */}
-          <div className="lg:col-span-1">
+          <motion.div
+            initial={{ opacity: 0, y: 30 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.6 }}
+            className="lg:col-span-1"
+          >
             <div className="mb-4 flex items-center gap-3">
               <div className="flex h-10 w-10 items-center justify-center rounded-lg bg-gradient-to-br from-brand-gold to-brand-sand">
                 <Building2 className="h-6 w-6 text-brand-deep" />
@@ -36,27 +43,42 @@ export function Footer() {
                 </a>
               ))}
             </div>
-          </div>
+          </motion.div>
 
           {/* Quick Links */}
-          <div>
+          <motion.div
+            initial={{ opacity: 0, y: 30 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.6, delay: 0.1 }}
+          >
             <h4 className="mb-4 text-sm font-semibold uppercase tracking-wider text-white">Quick Links</h4>
             <ul className="space-y-3">
-              {["About Us", "Our Services", "Membership", "Training Center", "Contact"].map((link) => (
-                <li key={link}>
+              {[
+                { label: "About", href: "#about" },
+                { label: "Our Services", href: "#services" },
+                { label: "Programs", href: "#programs" },
+                { label: "Contact", href: "#contact" },
+              ].map((item) => (
+                <li key={item.label}>
                   <a
-                    href={`#${link.toLowerCase().replace(" ", "-")}`}
+                    href={item.href}
                     className="text-sm text-brand-cream/80 transition-colors hover:text-brand-gold"
                   >
-                    {link}
+                    {item.label}
                   </a>
                 </li>
               ))}
             </ul>
-          </div>
+          </motion.div>
 
           {/* Services */}
-          <div>
+          <motion.div
+            initial={{ opacity: 0, y: 30 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.6, delay: 0.2 }}
+          >
             <h4 className="mb-4 text-sm font-semibold uppercase tracking-wider text-white">Services</h4>
             <ul className="space-y-3">
               {[
@@ -76,16 +98,21 @@ export function Footer() {
                 </li>
               ))}
             </ul>
-          </div>
+          </motion.div>
 
           {/* Contact Info */}
-          <div>
+          <motion.div
+            initial={{ opacity: 0, y: 30 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.6, delay: 0.3 }}
+          >
             <h4 className="mb-4 text-sm font-semibold uppercase tracking-wider text-white">Contact Us</h4>
             <ul className="space-y-4">
               <li className="flex items-start gap-3">
                 <MapPin className="mt-0.5 h-5 w-5 shrink-0 text-brand-gold" />
                 <span className="text-sm text-brand-cream/80">
-                  Business Bay, Dubai<br />United Arab Emirates
+                  Jeddah
                 </span>
               </li>
               <li className="flex items-center gap-3">
@@ -101,7 +128,7 @@ export function Footer() {
                 </a>
               </li>
             </ul>
-          </div>
+          </motion.div>
         </div>
 
         {/* Bottom Bar */}

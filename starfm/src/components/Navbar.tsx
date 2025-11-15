@@ -1,107 +1,209 @@
-import { useState } from "react"
+import { useState, useEffect } from "react"
+import { motion, AnimatePresence } from "framer-motion"
 import { Button } from "@/components/ui/button"
-import { Menu, X } from "lucide-react"
+import { Menu, X, Sparkles } from "lucide-react"
 
 export function Navbar() {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false)
+  const [scrolled, setScrolled] = useState(false)
+
+  useEffect(() => {
+    const handleScroll = () => {
+      setScrolled(window.scrollY > 20)
+    }
+    window.addEventListener("scroll", handleScroll)
+    return () => window.removeEventListener("scroll", handleScroll)
+  }, [])
 
   const navItems = [
     { label: "About", href: "#about" },
-    { label: "Membership", href: "#membership" },
     { label: "Our Services", href: "#services" },
-    { label: "Members Portal", href: "#portal" },
     { label: "Programs", href: "#programs" },
     { label: "Contact", href: "#contact" },
   ]
 
   return (
-    <nav className="fixed left-0 right-0 top-0 z-50 border-b border-white/10 bg-white/80 backdrop-blur-xl">
-      <div className="container mx-auto flex h-16 items-center justify-between px-4 sm:h-20 lg:h-24 lg:px-6">
+    <motion.nav
+      initial={{ y: -100 }}
+      animate={{ y: 0 }}
+      transition={{ duration: 0.6, ease: "easeOut" }}
+      className={`fixed left-0 right-0 top-0 z-50 transition-all duration-500 ${
+        scrolled 
+          ? "bg-white/98 shadow-2xl shadow-brand-deep/5 backdrop-blur-2xl" 
+          : "bg-white/85 backdrop-blur-xl"
+      }`}
+    >
+      {/* Gradient Border */}
+      <div className={`absolute inset-x-0 bottom-0 h-[2px] bg-gradient-to-r from-transparent via-brand-gold to-transparent transition-opacity duration-500 ${
+        scrolled ? "opacity-100" : "opacity-0"
+      }`} />
+      
+      <div className="container mx-auto flex h-20 items-center justify-between px-4 sm:h-24 lg:px-6">
         {/* Logo */}
-        <a href="#" className="group flex items-center gap-2 sm:gap-3">
-          <div className="flex h-10 w-10 items-center justify-center rounded-xl bg-gradient-to-br from-primary to-brand-forest shadow-brand transition-transform duration-300 group-hover:scale-105 sm:h-12 sm:w-12 sm:rounded-2xl">
-            <span className="font-display text-lg font-bold tracking-tight text-white sm:text-xl">
-              SF
-            </span>
+        <motion.a
+          href="#"
+          className="group relative flex items-center gap-3"
+          whileHover={{ scale: 1.02 }}
+          transition={{ duration: 0.2 }}
+        >
+          <div className="relative">
+            <div className="absolute inset-0 rounded-2xl bg-gradient-to-br from-brand-gold to-brand-sand opacity-0 blur-lg transition-opacity duration-300 group-hover:opacity-60" />
+            <div className="relative flex h-12 w-12 items-center justify-center rounded-2xl bg-gradient-to-br from-brand-gold via-brand-sand to-brand-gold shadow-lg ring-2 ring-brand-gold/20 transition-all duration-300 group-hover:ring-4 group-hover:ring-brand-gold/30 sm:h-14 sm:w-14">
+              <span className="font-display text-xl font-black tracking-tighter text-brand-deep sm:text-2xl">
+                SF
+              </span>
+              <div className="absolute -right-1 -top-1">
+                <Sparkles className="h-3 w-3 text-brand-gold animate-pulse" />
+              </div>
+            </div>
           </div>
           <div className="flex flex-col">
-            <span className="text-lg font-bold tracking-tight text-foreground transition-colors group-hover:text-primary sm:text-xl">
+            <span className="font-display text-xl font-black tracking-tight text-brand-deep transition-colors group-hover:text-brand-forest sm:text-2xl">
               StarFM
             </span>
-            <span className="hidden text-xs tracking-wide text-muted-foreground sm:block">
+            <span className="hidden text-[10px] font-bold uppercase tracking-[0.2em] text-brand-forest/60 sm:block">
               Excellence in Facilities
             </span>
           </div>
-        </a>
+        </motion.a>
 
         {/* Desktop Navigation Links */}
-        <div className="hidden items-center gap-6 lg:flex xl:gap-8">
-          {navItems.map((item) => (
-            <a
+        <div className="hidden items-center gap-8 lg:flex xl:gap-10">
+          {navItems.map((item, index) => (
+            <motion.a
               key={item.label}
               href={item.href}
-              className="group relative text-sm font-medium text-foreground/80 transition-colors hover:text-foreground"
+              initial={{ opacity: 0, y: -10 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.4, delay: index * 0.1 }}
+              onClick={(e) => {
+                e.preventDefault();
+                const target = document.querySelector(item.href);
+                if (target) {
+                  target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+                }
+              }}
+              className="group relative text-sm font-bold uppercase tracking-wide text-brand-deep/70 transition-all duration-300 hover:text-brand-deep"
             >
               <span className="relative z-10">{item.label}</span>
-              <span className="absolute bottom-0 left-0 h-0.5 w-0 bg-gradient-to-r from-primary to-brand-forest transition-all duration-300 group-hover:w-full" />
-            </a>
+              <span className="absolute -bottom-1 left-0 h-[3px] w-0 rounded-full bg-gradient-to-r from-brand-gold via-brand-sand to-brand-gold transition-all duration-300 group-hover:w-full" />
+              <span className="absolute inset-0 -z-10 scale-0 rounded-lg bg-brand-gold/10 transition-transform duration-300 group-hover:scale-100" />
+            </motion.a>
           ))}
         </div>
 
         {/* CTA Section */}
-        <div className="flex items-center gap-3 sm:gap-4 lg:gap-6">
+        <div className="flex items-center gap-3 sm:gap-4">
           {/* Language Toggle */}
-          <div className="flex items-center gap-2 rounded-full border border-white/20 bg-white/40 px-2.5 py-1 backdrop-blur-sm sm:px-3 sm:py-1.5">
-            <button className="text-xs font-semibold text-foreground transition-opacity hover:opacity-100">
+          <motion.div
+            whileHover={{ scale: 1.05 }}
+            className="flex items-center gap-2 rounded-full border-2 border-brand-deep/10 bg-white px-3 py-1.5 shadow-sm transition-all duration-300 hover:border-brand-gold/30 hover:shadow-md sm:px-4 sm:py-2"
+          >
+            <button className="text-xs font-black uppercase text-brand-deep transition-opacity hover:opacity-80">
               EN
             </button>
-            <span className="text-xs text-muted-foreground">/</span>
-            <button className="text-xs font-semibold text-muted-foreground transition-opacity hover:opacity-100">
+            <span className="h-3 w-[2px] bg-brand-deep/20" />
+            <button className="text-xs font-black uppercase text-brand-deep/40 transition-opacity hover:opacity-100">
               AR
             </button>
-          </div>
+          </motion.div>
 
-          <Button className="hidden rounded-full bg-gradient-to-r from-primary to-brand-forest px-4 shadow-lg transition-all duration-300 hover:scale-105 hover:shadow-xl sm:inline-flex sm:px-6">
-            Join Now
-          </Button>
+          <motion.div whileHover={{ scale: 1.05 }} whileTap={{ scale: 0.95 }}>
+            <Button className="group relative hidden overflow-hidden rounded-full bg-gradient-to-r from-brand-gold via-brand-sand to-brand-gold px-6 py-2.5 font-bold uppercase tracking-wide text-brand-deep shadow-lg transition-all duration-300 hover:shadow-2xl hover:shadow-brand-gold/40 sm:inline-flex">
+              <span className="relative z-10 flex items-center gap-2">
+                Join Now
+                <motion.span
+                  animate={{ x: [0, 4, 0] }}
+                  transition={{ duration: 1.5, repeat: Infinity }}
+                >
+                  →
+                </motion.span>
+              </span>
+              <div className="absolute inset-0 bg-gradient-to-r from-brand-sand to-brand-gold opacity-0 transition-opacity duration-300 group-hover:opacity-100" />
+            </Button>
+          </motion.div>
 
           {/* Mobile Menu Button */}
-          <button
+          <motion.button
+            whileTap={{ scale: 0.9 }}
             onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
-            className="flex h-10 w-10 items-center justify-center rounded-xl border border-white/20 bg-white/40 backdrop-blur-sm transition-colors hover:bg-white/60 lg:hidden"
+            className="flex h-11 w-11 items-center justify-center rounded-xl border-2 border-brand-deep/10 bg-white shadow-sm transition-all duration-300 hover:border-brand-gold/30 hover:bg-brand-gold/5 hover:shadow-md lg:hidden"
             aria-label="Toggle menu"
           >
-            {mobileMenuOpen ? (
-              <X className="h-5 w-5 text-foreground" />
-            ) : (
-              <Menu className="h-5 w-5 text-foreground" />
-            )}
-          </button>
+            <AnimatePresence mode="wait">
+              {mobileMenuOpen ? (
+                <motion.div
+                  key="close"
+                  initial={{ rotate: -90, opacity: 0 }}
+                  animate={{ rotate: 0, opacity: 1 }}
+                  exit={{ rotate: 90, opacity: 0 }}
+                  transition={{ duration: 0.2 }}
+                >
+                  <X className="h-6 w-6 text-brand-deep" strokeWidth={2.5} />
+                </motion.div>
+              ) : (
+                <motion.div
+                  key="open"
+                  initial={{ rotate: 90, opacity: 0 }}
+                  animate={{ rotate: 0, opacity: 1 }}
+                  exit={{ rotate: -90, opacity: 0 }}
+                  transition={{ duration: 0.2 }}
+                >
+                  <Menu className="h-6 w-6 text-brand-deep" strokeWidth={2.5} />
+                </motion.div>
+              )}
+            </AnimatePresence>
+          </motion.button>
         </div>
       </div>
 
       {/* Mobile Menu */}
-      {mobileMenuOpen && (
-        <div className="border-t border-white/10 bg-white/95 backdrop-blur-xl lg:hidden">
-          <div className="container mx-auto px-4 py-6">
-            <div className="flex flex-col gap-4">
-              {navItems.map((item) => (
-                <a
-                  key={item.label}
-                  href={item.href}
-                  onClick={() => setMobileMenuOpen(false)}
-                  className="rounded-lg px-4 py-3 text-base font-medium text-foreground/80 transition-colors hover:bg-white/60 hover:text-foreground"
+      <AnimatePresence>
+        {mobileMenuOpen && (
+          <motion.div
+            initial={{ opacity: 0, height: 0 }}
+            animate={{ opacity: 1, height: "auto" }}
+            exit={{ opacity: 0, height: 0 }}
+            transition={{ duration: 0.3 }}
+            className="overflow-hidden border-t-2 border-brand-gold/20 bg-white/98 backdrop-blur-2xl lg:hidden"
+          >
+            <div className="container mx-auto px-4 py-6">
+              <div className="flex flex-col gap-3">
+                {navItems.map((item, index) => (
+                  <motion.a
+                    key={item.label}
+                    href={item.href}
+                    initial={{ opacity: 0, x: -20 }}
+                    animate={{ opacity: 1, x: 0 }}
+                    transition={{ duration: 0.3, delay: index * 0.1 }}
+                    onClick={(e) => {
+                      e.preventDefault();
+                      setMobileMenuOpen(false);
+                      const target = document.querySelector(item.href);
+                      if (target) {
+                        target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+                      }
+                    }}
+                    className="group relative overflow-hidden rounded-xl border-2 border-brand-deep/10 bg-white px-5 py-4 text-base font-bold uppercase tracking-wide text-brand-deep/70 transition-all duration-300 hover:border-brand-gold/30 hover:bg-brand-gold/5 hover:text-brand-deep"
+                  >
+                    <span className="relative z-10">{item.label}</span>
+                    <div className="absolute inset-0 -z-10 translate-x-[-100%] bg-gradient-to-r from-brand-gold/10 to-transparent transition-transform duration-300 group-hover:translate-x-0" />
+                  </motion.a>
+                ))}
+                <motion.div
+                  initial={{ opacity: 0, y: 20 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  transition={{ duration: 0.3, delay: navItems.length * 0.1 }}
                 >
-                  {item.label}
-                </a>
-              ))}
-              <Button className="mt-2 w-full rounded-full bg-gradient-to-r from-primary to-brand-forest shadow-lg">
-                Join Now
-              </Button>
+                  <Button className="mt-3 w-full rounded-xl bg-gradient-to-r from-brand-gold via-brand-sand to-brand-gold py-4 font-black uppercase tracking-wide text-brand-deep shadow-lg hover:shadow-2xl hover:shadow-brand-gold/40">
+                    Join Now
+                  </Button>
+                </motion.div>
+              </div>
             </div>
-          </div>
-        </div>
-      )}
-    </nav>
+          </motion.div>
+        )}
+      </AnimatePresence>
+    </motion.nav>
   )
 }

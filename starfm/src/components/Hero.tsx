@@ -1,42 +1,101 @@
-import { motion } from "framer-motion"
+import { useState, useEffect } from "react"
+import { motion, AnimatePresence } from "framer-motion"
 import { Button } from "@/components/ui/button"
-import { Building2, Users2, Zap, ArrowRight, Sparkles } from "lucide-react"
+import { Building2, ArrowRight, Sparkles, Home, Hotel, Trees, Wrench, Shield } from "lucide-react"
 
 export function Hero() {
-  const heroMetrics = [
-    { icon: Building2, value: "500+", label: "Facilities Managed", color: "from-blue-500 to-cyan-500" },
-    { icon: Users2, value: "2,000+", label: "Satisfied Clients", color: "from-emerald-500 to-teal-500" },
-    { icon: Zap, value: "99.8%", label: "Service Uptime", color: "from-purple-500 to-pink-500" },
+  const [currentSlide, setCurrentSlide] = useState(0)
+
+  const carouselSlides = [
+    {
+      title: "Facilities Management",
+      description: "Comprehensive management solutions for commercial and residential properties with 24/7 support.",
+      icon: Building2,
+      color: "from-blue-500 to-cyan-500",
+      stats: { value: "500+", label: "Properties Managed" },
+      bgImage: "https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?w=800&q=80"
+    },
+    {
+      title: "Home Solutions",
+      description: "Professional cleaning, maintenance, and home care services for residential properties.",
+      icon: Home,
+      color: "from-emerald-500 to-teal-500",
+      stats: { value: "1,000+", label: "Happy Homes" },
+      bgImage: "https://images.unsplash.com/photo-1560448204-e02f11c3d0e2?w=800&q=80"
+    },
+    {
+      title: "Hospitality Services",
+      description: "Premium hospitality management for hotels, resorts, and commercial spaces.",
+      icon: Hotel,
+      color: "from-purple-500 to-pink-500",
+      stats: { value: "50+", label: "Hotels Served" },
+      bgImage: "https://images.unsplash.com/photo-1566073771259-6a8506099945?w=800&q=80"
+    },
+    {
+      title: "Landscaping & Gardens",
+      description: "Expert landscape design, maintenance, and outdoor space management services.",
+      icon: Trees,
+      color: "from-green-500 to-emerald-500",
+      stats: { value: "300+", label: "Gardens Maintained" },
+      bgImage: "https://images.unsplash.com/photo-1585320806297-9794b3e4eeae?w=800&q=80"
+    },
+    {
+      title: "Technical Services",
+      description: "HVAC, electrical, plumbing, and technical maintenance by certified professionals.",
+      icon: Wrench,
+      color: "from-orange-500 to-red-500",
+      stats: { value: "99.8%", label: "Uptime Rate" },
+      bgImage: "https://images.unsplash.com/photo-1621905251918-48416bd8575a?w=800&q=80"
+    },
+    {
+      title: "Pest Control",
+      description: "Safe and effective pest management solutions for all property types.",
+      icon: Shield,
+      color: "from-indigo-500 to-purple-500",
+      stats: { value: "2,000+", label: "Treatments Done" },
+      bgImage: "https://images.unsplash.com/photo-1581578731548-c64695cc6952?w=800&q=80"
+    }
   ]
 
+  useEffect(() => {
+    const timer = setInterval(() => {
+      setCurrentSlide((prev) => (prev + 1) % 6)
+    }, 8000)
+
+    return () => clearInterval(timer)
+  }, [])
+
   return (
-    <section className="relative overflow-hidden bg-gradient-to-br from-brand-deep via-brand-forest to-brand-moss py-16 sm:py-20 lg:py-28">
+    <section className="relative overflow-hidden bg-gradient-to-br from-brand-deep via-brand-forest to-brand-moss py-12 sm:py-16 lg:py-20">
       {/* Animated Background Elements */}
       <div className="pointer-events-none absolute inset-0">
         <motion.div
           animate={{
             scale: [1, 1.3, 1],
-            opacity: [0.25, 0.4, 0.25],
+            opacity: [0.2, 0.35, 0.2],
           }}
           transition={{
             duration: 8,
             repeat: Infinity,
             ease: "easeInOut",
           }}
-          className="absolute left-1/4 top-0 h-80 w-80 rounded-full bg-brand-gold/25 blur-3xl sm:h-96 sm:w-96"
+          className="absolute left-1/4 top-0 h-96 w-96 rounded-full bg-brand-gold/30 blur-3xl"
         />
         <motion.div
           animate={{
             scale: [1.2, 1, 1.2],
-            opacity: [0.2, 0.35, 0.2],
+            opacity: [0.15, 0.3, 0.15],
           }}
           transition={{
             duration: 10,
             repeat: Infinity,
             ease: "easeInOut",
           }}
-          className="absolute right-1/3 top-1/4 h-72 w-72 rounded-full bg-brand-moss/20 blur-3xl sm:h-96 sm:w-96"
+          className="absolute right-1/3 top-1/4 h-96 w-96 rounded-full bg-brand-moss/25 blur-3xl"
         />
+        
+        {/* Subtle grid pattern */}
+        <div className="absolute inset-0 bg-[linear-gradient(to_right,#80808008_1px,transparent_1px),linear-gradient(to_bottom,#80808008_1px,transparent_1px)] bg-[size:24px_24px]"></div>
       </div>
 
       <div className="container relative px-4 sm:px-6">
@@ -72,10 +131,10 @@ export function Hero() {
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.7, delay: 0.2 }}
-              className="mb-6 font-display text-4xl leading-tight text-white sm:text-5xl lg:text-6xl"
+              className="mb-6 font-display text-5xl leading-[1.1] font-black text-white sm:text-6xl lg:text-7xl tracking-tight"
             >
               Elevating
-              <span className="relative block">
+              <span className="relative block mt-2">
                 <span className="bg-gradient-to-r from-brand-gold via-brand-sand to-brand-gold bg-clip-text text-transparent">
                   Facilities Management
                 </span>
@@ -92,7 +151,7 @@ export function Hero() {
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.7, delay: 0.3 }}
-              className="mb-8 text-base leading-relaxed text-brand-cream/85 sm:text-lg"
+              className="mb-10 text-lg leading-relaxed text-brand-cream/90 sm:text-xl font-medium max-w-lg"
             >
               Expert facilities management solutions tailored to your needs. From commercial buildings to residential complexes, we deliver comprehensive services with professional excellence.
             </motion.p>
@@ -105,11 +164,17 @@ export function Hero() {
             >
               <Button
                 size="lg"
-                className="group relative overflow-hidden rounded-full bg-gradient-to-r from-brand-gold to-brand-sand px-7 py-3 text-brand-deep font-semibold shadow-lg transition-all duration-300 hover:shadow-2xl hover:shadow-brand-gold/30"
+                className="group relative overflow-hidden rounded-full bg-gradient-to-r from-brand-gold to-brand-sand px-8 py-3.5 text-brand-deep font-bold text-base shadow-lg transition-all duration-300 hover:shadow-2xl hover:shadow-brand-gold/40 uppercase tracking-wide"
+                onClick={() => {
+                  const serviceSection = document.getElementById('services');
+                  if (serviceSection) {
+                    serviceSection.scrollIntoView({ behavior: 'smooth', block: 'start' });
+                  }
+                }}
               >
-                <span className="relative z-10 flex items-center justify-center">
+                <span className="relative z-10 flex items-center justify-center gap-2">
                   View Our Services
-                  <ArrowRight className="ml-2 h-4 w-4 transition-transform group-hover:translate-x-1" />
+                  <ArrowRight className="h-5 w-5 transition-transform group-hover:translate-x-1.5" />
                 </span>
                 <motion.div
                   className="absolute inset-0 bg-gradient-to-r from-brand-sand to-brand-gold"
@@ -121,13 +186,13 @@ export function Hero() {
 
               <Button
                 size="lg"
-                className="group rounded-full border-2 border-brand-cream/40 bg-white/5 backdrop-blur-xl px-7 py-3 text-brand-cream font-semibold transition-all duration-300 hover:border-brand-gold hover:bg-brand-gold/15 hover:text-white hover:shadow-lg"
+                className="group rounded-full border-2 border-brand-cream/50 bg-white/10 backdrop-blur-xl px-8 py-3.5 text-brand-cream font-bold text-base transition-all duration-300 hover:border-brand-gold hover:bg-brand-gold/20 hover:text-white hover:shadow-lg uppercase tracking-wide"
               >
-                <span className="flex items-center justify-center">
+                <span className="flex items-center justify-center gap-2">
                   Contact Us
                   <motion.span
-                    className="ml-2"
-                    animate={{ x: [0, 3, 0] }}
+                    className="text-lg"
+                    animate={{ x: [0, 4, 0] }}
                     transition={{ duration: 1.5, repeat: Infinity }}
                   >
                     →
@@ -141,7 +206,7 @@ export function Hero() {
               initial={{ opacity: 0 }}
               animate={{ opacity: 1 }}
               transition={{ duration: 0.7, delay: 0.6 }}
-              className="mt-10 flex items-center gap-6 border-t border-white/10 pt-8"
+              className="mt-12 flex items-center gap-8 border-t border-white/15 pt-10"
             >
               {[
                 { value: "500+", label: "Facilities" },
@@ -150,17 +215,17 @@ export function Hero() {
               ].map((stat, idx) => (
                 <motion.div
                   key={idx}
-                  whileHover={{ scale: 1.05 }}
-                  className="flex flex-col"
+                  whileHover={{ scale: 1.08, y: -2 }}
+                  className="flex flex-col group"
                 >
-                  <span className="font-display text-2xl font-bold text-brand-gold">{stat.value}</span>
-                  <span className="text-xs text-brand-cream/60 uppercase tracking-wider">{stat.label}</span>
+                  <span className="font-display text-3xl font-black text-brand-gold group-hover:text-brand-sand transition-colors">{stat.value}</span>
+                  <span className="text-xs font-bold text-brand-cream/70 uppercase tracking-widest mt-1">{stat.label}</span>
                 </motion.div>
               ))}
             </motion.div>
           </motion.div>
 
-          {/* Right Content - Enhanced Glass Panel */}
+          {/* Right Content - Carousel */}
           <motion.div
             initial={{ opacity: 0, scale: 0.85, y: 40 }}
             animate={{ opacity: 1, scale: 1, y: 0 }}
@@ -170,80 +235,117 @@ export function Hero() {
             {/* Glow effect behind panel */}
             <div className="absolute -inset-1 bg-gradient-to-r from-brand-gold/20 to-brand-moss/20 rounded-3xl blur-2xl opacity-60 -z-10" />
 
-            <div className="glass-panel relative overflow-hidden rounded-3xl border border-white/20 bg-white/10 p-8 backdrop-blur-xl shadow-2xl">
-              {/* Inner gradient overlay */}
-              <div className="absolute inset-0 bg-gradient-to-br from-white/8 to-transparent rounded-3xl" />
-              <div className="absolute top-0 right-0 w-40 h-40 bg-brand-gold/10 rounded-full blur-3xl -z-10" />
-
-              <motion.div className="relative z-10">
-                {/* Header */}
+            <div className="glass-panel relative overflow-hidden rounded-3xl border border-white/20 shadow-2xl min-h-[500px] flex flex-col">
+              {/* Background Image with Overlay */}
+              <AnimatePresence mode="wait">
                 <motion.div
-                  initial={{ opacity: 0, y: 10 }}
-                  animate={{ opacity: 1, y: 0 }}
-                  transition={{ duration: 0.6, delay: 0.5 }}
-                  className="mb-8"
+                  key={`bg-${currentSlide}`}
+                  initial={{ opacity: 0, scale: 1.1 }}
+                  animate={{ opacity: 1, scale: 1 }}
+                  exit={{ opacity: 0, scale: 0.95 }}
+                  transition={{ duration: 0.8 }}
+                  className="absolute inset-0"
                 >
-                  <div className="flex items-center gap-2 mb-3">
-                    <div className="h-1.5 w-1.5 rounded-full bg-brand-gold" />
-                    <span className="text-xs font-semibold uppercase tracking-widest text-brand-gold">Services</span>
-                  </div>
-                  <h2 className="font-display text-2xl sm:text-3xl text-white">
-                    Our Core
-                    <span className="block bg-gradient-to-r from-brand-gold to-brand-sand bg-clip-text text-transparent">
-                      Service Areas
-                    </span>
-                  </h2>
+                  <img 
+                    src={carouselSlides[currentSlide].bgImage}
+                    alt={carouselSlides[currentSlide].title}
+                    className="h-full w-full object-cover"
+                  />
+                  <div className="absolute inset-0 bg-black/40 backdrop-blur-sm" />
                 </motion.div>
+              </AnimatePresence>
 
-                {/* Metrics Cards */}
-                <div className="space-y-4">
-                  {heroMetrics.map((metric, index) => (
+              <div className="relative z-10 flex-1 flex flex-col p-8">
+                <AnimatePresence mode="wait">
+                  <motion.div
+                    key={currentSlide}
+                    initial={{ opacity: 0, x: 100 }}
+                    animate={{ opacity: 1, x: 0 }}
+                    exit={{ opacity: 0, x: -100 }}
+                    transition={{ duration: 0.6, ease: "easeInOut" }}
+                    className="flex-1 flex flex-col"
+                  >
+                    {/* Header */}
+                    <div className="mb-8">
+                      <div className="flex items-center gap-2 mb-4">
+                        <div className="h-1.5 w-1.5 rounded-full bg-brand-gold animate-pulse" />
+                        <span className="text-xs font-semibold uppercase tracking-widest text-brand-gold">Our Services</span>
+                      </div>
+                      <div className="flex items-center gap-4 mb-3">
+                        <motion.div
+                          initial={{ scale: 0, rotate: 90, opacity: 0 }}
+                          animate={{ scale: 1, rotate: 0, opacity: 1 }}
+                          exit={{ scale: 0, rotate: -90, opacity: 0 }}
+                          transition={{ duration: 0.6, delay: 0.2, type: "spring", stiffness: 100 }}
+                          className={`flex h-14 w-14 items-center justify-center rounded-xl bg-gradient-to-br ${carouselSlides[currentSlide].color} shadow-lg ring-2 ring-white/20`}
+                        >
+                          {(() => {
+                            const Icon = carouselSlides[currentSlide].icon
+                            return <Icon className="h-7 w-7 text-white" />
+                          })()}
+                        </motion.div>
+                        <h2 className="font-display text-2xl sm:text-3xl text-white font-black leading-tight">
+                          {carouselSlides[currentSlide].title}
+                        </h2>
+                      </div>
+                    </div>
+
+                    {/* Description */}
+                    <p className="text-base text-brand-cream/90 leading-relaxed mb-10 font-semibold">
+                      {carouselSlides[currentSlide].description}
+                    </p>
+
+                    {/* Stats Card */}
                     <motion.div
-                      key={metric.label}
-                      initial={{ opacity: 0, x: 30 }}
-                      animate={{ opacity: 1, x: 0 }}
-                      transition={{ duration: 0.6, delay: 0.5 + index * 0.1 }}
-                      whileHover={{ translateX: 4 }}
-                      className="group relative flex items-center gap-4 rounded-2xl border border-white/10 bg-gradient-to-r from-white/5 to-white/[0.02] p-5 backdrop-blur-sm transition-all duration-300 hover:border-brand-gold/30 hover:bg-white/10 hover:shadow-xl"
+                      initial={{ opacity: 0, y: 20 }}
+                      animate={{ opacity: 1, y: 0 }}
+                      transition={{ duration: 0.5, delay: 0.3 }}
+                      className="rounded-xl border border-brand-gold/30 bg-gradient-to-br from-brand-gold/15 to-transparent p-7 backdrop-blur-lg shadow-xl mb-8"
                     >
-                      <motion.div
-                        whileHover={{ rotate: 10, scale: 1.1 }}
-                        className={`flex shrink-0 h-12 w-12 items-center justify-center rounded-xl bg-gradient-to-br ${metric.color} shadow-lg`}
-                      >
-                        <metric.icon className="h-6 w-6 text-white" />
-                      </motion.div>
-                      <div className="flex-1 min-w-0">
-                        <div className="font-display text-lg sm:text-xl font-bold text-white">
-                          {metric.value}
+                      <div className="flex items-end gap-3">
+                        <div className="font-display text-4xl font-black text-brand-gold">
+                          {carouselSlides[currentSlide].stats.value}
                         </div>
-                        <div className="text-xs sm:text-sm font-medium text-brand-cream/70">
-                          {metric.label}
+                        <div className="text-sm font-bold text-brand-cream/85 pb-1.5">
+                          {carouselSlides[currentSlide].stats.label}
                         </div>
                       </div>
-                      <motion.div
-                        initial={{ opacity: 0 }}
-                        whileHover={{ opacity: 1 }}
-                        transition={{ duration: 0.2 }}
-                        className="text-brand-gold/60"
-                      >
-                        →
-                      </motion.div>
                     </motion.div>
+
+                    {/* CTA Button */}
+                    <motion.button
+                      initial={{ opacity: 0, y: 10 }}
+                      animate={{ opacity: 1, y: 0 }}
+                      transition={{ duration: 0.5, delay: 0.4 }}
+                      whileHover={{ scale: 1.04, y: -3 }}
+                      whileTap={{ scale: 0.96 }}
+                      className="group w-full rounded-xl bg-gradient-to-r from-brand-gold via-brand-sand to-brand-gold py-4 px-6 font-black text-brand-deep text-base transition-all duration-300 hover:shadow-2xl hover:shadow-brand-gold/50 relative overflow-hidden uppercase tracking-wide shadow-lg"
+                    >
+                      <span className="relative z-10 flex items-center justify-center gap-2 text-base">
+                        Learn More
+                        <ArrowRight className="h-5 w-5 transition-transform group-hover:translate-x-2" />
+                      </span>
+                      <div className="absolute inset-0 bg-gradient-to-r from-brand-sand to-brand-gold opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
+                    </motion.button>
+                  </motion.div>
+                </AnimatePresence>
+
+                {/* Carousel Indicators */}
+                <div className="flex items-center justify-center gap-2.5 mt-6">
+                  {carouselSlides.map((_, index) => (
+                    <button
+                      key={index}
+                      onClick={() => setCurrentSlide(index)}
+                      className={`h-2 rounded-full transition-all duration-500 ${
+                        index === currentSlide
+                          ? "w-10 bg-brand-gold shadow-lg shadow-brand-gold/50"
+                          : "w-2 bg-brand-cream/30 hover:bg-brand-cream/60 hover:w-4"
+                      }`}
+                      aria-label={`Go to slide ${index + 1}`}
+                    />
                   ))}
                 </div>
-
-                {/* CTA Button */}
-                <motion.button
-                  initial={{ opacity: 0, y: 10 }}
-                  animate={{ opacity: 1, y: 0 }}
-                  transition={{ duration: 0.6, delay: 0.9 }}
-                  whileHover={{ scale: 1.02 }}
-                  whileTap={{ scale: 0.98 }}
-                  className="mt-8 w-full rounded-xl bg-gradient-to-r from-brand-gold to-brand-sand py-3 font-semibold text-brand-deep transition-all duration-300 hover:shadow-xl hover:shadow-brand-gold/30"
-                >
-                  Browse Services
-                </motion.button>
-              </motion.div>
+              </div>
             </div>
           </motion.div>
         </div>
