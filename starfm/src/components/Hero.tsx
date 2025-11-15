@@ -11,7 +11,7 @@ interface HeroProps {
   onContactClick?: () => void
 }
 
-export function Hero({ onServicesClick }: HeroProps) {
+export function Hero({ onServicesClick, onContactClick }: HeroProps) {
   const [currentSlide, setCurrentSlide] = useState(0)
   
   const leftContentRef = useRef<HTMLDivElement>(null)
@@ -542,6 +542,7 @@ export function Hero({ onServicesClick }: HeroProps) {
               <Button
                 size="lg"
                 className="group rounded-full border-2 border-brand-cream/50 bg-white/10 px-8 py-3.5 text-brand-cream font-bold text-base transition-all duration-300 hover:border-brand-gold hover:bg-brand-gold/20 hover:text-white hover:shadow-lg uppercase tracking-wide"
+                onClick={onContactClick}
               >
                 <span className="flex items-center justify-center gap-2">
                   Contact Us

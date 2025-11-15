@@ -90,7 +90,7 @@ function App() {
         <div ref={homeRef} key="home">
           <Navbar onContactClick={handleContactClick} onServicesClick={handleServicesClick} />
           <main className="space-y-8 pb-12 pt-20 sm:space-y-12 sm:pb-16 sm:pt-24 lg:space-y-16 lg:pb-24 lg:pt-24">
-            <Hero onServicesClick={handleServicesClick} />
+            <Hero onServicesClick={handleServicesClick} onContactClick={handleContactClick} />
             <About />
             <ServiceTypes />
             <Stats />
