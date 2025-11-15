@@ -1,5 +1,9 @@
-import { motion } from "framer-motion"
+import { useEffect, useRef } from "react"
+import gsap from "gsap"
+import { ScrollTrigger } from "gsap/ScrollTrigger"
 import { Building2, Mail, Phone, MapPin, Facebook, Twitter, Linkedin, Instagram } from "lucide-react"
+
+gsap.registerPlugin(ScrollTrigger)
 
 interface FooterProps {
   onContactClick?: () => void
@@ -7,24 +11,96 @@ interface FooterProps {
 }
 
 export function Footer({ onContactClick, onServicesClick }: FooterProps) {
+  const brandRef = useRef<HTMLDivElement>(null)
+  const quickLinksRef = useRef<HTMLDivElement>(null)
+  const servicesRef = useRef<HTMLDivElement>(null)
+  const contactRef = useRef<HTMLDivElement>(null)
+
+  useEffect(() => {
+    if (brandRef.current) {
+      gsap.fromTo(brandRef.current,
+        { opacity: 0, y: 30 },
+        {
+          opacity: 1,
+          y: 0,
+          duration: 0.6,
+          scrollTrigger: {
+            trigger: brandRef.current,
+            start: "top 90%",
+            toggleActions: "play none none none"
+          }
+        }
+      )
+    }
+
+    if (quickLinksRef.current) {
+      gsap.fromTo(quickLinksRef.current,
+        { opacity: 0, y: 30 },
+        {
+          opacity: 1,
+          y: 0,
+          duration: 0.6,
+          delay: 0.1,
+          scrollTrigger: {
+            trigger: quickLinksRef.current,
+            start: "top 90%",
+            toggleActions: "play none none none"
+          }
+        }
+      )
+    }
+
+    if (servicesRef.current) {
+      gsap.fromTo(servicesRef.current,
+        { opacity: 0, y: 30 },
+        {
+          opacity: 1,
+          y: 0,
+          duration: 0.6,
+          delay: 0.2,
+          scrollTrigger: {
+            trigger: servicesRef.current,
+            start: "top 90%",
+            toggleActions: "play none none none"
+          }
+        }
+      )
+    }
+
+    if (contactRef.current) {
+      gsap.fromTo(contactRef.current,
+        { opacity: 0, y: 30 },
+        {
+          opacity: 1,
+          y: 0,
+          duration: 0.6,
+          delay: 0.3,
+          scrollTrigger: {
+            trigger: contactRef.current,
+            start: "top 90%",
+            toggleActions: "play none none none"
+          }
+        }
+      )
+    }
+
+    return () => {
+      ScrollTrigger.getAll().forEach(trigger => trigger.kill())
+    }
+  }, [])
+
   return (
     <footer className="relative border-t border-white/10 bg-gradient-to-b from-brand-deep to-brand-forest">
       {/* Decorative Elements */}
       <div className="pointer-events-none absolute inset-0 overflow-hidden">
-        <div className="absolute -left-20 top-0 h-96 w-96 rounded-full bg-brand-gold/10 blur-3xl" />
-        <div className="absolute -right-20 bottom-0 h-96 w-96 rounded-full bg-brand-moss/10 blur-3xl" />
+        <div className="absolute -left-20 top-0 h-96 w-96 rounded-full bg-brand-gold/10 opacity-50" />
+        <div className="absolute -right-20 bottom-0 h-96 w-96 rounded-full bg-brand-moss/10 opacity-50" />
       </div>
 
       <div className="container relative py-12 lg:py-16">
         <div className="grid gap-12 lg:grid-cols-4">
           {/* Brand Section */}
-          <motion.div
-            initial={{ opacity: 0, y: 30 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            transition={{ duration: 0.6 }}
-            className="lg:col-span-1"
-          >
+          <div ref={brandRef} className="lg:col-span-1">
             <div className="mb-4 flex items-center gap-3">
               <div className="flex h-10 w-10 items-center justify-center rounded-lg bg-gradient-to-br from-brand-gold to-brand-sand">
                 <Building2 className="h-6 w-6 text-brand-deep" />
@@ -42,21 +118,16 @@ export function Footer({ onContactClick, onServicesClick }: FooterProps) {
                 <a
                   key={idx}
                   href="#"
-                  className="flex h-9 w-9 items-center justify-center rounded-full border border-white/20 bg-white/5 backdrop-blur-xl transition-all hover:scale-110 hover:border-brand-gold hover:bg-brand-gold/20"
+                  className="flex h-9 w-9 items-center justify-center rounded-full border border-white/20 bg-white/5 transition-all hover:scale-110 hover:border-brand-gold hover:bg-brand-gold/20"
                 >
                   <Icon className="h-4 w-4 text-brand-cream" />
                 </a>
               ))}
             </div>
-          </motion.div>
+          </div>
 
           {/* Quick Links */}
-          <motion.div
-            initial={{ opacity: 0, y: 30 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            transition={{ duration: 0.6, delay: 0.1 }}
-          >
+          <div ref={quickLinksRef}>
             <h4 className="mb-4 text-sm font-semibold uppercase tracking-wider text-white">Quick Links</h4>
             <ul className="space-y-3">
               {[
@@ -89,15 +160,10 @@ export function Footer({ onContactClick, onServicesClick }: FooterProps) {
                 </button>
               </li>
             </ul>
-          </motion.div>
+          </div>
 
           {/* Services */}
-          <motion.div
-            initial={{ opacity: 0, y: 30 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            transition={{ duration: 0.6, delay: 0.2 }}
-          >
+          <div ref={servicesRef}>
             <h4 className="mb-4 text-sm font-semibold uppercase tracking-wider text-white">Services</h4>
             <ul className="space-y-3">
               {[
@@ -117,15 +183,10 @@ export function Footer({ onContactClick, onServicesClick }: FooterProps) {
                 </li>
               ))}
             </ul>
-          </motion.div>
+          </div>
 
           {/* Contact Info */}
-          <motion.div
-            initial={{ opacity: 0, y: 30 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            transition={{ duration: 0.6, delay: 0.3 }}
-          >
+          <div ref={contactRef}>
             <h4 className="mb-4 text-sm font-semibold uppercase tracking-wider text-white">Contact Us</h4>
             <ul className="space-y-4">
               <li className="flex items-start gap-3">
@@ -147,7 +208,7 @@ export function Footer({ onContactClick, onServicesClick }: FooterProps) {
                 </a>
               </li>
             </ul>
-          </motion.div>
+          </div>
         </div>
 
         {/* Bottom Bar */}

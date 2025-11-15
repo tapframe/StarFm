@@ -1,4 +1,5 @@
-import { motion } from "framer-motion"
+import { useEffect, useRef } from "react"
+import gsap from "gsap"
 import { ArrowLeft, Mail, Phone, MapPin, Clock, Send } from "lucide-react"
 import { Button } from "@/components/ui/button"
 
@@ -7,6 +8,16 @@ interface ContactProps {
 }
 
 export function Contact({ onBack }: ContactProps) {
+  const pageRef = useRef<HTMLDivElement>(null)
+  const headerRef = useRef<HTMLElement>(null)
+  const backButtonRef = useRef<HTMLButtonElement>(null)
+  const pageHeaderRef = useRef<HTMLDivElement>(null)
+  const badgeRef = useRef<HTMLDivElement>(null)
+  const contactCardsRef = useRef<HTMLDivElement[]>([])
+  const formRef = useRef<HTMLDivElement>(null)
+  const mapRef = useRef<HTMLDivElement>(null)
+  const buttonHoverRef = useRef<HTMLDivElement>(null)
+
   const contactInfo = [
     {
       icon: Phone,
@@ -34,38 +45,140 @@ export function Contact({ onBack }: ContactProps) {
     }
   ]
 
+  useEffect(() => {
+    // Page fade in
+    if (pageRef.current) {
+      gsap.fromTo(pageRef.current,
+        { opacity: 0 },
+        { opacity: 1, duration: 0.3 }
+      )
+    }
+
+    // Header animation
+    if (headerRef.current) {
+      gsap.fromTo(headerRef.current,
+        { y: -20, opacity: 0 },
+        { y: 0, opacity: 1, duration: 0.5 }
+      )
+    }
+
+    // Back button hover
+    if (backButtonRef.current) {
+      backButtonRef.current.addEventListener("mouseenter", () => {
+        gsap.to(backButtonRef.current, { scale: 1.05, x: -5, duration: 0.2 })
+      })
+      backButtonRef.current.addEventListener("mouseleave", () => {
+        gsap.to(backButtonRef.current, { scale: 1, x: 0, duration: 0.2 })
+      })
+      backButtonRef.current.addEventListener("mousedown", () => {
+        gsap.to(backButtonRef.current, { scale: 0.95, duration: 0.1 })
+      })
+      backButtonRef.current.addEventListener("mouseup", () => {
+        gsap.to(backButtonRef.current, { scale: 1.05, duration: 0.1 })
+      })
+    }
+
+    // Page header animations
+    if (pageHeaderRef.current) {
+      gsap.fromTo(pageHeaderRef.current,
+        { opacity: 0, y: 30 },
+        { opacity: 1, y: 0, duration: 0.6, delay: 0.1 }
+      )
+    }
+
+    if (badgeRef.current) {
+      gsap.fromTo(badgeRef.current,
+        { opacity: 0, scale: 0.9 },
+        { opacity: 1, scale: 1, duration: 0.5, delay: 0.2 }
+      )
+    }
+
+    // Contact cards animations
+    contactCardsRef.current.forEach((card, index) => {
+      if (card) {
+        gsap.fromTo(card,
+          { opacity: 0, y: 20 },
+          {
+            opacity: 1,
+            y: 0,
+            duration: 0.5,
+            delay: 0.4 + index * 0.1
+          }
+        )
+
+        card.addEventListener("mouseenter", () => {
+          gsap.to(card, { y: -5, scale: 1.02, duration: 0.3 })
+        })
+        card.addEventListener("mouseleave", () => {
+          gsap.to(card, { y: 0, scale: 1, duration: 0.3 })
+        })
+      }
+    })
+
+    // Form animation
+    if (formRef.current) {
+      gsap.fromTo(formRef.current,
+        { opacity: 0, x: 40 },
+        { opacity: 1, x: 0, duration: 0.6, delay: 0.3 }
+      )
+    }
+
+    // Map animation
+    if (mapRef.current) {
+      gsap.fromTo(mapRef.current,
+        { opacity: 0, y: 40 },
+        { opacity: 1, y: 0, duration: 0.6, delay: 0.8 }
+      )
+    }
+
+    // Button hover effect
+    const submitButton = document.querySelector('.submit-button')
+    if (submitButton && buttonHoverRef.current) {
+      gsap.set(buttonHoverRef.current, { x: "-100%" })
+      submitButton.addEventListener("mouseenter", () => {
+        gsap.to(buttonHoverRef.current, { x: 0, duration: 0.3 })
+      })
+      submitButton.addEventListener("mouseleave", () => {
+        gsap.to(buttonHoverRef.current, { x: "-100%", duration: 0.3 })
+      })
+    }
+
+    return () => {
+      if (backButtonRef.current) {
+        backButtonRef.current.removeEventListener("mouseenter", () => {})
+        backButtonRef.current.removeEventListener("mouseleave", () => {})
+        backButtonRef.current.removeEventListener("mousedown", () => {})
+        backButtonRef.current.removeEventListener("mouseup", () => {})
+      }
+      contactCardsRef.current.forEach(card => {
+        if (card) {
+          card.removeEventListener("mouseenter", () => {})
+          card.removeEventListener("mouseleave", () => {})
+        }
+      })
+    }
+  }, [])
+
   return (
-    <motion.div
-      initial={{ opacity: 0 }}
-      animate={{ opacity: 1 }}
-      exit={{ opacity: 0 }}
-      transition={{ duration: 0.3 }}
-      className="min-h-screen bg-gradient-to-br from-white via-brand-cream/20 to-brand-sand/30"
-    >
+    <div ref={pageRef} className="min-h-screen bg-gradient-to-br from-white via-brand-cream/20 to-brand-sand/30">
       {/* Background decorations */}
       <div className="pointer-events-none fixed inset-0">
-        <div className="absolute left-1/4 top-20 h-96 w-96 rounded-full bg-brand-gold/10 blur-3xl" />
-        <div className="absolute right-1/4 bottom-20 h-96 w-96 rounded-full bg-brand-moss/10 blur-3xl" />
+        <div className="absolute left-1/4 top-20 h-96 w-96 rounded-full bg-brand-gold/10 opacity-50" />
+        <div className="absolute right-1/4 bottom-20 h-96 w-96 rounded-full bg-brand-moss/10 opacity-50" />
         <div className="absolute inset-0 bg-[linear-gradient(to_right,#80808008_1px,transparent_1px),linear-gradient(to_bottom,#80808008_1px,transparent_1px)] bg-[size:24px_24px]" />
       </div>
 
       {/* Header */}
-      <motion.header
-        initial={{ y: -20, opacity: 0 }}
-        animate={{ y: 0, opacity: 1 }}
-        transition={{ duration: 0.5 }}
-        className="sticky top-0 z-50 border-b border-brand-gold/20 bg-white/80 backdrop-blur-xl"
-      >
+      <header ref={headerRef} className="sticky top-0 z-50 border-b border-brand-gold/20 bg-white/80">
         <div className="container mx-auto flex h-20 items-center justify-between px-4 sm:px-6">
-          <motion.button
+          <button
+            ref={backButtonRef}
             onClick={onBack}
-            whileHover={{ scale: 1.05, x: -5 }}
-            whileTap={{ scale: 0.95 }}
             className="flex items-center gap-2 rounded-full border-2 border-brand-deep/10 bg-white px-4 py-2 font-bold text-brand-deep transition-all duration-300 hover:border-brand-gold/30 hover:bg-brand-gold/10"
           >
             <ArrowLeft className="h-5 w-5" strokeWidth={2.5} />
             Back to Home
-          </motion.button>
+          </button>
 
           <div className="flex items-center gap-3">
             <div className="flex h-10 w-10 items-center justify-center rounded-xl bg-gradient-to-br from-brand-gold to-brand-sand shadow-lg">
@@ -74,28 +187,18 @@ export function Contact({ onBack }: ContactProps) {
             <span className="hidden font-display text-xl font-black text-brand-deep sm:block">StarFM</span>
           </div>
         </div>
-      </motion.header>
+      </header>
 
       {/* Main Content */}
       <div className="container relative mx-auto px-4 py-12 sm:px-6 sm:py-16 lg:py-24">
         {/* Page Header */}
-        <motion.div
-          initial={{ opacity: 0, y: 30 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.6, delay: 0.1 }}
-          className="mb-16 text-center"
-        >
-          <motion.div
-            initial={{ opacity: 0, scale: 0.9 }}
-            animate={{ opacity: 1, scale: 1 }}
-            transition={{ duration: 0.5, delay: 0.2 }}
-            className="mb-6 inline-flex items-center gap-2 rounded-full border border-brand-gold/30 bg-brand-gold/10 px-4 py-2 backdrop-blur-sm"
-          >
+        <div ref={pageHeaderRef} className="mb-16 text-center">
+          <div ref={badgeRef} className="mb-6 inline-flex items-center gap-2 rounded-full border border-brand-gold/30 bg-brand-gold/10 px-4 py-2 bg-opacity-50">
             <div className="h-2 w-2 animate-pulse rounded-full bg-brand-gold" />
             <span className="text-xs font-bold uppercase tracking-[0.15em] text-brand-gold">
               Get In Touch
             </span>
-          </motion.div>
+          </div>
 
           <h1 className="mb-6 font-display text-5xl font-black leading-tight text-brand-deep sm:text-6xl lg:text-7xl">
             Contact
@@ -107,26 +210,20 @@ export function Contact({ onBack }: ContactProps) {
           <p className="mx-auto max-w-2xl text-lg leading-relaxed text-brand-forest/70">
             We're here to help and answer any question you might have. We look forward to hearing from you.
           </p>
-        </motion.div>
+        </div>
 
         <div className="grid gap-12 lg:grid-cols-2 lg:gap-16">
           {/* Contact Information Cards */}
-          <motion.div
-            initial={{ opacity: 0, x: -40 }}
-            animate={{ opacity: 1, x: 0 }}
-            transition={{ duration: 0.6, delay: 0.3 }}
-            className="space-y-6"
-          >
+          <div className="space-y-6">
             {contactInfo.map((info, index) => {
               const Icon = info.icon
               return (
-                <motion.div
+                <div
                   key={index}
-                  initial={{ opacity: 0, y: 20 }}
-                  animate={{ opacity: 1, y: 0 }}
-                  transition={{ duration: 0.5, delay: 0.4 + index * 0.1 }}
-                  whileHover={{ y: -5, scale: 1.02 }}
-                  className="group relative overflow-hidden rounded-2xl border border-brand-deep/10 bg-white/80 backdrop-blur-sm p-6 shadow-lg transition-all duration-300 hover:border-brand-gold/30 hover:shadow-xl"
+                  ref={(el) => {
+                    if (el) contactCardsRef.current[index] = el
+                  }}
+                  className="group relative overflow-hidden rounded-2xl border border-brand-deep/10 bg-white/80 p-6 shadow-lg transition-all duration-300 hover:border-brand-gold/30 hover:shadow-xl"
                 >
                   <div className="absolute inset-0 bg-gradient-to-br from-brand-gold/5 to-transparent opacity-0 transition-opacity duration-300 group-hover:opacity-100" />
                   
@@ -149,22 +246,17 @@ export function Contact({ onBack }: ContactProps) {
                     </div>
                   </div>
 
-                  <div className="absolute -right-6 -top-6 h-20 w-20 rounded-full bg-brand-gold/10 blur-2xl transition-all duration-300 group-hover:bg-brand-gold/20" />
-                </motion.div>
+                  <div className="absolute -right-6 -top-6 h-20 w-20 rounded-full bg-brand-gold/10 opacity-50 transition-all duration-300 group-hover:bg-brand-gold/20" />
+                </div>
               )
             })}
-          </motion.div>
+          </div>
 
           {/* Contact Form */}
-          <motion.div
-            initial={{ opacity: 0, x: 40 }}
-            animate={{ opacity: 1, x: 0 }}
-            transition={{ duration: 0.6, delay: 0.3 }}
-            className="relative"
-          >
-            <div className="absolute -inset-4 bg-gradient-to-r from-brand-gold/20 to-brand-moss/20 rounded-3xl blur-2xl opacity-60 -z-10" />
+          <div ref={formRef} className="relative">
+            <div className="absolute -inset-4 bg-gradient-to-r from-brand-gold/20 to-brand-moss/20 rounded-3xl opacity-60 -z-10" />
             
-            <div className="relative overflow-hidden rounded-3xl border border-brand-gold/20 bg-white/90 backdrop-blur-xl p-8 shadow-2xl sm:p-10">
+            <div className="relative overflow-hidden rounded-3xl border border-brand-gold/20 bg-white/90 p-8 shadow-2xl sm:p-10">
               <h3 className="mb-6 font-display text-3xl font-black text-brand-deep">
                 Send us a Message
               </h3>
@@ -243,33 +335,25 @@ export function Contact({ onBack }: ContactProps) {
 
                 <Button
                   type="submit"
-                  className="group relative w-full overflow-hidden rounded-xl bg-gradient-to-r from-brand-gold via-brand-sand to-brand-gold py-6 font-black uppercase tracking-wider text-brand-deep shadow-lg transition-all duration-300 hover:shadow-2xl hover:shadow-brand-gold/40"
+                  className="submit-button group relative w-full overflow-hidden rounded-xl bg-gradient-to-r from-brand-gold via-brand-sand to-brand-gold py-6 font-black uppercase tracking-wider text-brand-deep shadow-lg transition-all duration-300 hover:shadow-2xl hover:shadow-brand-gold/40"
                 >
                   <span className="relative z-10 flex items-center justify-center gap-2">
                     Send Message
                     <Send className="h-5 w-5 transition-transform group-hover:translate-x-1" />
                   </span>
-                  <motion.div
-                    className="absolute inset-0 bg-gradient-to-r from-brand-sand to-brand-gold opacity-0 group-hover:opacity-100 transition-opacity duration-300"
-                    initial={false}
-                  />
+                  <div ref={buttonHoverRef} className="absolute inset-0 bg-gradient-to-r from-brand-sand to-brand-gold opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
                 </Button>
               </form>
 
               {/* Decorative elements */}
-              <div className="absolute -right-10 -top-10 h-32 w-32 rounded-full bg-brand-gold/20 blur-3xl" />
-              <div className="absolute -bottom-10 -left-10 h-32 w-32 rounded-full bg-brand-moss/20 blur-3xl" />
+              <div className="absolute -right-10 -top-10 h-32 w-32 rounded-full bg-brand-gold/20 opacity-50" />
+              <div className="absolute -bottom-10 -left-10 h-32 w-32 rounded-full bg-brand-moss/20 opacity-50" />
             </div>
-          </motion.div>
+          </div>
         </div>
 
         {/* Map Section Placeholder */}
-        <motion.div
-          initial={{ opacity: 0, y: 40 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.6, delay: 0.8 }}
-          className="mt-16 overflow-hidden rounded-3xl border border-brand-gold/20 bg-gradient-to-br from-brand-gold/10 via-white/50 to-brand-sand/10 backdrop-blur-xl shadow-2xl"
-        >
+        <div ref={mapRef} className="mt-16 overflow-hidden rounded-3xl border border-brand-gold/20 bg-gradient-to-br from-brand-gold/10 via-white/50 to-brand-sand/10 shadow-2xl">
           <div className="flex h-96 items-center justify-center">
             <div className="text-center">
               <MapPin className="mx-auto mb-4 h-16 w-16 text-brand-gold" strokeWidth={1.5} />
@@ -281,8 +365,8 @@ export function Contact({ onBack }: ContactProps) {
               </p>
             </div>
           </div>
-        </motion.div>
+        </div>
       </div>
-    </motion.div>
+    </div>
   )
 }

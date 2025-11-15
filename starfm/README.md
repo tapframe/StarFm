@@ -47,7 +47,7 @@ All Tailwind `text-*`, `bg-*`, and `border-*` utilities map to the tokens throug
 
 - `bg-hero-glow`: gradient backdrop that matches the StarFM identity
 - `shadow-brand` / `shadow-card`: deep emerald drop shadows for premium depth
-- `.glass-panel`: reusable glassmorphism helper (rounded corners, soft border, blur)
+- `.glass-panel`: reusable glassmorphism helper (rounded corners, soft border)
 
 ### How to Theme New Sections
 

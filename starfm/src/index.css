@@ -115,7 +115,7 @@
 
 @layer components {
   .glass-panel {
-    @apply rounded-[1.75rem] border border-white/40 bg-white/70 shadow-brand backdrop-blur-xl;
+    @apply rounded-[1.75rem] border border-white/40 bg-white/70 shadow-brand;
   }
 
   .gradient-text {
