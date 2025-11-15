@@ -8,6 +8,7 @@ gsap.registerPlugin(ScrollTrigger)
 
 interface HeroProps {
   onServicesClick?: () => void
+  onContactClick?: () => void
 }
 
 export function Hero({ onServicesClick }: HeroProps) {
