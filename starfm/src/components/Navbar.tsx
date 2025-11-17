@@ -97,27 +97,33 @@ export function Navbar({ onContactClick, onServicesClick }: NavbarProps) {
     // Arrow animation
     if (arrowRef.current) {
       gsap.to(arrowRef.current, {
-        x: [0, 4, 0],
-        duration: 1.5,
+        x: 4,
+        duration: 0.75,
+        yoyo: true,
         repeat: -1,
         ease: "power1.inOut"
       })
     }
 
+    // Store refs to avoid stale closure warnings
+    const logo = logoRef.current
+    const languageToggle = languageToggleRef.current
+    const contactButton = contactButtonRef.current
+
     return () => {
-      if (logoRef.current) {
-        logoRef.current.removeEventListener("mouseenter", () => {})
-        logoRef.current.removeEventListener("mouseleave", () => {})
+      if (logo) {
+        logo.removeEventListener("mouseenter", () => {})
+        logo.removeEventListener("mouseleave", () => {})
       }
-      if (languageToggleRef.current) {
-        languageToggleRef.current.removeEventListener("mouseenter", () => {})
-        languageToggleRef.current.removeEventListener("mouseleave", () => {})
+      if (languageToggle) {
+        languageToggle.removeEventListener("mouseenter", () => {})
+        languageToggle.removeEventListener("mouseleave", () => {})
       }
-      if (contactButtonRef.current) {
-        contactButtonRef.current.removeEventListener("mouseenter", () => {})
-        contactButtonRef.current.removeEventListener("mouseleave", () => {})
-        contactButtonRef.current.removeEventListener("mousedown", () => {})
-        contactButtonRef.current.removeEventListener("mouseup", () => {})
+      if (contactButton) {
+        contactButton.removeEventListener("mouseenter", () => {})
+        contactButton.removeEventListener("mouseleave", () => {})
+        contactButton.removeEventListener("mousedown", () => {})
+        contactButton.removeEventListener("mouseup", () => {})
       }
     }
   }, [])
@@ -179,7 +185,7 @@ export function Navbar({ onContactClick, onServicesClick }: NavbarProps) {
       }`}
     >
       {/* Gradient Border */}
-      <div className={`absolute inset-x-0 bottom-0 h-[2px] bg-gradient-to-r from-transparent via-brand-gold to-transparent transition-opacity duration-500 ${
+      <div className={`absolute inset-x-0 bottom-0 h-[2px] bg-gradient-to-r from-transparent via-blue-500 to-transparent transition-opacity duration-500 ${
         scrolled ? "opacity-100" : "opacity-0"
       }`} />
       
@@ -192,20 +198,20 @@ export function Navbar({ onContactClick, onServicesClick }: NavbarProps) {
         >
           <div className="relative">
             <div className="absolute inset-0 rounded-2xl bg-gradient-to-br from-brand-gold to-brand-sand opacity-0 transition-opacity duration-300 group-hover:opacity-60" />
-            <div className="relative flex h-12 w-12 items-center justify-center rounded-2xl bg-gradient-to-br from-brand-gold via-brand-sand to-brand-gold shadow-lg ring-2 ring-brand-gold/20 transition-all duration-300 group-hover:ring-4 group-hover:ring-brand-gold/30 sm:h-14 sm:w-14">
-              <span className="font-display text-xl font-black tracking-tighter text-brand-deep sm:text-2xl">
+            <div className="relative flex h-12 w-12 items-center justify-center rounded-2xl bg-gradient-to-br from-blue-600 via-blue-500 to-cyan-500 shadow-lg ring-2 ring-blue-400/20 transition-all duration-300 group-hover:ring-4 group-hover:ring-blue-400/30 sm:h-14 sm:w-14">
+              <span className="font-display text-xl font-black tracking-tighter text-white sm:text-2xl">
                 SF
               </span>
               <div className="absolute -right-1 -top-1">
-                <Sparkles className="h-3 w-3 text-brand-gold animate-pulse" />
+                <Sparkles className="h-3 w-3 text-cyan-400 animate-pulse" />
               </div>
             </div>
           </div>
           <div className="flex flex-col">
-            <span className="font-display text-xl font-black tracking-tight text-brand-deep transition-colors group-hover:text-brand-forest sm:text-2xl">
-              StarFM
+            <span className="font-display text-xl font-black tracking-tight text-blue-600 transition-colors group-hover:text-blue-700 sm:text-2xl">
+              MahhabFM
             </span>
-            <span className="hidden text-[10px] font-bold uppercase tracking-[0.2em] text-brand-forest/60 sm:block">
+            <span className="hidden text-[10px] font-bold uppercase tracking-[0.2em] text-blue-500/60 sm:block">
               Excellence in Facilities
             </span>
           </div>
@@ -227,11 +233,11 @@ export function Navbar({ onContactClick, onServicesClick }: NavbarProps) {
                   target.scrollIntoView({ behavior: 'smooth', block: 'start' });
                 }
               }}
-              className="group relative text-sm font-bold uppercase tracking-wide text-brand-deep/70 transition-all duration-300 hover:text-brand-deep"
+              className="group relative text-sm font-bold uppercase tracking-wide text-blue-600/70 transition-all duration-300 hover:text-blue-700"
             >
               <span className="relative z-10">{item.label}</span>
-              <span className="absolute -bottom-1 left-0 h-[3px] w-0 rounded-full bg-gradient-to-r from-brand-gold via-brand-sand to-brand-gold transition-all duration-300 group-hover:w-full" />
-              <span className="absolute inset-0 -z-10 scale-0 rounded-lg bg-brand-gold/10 transition-transform duration-300 group-hover:scale-100" />
+              <span className="absolute -bottom-1 left-0 h-[3px] w-0 rounded-full bg-gradient-to-r from-blue-500 via-cyan-400 to-blue-500 transition-all duration-300 group-hover:w-full" />
+              <span className="absolute inset-0 -z-10 scale-0 rounded-lg bg-blue-500/10 transition-transform duration-300 group-hover:scale-100" />
             </a>
           ))}
           
@@ -239,11 +245,11 @@ export function Navbar({ onContactClick, onServicesClick }: NavbarProps) {
           <button
             ref={servicesButtonRef}
             onClick={onServicesClick}
-            className="group relative text-sm font-bold uppercase tracking-wide text-brand-deep/70 transition-all duration-300 hover:text-brand-deep"
+            className="group relative text-sm font-bold uppercase tracking-wide text-blue-600/70 transition-all duration-300 hover:text-blue-700"
           >
             <span className="relative z-10">Our Services</span>
-            <span className="absolute -bottom-1 left-0 h-[3px] w-0 rounded-full bg-gradient-to-r from-brand-gold via-brand-sand to-brand-gold transition-all duration-300 group-hover:w-full" />
-            <span className="absolute inset-0 -z-10 scale-0 rounded-lg bg-brand-gold/10 transition-transform duration-300 group-hover:scale-100" />
+            <span className="absolute -bottom-1 left-0 h-[3px] w-0 rounded-full bg-gradient-to-r from-blue-500 via-cyan-400 to-blue-500 transition-all duration-300 group-hover:w-full" />
+            <span className="absolute inset-0 -z-10 scale-0 rounded-lg bg-blue-500/10 transition-transform duration-300 group-hover:scale-100" />
           </button>
         </div>
 
@@ -252,35 +258,34 @@ export function Navbar({ onContactClick, onServicesClick }: NavbarProps) {
           {/* Language Toggle */}
           <div
             ref={languageToggleRef}
-            className="flex items-center gap-2 rounded-full border-2 border-brand-deep/10 bg-white px-3 py-1.5 shadow-sm transition-all duration-300 hover:border-brand-gold/30 hover:shadow-md sm:px-4 sm:py-2"
+            className="flex items-center gap-2 rounded-full border-2 border-blue-200/50 bg-white px-3 py-1.5 shadow-sm transition-all duration-300 hover:border-blue-400/50 hover:shadow-md sm:px-4 sm:py-2"
           >
-            <button className="text-xs font-black uppercase text-brand-deep transition-opacity hover:opacity-80">
+            <button className="text-xs font-black uppercase text-blue-700 transition-opacity hover:opacity-80">
               EN
             </button>
-            <span className="h-3 w-[2px] bg-brand-deep/20" />
-            <button className="text-xs font-black uppercase text-brand-deep/40 transition-opacity hover:opacity-100">
+            <span className="h-3 w-[2px] bg-blue-300/40" />
+            <button className="text-xs font-black uppercase text-blue-600/40 transition-opacity hover:opacity-100">
               AR
             </button>
           </div>
 
-          <div ref={contactButtonRef}>
-            <Button 
-              onClick={onContactClick}
-              className="group relative hidden overflow-hidden rounded-full bg-gradient-to-r from-brand-gold via-brand-sand to-brand-gold px-6 py-2.5 font-bold uppercase tracking-wide text-brand-deep shadow-lg transition-all duration-300 hover:shadow-2xl hover:shadow-brand-gold/40 sm:inline-flex"
-            >
-              <span className="relative z-10 flex items-center gap-2">
-                Contact Us
-                <span ref={arrowRef}>→</span>
-              </span>
-              <div className="absolute inset-0 bg-gradient-to-r from-brand-sand to-brand-gold opacity-0 transition-opacity duration-300 group-hover:opacity-100" />
-            </Button>
-          </div>
+          <Button 
+            ref={contactButtonRef}
+            onClick={onContactClick}
+            className="group relative hidden overflow-hidden rounded-full bg-gradient-to-r from-blue-600 via-cyan-500 to-blue-600 px-6 py-2.5 font-bold uppercase tracking-wide text-white shadow-lg transition-all duration-300 hover:shadow-2xl hover:shadow-blue-500/40 sm:inline-flex"
+          >
+            <span className="relative z-10 flex items-center gap-2">
+              Contact Us
+              <span ref={arrowRef}>→</span>
+            </span>
+            <div className="absolute inset-0 bg-gradient-to-r from-cyan-500 to-blue-700 opacity-0 transition-opacity duration-300 group-hover:opacity-100" />
+          </Button>
 
           {/* Mobile Menu Button */}
           <button
             ref={menuButtonRef}
             onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
-            className="flex h-11 w-11 items-center justify-center rounded-xl border-2 border-brand-deep/10 bg-white shadow-sm transition-all duration-300 hover:border-brand-gold/30 hover:bg-brand-gold/5 hover:shadow-md lg:hidden"
+            className="flex h-11 w-11 items-center justify-center rounded-xl border-2 border-blue-200/50 bg-white shadow-sm transition-all duration-300 hover:border-blue-400/50 hover:bg-blue-50/50 hover:shadow-md lg:hidden"
             aria-label="Toggle menu"
             onMouseDown={() => {
               gsap.to(menuButtonRef.current, { scale: 0.9, duration: 0.1 })
@@ -290,9 +295,9 @@ export function Navbar({ onContactClick, onServicesClick }: NavbarProps) {
             }}
           >
             {mobileMenuOpen ? (
-              <X className="h-6 w-6 text-brand-deep" strokeWidth={2.5} />
+              <X className="h-6 w-6 text-blue-700" strokeWidth={2.5} />
             ) : (
-              <Menu className="h-6 w-6 text-brand-deep" strokeWidth={2.5} />
+              <Menu className="h-6 w-6 text-blue-700" strokeWidth={2.5} />
             )}
           </button>
         </div>
@@ -302,7 +307,7 @@ export function Navbar({ onContactClick, onServicesClick }: NavbarProps) {
       {mobileMenuOpen && (
         <div
           ref={mobileMenuRef}
-          className="overflow-hidden border-t-2 border-brand-gold/20 bg-white/95 lg:hidden"
+          className="overflow-hidden border-t-2 border-blue-200/50 bg-white/95 lg:hidden"
         >
           <div className="container mx-auto px-4 py-6">
             <div className="flex flex-col gap-3">
@@ -321,10 +326,10 @@ export function Navbar({ onContactClick, onServicesClick }: NavbarProps) {
                       target.scrollIntoView({ behavior: 'smooth', block: 'start' });
                     }
                   }}
-                  className="group relative overflow-hidden rounded-xl border-2 border-brand-deep/10 bg-white px-5 py-4 text-base font-bold uppercase tracking-wide text-brand-deep/70 transition-all duration-300 hover:border-brand-gold/30 hover:bg-brand-gold/5 hover:text-brand-deep"
+                  className="group relative overflow-hidden rounded-xl border-2 border-blue-200/50 bg-white px-5 py-4 text-base font-bold uppercase tracking-wide text-blue-700/70 transition-all duration-300 hover:border-blue-400/50 hover:bg-blue-50/50 hover:text-blue-700"
                 >
                   <span className="relative z-10">{item.label}</span>
-                  <div className="absolute inset-0 -z-10 translate-x-[-100%] bg-gradient-to-r from-brand-gold/10 to-transparent transition-transform duration-300 group-hover:translate-x-0" />
+                  <div className="absolute inset-0 -z-10 translate-x-[-100%] bg-gradient-to-r from-blue-500/10 to-transparent transition-transform duration-300 group-hover:translate-x-0" />
                 </a>
               ))}
               
@@ -335,10 +340,10 @@ export function Navbar({ onContactClick, onServicesClick }: NavbarProps) {
                   setMobileMenuOpen(false);
                   onServicesClick?.();
                 }}
-                className="group relative overflow-hidden rounded-xl border-2 border-brand-deep/10 bg-white px-5 py-4 text-base font-bold uppercase tracking-wide text-brand-deep/70 transition-all duration-300 hover:border-brand-gold/30 hover:bg-brand-gold/5 hover:text-brand-deep text-left"
+                className="group relative overflow-hidden rounded-xl border-2 border-blue-200/50 bg-white px-5 py-4 text-base font-bold uppercase tracking-wide text-blue-700/70 transition-all duration-300 hover:border-blue-400/50 hover:bg-blue-50/50 hover:text-blue-700 text-left"
               >
                 <span className="relative z-10">Our Services</span>
-                <div className="absolute inset-0 -z-10 translate-x-[-100%] bg-gradient-to-r from-brand-gold/10 to-transparent transition-transform duration-300 group-hover:translate-x-0" />
+                <div className="absolute inset-0 -z-10 translate-x-[-100%] bg-gradient-to-r from-blue-500/10 to-transparent transition-transform duration-300 group-hover:translate-x-0" />
               </button>
               
               <div ref={mobileContactRef}>
@@ -347,7 +352,7 @@ export function Navbar({ onContactClick, onServicesClick }: NavbarProps) {
                     setMobileMenuOpen(false);
                     onContactClick?.();
                   }}
-                  className="mt-3 w-full rounded-xl bg-gradient-to-r from-brand-gold via-brand-sand to-brand-gold py-4 font-black uppercase tracking-wide text-brand-deep shadow-lg hover:shadow-2xl hover:shadow-brand-gold/40"
+                  className="mt-3 w-full rounded-xl bg-gradient-to-r from-blue-600 via-cyan-500 to-blue-600 py-4 font-black uppercase tracking-wide text-white shadow-lg hover:shadow-2xl hover:shadow-blue-500/40"
                 >
                   Contact Us
                 </Button>

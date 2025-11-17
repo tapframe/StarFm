@@ -1,4 +1,4 @@
-@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700;800;900&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Work+Sans:wght@100;200;300;400;500;600;700&display=swap');
 
 @tailwind base;
 @tailwind components;
@@ -7,67 +7,67 @@
 @layer base {
   :root {
     --radius: 0.75rem;
-    --font-display: "Montserrat", sans-serif;
-    --font-body: "Montserrat", system-ui, -apple-system, BlinkMacSystemFont, sans-serif;
+    --font-display: "Work Sans", -apple-system, BlinkMacSystemFont, sans-serif;
+    --font-body: "Work Sans", -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
 
-    --background: 44 40% 96%;
-    --foreground: 153 27% 14%;
+    --background: 210 50% 98%;
+    --foreground: 210 40% 12%;
     --card: 0 0% 100%;
-    --card-foreground: 153 27% 14%;
+    --card-foreground: 210 40% 12%;
     --popover: 0 0% 100%;
-    --popover-foreground: 153 27% 14%;
-    --primary: 152 52% 26%;
-    --primary-foreground: 144 44% 94%;
-    --secondary: 47 40% 91%;
-    --secondary-foreground: 154 24% 26%;
-    --muted: 46 28% 90%;
-    --muted-foreground: 152 12% 37%;
-    --accent: 40 78% 60%;
-    --accent-foreground: 151 22% 18%;
+    --popover-foreground: 210 40% 12%;
+    --primary: 217 91% 60%;
+    --primary-foreground: 210 50% 98%;
+    --secondary: 199 89% 48%;
+    --secondary-foreground: 210 50% 98%;
+    --muted: 210 40% 90%;
+    --muted-foreground: 210 20% 40%;
+    --accent: 259 94% 51%;
+    --accent-foreground: 210 50% 98%;
     --destructive: 2 78% 56%;
     --destructive-foreground: 0 0% 100%;
-    --border: 46 26% 84%;
-    --input: 46 26% 84%;
-    --ring: 153 42% 32%;
+    --border: 210 40% 85%;
+    --input: 210 40% 85%;
+    --ring: 217 91% 60%;
 
-    --brand-deep: 155 42% 18%;
-    --brand-forest: 152 45% 22%;
-    --brand-moss: 151 36% 34%;
-    --brand-gold: 40 80% 60%;
-    --brand-sand: 46 38% 92%;
-    --brand-cream: 46 52% 96%;
+    --brand-deep: 210 40% 12%;
+    --brand-forest: 217 80% 28%;
+    --brand-moss: 199 89% 48%;
+    --brand-gold: 217 91% 60%;
+    --brand-sand: 210 50% 92%;
+    --brand-cream: 210 60% 96%;
 
     --surface: 0 0% 100%;
-    --surface-muted: 46 35% 93%;
-    --surface-contrast: 154 40% 18%;
+    --surface-muted: 210 40% 92%;
+    --surface-contrast: 217 80% 20%;
 
-    --chart-1: 152 45% 32%;
-    --chart-2: 153 35% 40%;
-    --chart-3: 30 78% 55%;
-    --chart-4: 197 35% 32%;
-    --chart-5: 43 74% 62%;
+    --chart-1: 217 91% 60%;
+    --chart-2: 199 89% 48%;
+    --chart-3: 259 94% 51%;
+    --chart-4: 190 95% 39%;
+    --chart-5: 217 91% 60%;
   }
 
   .dark {
-    --background: 153 28% 8%;
-    --foreground: 46 52% 96%;
-    --card: 152 33% 12%;
-    --card-foreground: 46 52% 96%;
-    --popover: 152 33% 10%;
-    --popover-foreground: 46 52% 96%;
-    --primary: 40 80% 62%;
-    --primary-foreground: 152 36% 14%;
-    --secondary: 151 22% 18%;
-    --secondary-foreground: 46 52% 96%;
-    --muted: 152 18% 22%;
-    --muted-foreground: 46 32% 82%;
-    --accent: 46 72% 68%;
-    --accent-foreground: 151 22% 18%;
+    --background: 210 40% 10%;
+    --foreground: 210 60% 96%;
+    --card: 217 80% 18%;
+    --card-foreground: 210 60% 96%;
+    --popover: 217 80% 16%;
+    --popover-foreground: 210 60% 96%;
+    --primary: 217 91% 60%;
+    --primary-foreground: 210 40% 12%;
+    --secondary: 199 89% 48%;
+    --secondary-foreground: 210 60% 96%;
+    --muted: 217 80% 24%;
+    --muted-foreground: 210 40% 80%;
+    --accent: 259 94% 51%;
+    --accent-foreground: 210 60% 96%;
     --destructive: 2 78% 56%;
     --destructive-foreground: 0 0% 100%;
-    --border: 152 18% 28%;
-    --input: 152 18% 28%;
-    --ring: 40 78% 60%;
+    --border: 217 80% 28%;
+    --input: 217 80% 28%;
+    --ring: 217 91% 60%;
   }
 
   * {
@@ -80,10 +80,10 @@
     color: hsl(var(--foreground));
     min-height: 100vh;
     background-image:
-      radial-gradient(circle at 18% 20%, rgba(255, 255, 255, 0.9), transparent 45%),
-      radial-gradient(circle at 78% 0%, rgba(232, 244, 236, 0.75), transparent 55%),
-      radial-gradient(circle at 90% 38%, rgba(240, 214, 170, 0.65), transparent 50%),
-      linear-gradient(180deg, #fdfcf7 0%, #f5f1e8 55%, #ffffff 100%);
+      radial-gradient(circle at 18% 20%, rgba(219, 234, 254, 0.9), transparent 45%),
+      radial-gradient(circle at 78% 0%, rgba(191, 219, 254, 0.75), transparent 55%),
+      radial-gradient(circle at 90% 38%, rgba(224, 242, 254, 0.65), transparent 50%),
+      linear-gradient(180deg, #f0f9ff 0%, #e0f2fe 55%, #ffffff 100%);
     background-attachment: fixed;
     font-feature-settings: "liga" on, "calt" on;
     -webkit-font-smoothing: antialiased;

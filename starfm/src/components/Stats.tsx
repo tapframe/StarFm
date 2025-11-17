@@ -236,7 +236,7 @@ export function Stats() {
             Service Excellence
           </h2>
           <p ref={descriptionRef} className="mt-4 text-sm text-foreground/70 sm:text-base">
-            StarFM delivers comprehensive facilities management across diverse sectors
+            MahhabFM delivers comprehensive facilities management across diverse sectors
           </p>
         </div>
 

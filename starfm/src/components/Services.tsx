@@ -382,14 +382,14 @@ export function Services({ onServicesPageClick }: ServicesProps) {
         <div ref={headerRef} className="mb-12 text-center sm:mb-16">
           <div className="mb-4 inline-block">
             <span ref={badgeRef} className="rounded-full border border-brand-gold/30 bg-brand-gold/10 px-4 py-1.5 text-xs font-semibold uppercase tracking-widest text-brand-gold bg-opacity-50">
-              What We Offer
+              Facility Management
             </span>
           </div>
           <h2 ref={titleRef} className="mb-4 bg-gradient-to-r from-foreground via-foreground to-foreground/70 bg-clip-text text-4xl font-bold text-transparent sm:text-5xl lg:text-6xl">
-            Our Services
+            Our FM Services
           </h2>
           <p ref={descriptionRef} className="mx-auto max-w-2xl text-base text-foreground/70 sm:text-lg">
-            Comprehensive facilities management solutions tailored to elevate your operations
+            Comprehensive facilities management solutions tailored to elevate your property operations
           </p>
         </div>
 

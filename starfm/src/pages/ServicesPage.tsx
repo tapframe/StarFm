@@ -1,7 +1,7 @@
 import { useEffect, useRef, useMemo, useCallback } from "react"
 import gsap from "gsap"
 import { ScrollTrigger } from "gsap/ScrollTrigger"
-import { ArrowLeft, Building2, Home, Hotel, Trees, Wrench, Shield, CheckCircle2, ArrowRight, Star, Clock, Award } from "lucide-react"
+import { ArrowLeft, Building2, Home, Hotel, Trees, Wrench, Shield, Briefcase, CheckCircle2, ArrowRight, Star, Clock, Award } from "lucide-react"
 import { Button } from "@/components/ui/button"
 
 gsap.registerPlugin(ScrollTrigger)
@@ -46,6 +46,22 @@ export function ServicesPage({ onBack, onContactClick }: ServicesPageProps) {
 
   // Memoize services data to prevent recreation
   const services = useMemo(() => [
+    {
+      icon: Briefcase,
+      title: "Management Support Services",
+      description: "Complete administrative management for growing companies. From visa processing to CR renewals, municipality licenses to residential permits - we handle every aspect of your company's administrative requirements with precision and efficiency.",
+      image: "https://images.unsplash.com/photo-1450101499163-c8848c66ca85?w=800&q=80",
+      color: "from-indigo-500 to-blue-500",
+      features: [
+        "Visa Issuance & Renewals",
+        "Commercial Registration (CR) Services",
+        "Residential Permit Processing",
+        "Municipality License Management",
+        "Employee Documentation Services",
+        "Compliance & Audit Support"
+      ],
+      stats: { value: "500+", label: "Employees Managed" }
+    },
     {
       icon: Building2,
       title: "Facilities Management",
@@ -1001,7 +1017,7 @@ export function ServicesPage({ onBack, onContactClick }: ServicesPageProps) {
             <div className="flex h-10 w-10 items-center justify-center rounded-xl bg-gradient-to-br from-brand-gold to-brand-sand shadow-lg">
               <span className="font-display text-lg font-black text-brand-deep">SF</span>
             </div>
-            <span className="hidden font-display text-xl font-black text-brand-deep sm:block">StarFM</span>
+            <span className="hidden font-display text-xl font-black text-brand-deep sm:block">MahhabFM</span>
           </div>
         </div>
       </header>

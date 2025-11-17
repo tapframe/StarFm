@@ -4,6 +4,7 @@ import { Navbar } from "@/components/Navbar"
 import { Hero } from "@/components/Hero"
 import { About } from "@/components/About"
 import { ServiceTypes } from "@/components/ServiceTypes"
+import { ManagementSupport } from "@/components/ManagementSupport"
 import { Stats } from "@/components/Stats"
 import { Services } from "@/components/Services"
 import { Footer } from "@/components/Footer"
@@ -89,12 +90,23 @@ function App() {
       {currentPage === "home" ? (
         <div ref={homeRef} key="home">
           <Navbar onContactClick={handleContactClick} onServicesClick={handleServicesClick} />
-          <main className="space-y-8 pb-12 pt-20 sm:space-y-12 sm:pb-16 sm:pt-24 lg:space-y-16 lg:pb-24 lg:pt-24">
-            <Hero onServicesClick={handleServicesClick} onContactClick={handleContactClick} />
-            <About />
-            <ServiceTypes />
-            <Stats />
-            <Services onServicesPageClick={handleServicesClick} />
+          <main className="space-y-0 pb-12 pt-20 sm:pb-16 sm:pt-24 lg:pb-24 lg:pt-24">
+            <div className="space-y-8 sm:space-y-12 lg:space-y-16">
+              <Hero onServicesClick={handleServicesClick} onContactClick={handleContactClick} />
+              <About />
+            </div>
+            
+            {/* Management Support Services - Standalone Section */}
+            <div className="mt-8 sm:mt-12 lg:mt-16">
+              <ManagementSupport onContactClick={handleContactClick} />
+            </div>
+            
+            {/* Facility Management Services Section */}
+            <div className="mt-8 space-y-8 sm:mt-12 sm:space-y-12 lg:mt-16 lg:space-y-16">
+              <ServiceTypes />
+              <Stats />
+              <Services onServicesPageClick={handleServicesClick} />
+            </div>
           </main>
           <Footer onContactClick={handleContactClick} onServicesClick={handleServicesClick} />
         </div>

@@ -70,7 +70,8 @@ export default {
           deep: 'hsl(var(--brand-deep))',
           forest: 'hsl(var(--brand-forest))',
           moss: 'hsl(var(--brand-moss))',
-          gold: 'hsl(var(--brand-gold))',
+          /* alias brand.gold to brand.forest to ensure theme consistency */
+          gold: 'hsl(var(--brand-forest))',
           sand: 'hsl(var(--brand-sand))',
           cream: 'hsl(var(--brand-cream))',
         },

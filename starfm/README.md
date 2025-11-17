@@ -1,6 +1,6 @@
-# StarFM Landing Page
+# MahhabFM Landing Page
 
-Premium Vite + React + shadcn/ui landing page for the StarFM facilities-management network. The project ships with a bespoke “Emerald & Gold” design system so every section feels consistent, editorial, and event-ready.
+Premium Vite + React + shadcn/ui landing page for the MahhabFM facilities-management network. The project ships with a bespoke "Emerald & Gold" design system so every section feels consistent, editorial, and event-ready.
 
 ## Tech Stack
 
@@ -16,7 +16,7 @@ npm run dev   # start local dev server
 npm run build # production build (also used to verify CI readiness)
 ```
 
-## StarFM Theme System
+## MahhabFM Theme System
 
 The palette, typography, spacing, and surfaces live in `src/index.css` and `tailwind.config.js`. Consume the tokens with Tailwind utility classes or CSS variables to keep every page visually aligned.
 
@@ -45,7 +45,7 @@ All Tailwind `text-*`, `bg-*`, and `border-*` utilities map to the tokens throug
 
 ### Signature Surfaces
 
-- `bg-hero-glow`: gradient backdrop that matches the StarFM identity
+- `bg-hero-glow`: gradient backdrop that matches the MahhabFM identity
 - `shadow-brand` / `shadow-card`: deep emerald drop shadows for premium depth
 - `.glass-panel`: reusable glassmorphism helper (rounded corners, soft border)
 
@@ -59,9 +59,9 @@ All Tailwind `text-*`, `bg-*`, and `border-*` utilities map to the tokens throug
 
 Following the steps above ensures the landing page look extends naturally to membership, events, or training sub-pages without restyling from scratch.
 
-## Hero: 'What StarFM Is'
+## Hero: 'What MahhabFM Is'
 
-The hero is driven by `src/components/Hero.tsx` and uses brand surfaces plus a short mission statement to introduce visitors to StarFM's purpose. It highlights three quick stats and includes two CTAs: `Become a Member` and `Learn More`.
+The hero is driven by `src/components/Hero.tsx` and uses brand surfaces plus a short mission statement to introduce visitors to MahhabFM's purpose. It highlights three quick stats and includes two CTAs: `Become a Member` and `Learn More`.
 
 Design notes:
 - Use `bg-hero-glow` for premium hero backgrounds

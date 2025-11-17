@@ -106,7 +106,7 @@ export function Footer({ onContactClick, onServicesClick }: FooterProps) {
                 <Building2 className="h-6 w-6 text-brand-deep" />
               </div>
               <div>
-                <h3 className="font-display text-xl font-bold text-white">StarFM</h3>
+                <h3 className="font-display text-xl font-bold text-white">MahhabFM</h3>
                 <p className="text-xs text-brand-cream/70">Facilities Management</p>
               </div>
             </div>
@@ -203,8 +203,8 @@ export function Footer({ onContactClick, onServicesClick }: FooterProps) {
               </li>
               <li className="flex items-center gap-3">
                 <Mail className="h-5 w-5 shrink-0 text-brand-gold" />
-                <a href="mailto:info@starfm.com" className="text-sm text-brand-cream/80 transition-colors hover:text-brand-gold">
-                  info@starfm.com
+                <a href="mailto:info@mahhabfm.com" className="text-sm text-brand-cream/80 transition-colors hover:text-brand-gold">
+                  info@mahhabfm.com
                 </a>
               </li>
             </ul>
@@ -213,7 +213,7 @@ export function Footer({ onContactClick, onServicesClick }: FooterProps) {
 
         {/* Bottom Bar */}
         <div className="mt-12 flex flex-col items-center justify-between gap-4 border-t border-white/10 pt-8 text-center text-sm text-brand-cream/60 md:flex-row md:text-left">
-          <p>© 2025 StarFM. All rights reserved.</p>
+          <p>© 2025 MahhabFM. All rights reserved.</p>
           <div className="flex flex-wrap justify-center gap-6">
             <a href="#" className="transition-colors hover:text-brand-gold">Privacy Policy</a>
             <a href="#" className="transition-colors hover:text-brand-gold">Terms of Service</a>

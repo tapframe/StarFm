@@ -28,7 +28,7 @@ export function Contact({ onBack }: ContactProps) {
     {
       icon: Mail,
       title: "Email",
-      details: ["info@starfm.com", "support@starfm.com"],
+      details: ["info@mahhabfm.com", "support@mahhabfm.com"],
       color: "from-purple-500 to-pink-500"
     },
     {
@@ -187,7 +187,7 @@ export function Contact({ onBack }: ContactProps) {
             <div className="flex h-10 w-10 items-center justify-center rounded-xl bg-gradient-to-br from-brand-gold to-brand-sand shadow-lg">
               <span className="font-display text-lg font-black text-brand-deep">SF</span>
             </div>
-            <span className="hidden font-display text-xl font-black text-brand-deep sm:block">StarFM</span>
+            <span className="hidden font-display text-xl font-black text-brand-deep sm:block">MahhabFM</span>
           </div>
         </div>
       </header>
