@@ -10,64 +10,65 @@
     --font-display: "Work Sans", -apple-system, BlinkMacSystemFont, sans-serif;
     --font-body: "Work Sans", -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
 
-    --background: 210 50% 98%;
-    --foreground: 210 40% 12%;
+    --background: 218 30% 97%;
+    --foreground: 220 26% 16%;
     --card: 0 0% 100%;
-    --card-foreground: 210 40% 12%;
+    --card-foreground: 220 26% 16%;
     --popover: 0 0% 100%;
-    --popover-foreground: 210 40% 12%;
-    --primary: 217 91% 60%;
-    --primary-foreground: 210 50% 98%;
-    --secondary: 199 89% 48%;
-    --secondary-foreground: 210 50% 98%;
-    --muted: 210 40% 90%;
-    --muted-foreground: 210 20% 40%;
-    --accent: 259 94% 51%;
-    --accent-foreground: 210 50% 98%;
-    --destructive: 2 78% 56%;
+    --popover-foreground: 220 26% 16%;
+    --primary: 221 44% 32%;
+    --primary-foreground: 210 33% 96%;
+    --secondary: 205 28% 40%;
+    --secondary-foreground: 210 33% 96%;
+    --muted: 215 18% 90%;
+    --muted-foreground: 220 16% 35%;
+    --accent: 38 65% 52%;
+    --accent-foreground: 222 28% 14%;
+    --destructive: 4 65% 48%;
     --destructive-foreground: 0 0% 100%;
-    --border: 210 40% 85%;
-    --input: 210 40% 85%;
-    --ring: 217 91% 60%;
+    --border: 214 20% 82%;
+    --input: 214 20% 82%;
+    --ring: 221 44% 32%;
 
-    --brand-deep: 210 40% 12%;
-    --brand-forest: 217 80% 28%;
-    --brand-moss: 199 89% 48%;
-    --brand-gold: 217 91% 60%;
-    --brand-sand: 210 50% 92%;
-    --brand-cream: 210 60% 96%;
+    --brand-deep: 222 45% 22%;
+    --brand-forest: 215 25% 32%;
+    --brand-moss: 202 26% 45%;
+    --brand-azure: 208 100% 48%;
+    --brand-sand: 215 22% 92%;
+    --brand-cream: 45 30% 96%;
 
     --surface: 0 0% 100%;
-    --surface-muted: 210 40% 92%;
-    --surface-contrast: 217 80% 20%;
+    --surface-muted: 218 23% 94%;
+    --surface-contrast: 222 40% 24%;
 
-    --chart-1: 217 91% 60%;
-    --chart-2: 199 89% 48%;
-    --chart-3: 259 94% 51%;
-    --chart-4: 190 95% 39%;
-    --chart-5: 217 91% 60%;
+    --chart-1: 221 44% 32%;
+    --chart-2: 205 28% 42%;
+    --chart-3: 38 60% 50%;
+    --chart-4: 200 24% 38%;
+    --chart-5: 227 32% 28%;
   }
 
   .dark {
-    --background: 210 40% 10%;
-    --foreground: 210 60% 96%;
-    --card: 217 80% 18%;
-    --card-foreground: 210 60% 96%;
-    --popover: 217 80% 16%;
-    --popover-foreground: 210 60% 96%;
-    --primary: 217 91% 60%;
-    --primary-foreground: 210 40% 12%;
-    --secondary: 199 89% 48%;
-    --secondary-foreground: 210 60% 96%;
-    --muted: 217 80% 24%;
-    --muted-foreground: 210 40% 80%;
-    --accent: 259 94% 51%;
-    --accent-foreground: 210 60% 96%;
-    --destructive: 2 78% 56%;
+    --background: 222 28% 12%;
+    --foreground: 210 33% 92%;
+    --card: 222 24% 16%;
+    --card-foreground: 210 33% 92%;
+    --popover: 222 24% 14%;
+    --popover-foreground: 210 33% 92%;
+    --primary: 215 55% 64%;
+    --primary-foreground: 222 28% 12%;
+    --secondary: 202 35% 58%;
+    --secondary-foreground: 222 28% 12%;
+    --muted: 222 20% 24%;
+    --muted-foreground: 214 20% 78%;
+    --accent: 38 65% 58%;
+    --accent-foreground: 222 28% 12%;
+    --destructive: 4 70% 48%;
     --destructive-foreground: 0 0% 100%;
-    --border: 217 80% 28%;
-    --input: 217 80% 28%;
-    --ring: 217 91% 60%;
+    --border: 222 20% 32%;
+    --input: 222 20% 32%;
+    --ring: 215 55% 64%;
+    --brand-azure: 208 100% 48%;
   }
 
   * {
@@ -80,10 +81,9 @@
     color: hsl(var(--foreground));
     min-height: 100vh;
     background-image:
-      radial-gradient(circle at 18% 20%, rgba(219, 234, 254, 0.9), transparent 45%),
-      radial-gradient(circle at 78% 0%, rgba(191, 219, 254, 0.75), transparent 55%),
-      radial-gradient(circle at 90% 38%, rgba(224, 242, 254, 0.65), transparent 50%),
-      linear-gradient(180deg, #f0f9ff 0%, #e0f2fe 55%, #ffffff 100%);
+      radial-gradient(circle at 15% 20%, rgba(176, 189, 209, 0.35), transparent 45%),
+      radial-gradient(circle at 82% 8%, rgba(160, 176, 201, 0.25), transparent 55%),
+      linear-gradient(180deg, #f7f8fb 0%, #edf1f7 60%, #ffffff 100%);
     background-attachment: fixed;
     font-feature-settings: "liga" on, "calt" on;
     -webkit-font-smoothing: antialiased;
@@ -107,8 +107,8 @@
     font-family: var(--font-body);
   }
 
-  ::selection {
-    background-color: hsla(var(--brand-gold), 0.35);
+    ::selection {
+    background-color: hsla(var(--brand-azure), 0.35);
     color: hsl(var(--primary));
   }
 }
@@ -119,7 +119,7 @@
   }
 
   .gradient-text {
-    background: linear-gradient(to right, #d97706, #eab308, #d97706);
+    background: linear-gradient(to right, #38bdf8, #0ea5e9, #312e81);
     -webkit-background-clip: text;
     background-clip: text;
     -webkit-text-fill-color: transparent;

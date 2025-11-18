@@ -303,7 +303,7 @@ export function ServiceTypes() {
     <section ref={sectionRef} className="relative overflow-hidden bg-gradient-to-br from-white via-brand-cream/10 to-white py-20 sm:py-24 lg:py-32">
       {/* Enhanced Background Pattern */}
       <div className="pointer-events-none absolute inset-0">
-        <div ref={bgCircle1Ref} className="absolute left-1/4 top-20 h-[500px] w-[500px] rounded-full bg-gradient-to-r from-brand-gold/15 to-brand-sand/10 opacity-50" />
+        <div ref={bgCircle1Ref} className="absolute left-1/4 top-20 h-[500px] w-[500px] rounded-full bg-gradient-to-r from-brand-azure/15 to-brand-sand/10 opacity-50" />
         <div ref={bgCircle2Ref} className="absolute right-1/4 bottom-20 h-[500px] w-[500px] rounded-full bg-gradient-to-r from-brand-moss/15 to-brand-forest/10 opacity-50" />
         <div className="absolute inset-0 bg-[radial-gradient(circle_at_50%_120%,rgba(120,119,198,0.05),rgba(255,255,255,0))]" />
       </div>
@@ -311,9 +311,9 @@ export function ServiceTypes() {
       <div className="container relative px-4 sm:px-6">
         {/* Section Header */}
         <div ref={headerRef} className="mb-16 text-center sm:mb-20">
-          <div ref={badgeRef} className="mb-4 inline-flex items-center gap-2 rounded-full border border-brand-gold/30 bg-brand-gold/10 px-4 py-2 bg-opacity-50">
-            <div className="h-2 w-2 animate-pulse rounded-full bg-brand-gold" />
-            <span className="text-xs font-bold uppercase tracking-widest text-brand-gold">
+          <div ref={badgeRef} className="mb-4 inline-flex items-center gap-2 rounded-full border border-brand-azure/30 bg-brand-azure/10 px-4 py-2 bg-opacity-50">
+            <div className="h-2 w-2 animate-pulse rounded-full bg-blue-500" />
+            <span className="text-xs font-bold uppercase tracking-widest text-blue-600">
               Service Plans
             </span>
           </div>
@@ -323,7 +323,7 @@ export function ServiceTypes() {
               <span className="gradient-text">
                 Our Service Types
               </span>
-              <div ref={underlineRef} className="absolute -bottom-2 left-0 right-0 h-1 rounded-full bg-gradient-to-r from-brand-gold via-brand-sand to-transparent origin-left" />
+              <div ref={underlineRef} className="absolute -bottom-2 left-0 right-0 h-1 rounded-full bg-gradient-to-r from-blue-500 via-blue-400 to-transparent origin-left" />
             </span>
           </h2>
           <p className="mx-auto max-w-2xl text-xl font-semibold text-brand-forest/70">

@@ -223,7 +223,7 @@ export function Stats() {
     <section ref={sectionRef} className="relative py-16 sm:py-20 lg:py-24">
       {/* Background decoration */}
       <div className="pointer-events-none absolute inset-0 overflow-hidden">
-        <div ref={bgCircle1Ref} className="absolute -left-32 top-0 h-64 w-64 rounded-full bg-brand-gold/5 opacity-50" />
+        <div ref={bgCircle1Ref} className="absolute -left-32 top-0 h-64 w-64 rounded-full bg-blue-500/5 opacity-50" />
         <div ref={bgCircle2Ref} className="absolute -right-32 bottom-0 h-64 w-64 rounded-full bg-brand-forest/5 opacity-50" />
       </div>
       
@@ -248,10 +248,10 @@ export function Stats() {
                 if (el) cardsRef.current[index] = el
               }}
             >
-              <Card className="group relative overflow-hidden border border-white/5 bg-gradient-to-br from-brand-forest/80 to-brand-moss/70 shadow-lg transition-all duration-300 hover:shadow-2xl hover:shadow-brand-gold/10">
+              <Card className="group relative overflow-hidden border border-white/5 bg-gradient-to-br from-brand-forest/80 to-brand-moss/70 shadow-lg transition-all duration-300 hover:shadow-2xl hover:shadow-brand-azure/10">
                 <div className="absolute inset-0 bg-gradient-to-br from-white/5 to-transparent opacity-0 transition-opacity duration-300 group-hover:opacity-100" />
                 <CardContent className="relative flex flex-col items-center gap-3 p-6 text-center sm:gap-4 sm:p-8">
-                  <div className="icon-container rounded-xl bg-white/15 p-3 bg-opacity-50 ring-1 ring-white/10 transition-all duration-300 group-hover:bg-white/25 group-hover:ring-brand-gold/30 sm:rounded-2xl sm:p-4">
+                  <div className="icon-container rounded-xl bg-white/15 p-3 bg-opacity-50 ring-1 ring-white/10 transition-all duration-300 group-hover:bg-white/25 group-hover:ring-brand-azure/30 sm:rounded-2xl sm:p-4">
                     <stat.icon className="h-6 w-6 text-white sm:h-8 sm:w-8" />
                   </div>
                   <div>

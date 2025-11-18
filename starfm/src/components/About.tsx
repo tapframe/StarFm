@@ -323,7 +323,7 @@ export function About() {
     <section ref={sectionRef} id="about" className="relative overflow-hidden bg-gradient-to-br from-white via-brand-cream/20 to-brand-sand/30 py-20 sm:py-24 lg:py-32">
       {/* Background decorations */}
       <div className="pointer-events-none absolute inset-0">
-        <div ref={bgCircle1Ref} className="absolute left-0 top-1/4 h-96 w-96 rounded-full bg-brand-gold/10 opacity-50" />
+        <div ref={bgCircle1Ref} className="absolute left-0 top-1/4 h-96 w-96 rounded-full bg-brand-azure/10 opacity-50" />
         <div ref={bgCircle2Ref} className="absolute right-0 bottom-1/4 h-96 w-96 rounded-full bg-brand-moss/10 opacity-50" />
         <div className="absolute inset-0 bg-[linear-gradient(to_right,#80808008_1px,transparent_1px),linear-gradient(to_bottom,#80808008_1px,transparent_1px)] bg-[size:24px_24px]" />
       </div>
@@ -332,9 +332,9 @@ export function About() {
         <div className="grid gap-12 lg:grid-cols-2 lg:gap-16 items-center">
           {/* Left Content */}
           <div ref={leftContentRef}>
-            <div ref={badgeRef} className="mb-6 inline-flex items-center gap-2 rounded-full border border-brand-gold/30 bg-brand-gold/10 px-4 py-2 bg-opacity-50">
-              <div className="h-2 w-2 animate-pulse rounded-full bg-brand-gold" />
-              <span className="text-xs font-bold uppercase tracking-[0.15em] text-brand-gold">
+            <div ref={badgeRef} className="mb-6 inline-flex items-center gap-2 rounded-full border border-brand-azure/30 bg-brand-azure/10 px-4 py-2 bg-opacity-50">
+              <div className="h-2 w-2 animate-pulse rounded-full bg-brand-azure" />
+              <span className="text-xs font-bold uppercase tracking-[0.15em] text-brand-azure">
                 About Us
               </span>
             </div>
@@ -358,7 +358,7 @@ export function About() {
             {/* CTA Button */}
             <button
               ref={buttonRef}
-              className="mt-8 rounded-full bg-gradient-to-r from-brand-gold to-brand-sand px-8 py-4 font-bold uppercase tracking-wide text-brand-deep shadow-lg transition-all duration-300 hover:shadow-2xl hover:shadow-brand-gold/40"
+              className="mt-8 rounded-full bg-gradient-to-r from-brand-azure to-brand-sand px-8 py-4 font-bold uppercase tracking-wide text-brand-deep shadow-lg transition-all duration-300 hover:shadow-2xl hover:shadow-brand-azure/40"
             >
               Learn More About Us
             </button>
@@ -374,14 +374,14 @@ export function About() {
                   ref={(el) => {
                     if (el) featuresRef.current[index] = el
                   }}
-                  className="group relative overflow-hidden rounded-2xl border border-brand-deep/10 bg-white/80 bg-opacity-50 p-6 shadow-lg transition-all duration-300 hover:border-brand-gold/30 hover:shadow-xl"
+                  className="group relative overflow-hidden rounded-2xl border border-brand-deep/10 bg-white/80 bg-opacity-50 p-6 shadow-lg transition-all duration-300 hover:border-brand-azure/30 hover:shadow-xl"
                 >
                   {/* Background gradient on hover */}
-                  <div className="absolute inset-0 bg-gradient-to-br from-brand-gold/5 to-transparent opacity-0 transition-opacity duration-300 group-hover:opacity-100" />
+                  <div className="absolute inset-0 bg-gradient-to-br from-brand-azure/5 to-transparent opacity-0 transition-opacity duration-300 group-hover:opacity-100" />
                   
                   <div className="relative">
-                    <div className="mb-4 inline-flex h-14 w-14 items-center justify-center rounded-xl bg-gradient-to-br from-brand-gold/20 to-brand-sand/20 transition-transform duration-300 group-hover:scale-110">
-                      <Icon className="h-7 w-7 text-brand-gold" strokeWidth={2} />
+                    <div className="mb-4 inline-flex h-14 w-14 items-center justify-center rounded-xl bg-gradient-to-br from-brand-azure/20 to-brand-sand/20 transition-transform duration-300 group-hover:scale-110">
+                      <Icon className="h-7 w-7 text-brand-azure" strokeWidth={2} />
                     </div>
                     
                     <h3 className="mb-2 font-display text-xl font-bold text-brand-deep">
@@ -394,7 +394,7 @@ export function About() {
                   </div>
 
                   {/* Decorative corner accent */}
-                  <div className="absolute -right-6 -top-6 h-20 w-20 rounded-full bg-brand-gold/10 opacity-50 transition-all duration-300 group-hover:bg-brand-gold/20" />
+                  <div className="absolute -right-6 -top-6 h-20 w-20 rounded-full bg-brand-azure/10 opacity-50 transition-all duration-300 group-hover:bg-brand-azure/20" />
                 </div>
               )
             })}
@@ -402,7 +402,7 @@ export function About() {
         </div>
 
         {/* Bottom Stats or Additional Content */}
-        <div ref={bottomSectionRef} className="mt-16 rounded-3xl border border-brand-gold/20 bg-gradient-to-br from-brand-gold/10 via-white/50 to-brand-sand/10 p-8 sm:p-12">
+        <div ref={bottomSectionRef} className="mt-16 rounded-3xl border border-brand-azure/20 bg-gradient-to-br from-brand-azure/10 via-white/50 to-brand-sand/10 p-8 sm:p-12">
           <div className="text-center">
             <h3 className="mb-4 font-display text-2xl font-black text-brand-deep sm:text-3xl">
               [Additional Content Section]

@@ -1,7 +1,7 @@
 import { useState, useEffect, useRef } from "react"
 import gsap from "gsap"
 import { Button } from "@/components/ui/button"
-import { Menu, X, Sparkles } from "lucide-react"
+import { Menu, X } from "lucide-react"
 
 interface NavbarProps {
   onContactClick?: () => void
@@ -11,6 +11,8 @@ interface NavbarProps {
 export function Navbar({ onContactClick, onServicesClick }: NavbarProps) {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false)
   const [scrolled, setScrolled] = useState(false)
+  const [navbarVisible, setNavbarVisible] = useState(true)
+  const [lastScrollY, setLastScrollY] = useState(0)
   const navRef = useRef<HTMLElement>(null)
   const logoRef = useRef<HTMLAnchorElement>(null)
   const navItemsRef = useRef<HTMLAnchorElement[]>([])
@@ -26,11 +28,23 @@ export function Navbar({ onContactClick, onServicesClick }: NavbarProps) {
 
   useEffect(() => {
     const handleScroll = () => {
-      setScrolled(window.scrollY > 20)
+      const currentScrollY = window.scrollY
+      
+      setScrolled(currentScrollY > 20)
+      
+      // Show navbar when scrolling up or at the top
+      if (currentScrollY < lastScrollY || currentScrollY < 50) {
+        setNavbarVisible(true)
+      } else if (currentScrollY > lastScrollY && currentScrollY > 100) {
+        // Hide navbar when scrolling down
+        setNavbarVisible(false)
+      }
+      
+      setLastScrollY(currentScrollY)
     }
     window.addEventListener("scroll", handleScroll)
     return () => window.removeEventListener("scroll", handleScroll)
-  }, [])
+  }, [lastScrollY])
 
   // Initial navbar animation
   useEffect(() => {
@@ -179,6 +193,8 @@ export function Navbar({ onContactClick, onServicesClick }: NavbarProps) {
     <nav
       ref={navRef}
       className={`fixed left-0 right-0 top-0 z-50 transition-all duration-500 ${
+        navbarVisible ? "translate-y-0 opacity-100" : "-translate-y-[150%] opacity-0 pointer-events-none"
+      } ${
         scrolled 
           ? "bg-white/95 shadow-2xl shadow-brand-deep/5" 
           : "bg-white/85"
@@ -194,27 +210,13 @@ export function Navbar({ onContactClick, onServicesClick }: NavbarProps) {
         <a
           ref={logoRef}
           href="#"
-          className="group relative flex items-center gap-3"
+          className="group relative flex items-center gap-2 transition-transform duration-300 hover:scale-105"
         >
-          <div className="relative">
-            <div className="absolute inset-0 rounded-2xl bg-gradient-to-br from-brand-gold to-brand-sand opacity-0 transition-opacity duration-300 group-hover:opacity-60" />
-            <div className="relative flex h-12 w-12 items-center justify-center rounded-2xl bg-gradient-to-br from-blue-600 via-blue-500 to-cyan-500 shadow-lg ring-2 ring-blue-400/20 transition-all duration-300 group-hover:ring-4 group-hover:ring-blue-400/30 sm:h-14 sm:w-14">
-              <span className="font-display text-xl font-black tracking-tighter text-white sm:text-2xl">
-                SF
-              </span>
-              <div className="absolute -right-1 -top-1">
-                <Sparkles className="h-3 w-3 text-cyan-400 animate-pulse" />
-              </div>
-            </div>
-          </div>
-          <div className="flex flex-col">
-            <span className="font-display text-xl font-black tracking-tight text-blue-600 transition-colors group-hover:text-blue-700 sm:text-2xl">
-              MahhabFM
-            </span>
-            <span className="hidden text-[10px] font-bold uppercase tracking-[0.2em] text-blue-500/60 sm:block">
-              Excellence in Facilities
-            </span>
-          </div>
+          <img 
+            src="/logo.svg" 
+            alt="MahhabFM Logo" 
+            className="h-48 w-48 object-contain"
+          />
         </a>
 
         {/* Desktop Navigation Links */}

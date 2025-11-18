@@ -1,7 +1,7 @@
 import { useEffect, useRef } from "react"
 import gsap from "gsap"
 import { ScrollTrigger } from "gsap/ScrollTrigger"
-import { Building2, Mail, Phone, MapPin, Facebook, Twitter, Linkedin, Instagram } from "lucide-react"
+import { Mail, Phone, MapPin, Facebook, Twitter, Linkedin, Instagram } from "lucide-react"
 
 gsap.registerPlugin(ScrollTrigger)
 
@@ -97,20 +97,18 @@ export function Footer({ onContactClick, onServicesClick }: FooterProps) {
         <div className="absolute -right-20 bottom-0 h-96 w-96 rounded-full bg-brand-moss/10 opacity-50" />
       </div>
 
-      <div className="container relative py-12 lg:py-16">
-        <div className="grid gap-12 lg:grid-cols-4">
+      <div className="container relative pt-8 pb-12 lg:pt-12 lg:pb-16">
+        <div className="grid gap-8 lg:gap-12 lg:grid-cols-4">
           {/* Brand Section */}
           <div ref={brandRef} className="lg:col-span-1">
-            <div className="mb-4 flex items-center gap-3">
-              <div className="flex h-10 w-10 items-center justify-center rounded-lg bg-gradient-to-br from-brand-gold to-brand-sand">
-                <Building2 className="h-6 w-6 text-brand-deep" />
-              </div>
-              <div>
-                <h3 className="font-display text-xl font-bold text-white">MahhabFM</h3>
-                <p className="text-xs text-brand-cream/70">Facilities Management</p>
-              </div>
+            <div className="h-48 w-48 overflow-hidden -my-2">
+              <img 
+                src="/logo.svg" 
+                alt="MahhabFM Logo" 
+                className="h-full w-full object-cover object-center scale-125"
+              />
             </div>
-            <p className="mb-6 text-sm text-brand-cream/80">
+            <p className="mt-6 mb-6 text-sm text-brand-cream/80">
               Leading facilities management solutions across the region, delivering excellence in every service.
             </p>
             <div className="flex gap-3">

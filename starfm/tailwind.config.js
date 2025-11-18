@@ -25,12 +25,12 @@ export default {
         sm: 'calc(var(--radius) - 4px)'
       },
       backgroundImage: {
-        'hero-glow': 'linear-gradient(140deg, hsla(var(--brand-forest),0.14) 0%, hsla(var(--brand-gold),0.28) 45%, hsla(var(--brand-cream),0.6) 100%)',
-        'card-lux': 'linear-gradient(135deg, hsla(var(--brand-gold),0.25), hsla(var(--brand-forest),0.2))',
+        'hero-glow': 'linear-gradient(140deg, hsla(var(--brand-forest),0.14) 0%, hsla(var(--brand-azure),0.28) 45%, hsla(var(--brand-cream),0.6) 100%)',
+        'card-lux': 'linear-gradient(135deg, hsla(var(--brand-azure),0.25), hsla(var(--brand-forest),0.2))',
       },
       boxShadow: {
-        brand: '0 25px 70px -35px rgba(6, 55, 34, 0.55)',
-        card: '0 25px 65px -35px rgba(5, 42, 28, 0.45)',
+        brand: '0 25px 70px -35px rgba(23, 43, 71, 0.45)',
+        card: '0 25px 65px -40px rgba(18, 34, 55, 0.35)',
       },
       colors: {
         background: 'hsl(var(--background))',
@@ -70,8 +70,7 @@ export default {
           deep: 'hsl(var(--brand-deep))',
           forest: 'hsl(var(--brand-forest))',
           moss: 'hsl(var(--brand-moss))',
-          /* alias brand.gold to brand.forest to ensure theme consistency */
-          gold: 'hsl(var(--brand-forest))',
+          azure: 'hsl(var(--brand-azure))',
           sand: 'hsl(var(--brand-sand))',
           cream: 'hsl(var(--brand-cream))',
         },

@@ -1,6 +1,6 @@
 # MahhabFM Landing Page
 
-Premium Vite + React + shadcn/ui landing page for the MahhabFM facilities-management network. The project ships with a bespoke "Emerald & Gold" design system so every section feels consistent, editorial, and event-ready.
+Premium Vite + React + shadcn/ui landing page for the MahhabFM facilities-management network. The project ships with a bespoke "Emerald & Blue" design system so every section feels consistent, editorial, and event-ready.
 
 ## Tech Stack
 
@@ -28,12 +28,12 @@ The palette, typography, spacing, and surfaces live in `src/index.css` and `tail
 | `--foreground` | `hsl(153 27% 14%)` | Default text color |
 | `--primary` | `hsl(152 52% 26%)` | CTAs, key highlights, links |
 | `--secondary` | `hsl(47 40% 91%)` | Pills, secondary surfaces |
-| `--accent` | `hsl(40 78% 60%)` | Gold flourishes, dividers, badges |
+| `--accent` | `hsl(40 78% 60%)` | Blue flourishes, dividers, badges |
 | `--brand-forest` | `hsl(152 45% 22%)` | Gradient bases, hero cards |
 | `--brand-moss` | `hsl(151 36% 34%)` | Stat cards + hover states |
-| `--brand-gold` | `hsl(40 80% 60%)` | Warm glow, outlines, icons |
+| `--brand-azure` | `hsl(208 100% 48%)` | Blue glow, outlines, icons |
 
-All Tailwind `text-*`, `bg-*`, and `border-*` utilities map to the tokens through the config, so `bg-primary` or `text-brand-gold` automatically track future palette updates.
+All Tailwind `text-*`, `bg-*`, and `border-*` utilities map to the tokens through the config, so `bg-primary` or `text-brand-azure` automatically track future palette updates.
 
 ### Typography & Spacing
 
@@ -52,7 +52,7 @@ All Tailwind `text-*`, `bg-*`, and `border-*` utilities map to the tokens throug
 ### How to Theme New Sections
 
 1. **Wrap section** with `className="relative isolate"` + `bg-hero-glow` or a `bg-white/80` surface.
-2. **Use tokens**: prefer `text-primary`, `bg-secondary`, `border-brand-gold/40` over raw hex values.
+2. **Use tokens**: prefer `text-primary`, `bg-secondary`, `border-brand-azure/40` over raw hex values.
 3. **Apply surfaces**: `glass-panel`, `shadow-brand`, and gradient backgrounds (`from-brand-forest to-brand-moss`) keep cards cohesive.
 4. **Typography**: headings automatically inherit the display font; for emphasis use `tracking-[0.3em] uppercase` as seen in the hero ribbons.
 5. **Document additions**: if you introduce a new token, declare it in `src/index.css` and map it through `tailwind.config.js` immediately so every page can access it.

@@ -373,7 +373,7 @@ export function Services({ onServicesPageClick }: ServicesProps) {
   return (
     <section id="services" ref={sectionRef} className="relative overflow-hidden py-16 sm:py-20 lg:py-28">
       <div className="pointer-events-none absolute inset-0">
-        <div ref={bgCircle1Ref} className="absolute -left-10 top-20 h-72 w-72 rounded-full bg-brand-gold/15 opacity-50" />
+        <div ref={bgCircle1Ref} className="absolute -left-10 top-20 h-72 w-72 rounded-full bg-blue-500/15 opacity-50" />
         <div ref={bgCircle2Ref} className="absolute -right-10 bottom-20 h-72 w-72 rounded-full bg-brand-forest/15 opacity-50" />
         <div ref={bgCircle3Ref} className="absolute left-1/2 top-1/2 h-96 w-96 -translate-x-1/2 -translate-y-1/2 rounded-full bg-brand-moss/10 opacity-50" />
       </div>
@@ -381,7 +381,7 @@ export function Services({ onServicesPageClick }: ServicesProps) {
       <div className="container relative px-4 sm:px-6">
         <div ref={headerRef} className="mb-12 text-center sm:mb-16">
           <div className="mb-4 inline-block">
-            <span ref={badgeRef} className="rounded-full border border-brand-gold/30 bg-brand-gold/10 px-4 py-1.5 text-xs font-semibold uppercase tracking-widest text-brand-gold bg-opacity-50">
+            <span ref={badgeRef} className="rounded-full border border-blue-500/30 bg-blue-500/10 px-4 py-1.5 text-xs font-semibold uppercase tracking-widest text-blue-600 bg-opacity-50">
               Facility Management
             </span>
           </div>
@@ -410,7 +410,7 @@ export function Services({ onServicesPageClick }: ServicesProps) {
               >
                 <Card className="group relative overflow-hidden border border-white/10 bg-white/95 shadow-2xl">
                   {/* Subtle glow effect */}
-                  <div className="absolute inset-0 bg-gradient-to-br from-brand-gold/5 via-transparent to-brand-forest/5 opacity-0 transition-opacity duration-500 group-hover:opacity-100" />
+                  <div className="absolute inset-0 bg-gradient-to-br from-brand-azure/5 via-transparent to-brand-forest/5 opacity-0 transition-opacity duration-500 group-hover:opacity-100" />
                   
                   <div className="relative grid gap-0 lg:grid-cols-[1.2fr_0.8fr]">
                     {/* Image Section */}
@@ -481,7 +481,7 @@ export function Services({ onServicesPageClick }: ServicesProps) {
           <div className="mt-8 flex items-center justify-center gap-4 sm:mt-10">
             <button
               onClick={() => paginate(-1)}
-              className="flex h-12 w-12 items-center justify-center rounded-full border-2 border-brand-forest/20 bg-white shadow-lg transition-all hover:border-brand-gold hover:bg-brand-gold/10 hover:shadow-xl"
+              className="flex h-12 w-12 items-center justify-center rounded-full border-2 border-brand-forest/20 bg-white shadow-lg transition-all hover:border-brand-azure hover:bg-brand-azure/10 hover:shadow-xl"
               aria-label="Previous service"
               onMouseEnter={(e) => {
                 gsap.to(e.currentTarget, { scale: 1.03, duration: 0.3, ease: "power2.out", force3D: true })
@@ -510,8 +510,8 @@ export function Services({ onServicesPageClick }: ServicesProps) {
                   }}
                   className={`h-2 rounded-full transition-all duration-300 ${
                     idx === currentIndex
-                      ? "w-8 bg-brand-gold"
-                      : "w-2 bg-brand-forest/30 hover:bg-brand-gold/50"
+                      ? "w-8 bg-brand-azure"
+                      : "w-2 bg-brand-forest/30 hover:bg-brand-azure/50"
                   }`}
                   aria-label={`Go to service ${idx + 1}`}
                   onMouseEnter={(e) => {
@@ -536,7 +536,7 @@ export function Services({ onServicesPageClick }: ServicesProps) {
 
             <button
               onClick={() => paginate(1)}
-              className="flex h-12 w-12 items-center justify-center rounded-full border-2 border-brand-forest/20 bg-white shadow-lg transition-all hover:border-brand-gold hover:bg-brand-gold/10 hover:shadow-xl"
+              className="flex h-12 w-12 items-center justify-center rounded-full border-2 border-brand-forest/20 bg-white shadow-lg transition-all hover:border-brand-azure hover:bg-brand-azure/10 hover:shadow-xl"
               aria-label="Next service"
               onMouseEnter={(e) => {
                 gsap.to(e.currentTarget, { scale: 1.03, duration: 0.3, ease: "power2.out", force3D: true })

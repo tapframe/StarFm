@@ -996,25 +996,25 @@ export function ServicesPage({ onBack, onContactClick }: ServicesPageProps) {
     <div ref={pageRef} className="min-h-screen bg-gradient-to-br from-white via-brand-cream/20 to-brand-sand/30">
       {/* Background decorations */}
       <div className="pointer-events-none fixed inset-0">
-        <div className="absolute left-1/4 top-20 h-96 w-96 rounded-full bg-brand-gold/10 opacity-50" />
+        <div className="absolute left-1/4 top-20 h-96 w-96 rounded-full bg-brand-azure/10 opacity-50" />
         <div className="absolute right-1/4 bottom-20 h-96 w-96 rounded-full bg-brand-moss/10 opacity-50" />
         <div className="absolute inset-0 bg-[linear-gradient(to_right,#80808008_1px,transparent_1px),linear-gradient(to_bottom,#80808008_1px,transparent_1px)] bg-[size:24px_24px]" />
       </div>
 
       {/* Header */}
-      <header ref={headerRef} className="sticky top-0 z-50 border-b border-brand-gold/20 bg-white/80 backdrop-blur-sm">
+      <header ref={headerRef} className="sticky top-0 z-50 border-b border-brand-azure/20 bg-white/80 backdrop-blur-sm">
         <div className="container mx-auto flex h-20 items-center justify-between px-4 sm:px-6">
           <button
             ref={backButtonRef}
             onClick={onBack}
-            className="flex items-center gap-2 rounded-full border-2 border-brand-deep/10 bg-white px-4 py-2 font-bold text-brand-deep transition-all duration-300 hover:border-brand-gold/30 hover:bg-brand-gold/10"
+            className="flex items-center gap-2 rounded-full border-2 border-brand-deep/10 bg-white px-4 py-2 font-bold text-brand-deep transition-all duration-300 hover:border-brand-azure/30 hover:bg-brand-azure/10"
           >
             <ArrowLeft className="h-5 w-5" strokeWidth={2.5} />
             Back to Home
           </button>
 
           <div className="flex items-center gap-3">
-            <div className="flex h-10 w-10 items-center justify-center rounded-xl bg-gradient-to-br from-brand-gold to-brand-sand shadow-lg">
+            <div className="flex h-10 w-10 items-center justify-center rounded-xl bg-gradient-to-br from-brand-azure to-brand-sand shadow-lg">
               <span className="font-display text-lg font-black text-brand-deep">SF</span>
             </div>
             <span className="hidden font-display text-xl font-black text-brand-deep sm:block">MahhabFM</span>
@@ -1026,9 +1026,9 @@ export function ServicesPage({ onBack, onContactClick }: ServicesPageProps) {
       <div className="container relative mx-auto px-4 py-12 sm:px-6 sm:py-16 lg:py-24">
         {/* Page Header */}
         <div ref={pageHeaderRef} className="mb-16 text-center">
-          <div ref={badgeRef} className="mb-6 inline-flex items-center gap-2 rounded-full border border-brand-gold/30 bg-brand-gold/10 px-4 py-2 bg-opacity-50">
-            <div className="h-2 w-2 animate-pulse rounded-full bg-brand-gold" />
-            <span className="text-xs font-bold uppercase tracking-[0.15em] text-brand-gold">
+          <div ref={badgeRef} className="mb-6 inline-flex items-center gap-2 rounded-full border border-blue-500/30 bg-blue-500/10 px-4 py-2 bg-opacity-50">
+            <div className="h-2 w-2 animate-pulse rounded-full bg-blue-500" />
+            <span className="text-xs font-bold uppercase tracking-[0.15em] text-blue-600">
               What We Offer
             </span>
           </div>
@@ -1066,7 +1066,7 @@ export function ServicesPage({ onBack, onContactClick }: ServicesPageProps) {
                     ref={(el) => {
                       if (el) decorativeNumberRefs.current[index] = el
                     }}
-                    className="font-display text-8xl font-black text-brand-gold/5 select-none"
+                    className="font-display text-8xl font-black text-blue-500/5 select-none"
                     aria-hidden="true"
                   >
                     {String(index + 1).padStart(2, '0')}
@@ -1085,11 +1085,11 @@ export function ServicesPage({ onBack, onContactClick }: ServicesPageProps) {
                     ref={(el) => {
                       if (el) glowRefs.current[index] = el
                     }}
-                    className="absolute -inset-4 bg-gradient-to-r from-brand-gold/40 via-brand-moss/40 to-brand-gold/40 rounded-3xl opacity-0 -z-10 blur-xl"
+                    className="absolute -inset-4 bg-gradient-to-r from-brand-azure/40 via-brand-moss/40 to-brand-azure/40 rounded-3xl opacity-0 -z-10 blur-xl"
                     aria-hidden="true"
                   />
                   
-                  <div className="relative aspect-[4/3] overflow-hidden rounded-3xl border border-brand-gold/30 bg-white shadow-2xl">
+                  <div className="relative aspect-[4/3] overflow-hidden rounded-3xl border border-brand-azure/30 bg-white shadow-2xl">
                     {/* Image with lazy loading */}
                     <img 
                       ref={(el) => {
@@ -1165,10 +1165,10 @@ export function ServicesPage({ onBack, onContactClick }: ServicesPageProps) {
                       ref={(el) => {
                         if (el) categoryBadgeRefs.current[index] = el
                       }}
-                      className="mb-4 inline-flex items-center gap-2 rounded-full border border-brand-gold/30 bg-brand-gold/10 px-3 py-1 bg-opacity-50"
+                      className="mb-4 inline-flex items-center gap-2 rounded-full border border-brand-azure/30 bg-brand-azure/10 px-3 py-1 bg-opacity-50"
                     >
-                      <Star className="h-3 w-3 text-brand-gold fill-brand-gold" aria-hidden="true" />
-                      <span className="text-xs font-bold uppercase tracking-wider text-brand-gold">Premium Service</span>
+                      <Star className="h-3 w-3 text-blue-500 fill-blue-500" aria-hidden="true" />
+                      <span className="text-xs font-bold uppercase tracking-wider text-blue-600">Premium Service</span>
                     </div>
 
                     <h2 
@@ -1200,7 +1200,7 @@ export function ServicesPage({ onBack, onContactClick }: ServicesPageProps) {
                             }
                             if (el) featureRefs.current[index][idx] = el
                           }}
-                          className="group flex items-center gap-3 rounded-lg border border-transparent p-3 transition-all hover:border-brand-gold/20 hover:bg-brand-gold/5 hover:shadow-md"
+                          className="group flex items-center gap-3 rounded-lg border border-transparent p-3 transition-all hover:border-brand-azure/20 hover:bg-brand-azure/5 hover:shadow-md"
                         >
                           <div 
                             ref={(el) => {
@@ -1224,7 +1224,7 @@ export function ServicesPage({ onBack, onContactClick }: ServicesPageProps) {
                     <div className="flex flex-col gap-3 sm:flex-row sm:gap-4">
                       <Button
                         onClick={onContactClick}
-                        className="group relative overflow-hidden rounded-xl bg-gradient-to-r from-brand-gold via-brand-sand to-brand-gold px-6 py-4 font-bold uppercase tracking-wide text-brand-deep shadow-lg transition-all duration-300 hover:shadow-2xl hover:shadow-brand-gold/50"
+                        className="group relative overflow-hidden rounded-xl bg-gradient-to-r from-brand-azure via-brand-sand to-brand-azure px-6 py-4 font-bold uppercase tracking-wide text-brand-deep shadow-lg transition-all duration-300 hover:shadow-2xl hover:shadow-brand-azure/50"
                       >
                         <span className="relative z-10 flex items-center gap-2">
                           Request Service
@@ -1234,14 +1234,14 @@ export function ServicesPage({ onBack, onContactClick }: ServicesPageProps) {
                           ref={(el) => {
                             if (el) buttonHoverRefs.current[index * 2] = el
                           }}
-                          className="absolute inset-0 bg-gradient-to-r from-brand-sand to-brand-gold"
+                          className="absolute inset-0 bg-gradient-to-r from-brand-sand to-brand-azure"
                           aria-hidden="true"
                         />
                       </Button>
 
                       <Button
                         variant="outline"
-                        className="group rounded-xl border-2 border-brand-deep/20 bg-white/50 px-6 py-4 font-bold uppercase tracking-wide text-brand-deep bg-opacity-50 transition-all hover:border-brand-gold hover:bg-brand-gold/10"
+                        className="group rounded-xl border-2 border-brand-deep/20 bg-white/50 px-6 py-4 font-bold uppercase tracking-wide text-brand-deep bg-opacity-50 transition-all hover:border-brand-azure hover:bg-brand-azure/10"
                       >
                         <span className="flex items-center gap-2">
                           <Clock className="h-5 w-5" aria-hidden="true" />
@@ -1252,7 +1252,7 @@ export function ServicesPage({ onBack, onContactClick }: ServicesPageProps) {
 
                     {/* Quality badge */}
                     <div className="mt-6 flex items-center gap-2 text-sm text-brand-forest/60">
-                      <Award className="h-5 w-5 text-brand-gold" aria-hidden="true" />
+                      <Award className="h-5 w-5 text-blue-500" aria-hidden="true" />
                       <span className="font-medium">Certified & Quality Assured</span>
                     </div>
                   </div>
@@ -1263,7 +1263,7 @@ export function ServicesPage({ onBack, onContactClick }: ServicesPageProps) {
         </div>
 
         {/* CTA Section */}
-        <div ref={ctaSectionRef} className="mt-24 overflow-hidden rounded-3xl border border-brand-gold/20 bg-gradient-to-br from-brand-deep via-brand-forest to-brand-moss p-12 text-center shadow-2xl sm:p-16">
+        <div ref={ctaSectionRef} className="mt-24 overflow-hidden rounded-3xl border border-brand-azure/20 bg-gradient-to-br from-brand-deep via-brand-forest to-brand-moss p-12 text-center shadow-2xl sm:p-16">
           <div className="relative">
             <h3 ref={ctaTitleRef} className="mb-4 font-display text-3xl font-black text-white sm:text-4xl lg:text-5xl">
               Ready to Get Started?
@@ -1274,7 +1274,7 @@ export function ServicesPage({ onBack, onContactClick }: ServicesPageProps) {
             <Button
               ref={ctaButtonRef}
               onClick={onContactClick}
-              className="group relative overflow-hidden rounded-xl bg-gradient-to-r from-brand-gold via-brand-sand to-brand-gold px-10 py-5 text-lg font-black uppercase tracking-wide text-brand-deep shadow-lg transition-all duration-300 hover:shadow-2xl hover:shadow-brand-gold/40"
+              className="group relative overflow-hidden rounded-xl bg-gradient-to-r from-brand-azure via-brand-sand to-brand-azure px-10 py-5 text-lg font-black uppercase tracking-wide text-brand-deep shadow-lg transition-all duration-300 hover:shadow-2xl hover:shadow-brand-azure/40"
             >
               <span className="relative z-10 flex items-center gap-2">
                 Contact Us Now
@@ -1282,11 +1282,11 @@ export function ServicesPage({ onBack, onContactClick }: ServicesPageProps) {
                   <ArrowRight className="h-6 w-6" aria-hidden="true" />
                 </div>
               </span>
-              <div className="absolute inset-0 bg-gradient-to-r from-brand-sand to-brand-gold opacity-0 group-hover:opacity-100 transition-opacity duration-300" aria-hidden="true" />
+              <div className="absolute inset-0 bg-gradient-to-r from-brand-sand to-brand-azure opacity-0 group-hover:opacity-100 transition-opacity duration-300" aria-hidden="true" />
             </Button>
 
             {/* Decorative elements */}
-            <div className="pointer-events-none absolute -right-10 -top-10 h-40 w-40 rounded-full bg-brand-gold/20 opacity-50" aria-hidden="true" />
+            <div className="pointer-events-none absolute -right-10 -top-10 h-40 w-40 rounded-full bg-brand-azure/20 opacity-50" aria-hidden="true" />
             <div className="pointer-events-none absolute -bottom-10 -left-10 h-40 w-40 rounded-full bg-brand-sand/20 opacity-50" aria-hidden="true" />
           </div>
         </div>

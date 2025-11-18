@@ -163,28 +163,28 @@ export function Contact({ onBack }: ContactProps) {
   }, [])
 
   return (
-    <div ref={pageRef} className="min-h-screen bg-gradient-to-br from-white via-brand-cream/20 to-brand-sand/30">
+    <div ref={pageRef} className="min-h-screen bg-gradient-to-br from-white via-brand-cream/20 to-blue-400/30">
       {/* Background decorations */}
       <div className="pointer-events-none fixed inset-0">
-        <div className="absolute left-1/4 top-20 h-96 w-96 rounded-full bg-brand-gold/10 opacity-50" />
+        <div className="absolute left-1/4 top-20 h-96 w-96 rounded-full bg-blue-500/10 opacity-50" />
         <div className="absolute right-1/4 bottom-20 h-96 w-96 rounded-full bg-brand-moss/10 opacity-50" />
         <div className="absolute inset-0 bg-[linear-gradient(to_right,#80808008_1px,transparent_1px),linear-gradient(to_bottom,#80808008_1px,transparent_1px)] bg-[size:24px_24px]" />
       </div>
 
       {/* Header */}
-      <header ref={headerRef} className="sticky top-0 z-50 border-b border-brand-gold/20 bg-white/80">
+      <header ref={headerRef} className="sticky top-0 z-50 border-b border-blue-500/20 bg-white/80">
         <div className="container mx-auto flex h-20 items-center justify-between px-4 sm:px-6">
           <button
             ref={backButtonRef}
             onClick={onBack}
-            className="flex items-center gap-2 rounded-full border-2 border-brand-deep/10 bg-white px-4 py-2 font-bold text-brand-deep transition-all duration-300 hover:border-brand-gold/30 hover:bg-brand-gold/10"
+            className="flex items-center gap-2 rounded-full border-2 border-brand-deep/10 bg-white px-4 py-2 font-bold text-brand-deep transition-all duration-300 hover:border-blue-500/30 hover:bg-blue-500/10"
           >
             <ArrowLeft className="h-5 w-5" strokeWidth={2.5} />
             Back to Home
           </button>
 
           <div className="flex items-center gap-3">
-            <div className="flex h-10 w-10 items-center justify-center rounded-xl bg-gradient-to-br from-brand-gold to-brand-sand shadow-lg">
+            <div className="flex h-10 w-10 items-center justify-center rounded-xl bg-gradient-to-br from-blue-500 to-blue-400 shadow-lg">
               <span className="font-display text-lg font-black text-brand-deep">SF</span>
             </div>
             <span className="hidden font-display text-xl font-black text-brand-deep sm:block">MahhabFM</span>
@@ -196,9 +196,9 @@ export function Contact({ onBack }: ContactProps) {
       <div className="container relative mx-auto px-4 py-12 sm:px-6 sm:py-16 lg:py-24">
         {/* Page Header */}
         <div ref={pageHeaderRef} className="mb-16 text-center">
-          <div ref={badgeRef} className="mb-6 inline-flex items-center gap-2 rounded-full border border-brand-gold/30 bg-brand-gold/10 px-4 py-2 bg-opacity-50">
-            <div className="h-2 w-2 animate-pulse rounded-full bg-brand-gold" />
-            <span className="text-xs font-bold uppercase tracking-[0.15em] text-brand-gold">
+          <div ref={badgeRef} className="mb-6 inline-flex items-center gap-2 rounded-full border border-blue-500/30 bg-blue-500/10 px-4 py-2 bg-opacity-50">
+            <div className="h-2 w-2 animate-pulse rounded-full bg-blue-500" />
+            <span className="text-xs font-bold uppercase tracking-[0.15em] text-blue-600">
               Get In Touch
             </span>
           </div>
@@ -226,9 +226,9 @@ export function Contact({ onBack }: ContactProps) {
                   ref={(el) => {
                     if (el) contactCardsRef.current[index] = el
                   }}
-                  className="group relative overflow-hidden rounded-2xl border border-brand-deep/10 bg-white/80 p-6 shadow-lg transition-all duration-300 hover:border-brand-gold/30 hover:shadow-xl"
+                  className="group relative overflow-hidden rounded-2xl border border-brand-deep/10 bg-white/80 p-6 shadow-lg transition-all duration-300 hover:border-blue-500/30 hover:shadow-xl"
                 >
-                  <div className="absolute inset-0 bg-gradient-to-br from-brand-gold/5 to-transparent opacity-0 transition-opacity duration-300 group-hover:opacity-100" />
+                  <div className="absolute inset-0 bg-gradient-to-br from-blue-500/5 to-transparent opacity-0 transition-opacity duration-300 group-hover:opacity-100" />
                   
                   <div className="relative flex items-start gap-4">
                     <div className={`flex h-14 w-14 shrink-0 items-center justify-center rounded-xl bg-gradient-to-br ${info.color} shadow-lg transition-transform duration-300 group-hover:scale-110`}>
@@ -249,7 +249,7 @@ export function Contact({ onBack }: ContactProps) {
                     </div>
                   </div>
 
-                  <div className="absolute -right-6 -top-6 h-20 w-20 rounded-full bg-brand-gold/10 opacity-50 transition-all duration-300 group-hover:bg-brand-gold/20" />
+                  <div className="absolute -right-6 -top-6 h-20 w-20 rounded-full bg-blue-500/10 opacity-50 transition-all duration-300 group-hover:bg-blue-500/20" />
                 </div>
               )
             })}
@@ -257,9 +257,9 @@ export function Contact({ onBack }: ContactProps) {
 
           {/* Contact Form */}
           <div ref={formRef} className="relative">
-            <div className="absolute -inset-4 bg-gradient-to-r from-brand-gold/20 to-brand-moss/20 rounded-3xl opacity-60 -z-10" />
+            <div className="absolute -inset-4 bg-gradient-to-r from-brand-azure/20 to-brand-moss/20 rounded-3xl opacity-60 -z-10" />
             
-            <div className="relative overflow-hidden rounded-3xl border border-brand-gold/20 bg-white/90 p-8 shadow-2xl sm:p-10">
+            <div className="relative overflow-hidden rounded-3xl border border-brand-azure/20 bg-white/90 p-8 shadow-2xl sm:p-10">
               <h3 className="mb-6 font-display text-3xl font-black text-brand-deep">
                 Send us a Message
               </h3>
@@ -273,7 +273,7 @@ export function Contact({ onBack }: ContactProps) {
                     <input
                       type="text"
                       placeholder="John"
-                      className="w-full rounded-xl border-2 border-brand-deep/10 bg-white px-4 py-3 text-brand-deep transition-all duration-300 placeholder:text-brand-forest/40 focus:border-brand-gold/50 focus:outline-none focus:ring-4 focus:ring-brand-gold/10"
+                      className="w-full rounded-xl border-2 border-brand-deep/10 bg-white px-4 py-3 text-brand-deep transition-all duration-300 placeholder:text-brand-forest/40 focus:border-blue-500/50 focus:outline-none focus:ring-4 focus:ring-blue-500/10"
                     />
                   </div>
                   <div>
@@ -283,7 +283,7 @@ export function Contact({ onBack }: ContactProps) {
                     <input
                       type="text"
                       placeholder="Doe"
-                      className="w-full rounded-xl border-2 border-brand-deep/10 bg-white px-4 py-3 text-brand-deep transition-all duration-300 placeholder:text-brand-forest/40 focus:border-brand-gold/50 focus:outline-none focus:ring-4 focus:ring-brand-gold/10"
+                      className="w-full rounded-xl border-2 border-brand-deep/10 bg-white px-4 py-3 text-brand-deep transition-all duration-300 placeholder:text-brand-forest/40 focus:border-blue-500/50 focus:outline-none focus:ring-4 focus:ring-blue-500/10"
                     />
                   </div>
                 </div>
@@ -295,7 +295,7 @@ export function Contact({ onBack }: ContactProps) {
                   <input
                     type="email"
                     placeholder="john.doe@example.com"
-                    className="w-full rounded-xl border-2 border-brand-deep/10 bg-white px-4 py-3 text-brand-deep transition-all duration-300 placeholder:text-brand-forest/40 focus:border-brand-gold/50 focus:outline-none focus:ring-4 focus:ring-brand-gold/10"
+                    className="w-full rounded-xl border-2 border-brand-deep/10 bg-white px-4 py-3 text-brand-deep transition-all duration-300 placeholder:text-brand-forest/40 focus:border-blue-500/50 focus:outline-none focus:ring-4 focus:ring-blue-500/10"
                   />
                 </div>
 
@@ -306,7 +306,7 @@ export function Contact({ onBack }: ContactProps) {
                   <input
                     type="tel"
                     placeholder="+XXX XXX XXXX"
-                    className="w-full rounded-xl border-2 border-brand-deep/10 bg-white px-4 py-3 text-brand-deep transition-all duration-300 placeholder:text-brand-forest/40 focus:border-brand-gold/50 focus:outline-none focus:ring-4 focus:ring-brand-gold/10"
+                    className="w-full rounded-xl border-2 border-brand-deep/10 bg-white px-4 py-3 text-brand-deep transition-all duration-300 placeholder:text-brand-forest/40 focus:border-blue-500/50 focus:outline-none focus:ring-4 focus:ring-blue-500/10"
                   />
                 </div>
 
@@ -314,7 +314,7 @@ export function Contact({ onBack }: ContactProps) {
                   <label className="mb-2 block text-sm font-bold text-brand-deep">
                     Service Interest
                   </label>
-                  <select className="w-full rounded-xl border-2 border-brand-deep/10 bg-white px-4 py-3 text-brand-deep transition-all duration-300 focus:border-brand-gold/50 focus:outline-none focus:ring-4 focus:ring-brand-gold/10">
+                  <select className="w-full rounded-xl border-2 border-brand-deep/10 bg-white px-4 py-3 text-brand-deep transition-all duration-300 focus:border-blue-500/50 focus:outline-none focus:ring-4 focus:ring-blue-500/10">
                     <option>Facilities Management</option>
                     <option>Home Solutions</option>
                     <option>Hospitality Services</option>
@@ -332,34 +332,34 @@ export function Contact({ onBack }: ContactProps) {
                   <textarea
                     rows={5}
                     placeholder="Tell us about your needs..."
-                    className="w-full rounded-xl border-2 border-brand-deep/10 bg-white px-4 py-3 text-brand-deep transition-all duration-300 placeholder:text-brand-forest/40 focus:border-brand-gold/50 focus:outline-none focus:ring-4 focus:ring-brand-gold/10 resize-none"
+                    className="w-full rounded-xl border-2 border-brand-deep/10 bg-white px-4 py-3 text-brand-deep transition-all duration-300 placeholder:text-brand-forest/40 focus:border-blue-500/50 focus:outline-none focus:ring-4 focus:ring-blue-500/10 resize-none"
                   />
                 </div>
 
                 <Button
                   type="submit"
-                  className="submit-button group relative w-full overflow-hidden rounded-xl bg-gradient-to-r from-brand-gold via-brand-sand to-brand-gold py-6 font-black uppercase tracking-wider text-brand-deep shadow-lg transition-all duration-300 hover:shadow-2xl hover:shadow-brand-gold/40"
+                  className="submit-button group relative w-full overflow-hidden rounded-xl bg-gradient-to-r from-blue-500 via-blue-400 to-blue-500 py-6 font-black uppercase tracking-wider text-white shadow-lg transition-all duration-300 hover:shadow-2xl hover:shadow-blue-500/40"
                 >
                   <span className="relative z-10 flex items-center justify-center gap-2">
                     Send Message
                     <Send className="h-5 w-5 transition-transform group-hover:translate-x-1" />
                   </span>
-                  <div ref={buttonHoverRef} className="absolute inset-0 bg-gradient-to-r from-brand-sand to-brand-gold opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
+                  <div ref={buttonHoverRef} className="absolute inset-0 bg-gradient-to-r from-blue-400 to-blue-500 opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
                 </Button>
               </form>
 
               {/* Decorative elements */}
-              <div className="absolute -right-10 -top-10 h-32 w-32 rounded-full bg-brand-gold/20 opacity-50" />
+              <div className="absolute -right-10 -top-10 h-32 w-32 rounded-full bg-blue-500/20 opacity-50" />
               <div className="absolute -bottom-10 -left-10 h-32 w-32 rounded-full bg-brand-moss/20 opacity-50" />
             </div>
           </div>
         </div>
 
         {/* Map Section Placeholder */}
-        <div ref={mapRef} className="mt-16 overflow-hidden rounded-3xl border border-brand-gold/20 bg-gradient-to-br from-brand-gold/10 via-white/50 to-brand-sand/10 shadow-2xl">
+        <div ref={mapRef} className="mt-16 overflow-hidden rounded-3xl border border-blue-500/20 bg-gradient-to-br from-blue-500/10 via-white/50 to-blue-400/10 shadow-2xl">
           <div className="flex h-96 items-center justify-center">
             <div className="text-center">
-              <MapPin className="mx-auto mb-4 h-16 w-16 text-brand-gold" strokeWidth={1.5} />
+              <MapPin className="mx-auto mb-4 h-16 w-16 text-blue-500" strokeWidth={1.5} />
               <h3 className="mb-2 font-display text-2xl font-bold text-brand-deep">
                 Map Location
               </h3>
