@@ -215,7 +215,7 @@ export function Navbar({ onContactClick, onServicesClick }: NavbarProps) {
           <img 
             src="/logo.svg" 
             alt="MahhabFM Logo" 
-            className="h-[130x] w-[130px] sm:h-48 sm:w-48 object-contain"
+            className="h-[130px] w-[130px] sm:h-48 sm:w-48 object-contain"
           />
         </a>
 

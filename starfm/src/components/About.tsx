@@ -320,47 +320,56 @@ export function About() {
   }, [])
 
   return (
-    <section ref={sectionRef} id="about" className="relative overflow-hidden bg-gradient-to-br from-white via-brand-cream/20 to-brand-sand/30 py-20 sm:py-24 lg:py-32">
-      {/* Background decorations */}
+    <section ref={sectionRef} id="about" className="relative overflow-hidden py-24 sm:py-32 lg:py-40" style={{
+      backgroundImage: `
+        radial-gradient(circle at 15% 20%, rgba(176, 189, 209, 0.35), transparent 45%),
+        radial-gradient(circle at 82% 8%, rgba(160, 176, 201, 0.25), transparent 55%),
+        linear-gradient(180deg, #f7f8fb 0%, #edf1f7 60%, #ffffff 100%)
+      `,
+      backgroundAttachment: 'fixed'
+    }}>
+      {/* Minimal Background decorations */}
       <div className="pointer-events-none absolute inset-0">
-        <div ref={bgCircle1Ref} className="absolute left-0 top-1/4 h-96 w-96 rounded-full bg-brand-azure/10 opacity-50" />
-        <div ref={bgCircle2Ref} className="absolute right-0 bottom-1/4 h-96 w-96 rounded-full bg-brand-moss/10 opacity-50" />
-        <div className="absolute inset-0 bg-[linear-gradient(to_right,#80808008_1px,transparent_1px),linear-gradient(to_bottom,#80808008_1px,transparent_1px)] bg-[size:24px_24px]" />
+        <div ref={bgCircle1Ref} className="absolute -left-32 top-0 h-[500px] w-[500px] rounded-full bg-gradient-to-br from-brand-azure/5 to-transparent blur-3xl" />
+        <div ref={bgCircle2Ref} className="absolute -right-32 bottom-0 h-[500px] w-[500px] rounded-full bg-gradient-to-tl from-brand-sand/5 to-transparent blur-3xl" />
       </div>
 
-      <div className="container relative px-4 sm:px-6">
-        <div className="grid gap-12 lg:grid-cols-2 lg:gap-16 items-center">
+      <div className="container relative mx-auto max-w-7xl px-6 sm:px-8 lg:px-12">
+        <div className="grid gap-16 lg:grid-cols-2 lg:gap-20 items-center">
           {/* Left Content */}
-          <div ref={leftContentRef}>
-            <div ref={badgeRef} className="mb-6 inline-flex items-center gap-2 rounded-full border border-brand-azure/30 bg-brand-azure/10 px-4 py-2 bg-opacity-50">
-              <div className="h-2 w-2 animate-pulse rounded-full bg-brand-azure" />
-              <span className="text-xs font-bold uppercase tracking-[0.15em] text-brand-azure">
+          <div ref={leftContentRef} className="space-y-8">
+            <div ref={badgeRef} className="inline-flex items-center gap-2 rounded-full bg-brand-azure/5 px-4 py-2">
+              <div className="h-1.5 w-1.5 rounded-full bg-brand-azure" />
+              <span className="text-xs font-semibold uppercase tracking-wider text-brand-azure">
                 About Us
               </span>
             </div>
 
-            <h2 ref={titleRef} className="mb-6 font-display text-4xl font-black leading-tight text-brand-deep sm:text-5xl lg:text-6xl">
+            <h2 ref={titleRef} className="font-display text-4xl font-bold leading-[1.1] text-brand-deep sm:text-5xl lg:text-6xl">
               Your Trusted Partner in
-              <span className="block gradient-text mt-2">
+              <span className="mt-2 block bg-gradient-to-r from-brand-azure to-brand-sand bg-clip-text text-transparent">
                 Facilities Excellence
               </span>
             </h2>
 
-            <div ref={descriptionRef} className="space-y-4">
-              <p className="text-lg leading-relaxed text-brand-forest/80">
-                [Content will be added here - Company introduction and mission statement]
+            <div ref={descriptionRef} className="space-y-5">
+              <p className="text-lg leading-relaxed text-brand-forest/70">
+                We deliver comprehensive facilities management solutions that transform spaces into efficient, sustainable environments where businesses thrive.
               </p>
-              <p className="text-base leading-relaxed text-brand-forest/70">
-                [Content will be added here - Brief history and values]
+              <p className="text-base leading-relaxed text-brand-forest/60">
+                With years of experience and a commitment to excellence, we partner with organizations to maintain, optimize, and enhance their facilities with precision and care.
               </p>
             </div>
 
             {/* CTA Button */}
             <button
               ref={buttonRef}
-              className="mt-8 rounded-full bg-gradient-to-r from-brand-azure to-brand-sand px-8 py-4 font-bold uppercase tracking-wide text-brand-deep shadow-lg transition-all duration-300 hover:shadow-2xl hover:shadow-brand-azure/40"
+              className="group inline-flex items-center gap-2 rounded-full bg-brand-deep px-8 py-4 font-semibold text-white shadow-sm transition-all duration-300 hover:bg-brand-deep/90 hover:shadow-md"
             >
-              Learn More About Us
+              <span>Learn More About Us</span>
+              <svg className="h-4 w-4 transition-transform duration-300 group-hover:translate-x-1" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17 8l4 4m0 0l-4 4m4-4H3" />
+              </svg>
             </button>
           </div>
 
@@ -374,41 +383,33 @@ export function About() {
                   ref={(el) => {
                     if (el) featuresRef.current[index] = el
                   }}
-                  className="group relative overflow-hidden rounded-2xl border border-brand-deep/10 bg-white/80 bg-opacity-50 p-6 shadow-lg transition-all duration-300 hover:border-brand-azure/30 hover:shadow-xl"
+                  className="group relative rounded-2xl border border-brand-deep/5 bg-white p-8 shadow-sm transition-all duration-300 hover:border-brand-azure/20 hover:shadow-md"
                 >
-                  {/* Background gradient on hover */}
-                  <div className="absolute inset-0 bg-gradient-to-br from-brand-azure/5 to-transparent opacity-0 transition-opacity duration-300 group-hover:opacity-100" />
-                  
-                  <div className="relative">
-                    <div className="mb-4 inline-flex h-14 w-14 items-center justify-center rounded-xl bg-gradient-to-br from-brand-azure/20 to-brand-sand/20 transition-transform duration-300 group-hover:scale-110">
-                      <Icon className="h-7 w-7 text-brand-azure" strokeWidth={2} />
-                    </div>
-                    
-                    <h3 className="mb-2 font-display text-xl font-bold text-brand-deep">
-                      {feature.title}
-                    </h3>
-                    
-                    <p className="text-sm leading-relaxed text-brand-forest/70">
-                      {feature.description}
-                    </p>
+                  <div className="mb-5 inline-flex h-12 w-12 items-center justify-center rounded-xl bg-brand-azure/10 transition-all duration-300 group-hover:bg-brand-azure/15 group-hover:scale-110">
+                    <Icon className="h-6 w-6 text-brand-azure" strokeWidth={2} />
                   </div>
-
-                  {/* Decorative corner accent */}
-                  <div className="absolute -right-6 -top-6 h-20 w-20 rounded-full bg-brand-azure/10 opacity-50 transition-all duration-300 group-hover:bg-brand-azure/20" />
+                  
+                  <h3 className="mb-2 font-display text-lg font-semibold text-brand-deep">
+                    {feature.title}
+                  </h3>
+                  
+                  <p className="text-sm leading-relaxed text-brand-forest/60">
+                    {feature.description}
+                  </p>
                 </div>
               )
             })}
           </div>
         </div>
 
-        {/* Bottom Stats or Additional Content */}
-        <div ref={bottomSectionRef} className="mt-16 rounded-3xl border border-brand-azure/20 bg-gradient-to-br from-brand-azure/10 via-white/50 to-brand-sand/10 p-8 sm:p-12">
+        {/* Bottom Stats Section */}
+        <div ref={bottomSectionRef} className="mt-24 rounded-3xl border border-brand-deep/5 bg-gradient-to-br from-brand-azure/5 via-transparent to-brand-sand/5 p-12 sm:p-16">
           <div className="text-center">
-            <h3 className="mb-4 font-display text-2xl font-black text-brand-deep sm:text-3xl">
-              [Additional Content Section]
+            <h3 className="mb-4 font-display text-3xl font-bold text-brand-deep sm:text-4xl">
+              Delivering Excellence Every Day
             </h3>
-            <p className="mx-auto max-w-2xl text-base leading-relaxed text-brand-forest/70">
-              [Content will be added here - Additional information, certifications, or achievements]
+            <p className="mx-auto max-w-2xl text-base leading-relaxed text-brand-forest/60">
+              Our commitment to quality and innovation drives us to exceed expectations and build lasting partnerships with every client we serve.
             </p>
           </div>
         </div>

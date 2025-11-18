@@ -1014,9 +1014,11 @@ export function ServicesPage({ onBack, onContactClick }: ServicesPageProps) {
           </button>
 
           <div className="flex items-center gap-3">
-            <div className="flex h-10 w-10 items-center justify-center rounded-xl bg-gradient-to-br from-brand-azure to-brand-sand shadow-lg">
-              <span className="font-display text-lg font-black text-brand-deep">SF</span>
-            </div>
+            <img 
+              src="/logo.svg" 
+              alt="MahhabFM Logo" 
+              className="h-[70px] w-[70px] sm:h-20 sm:w-20 object-contain"
+            />
             <span className="hidden font-display text-xl font-black text-brand-deep sm:block">MahhabFM</span>
           </div>
         </div>

@@ -195,14 +195,14 @@ export function Footer({ onContactClick, onServicesClick }: FooterProps) {
               </li>
               <li className="flex items-center gap-3">
                 <Phone className="h-5 w-5 shrink-0 text-brand-gold" />
-                <a href="tel:+97112345678" className="text-sm text-brand-cream/80 transition-colors hover:text-brand-gold">
-                  +971 1234 5678
+                <a href="tel:00966547770046" className="text-sm text-brand-cream/80 transition-colors hover:text-brand-gold">
+                  00966 547770046
                 </a>
               </li>
               <li className="flex items-center gap-3">
                 <Mail className="h-5 w-5 shrink-0 text-brand-gold" />
-                <a href="mailto:info@mahhabfm.com" className="text-sm text-brand-cream/80 transition-colors hover:text-brand-gold">
-                  info@mahhabfm.com
+                <a href="mailto:Info@mahhab.com" className="text-sm text-brand-cream/80 transition-colors hover:text-brand-gold">
+                  Info@mahhab.com
                 </a>
               </li>
             </ul>

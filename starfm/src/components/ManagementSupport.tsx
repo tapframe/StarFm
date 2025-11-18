@@ -117,7 +117,7 @@ export function ManagementSupport({ onContactClick }: ManagementSupportProps) {
         ref={headerRef}
         className="relative w-full overflow-hidden bg-cover bg-center bg-no-repeat py-24 lg:py-32"
         style={{
-          backgroundImage: "url('https://w.wallhaven.cc/full/2y/wallhaven-2yzj9x.png')",
+          backgroundImage: "url('https://w.wallhaven.cc/full/dp/wallhaven-dplwll.jpg')",
           backgroundAttachment: "fixed"
         }}
       >

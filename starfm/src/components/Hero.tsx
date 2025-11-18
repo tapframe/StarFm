@@ -2,7 +2,7 @@ import { useState, useEffect, useRef } from "react"
 import gsap from "gsap"
 import { ScrollTrigger } from "gsap/ScrollTrigger"
 import { Button } from "@/components/ui/button"
-import { ArrowRight, Building2, Home, Hotel, Trees, Wrench, Shield } from "lucide-react"
+import { ArrowRight, Building2, Home, Hotel, Trees, Wrench, Shield, FileText, Monitor, Users, UserCheck, Truck, Headphones } from "lucide-react"
 
 gsap.registerPlugin(ScrollTrigger)
 
@@ -59,6 +59,54 @@ const heroSlides = [
     icon: Shield,
     image: "https://images.unsplash.com/photo-1581578731548-c64695cc6952?w=1920&q=90",
     stat: { value: "2,000+", label: "Treatments Done" }
+  },
+  {
+    title: "CR Formation & Renewal",
+    subtitle: "Complete Registration Services",
+    description: "Commercial registration services including formation, amendments, and timely renewals for your business",
+    icon: FileText,
+    image: "https://images.unsplash.com/photo-1554224155-8d04cb21cd6c?w=1920&q=90",
+    stat: { value: "1,500+", label: "CRs Processed" }
+  },
+  {
+    title: "Qiwa Portal Services",
+    subtitle: "Labor Compliance Made Easy",
+    description: "Full management of Qiwa platform services for labor compliance and workforce management",
+    icon: Monitor,
+    image: "https://images.unsplash.com/photo-1551434678-e076c223a692?w=1920&q=90",
+    stat: { value: "100%", label: "Compliance Rate" }
+  },
+  {
+    title: "Candidate Sourcing",
+    subtitle: "Talent Acquisition Experts",
+    description: "Professional sourcing and shortlisting of qualified candidates from our active database",
+    icon: Users,
+    image: "https://images.unsplash.com/photo-1552664730-d307ca884978?w=1920&q=90",
+    stat: { value: "5,000+", label: "Candidates Ready" }
+  },
+  {
+    title: "Muqeem Services",
+    subtitle: "Visa & Residency Simplified",
+    description: "Comprehensive Muqeem portal services for visa processing, residency permits, and renewals",
+    icon: UserCheck,
+    image: "https://images.unsplash.com/photo-1554224155-6726b3ff858f?w=1920&q=90",
+    stat: { value: "2,000+", label: "Visas Processed" }
+  },
+  {
+    title: "Training Programs",
+    subtitle: "Employee Development",
+    description: "Onboarding and training programs designed specifically for new employees and team members",
+    icon: Headphones,
+    image: "https://images.unsplash.com/photo-1524178232363-1fb2b075b655?w=1920&q=90",
+    stat: { value: "500+", label: "Employees Trained" }
+  },
+  {
+    title: "Fleet Services",
+    subtitle: "Complete Fleet Management",
+    description: "Comprehensive fleet management including maintenance, tracking, and operational support",
+    icon: Truck,
+    image: "https://images.unsplash.com/photo-1519003722824-194d4455a60c?w=1920&q=90",
+    stat: { value: "200+", label: "Vehicles Managed" }
   }
 ]
 

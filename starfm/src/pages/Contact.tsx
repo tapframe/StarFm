@@ -22,25 +22,25 @@ export function Contact({ onBack }: ContactProps) {
     {
       icon: Phone,
       title: "Phone",
-      details: ["+XXX XXX XXXX", "+XXX XXX XXXX"],
+      details: ["00966 547770046"],
       color: "from-blue-500 to-cyan-500"
     },
     {
       icon: Mail,
       title: "Email",
-      details: ["info@mahhabfm.com", "support@mahhabfm.com"],
+      details: ["Info@mahhab.com"],
       color: "from-purple-500 to-pink-500"
     },
     {
       icon: MapPin,
       title: "Location",
-      details: ["[Address Line 1]", "[City, Country]"],
+      details: ["Jeddah, Saudi Arabia"],
       color: "from-emerald-500 to-teal-500"
     },
     {
       icon: Clock,
       title: "Working Hours",
-      details: ["Mon - Fri: 8:00 AM - 6:00 PM", "Sat: 9:00 AM - 2:00 PM"],
+      details: ["Mon - Thu: 8:00 AM - 6:00 PM", "Sat: 9:00 AM - 2:00 PM", "Friday: Closed"],
       color: "from-orange-500 to-red-500"
     }
   ]
@@ -184,9 +184,11 @@ export function Contact({ onBack }: ContactProps) {
           </button>
 
           <div className="flex items-center gap-3">
-            <div className="flex h-10 w-10 items-center justify-center rounded-xl bg-gradient-to-br from-blue-500 to-blue-400 shadow-lg">
-              <span className="font-display text-lg font-black text-brand-deep">SF</span>
-            </div>
+            <img 
+              src="/logo.svg" 
+              alt="MahhabFM Logo" 
+              className="h-[70px] w-[70px] sm:h-20 sm:w-20 object-contain"
+            />
             <span className="hidden font-display text-xl font-black text-brand-deep sm:block">MahhabFM</span>
           </div>
         </div>

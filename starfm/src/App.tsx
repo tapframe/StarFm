@@ -7,6 +7,7 @@ import { ServiceTypes } from "@/components/ServiceTypes"
 import { ManagementSupport } from "@/components/ManagementSupport"
 import { Stats } from "@/components/Stats"
 import { Services } from "@/components/Services"
+import { TrustedPartner } from "@/components/TrustedPartner"
 import { Footer } from "@/components/Footer"
 import { Contact } from "@/pages/Contact"
 import { ServicesPage } from "@/pages/ServicesPage"
@@ -108,6 +109,10 @@ function App() {
               <Services onServicesPageClick={handleServicesClick} />
             </div>
           </main>
+
+          {/* New Hero Section Before Footer */}
+          <TrustedPartner onServicesClick={handleServicesClick} onContactClick={handleContactClick} />
+
           <Footer onContactClick={handleContactClick} onServicesClick={handleServicesClick} />
         </div>
       ) : currentPage === "contact" ? (
