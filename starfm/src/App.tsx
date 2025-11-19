@@ -12,12 +12,14 @@ import { TrustedPartner } from "@/components/TrustedPartner"
 import { Footer } from "@/components/Footer"
 import { Contact } from "@/pages/Contact"
 import { ServicesPage } from "@/pages/ServicesPage"
+import { LoadingOverlay } from "@/components/ui/loading-overlay"
 import "./App.css"
 
 function App() {
-  const { i18n } = useTranslation()
+  const { i18n, t } = useTranslation()
   const [currentPage, setCurrentPage] = useState<"home" | "contact" | "services">("home")
   const [prevPage, setPrevPage] = useState<"home" | "contact" | "services">("home")
+  const [isInitialLoading, setIsInitialLoading] = useState(true)
   const homeRef = useRef<HTMLDivElement>(null)
   const contactRef = useRef<HTMLDivElement>(null)
   const servicesRef = useRef<HTMLDivElement>(null)
@@ -28,6 +30,30 @@ function App() {
     document.documentElement.dir = dir
     document.documentElement.lang = i18n.language
   }, [i18n.language])
+
+  // Handle initial loading
+  useEffect(() => {
+    const startTime = Date.now()
+    const minLoadTime = 2000 // Minimum 2 seconds
+
+    // Simulate loading resources
+    const handleLoad = () => {
+      const elapsedTime = Date.now() - startTime
+      const remainingTime = Math.max(0, minLoadTime - elapsedTime)
+      
+      setTimeout(() => {
+        setIsInitialLoading(false)
+      }, remainingTime)
+    }
+
+    // Check if page is already loaded
+    if (document.readyState === 'complete') {
+      handleLoad()
+    } else {
+      window.addEventListener('load', handleLoad)
+      return () => window.removeEventListener('load', handleLoad)
+    }
+  }, [])
 
   const handleContactClick = () => {
     window.scrollTo({ top: 0, behavior: "smooth" })
@@ -96,8 +122,14 @@ function App() {
   }, [currentPage])
 
   return (
-    <div className="min-h-screen">
-      {currentPage === "home" ? (
+    <>
+      <LoadingOverlay 
+        isLoading={isInitialLoading} 
+        message={t('loading.initialMessage')}
+        subMessage={t('loading.initialSubtitle')}
+      />
+      <div className="min-h-screen">
+        {currentPage === "home" ? (
         <div ref={homeRef} key="home">
           <Navbar onContactClick={handleContactClick} onServicesClick={handleServicesClick} />
           <main className="space-y-0 pb-12 pt-20 sm:pb-16 sm:pt-24 lg:pb-24 lg:pt-24">
@@ -133,7 +165,8 @@ function App() {
           <ServicesPage onBack={handleBackHome} onContactClick={handleContactClick} />
         </div>
       )}
-    </div>
+      </div>
+    </>
   )
 }
 

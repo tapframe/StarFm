@@ -4,7 +4,12 @@
     "programs": "Programs",
     "services": "Our Services",
     "contactUs": "Contact Us",
-    "backToHome": "Back to Home"
+    "backToHome": "Back to Home",
+    "languageLoadingMessage": "Switching language..."
+  },
+  "loading": {
+    "initialMessage": "Welcome to Mahhab",
+    "initialSubtitle": "Facility Management"
   },
   "hero": {
     "exploreServices": "Explore Services",

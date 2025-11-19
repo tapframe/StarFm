@@ -4,7 +4,12 @@
     "programs": "البرامج",
     "services": "خدماتنا",
     "contactUs": "اتصل بنا",
-    "backToHome": "العودة للرئيسية"
+    "backToHome": "العودة للرئيسية",
+    "languageLoadingMessage": "جاري تبديل اللغة..."
+  },
+  "loading": {
+    "initialMessage": "مرحباً بكم في مهب",
+    "initialSubtitle": "إدارة المرافق"
   },
   "hero": {
     "exploreServices": "استكشف الخدمات",

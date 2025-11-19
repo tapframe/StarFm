@@ -3,6 +3,7 @@ import { useTranslation } from "react-i18next"
 import gsap from "gsap"
 import { Button } from "@/components/ui/button"
 import { Menu, X, ArrowLeft } from "lucide-react"
+import { LoadingOverlay } from "@/components/ui/loading-overlay"
 
 interface NavbarProps {
   onContactClick?: () => void
@@ -17,9 +18,28 @@ export function Navbar({ onContactClick, onServicesClick, isPageView, onBack }: 
   const [scrolled, setScrolled] = useState(false)
   const [navbarVisible, setNavbarVisible] = useState(true)
   const [lastScrollY, setLastScrollY] = useState(0)
+  const [languageLoading, setLanguageLoading] = useState(false)
 
-  const changeLanguage = (lng: string) => {
-    i18n.changeLanguage(lng)
+  const changeLanguage = async (lng: string) => {
+    if (lng === i18n.language) return
+    setLanguageLoading(true)
+    const startTime = Date.now()
+    const minDisplayTime = 2000 // Minimum 2 seconds
+    
+    try {
+      await i18n.changeLanguage(lng)
+    } catch (error) {
+      console.error("Failed to change language:", error)
+    } finally {
+      // Calculate remaining time to reach minimum display time
+      const elapsedTime = Date.now() - startTime
+      const remainingTime = Math.max(0, minDisplayTime - elapsedTime)
+      
+      // Wait for remaining time before hiding overlay
+      setTimeout(() => {
+        setLanguageLoading(false)
+      }, remainingTime)
+    }
   }
   const navRef = useRef<HTMLElement>(null)
   const logoRef = useRef<HTMLAnchorElement>(null)
@@ -198,7 +218,12 @@ export function Navbar({ onContactClick, onServicesClick, isPageView, onBack }: 
   ]
 
   return (
-    <nav
+    <>
+      <LoadingOverlay
+        isLoading={languageLoading}
+        message={t('nav.languageLoadingMessage')}
+      />
+      <nav
       ref={navRef}
       className={`fixed left-0 right-0 top-0 z-50 transition-all duration-500 ${
         navbarVisible ? "translate-y-0 opacity-100" : "-translate-y-[150%] opacity-0 pointer-events-none"
@@ -406,5 +431,6 @@ export function Navbar({ onContactClick, onServicesClick, isPageView, onBack }: 
         </div>
       )}
     </nav>
+    </>
   )
 }

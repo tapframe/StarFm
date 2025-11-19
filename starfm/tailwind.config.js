@@ -24,6 +24,17 @@ export default {
         md: 'calc(var(--radius) - 2px)',
         sm: 'calc(var(--radius) - 4px)'
       },
+      animation: {
+        'pulse-slow': 'pulse 3s cubic-bezier(0.4, 0, 0.6, 1) infinite',
+        'spin-reverse': 'spin 4s linear infinite reverse',
+        'float': 'float 3s ease-in-out infinite',
+      },
+      keyframes: {
+        float: {
+          '0%, 100%': { transform: 'translateY(0px)' },
+          '50%': { transform: 'translateY(-10px)' },
+        },
+      },
       backgroundImage: {
         'hero-glow': 'linear-gradient(140deg, hsla(var(--brand-forest),0.14) 0%, hsla(var(--brand-azure),0.28) 45%, hsla(var(--brand-cream),0.6) 100%)',
         'card-lux': 'linear-gradient(135deg, hsla(var(--brand-azure),0.25), hsla(var(--brand-forest),0.2))',

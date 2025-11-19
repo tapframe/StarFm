@@ -497,7 +497,7 @@ export function Services({ onServicesPageClick }: ServicesProps) {
             </button>
 
             {/* Dots */}
-            <div className="flex gap-2">
+            <div className="flex items-center gap-2">
               {services.map((_, idx) => (
                 <button
                   key={idx}
