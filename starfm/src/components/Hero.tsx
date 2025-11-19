@@ -400,17 +400,17 @@ export function Hero({ onServicesClick, onContactClick }: HeroProps) {
           </div>
 
           {/* Subtitle */}
-          <p ref={subtitleRef} className="mb-2 text-white/80 font-semibold text-sm sm:text-base uppercase tracking-[0.2em]">
+          <p ref={subtitleRef} className="mb-2 text-white/80 font-semibold text-sm sm:text-base uppercase tracking-[0.2em] hero-text-shadow">
             {currentData.subtitle}
           </p>
 
           {/* Title */}
-          <h1 ref={titleRef} className="mb-4 font-sans text-4xl sm:text-5xl md:text-6xl lg:text-6xl font-bold text-white leading-tight tracking-normal">
+          <h1 ref={titleRef} className="mb-4 font-sans text-4xl sm:text-5xl md:text-6xl lg:text-6xl font-bold text-white leading-tight tracking-normal hero-text-shadow">
             {currentData.title}
           </h1>
 
           {/* Description */}
-          <p ref={descriptionRef} className="mb-6 text-base sm:text-base lg:text-lg text-white/80 font-normal leading-relaxed max-w-2xl">
+          <p ref={descriptionRef} className="mb-6 text-base sm:text-base lg:text-lg text-white/80 font-normal leading-relaxed max-w-2xl hero-text-shadow">
             {currentData.description}
           </p>
 
