@@ -1,0 +1,21 @@
+module.exports = {
+  apps: [
+    {
+      name: 'starfm-frontend',
+      script: 'npm run dev',
+      cwd: '/root/StarFm/starfm',
+      instances: 1,
+      autorestart: true,
+      watch: false,
+      max_memory_restart: '1G',
+      env: {
+        NODE_ENV: 'development',
+        PORT: 5173
+      },
+      error_file: '/var/log/pm2/starfm-frontend-error.log',
+      out_file: '/var/log/pm2/starfm-frontend-out.log',
+      log_file: '/var/log/pm2/starfm-frontend.log',
+      time: true
+    }
+  ]
+};
