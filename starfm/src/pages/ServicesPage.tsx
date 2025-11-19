@@ -1,8 +1,9 @@
 import { useEffect, useRef, useMemo, useCallback } from "react"
 import gsap from "gsap"
 import { ScrollTrigger } from "gsap/ScrollTrigger"
-import { ArrowLeft, Building2, Home, Hotel, Trees, Wrench, Shield, Briefcase, CheckCircle2, ArrowRight, Star, Clock, Award } from "lucide-react"
+import { Building2, Home, Hotel, Trees, Wrench, Shield, Briefcase, CheckCircle2, ArrowRight, Star, Clock, Award } from "lucide-react"
 import { Button } from "@/components/ui/button"
+import { Navbar } from "@/components/Navbar"
 
 gsap.registerPlugin(ScrollTrigger)
 
@@ -13,8 +14,6 @@ interface ServicesPageProps {
 
 export function ServicesPage({ onBack, onContactClick }: ServicesPageProps) {
   const pageRef = useRef<HTMLDivElement>(null)
-  const headerRef = useRef<HTMLElement>(null)
-  const backButtonRef = useRef<HTMLButtonElement>(null)
   const pageHeaderRef = useRef<HTMLDivElement>(null)
   const badgeRef = useRef<HTMLDivElement>(null)
   const titleRef = useRef<HTMLHeadingElement>(null)
@@ -251,20 +250,6 @@ export function ServicesPage({ onBack, onContactClick }: ServicesPageProps) {
         animationsRef.current.push(anim)
       }
 
-      // Clean header slide down
-      if (headerRef.current) {
-        const anim = gsap.fromTo(headerRef.current,
-          { y: -30, opacity: 0 },
-          { 
-            y: 0, 
-            opacity: 1, 
-            duration: 0.6,
-            ease: "power2.out",
-            force3D: true
-          }
-        )
-        animationsRef.current.push(anim)
-      }
 
       // Subtle page header stagger
       const headerTl = gsap.timeline({ delay: 0.1 })
@@ -1001,31 +986,11 @@ export function ServicesPage({ onBack, onContactClick }: ServicesPageProps) {
         <div className="absolute inset-0 bg-[linear-gradient(to_right,#80808008_1px,transparent_1px),linear-gradient(to_bottom,#80808008_1px,transparent_1px)] bg-[size:24px_24px]" />
       </div>
 
-      {/* Header */}
-      <header ref={headerRef} className="sticky top-0 z-50 border-b border-brand-azure/20 bg-white/80 backdrop-blur-sm">
-        <div className="container mx-auto flex h-20 items-center justify-between px-4 sm:px-6">
-          <button
-            ref={backButtonRef}
-            onClick={onBack}
-            className="flex items-center gap-2 rounded-full border-2 border-brand-deep/10 bg-white px-4 py-2 font-bold text-brand-deep transition-all duration-300 hover:border-brand-azure/30 hover:bg-brand-azure/10"
-          >
-            <ArrowLeft className="h-5 w-5" strokeWidth={2.5} />
-            Back to Home
-          </button>
-
-          <div className="flex items-center gap-3">
-            <img 
-              src="/logo.svg" 
-              alt="MahhabFM Logo" 
-              className="h-[70px] w-[70px] sm:h-20 sm:w-20 object-contain"
-            />
-            <span className="hidden font-display text-xl font-black text-brand-deep sm:block">MahhabFM</span>
-          </div>
-        </div>
-      </header>
+      {/* Navbar */}
+      <Navbar isPageView={true} onBack={onBack} />
 
       {/* Main Content */}
-      <div className="container relative mx-auto px-4 py-12 sm:px-6 sm:py-16 lg:py-24">
+      <div className="container relative mx-auto px-4 pt-24 pb-12 sm:px-6 sm:pt-28 sm:pb-16 lg:pt-32 lg:pb-24">
         {/* Page Header */}
         <div ref={pageHeaderRef} className="mb-16 text-center">
           <div ref={badgeRef} className="mb-6 inline-flex items-center gap-2 rounded-full border border-blue-500/30 bg-blue-500/10 px-4 py-2 bg-opacity-50">

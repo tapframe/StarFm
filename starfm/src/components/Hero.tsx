@@ -387,7 +387,7 @@ export function Hero({ onServicesClick, onContactClick }: HeroProps) {
       <div className="absolute inset-0 z-10 bg-[linear-gradient(to_right,#80808008_1px,transparent_1px),linear-gradient(to_bottom,#80808008_1px,transparent_1px)] bg-[size:40px_40px]" />
 
       {/* Content */}
-      <div className="container relative z-20 h-full flex flex-col justify-center px-4 sm:px-6 lg:px-8">
+      <div className="container relative z-20 h-full flex flex-col justify-center px-4 sm:px-6 lg:px-8 pb-16 sm:pb-0">
         <div ref={contentRef} className="max-w-4xl">
           {/* Icon */}
           <div ref={iconRef} className="mb-4 inline-flex">
@@ -455,7 +455,7 @@ export function Hero({ onServicesClick, onContactClick }: HeroProps) {
         </div>
 
         {/* Navigation Dots */}
-        <div className="absolute bottom-8 left-1/2 -translate-x-1/2 flex items-center gap-3">
+        <div className="absolute bottom-4 sm:bottom-8 left-1/2 -translate-x-1/2 flex items-center gap-3">
           {heroSlides.map((_, index) => (
             <button
               key={index}

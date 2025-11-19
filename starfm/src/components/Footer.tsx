@@ -102,10 +102,10 @@ export function Footer({ onContactClick, onServicesClick }: FooterProps) {
           {/* Brand Section */}
           <div ref={brandRef} className="lg:col-span-1">
             <div className="h-48 w-48 overflow-hidden -my-2">
-              <img 
-                src="/logo.svg" 
-                alt="MahhabFM Logo" 
-                className="h-full w-full object-cover object-center scale-125"
+              <img
+                src="/image.png"
+                alt="MahhabFM Logo"
+                className="h-full w-full object-contain"
               />
             </div>
             <p className="mt-6 mb-6 text-sm text-brand-cream/80">

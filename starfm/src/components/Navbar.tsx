@@ -1,14 +1,16 @@
 import { useState, useEffect, useRef } from "react"
 import gsap from "gsap"
 import { Button } from "@/components/ui/button"
-import { Menu, X } from "lucide-react"
+import { Menu, X, ArrowLeft } from "lucide-react"
 
 interface NavbarProps {
   onContactClick?: () => void
   onServicesClick?: () => void
+  isPageView?: boolean
+  onBack?: () => void
 }
 
-export function Navbar({ onContactClick, onServicesClick }: NavbarProps) {
+export function Navbar({ onContactClick, onServicesClick, isPageView, onBack }: NavbarProps) {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false)
   const [scrolled, setScrolled] = useState(false)
   const [navbarVisible, setNavbarVisible] = useState(true)
@@ -206,103 +208,127 @@ export function Navbar({ onContactClick, onServicesClick }: NavbarProps) {
       }`} />
       
       <div className="container mx-auto flex h-20 items-center justify-between px-4 sm:h-24 lg:px-6">
-        {/* Logo */}
-        <a
-          ref={logoRef}
-          href="#"
-          className="group relative flex items-center gap-2 transition-transform duration-300 hover:scale-105"
-        >
-          <img 
-            src="/logo.svg" 
-            alt="MahhabFM Logo" 
-            className="h-[130px] w-[130px] sm:h-48 sm:w-48 object-contain"
-          />
-        </a>
-
-        {/* Desktop Navigation Links */}
-        <div className="hidden items-center gap-8 lg:flex xl:gap-10">
-          {navItems.map((item, index) => (
-            <a
-              key={item.label}
-              ref={(el) => {
-                if (el) navItemsRef.current[index] = el
-              }}
-              href={item.href}
-              onClick={(e) => {
-                e.preventDefault();
-                const target = document.querySelector(item.href);
-                if (target) {
-                  target.scrollIntoView({ behavior: 'smooth', block: 'start' });
-                }
-              }}
-              className="group relative text-sm font-bold uppercase tracking-wide text-blue-600/70 transition-all duration-300 hover:text-blue-700"
+        {isPageView ? (
+          <>
+            {/* Page View: Back Button on Left */}
+            <button
+              ref={servicesButtonRef}
+              onClick={onBack}
+              className="flex items-center gap-2 rounded-full border-2 border-brand-deep/10 bg-white px-4 py-2 font-bold text-brand-deep transition-all duration-300 hover:border-blue-500/30 hover:bg-blue-500/10"
             >
-              <span className="relative z-10">{item.label}</span>
-              <span className="absolute -bottom-1 left-0 h-[3px] w-0 rounded-full bg-gradient-to-r from-blue-500 via-cyan-400 to-blue-500 transition-all duration-300 group-hover:w-full" />
-              <span className="absolute inset-0 -z-10 scale-0 rounded-lg bg-blue-500/10 transition-transform duration-300 group-hover:scale-100" />
+              <ArrowLeft className="h-5 w-5" strokeWidth={2.5} />
+              Back to Home
+            </button>
+
+
+            {/* Logo on Right */}
+            <img
+              src="/image.png"
+              alt="MahhabFM Logo"
+              className="h-20 w-20 sm:h-32 sm:w-32 object-contain"
+            />
+          </>
+        ) : (
+          <>
+            {/* Logo */}
+            <a
+              ref={logoRef}
+              href="#"
+              className="group relative flex items-center gap-2 transition-transform duration-300 hover:scale-105"
+            >
+              <img
+                src="/image.png"
+                alt="MahhabFM Logo"
+                className="h-20 w-20 sm:h-32 sm:w-32 object-contain"
+              />
             </a>
-          ))}
-          
-          {/* Services Link */}
-          <button
-            ref={servicesButtonRef}
-            onClick={onServicesClick}
-            className="group relative text-sm font-bold uppercase tracking-wide text-blue-600/70 transition-all duration-300 hover:text-blue-700"
-          >
-            <span className="relative z-10">Our Services</span>
-            <span className="absolute -bottom-1 left-0 h-[3px] w-0 rounded-full bg-gradient-to-r from-blue-500 via-cyan-400 to-blue-500 transition-all duration-300 group-hover:w-full" />
-            <span className="absolute inset-0 -z-10 scale-0 rounded-lg bg-blue-500/10 transition-transform duration-300 group-hover:scale-100" />
-          </button>
-        </div>
 
-        {/* CTA Section */}
-        <div className="flex items-center gap-3 sm:gap-4">
-          {/* Language Toggle */}
-          <div
-            ref={languageToggleRef}
-            className="flex items-center gap-2 rounded-full border-2 border-blue-200/50 bg-white px-3 py-1.5 shadow-sm transition-all duration-300 hover:border-blue-400/50 hover:shadow-md sm:px-4 sm:py-2"
-          >
-            <button className="text-xs font-black uppercase text-blue-700 transition-opacity hover:opacity-80">
-              EN
-            </button>
-            <span className="h-3 w-[2px] bg-blue-300/40" />
-            <button className="text-xs font-black uppercase text-blue-600/40 transition-opacity hover:opacity-100">
-              AR
-            </button>
-          </div>
+            {/* Desktop Navigation Links */}
+            <div className="hidden items-center gap-8 lg:flex xl:gap-10">
+              {navItems.map((item, index) => (
+                <a
+                  key={item.label}
+                  ref={(el) => {
+                    if (el) navItemsRef.current[index] = el
+                  }}
+                  href={item.href}
+                  onClick={(e) => {
+                    e.preventDefault();
+                    const target = document.querySelector(item.href);
+                    if (target) {
+                      target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+                    }
+                  }}
+                  className="group relative text-sm font-bold uppercase tracking-wide text-blue-600/70 transition-all duration-300 hover:text-blue-700"
+                >
+                  <span className="relative z-10">{item.label}</span>
+                  <span className="absolute -bottom-1 left-0 h-[3px] w-0 rounded-full bg-gradient-to-r from-blue-500 via-cyan-400 to-blue-500 transition-all duration-300 group-hover:w-full" />
+                  <span className="absolute inset-0 -z-10 scale-0 rounded-lg bg-blue-500/10 transition-transform duration-300 group-hover:scale-100" />
+                </a>
+              ))}
 
-          <Button 
-            ref={contactButtonRef}
-            onClick={onContactClick}
-            className="group relative hidden overflow-hidden rounded-full bg-gradient-to-r from-blue-600 via-cyan-500 to-blue-600 px-6 py-2.5 font-bold uppercase tracking-wide text-white shadow-lg transition-all duration-300 hover:shadow-2xl hover:shadow-blue-500/40 sm:inline-flex"
-          >
-            <span className="relative z-10 flex items-center gap-2">
-              Contact Us
-              <span ref={arrowRef}>→</span>
-            </span>
-            <div className="absolute inset-0 bg-gradient-to-r from-cyan-500 to-blue-700 opacity-0 transition-opacity duration-300 group-hover:opacity-100" />
-          </Button>
+              {/* Services Link */}
+              <button
+                ref={servicesButtonRef}
+                onClick={onServicesClick}
+                className="group relative text-sm font-bold uppercase tracking-wide text-blue-600/70 transition-all duration-300 hover:text-blue-700"
+              >
+                <span className="relative z-10">Our Services</span>
+                <span className="absolute -bottom-1 left-0 h-[3px] w-0 rounded-full bg-gradient-to-r from-blue-500 via-cyan-400 to-blue-500 transition-all duration-300 group-hover:w-full" />
+                <span className="absolute inset-0 -z-10 scale-0 rounded-lg bg-blue-500/10 transition-transform duration-300 group-hover:scale-100" />
+              </button>
+            </div>
 
-          {/* Mobile Menu Button */}
-          <button
-            ref={menuButtonRef}
-            onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
-            className="flex h-11 w-11 items-center justify-center rounded-xl border-2 border-blue-200/50 bg-white shadow-sm transition-all duration-300 hover:border-blue-400/50 hover:bg-blue-50/50 hover:shadow-md lg:hidden"
-            aria-label="Toggle menu"
-            onMouseDown={() => {
-              gsap.to(menuButtonRef.current, { scale: 0.9, duration: 0.1 })
-            }}
-            onMouseUp={() => {
-              gsap.to(menuButtonRef.current, { scale: 1, duration: 0.1 })
-            }}
-          >
-            {mobileMenuOpen ? (
-              <X className="h-6 w-6 text-blue-700" strokeWidth={2.5} />
-            ) : (
-              <Menu className="h-6 w-6 text-blue-700" strokeWidth={2.5} />
-            )}
-          </button>
-        </div>
+            {/* CTA Section */}
+            <div className="flex items-center gap-3 sm:gap-4">
+              {/* Language Toggle */}
+              <div
+                ref={languageToggleRef}
+                className="flex items-center gap-2 rounded-full border-2 border-blue-200/50 bg-white px-3 py-1.5 shadow-sm transition-all duration-300 hover:border-blue-400/50 hover:shadow-md sm:px-4 sm:py-2"
+              >
+                <button className="text-xs font-black uppercase text-blue-700 transition-opacity hover:opacity-80">
+                  EN
+                </button>
+                <span className="h-3 w-[2px] bg-blue-300/40" />
+                <button className="text-xs font-black uppercase text-blue-600/40 transition-opacity hover:opacity-100">
+                  AR
+                </button>
+              </div>
+
+              <Button
+                ref={contactButtonRef}
+                onClick={onContactClick}
+                className="group relative hidden overflow-hidden rounded-full bg-gradient-to-r from-blue-600 via-cyan-500 to-blue-600 px-6 py-2.5 font-bold uppercase tracking-wide text-white shadow-lg transition-all duration-300 hover:shadow-2xl hover:shadow-blue-500/40 sm:inline-flex"
+              >
+                <span className="relative z-10 flex items-center gap-2">
+                  Contact Us
+                  <span ref={arrowRef}>→</span>
+                </span>
+                <div className="absolute inset-0 bg-gradient-to-r from-cyan-500 to-blue-700 opacity-0 transition-opacity duration-300 group-hover:opacity-100" />
+              </Button>
+
+              {/* Mobile Menu Button */}
+              <button
+                ref={menuButtonRef}
+                onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
+                className="flex h-11 w-11 items-center justify-center rounded-xl border-2 border-blue-200/50 bg-white shadow-sm transition-all duration-300 hover:border-blue-400/50 hover:bg-blue-50/50 hover:shadow-md lg:hidden"
+                aria-label="Toggle menu"
+                onMouseDown={() => {
+                  gsap.to(menuButtonRef.current, { scale: 0.9, duration: 0.1 })
+                }}
+                onMouseUp={() => {
+                  gsap.to(menuButtonRef.current, { scale: 1, duration: 0.1 })
+                }}
+              >
+                {mobileMenuOpen ? (
+                  <X className="h-6 w-6 text-blue-700" strokeWidth={2.5} />
+                ) : (
+                  <Menu className="h-6 w-6 text-blue-700" strokeWidth={2.5} />
+                )}
+              </button>
+            </div>
+          </>
+        )}
       </div>
 
       {/* Mobile Menu */}
