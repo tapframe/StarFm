@@ -1,4 +1,5 @@
 import { useEffect, useRef } from "react"
+import { useTranslation } from "react-i18next"
 import gsap from "gsap"
 import { ScrollTrigger } from "gsap/ScrollTrigger"
 import { Card, CardContent } from "@/components/ui/card"
@@ -7,6 +8,7 @@ import { Users2, BuildingIcon, Zap, TreesIcon, Wrench } from "lucide-react"
 gsap.registerPlugin(ScrollTrigger)
 
 export function Stats() {
+  const { t } = useTranslation()
   const sectionRef = useRef<HTMLElement>(null)
   const headerRef = useRef<HTMLDivElement>(null)
   const subtitleRef = useRef<HTMLParagraphElement>(null)
@@ -17,11 +19,11 @@ export function Stats() {
   const bgCircle2Ref = useRef<HTMLDivElement>(null)
 
   const stats = [
-    { icon: BuildingIcon, value: "500+", label: "Facilities Managed" },
-    { icon: Users2, value: "2,000+", label: "Satisfied Clients" },
-    { icon: Zap, value: "99.8%", label: "Service Uptime" },
-    { icon: TreesIcon, value: "1000+", label: "Green Initiatives" },
-    { icon: Wrench, value: "24/7", label: "Technical Support" },
+    { icon: BuildingIcon, value: t('stats.items.facilitiesManaged.value'), label: t('stats.items.facilitiesManaged.label') },
+    { icon: Users2, value: t('stats.items.satisfiedClients.value'), label: t('stats.items.satisfiedClients.label') },
+    { icon: Zap, value: t('stats.items.serviceUptime.value'), label: t('stats.items.serviceUptime.label') },
+    { icon: TreesIcon, value: t('stats.items.greenInitiatives.value'), label: t('stats.items.greenInitiatives.label') },
+    { icon: Wrench, value: t('stats.items.technicalSupport.value'), label: t('stats.items.technicalSupport.label') },
   ]
 
   useEffect(() => {
@@ -230,13 +232,13 @@ export function Stats() {
       <div className="container relative px-4 sm:px-6">
         <div ref={headerRef} className="mb-8 text-center sm:mb-12">
           <p ref={subtitleRef} className="mb-2 text-xs font-semibold uppercase tracking-[0.3em] text-muted-foreground sm:mb-3 sm:text-sm">
-            Our Reach
+            {t('stats.reach')}
           </p>
           <h2 ref={titleRef} className="text-3xl text-foreground sm:text-4xl lg:text-5xl">
-            Service Excellence
+            {t('stats.excellence')}
           </h2>
           <p ref={descriptionRef} className="mt-4 text-sm text-foreground/70 sm:text-base">
-            MahhabFM delivers comprehensive facilities management across diverse sectors
+            {t('stats.description')}
           </p>
         </div>
 

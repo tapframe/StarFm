@@ -1,4 +1,5 @@
 import { useState, useEffect, useRef } from "react"
+import { useTranslation } from "react-i18next"
 import gsap from "gsap"
 import { Button } from "@/components/ui/button"
 import { Menu, X, ArrowLeft } from "lucide-react"
@@ -11,10 +12,15 @@ interface NavbarProps {
 }
 
 export function Navbar({ onContactClick, onServicesClick, isPageView, onBack }: NavbarProps) {
+  const { t, i18n } = useTranslation()
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false)
   const [scrolled, setScrolled] = useState(false)
   const [navbarVisible, setNavbarVisible] = useState(true)
   const [lastScrollY, setLastScrollY] = useState(0)
+
+  const changeLanguage = (lng: string) => {
+    i18n.changeLanguage(lng)
+  }
   const navRef = useRef<HTMLElement>(null)
   const logoRef = useRef<HTMLAnchorElement>(null)
   const navItemsRef = useRef<HTMLAnchorElement[]>([])
@@ -187,8 +193,8 @@ export function Navbar({ onContactClick, onServicesClick, isPageView, onBack }: 
   }, [mobileMenuOpen])
 
   const navItems = [
-    { label: "About", href: "#about" },
-    { label: "Programs", href: "#programs" },
+    { label: t('nav.about'), href: "#about" },
+    { label: t('nav.programs'), href: "#programs" },
   ]
 
   return (
@@ -217,7 +223,7 @@ export function Navbar({ onContactClick, onServicesClick, isPageView, onBack }: 
               className="flex items-center gap-2 rounded-full border-2 border-brand-deep/10 bg-white px-4 py-2 font-bold text-brand-deep transition-all duration-300 hover:border-blue-500/30 hover:bg-blue-500/10"
             >
               <ArrowLeft className="h-5 w-5" strokeWidth={2.5} />
-              Back to Home
+              {t('nav.backToHome')}
             </button>
 
 
@@ -273,7 +279,7 @@ export function Navbar({ onContactClick, onServicesClick, isPageView, onBack }: 
                 onClick={onServicesClick}
                 className="group relative text-sm font-bold uppercase tracking-wide text-blue-600/70 transition-all duration-300 hover:text-blue-700"
               >
-                <span className="relative z-10">Our Services</span>
+                <span className="relative z-10">{t('nav.services')}</span>
                 <span className="absolute -bottom-1 left-0 h-[3px] w-0 rounded-full bg-gradient-to-r from-blue-500 via-cyan-400 to-blue-500 transition-all duration-300 group-hover:w-full" />
                 <span className="absolute inset-0 -z-10 scale-0 rounded-lg bg-blue-500/10 transition-transform duration-300 group-hover:scale-100" />
               </button>
@@ -286,11 +292,21 @@ export function Navbar({ onContactClick, onServicesClick, isPageView, onBack }: 
                 ref={languageToggleRef}
                 className="flex items-center gap-2 rounded-full border-2 border-blue-200/50 bg-white px-3 py-1.5 shadow-sm transition-all duration-300 hover:border-blue-400/50 hover:shadow-md sm:px-4 sm:py-2"
               >
-                <button className="text-xs font-black uppercase text-blue-700 transition-opacity hover:opacity-80">
+                <button 
+                  onClick={() => changeLanguage('en')}
+                  className={`text-xs font-black uppercase transition-opacity hover:opacity-80 ${
+                    i18n.language === 'en' ? 'text-blue-700' : 'text-blue-600/40'
+                  }`}
+                >
                   EN
                 </button>
                 <span className="h-3 w-[2px] bg-blue-300/40" />
-                <button className="text-xs font-black uppercase text-blue-600/40 transition-opacity hover:opacity-100">
+                <button 
+                  onClick={() => changeLanguage('ar')}
+                  className={`text-xs font-black uppercase transition-opacity hover:opacity-100 ${
+                    i18n.language === 'ar' ? 'text-blue-700' : 'text-blue-600/40'
+                  }`}
+                >
                   AR
                 </button>
               </div>
@@ -301,7 +317,7 @@ export function Navbar({ onContactClick, onServicesClick, isPageView, onBack }: 
                 className="group relative hidden overflow-hidden rounded-full bg-gradient-to-r from-blue-600 via-cyan-500 to-blue-600 px-6 py-2.5 font-bold uppercase tracking-wide text-white shadow-lg transition-all duration-300 hover:shadow-2xl hover:shadow-blue-500/40 sm:inline-flex"
               >
                 <span className="relative z-10 flex items-center gap-2">
-                  Contact Us
+                  {t('nav.contactUs')}
                   <span ref={arrowRef}>→</span>
                 </span>
                 <div className="absolute inset-0 bg-gradient-to-r from-cyan-500 to-blue-700 opacity-0 transition-opacity duration-300 group-hover:opacity-100" />
@@ -370,7 +386,7 @@ export function Navbar({ onContactClick, onServicesClick, isPageView, onBack }: 
                 }}
                 className="group relative overflow-hidden rounded-xl border-2 border-blue-200/50 bg-white px-5 py-4 text-base font-bold uppercase tracking-wide text-blue-700/70 transition-all duration-300 hover:border-blue-400/50 hover:bg-blue-50/50 hover:text-blue-700 text-left"
               >
-                <span className="relative z-10">Our Services</span>
+                <span className="relative z-10">{t('nav.services')}</span>
                 <div className="absolute inset-0 -z-10 translate-x-[-100%] bg-gradient-to-r from-blue-500/10 to-transparent transition-transform duration-300 group-hover:translate-x-0" />
               </button>
               
@@ -382,7 +398,7 @@ export function Navbar({ onContactClick, onServicesClick, isPageView, onBack }: 
                   }}
                   className="mt-3 w-full rounded-xl bg-gradient-to-r from-blue-600 via-cyan-500 to-blue-600 py-4 font-black uppercase tracking-wide text-white shadow-lg hover:shadow-2xl hover:shadow-blue-500/40"
                 >
-                  Contact Us
+                  {t('nav.contactUs')}
                 </Button>
               </div>
             </div>

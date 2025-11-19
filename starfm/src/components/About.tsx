@@ -1,4 +1,5 @@
 import { useEffect, useRef } from "react"
+import { useTranslation } from "react-i18next"
 import gsap from "gsap"
 import { ScrollTrigger } from "gsap/ScrollTrigger"
 import { CheckCircle2, Award, Users, TrendingUp } from "lucide-react"
@@ -6,6 +7,7 @@ import { CheckCircle2, Award, Users, TrendingUp } from "lucide-react"
 gsap.registerPlugin(ScrollTrigger)
 
 export function About() {
+  const { t } = useTranslation()
   const sectionRef = useRef<HTMLElement>(null)
   const leftContentRef = useRef<HTMLDivElement>(null)
   const badgeRef = useRef<HTMLDivElement>(null)
@@ -21,23 +23,23 @@ export function About() {
   const features = [
     {
       icon: Award,
-      title: "Excellence",
-      description: "Committed to the highest standards"
+      title: t('about.features.excellence.title'),
+      description: t('about.features.excellence.description')
     },
     {
       icon: Users,
-      title: "Expert Team",
-      description: "Skilled professionals at your service"
+      title: t('about.features.expertTeam.title'),
+      description: t('about.features.expertTeam.description')
     },
     {
       icon: TrendingUp,
-      title: "Growth",
-      description: "Continuously evolving with your needs"
+      title: t('about.features.growth.title'),
+      description: t('about.features.growth.description')
     },
     {
       icon: CheckCircle2,
-      title: "Reliability",
-      description: "Trusted by leading organizations"
+      title: t('about.features.reliability.title'),
+      description: t('about.features.reliability.description')
     }
   ]
 
@@ -341,23 +343,23 @@ export function About() {
             <div ref={badgeRef} className="inline-flex items-center gap-2 rounded-full bg-brand-azure/5 px-4 py-2">
               <div className="h-1.5 w-1.5 rounded-full bg-brand-azure" />
               <span className="text-xs font-semibold uppercase tracking-wider text-brand-azure">
-                About Us
+                {t('about.badge')}
               </span>
             </div>
 
             <h2 ref={titleRef} className="font-display text-4xl font-bold leading-[1.1] text-brand-deep sm:text-5xl lg:text-6xl">
-              Your Trusted Partner in
+              {t('about.title')}
               <span className="mt-2 block bg-gradient-to-r from-brand-azure to-brand-sand bg-clip-text text-transparent">
-                Facilities Excellence
+                {t('about.titleHighlight')}
               </span>
             </h2>
 
             <div ref={descriptionRef} className="space-y-5">
               <p className="text-lg leading-relaxed text-brand-forest/70">
-                We deliver comprehensive facilities management solutions that transform spaces into efficient, sustainable environments where businesses thrive.
+                {t('about.description1')}
               </p>
               <p className="text-base leading-relaxed text-brand-forest/60">
-                With years of experience and a commitment to excellence, we partner with organizations to maintain, optimize, and enhance their facilities with precision and care.
+                {t('about.description2')}
               </p>
             </div>
 
@@ -366,7 +368,7 @@ export function About() {
               ref={buttonRef}
               className="group inline-flex items-center gap-2 rounded-full bg-brand-deep px-8 py-4 font-semibold text-white shadow-sm transition-all duration-300 hover:bg-brand-deep/90 hover:shadow-md"
             >
-              <span>Learn More About Us</span>
+              <span>{t('about.learnMore')}</span>
               <svg className="h-4 w-4 transition-transform duration-300 group-hover:translate-x-1" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                 <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17 8l4 4m0 0l-4 4m4-4H3" />
               </svg>
@@ -406,10 +408,10 @@ export function About() {
         <div ref={bottomSectionRef} className="mt-24 rounded-3xl border border-brand-deep/5 bg-gradient-to-br from-brand-azure/5 via-transparent to-brand-sand/5 p-12 sm:p-16">
           <div className="text-center">
             <h3 className="mb-4 font-display text-3xl font-bold text-brand-deep sm:text-4xl">
-              Delivering Excellence Every Day
+              {t('about.bottomTitle')}
             </h3>
             <p className="mx-auto max-w-2xl text-base leading-relaxed text-brand-forest/60">
-              Our commitment to quality and innovation drives us to exceed expectations and build lasting partnerships with every client we serve.
+              {t('about.bottomDescription')}
             </p>
           </div>
         </div>

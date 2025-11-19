@@ -1,4 +1,5 @@
 import { useState, useEffect, useRef } from "react"
+import { useTranslation } from "react-i18next"
 import gsap from "gsap"
 import { ScrollTrigger } from "gsap/ScrollTrigger"
 import { Card, CardContent } from "@/components/ui/card"
@@ -20,50 +21,46 @@ interface ServicesProps {
   onServicesPageClick?: () => void
 }
 
-const services = [
-  {
-    title: "Facilities Management",
-    description:
-      "Comprehensive FM solutions for commercial buildings, retail spaces, and corporate headquarters. We optimize operations, reduce costs, and ensure peak performance.",
-    icon: Building2,
-    image: "https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?w=800&q=80",
-    features: ["24/7 Operations", "Energy Optimization", "Compliance Management"],
-  },
-  {
-    title: "Integrated Home Solutions",
-    description:
-      "Premium maintenance programs designed exclusively for private homes, villas, and residential complexes with specialized preventive care.",
-    icon: Home,
-    image: "https://images.unsplash.com/photo-1600596542815-ffad4c1539a9?w=800&q=80",
-    features: ["Preventive Maintenance", "Smart Home Integration", "Concierge Service"],
-  },
-  {
-    title: "Hospitality Services",
-    description:
-      "Tailored FM services for hotels, resorts, and hospitality venues ensuring guest satisfaction and operational excellence.",
-    icon: Sparkles,
-    image: "https://images.unsplash.com/photo-1566073771259-6a8506099945?w=800&q=80",
-    features: ["Guest Experience", "Property Upkeep", "Event Support"],
-  },
-  {
-    title: "Landscaping & Garden",
-    description:
-      "Professional agriculture and green area maintenance for hotels, offices, commercial centers, and private estates across the region.",
-    icon: Trees,
-    image: "https://images.unsplash.com/photo-1558904541-efa843a96f01?w=800&q=80",
-    features: ["Seasonal Care", "Irrigation Systems", "Pest Management"],
-  },
-  {
-    title: "Technical Services",
-    description:
-      "Expert technical maintenance covering HVAC, electrical, plumbing, and mechanical systems with certified engineers.",
-    icon: Wrench,
-    image: "https://images.unsplash.com/photo-1581094271901-8022df4466f9?w=800&q=80",
-    features: ["HVAC Systems", "Emergency Response", "Preventive Checks"],
-  },
-]
-
 export function Services({ onServicesPageClick }: ServicesProps) {
+  const { t } = useTranslation()
+  
+  const services = [
+    {
+      title: t('services.list.facilitiesManagement.title'),
+      description: t('services.list.facilitiesManagement.description'),
+      icon: Building2,
+      image: "https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?w=800&q=80",
+      features: t('services.list.facilitiesManagement.features', { returnObjects: true }) as string[],
+    },
+    {
+      title: t('services.list.homeSolutions.title'),
+      description: t('services.list.homeSolutions.description'),
+      icon: Home,
+      image: "https://images.unsplash.com/photo-1600596542815-ffad4c1539a9?w=800&q=80",
+      features: t('services.list.homeSolutions.features', { returnObjects: true }) as string[],
+    },
+    {
+      title: t('services.list.hospitalityServices.title'),
+      description: t('services.list.hospitalityServices.description'),
+      icon: Sparkles,
+      image: "https://images.unsplash.com/photo-1566073771259-6a8506099945?w=800&q=80",
+      features: t('services.list.hospitalityServices.features', { returnObjects: true }) as string[],
+    },
+    {
+      title: t('services.list.landscaping.title'),
+      description: t('services.list.landscaping.description'),
+      icon: Trees,
+      image: "https://images.unsplash.com/photo-1558904541-efa843a96f01?w=800&q=80",
+      features: t('services.list.landscaping.features', { returnObjects: true }) as string[],
+    },
+    {
+      title: t('services.list.technicalServices.title'),
+      description: t('services.list.technicalServices.description'),
+      icon: Wrench,
+      image: "https://images.unsplash.com/photo-1581094271901-8022df4466f9?w=800&q=80",
+      features: t('services.list.technicalServices.features', { returnObjects: true }) as string[],
+    },
+  ]
   const [currentIndex, setCurrentIndex] = useState(0)
   const [direction, setDirection] = useState(0)
   
@@ -382,14 +379,14 @@ export function Services({ onServicesPageClick }: ServicesProps) {
         <div ref={headerRef} className="mb-12 text-center sm:mb-16">
           <div className="mb-4 inline-block">
             <span ref={badgeRef} className="rounded-full border border-blue-500/30 bg-blue-500/10 px-4 py-1.5 text-xs font-semibold uppercase tracking-widest text-blue-600 bg-opacity-50">
-              Facility Management
+              {t('services.sectionBadge')}
             </span>
           </div>
           <h2 ref={titleRef} className="mb-4 bg-gradient-to-r from-foreground via-foreground to-foreground/70 bg-clip-text text-4xl font-bold text-transparent sm:text-5xl lg:text-6xl">
-            Our FM Services
+            {t('services.sectionTitle')}
           </h2>
           <p ref={descriptionRef} className="mx-auto max-w-2xl text-base text-foreground/70 sm:text-lg">
-            Comprehensive facilities management solutions tailored to elevate your property operations
+            {t('services.sectionDescription')}
           </p>
         </div>
 
@@ -466,7 +463,7 @@ export function Services({ onServicesPageClick }: ServicesProps) {
 
                       <div>
                         <Button ref={buttonRef} onClick={onServicesPageClick} className="group w-full rounded-full bg-gradient-to-r from-primary to-brand-forest px-4 shadow-lg transition-all duration-300 hover:scale-105 hover:shadow-xl sm:w-auto sm:px-6">
-                          Learn More
+                          {t('common.learnMore')}
                           <ArrowUpRight className="ml-2 h-4 w-4 transition-transform group-hover:translate-x-1 group-hover:-translate-y-1" />
                         </Button>
                       </div>

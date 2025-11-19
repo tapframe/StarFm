@@ -1,4 +1,5 @@
 import { useEffect, useRef } from "react"
+import { useTranslation } from "react-i18next"
 import gsap from "gsap"
 import { ScrollTrigger } from "gsap/ScrollTrigger"
 import { Mail, Phone, MapPin, Facebook, Twitter, Linkedin, Instagram } from "lucide-react"
@@ -11,6 +12,7 @@ interface FooterProps {
 }
 
 export function Footer({ onContactClick, onServicesClick }: FooterProps) {
+  const { t } = useTranslation()
   const brandRef = useRef<HTMLDivElement>(null)
   const quickLinksRef = useRef<HTMLDivElement>(null)
   const servicesRef = useRef<HTMLDivElement>(null)
@@ -109,7 +111,7 @@ export function Footer({ onContactClick, onServicesClick }: FooterProps) {
               />
             </div>
             <p className="mt-6 mb-6 text-sm text-brand-cream/80">
-              Leading facilities management solutions across the region, delivering excellence in every service.
+              {t('footer.description')}
             </p>
             <div className="flex gap-3">
               {[Facebook, Twitter, Linkedin, Instagram].map((Icon, idx) => (
@@ -126,27 +128,30 @@ export function Footer({ onContactClick, onServicesClick }: FooterProps) {
 
           {/* Quick Links */}
           <div ref={quickLinksRef}>
-            <h4 className="mb-4 text-sm font-semibold uppercase tracking-wider text-white">Quick Links</h4>
+            <h4 className="mb-4 text-sm font-semibold uppercase tracking-wider text-white">{t('footer.quickLinks')}</h4>
             <ul className="space-y-3">
-              {[
-                { label: "About", href: "#about" },
-                { label: "Programs", href: "#programs" },
-              ].map((item) => (
-                <li key={item.label}>
-                  <a
-                    href={item.href}
-                    className="text-sm text-brand-cream/80 transition-colors hover:text-brand-gold"
-                  >
-                    {item.label}
-                  </a>
-                </li>
-              ))}
+              <li>
+                <a
+                  href="#about"
+                  className="text-sm text-brand-cream/80 transition-colors hover:text-brand-gold"
+                >
+                  {t('nav.about')}
+                </a>
+              </li>
+              <li>
+                <a
+                  href="#programs"
+                  className="text-sm text-brand-cream/80 transition-colors hover:text-brand-gold"
+                >
+                  {t('nav.programs')}
+                </a>
+              </li>
               <li>
                 <button
                   onClick={onServicesClick}
                   className="text-sm text-brand-cream/80 transition-colors hover:text-brand-gold text-left"
                 >
-                  Our Services
+                  {t('nav.services')}
                 </button>
               </li>
               <li>
@@ -154,7 +159,7 @@ export function Footer({ onContactClick, onServicesClick }: FooterProps) {
                   onClick={onContactClick}
                   className="text-sm text-brand-cream/80 transition-colors hover:text-brand-gold text-left"
                 >
-                  Contact
+                  {t('footer.contactUs')}
                 </button>
               </li>
             </ul>
@@ -162,35 +167,59 @@ export function Footer({ onContactClick, onServicesClick }: FooterProps) {
 
           {/* Services */}
           <div ref={servicesRef}>
-            <h4 className="mb-4 text-sm font-semibold uppercase tracking-wider text-white">Services</h4>
+            <h4 className="mb-4 text-sm font-semibold uppercase tracking-wider text-white">{t('footer.services')}</h4>
             <ul className="space-y-3">
-              {[
-                "Facilities Management",
-                "Home Solutions",
-                "Hospitality Services",
-                "Landscaping",
-                "Technical Services",
-              ].map((service) => (
-                <li key={service}>
-                  <a
-                    href="#services"
-                    className="text-sm text-brand-cream/80 transition-colors hover:text-brand-gold"
-                  >
-                    {service}
-                  </a>
-                </li>
-              ))}
+              <li>
+                <a
+                  href="#services"
+                  className="text-sm text-brand-cream/80 transition-colors hover:text-brand-gold"
+                >
+                  {t('footer.servicesList.facilitiesManagement')}
+                </a>
+              </li>
+              <li>
+                <a
+                  href="#services"
+                  className="text-sm text-brand-cream/80 transition-colors hover:text-brand-gold"
+                >
+                  {t('footer.servicesList.homeSolutions')}
+                </a>
+              </li>
+              <li>
+                <a
+                  href="#services"
+                  className="text-sm text-brand-cream/80 transition-colors hover:text-brand-gold"
+                >
+                  {t('footer.servicesList.hospitalityServices')}
+                </a>
+              </li>
+              <li>
+                <a
+                  href="#services"
+                  className="text-sm text-brand-cream/80 transition-colors hover:text-brand-gold"
+                >
+                  {t('footer.servicesList.landscaping')}
+                </a>
+              </li>
+              <li>
+                <a
+                  href="#services"
+                  className="text-sm text-brand-cream/80 transition-colors hover:text-brand-gold"
+                >
+                  {t('footer.servicesList.technicalServices')}
+                </a>
+              </li>
             </ul>
           </div>
 
           {/* Contact Info */}
           <div ref={contactRef}>
-            <h4 className="mb-4 text-sm font-semibold uppercase tracking-wider text-white">Contact Us</h4>
+            <h4 className="mb-4 text-sm font-semibold uppercase tracking-wider text-white">{t('footer.contactUs')}</h4>
             <ul className="space-y-4">
               <li className="flex items-start gap-3">
                 <MapPin className="mt-0.5 h-5 w-5 shrink-0 text-brand-gold" />
                 <span className="text-sm text-brand-cream/80">
-                  Jeddah
+                  {t('footer.location')}
                 </span>
               </li>
               <li className="flex items-center gap-3">
@@ -211,11 +240,11 @@ export function Footer({ onContactClick, onServicesClick }: FooterProps) {
 
         {/* Bottom Bar */}
         <div className="mt-12 flex flex-col items-center justify-between gap-4 border-t border-white/10 pt-8 text-center text-sm text-brand-cream/60 md:flex-row md:text-left">
-          <p>© 2025 MahhabFM. All rights reserved.</p>
+          <p>{t('footer.copyright')}</p>
           <div className="flex flex-wrap justify-center gap-6">
-            <a href="#" className="transition-colors hover:text-brand-gold">Privacy Policy</a>
-            <a href="#" className="transition-colors hover:text-brand-gold">Terms of Service</a>
-            <a href="#" className="transition-colors hover:text-brand-gold">Cookie Policy</a>
+            <a href="#" className="transition-colors hover:text-brand-gold">{t('footer.privacyPolicy')}</a>
+            <a href="#" className="transition-colors hover:text-brand-gold">{t('footer.termsOfService')}</a>
+            <a href="#" className="transition-colors hover:text-brand-gold">{t('footer.cookiePolicy')}</a>
           </div>
         </div>
       </div>

@@ -1,0 +1,502 @@
+{
+  "nav": {
+    "about": "About",
+    "programs": "Programs",
+    "services": "Our Services",
+    "contactUs": "Contact Us",
+    "backToHome": "Back to Home"
+  },
+  "hero": {
+    "exploreServices": "Explore Services",
+    "getInTouch": "Get In Touch",
+    "andCounting": "And counting...",
+    "scroll": "Scroll",
+    "slides": {
+      "facilitiesManagement": {
+        "title": "Facilities Management",
+        "subtitle": "Excellence in Every Detail",
+        "description": "Comprehensive management solutions for commercial and residential properties with 24/7 professional support",
+        "statValue": "500+",
+        "statLabel": "Properties Managed"
+      },
+      "homeSolutions": {
+        "title": "Home Solutions",
+        "subtitle": "Where Comfort Meets Care",
+        "description": "Professional cleaning, maintenance, and home care services that transform your living spaces",
+        "statValue": "1,000+",
+        "statLabel": "Happy Homes"
+      },
+      "hospitalityServices": {
+        "title": "Hospitality Services",
+        "subtitle": "Premium Guest Experiences",
+        "description": "Elevated hospitality management for hotels, resorts, and commercial spaces that inspire",
+        "statValue": "50+",
+        "statLabel": "Hotels Served"
+      },
+      "landscaping": {
+        "title": "Landscaping & Gardens",
+        "subtitle": "Nature's Perfect Canvas",
+        "description": "Expert landscape design and maintenance services that bring outdoor spaces to life",
+        "statValue": "300+",
+        "statLabel": "Gardens Maintained"
+      },
+      "technicalServices": {
+        "title": "Technical Services",
+        "subtitle": "Precision Engineering",
+        "description": "HVAC, electrical, plumbing, and technical maintenance by certified professionals",
+        "statValue": "99.8%",
+        "statLabel": "Uptime Rate"
+      },
+      "pestControl": {
+        "title": "Pest Control",
+        "subtitle": "Safe & Effective Solutions",
+        "description": "Advanced pest management solutions ensuring healthy, safe environments for all",
+        "statValue": "2,000+",
+        "statLabel": "Treatments Done"
+      },
+      "crFormation": {
+        "title": "CR Formation & Renewal",
+        "subtitle": "Complete Registration Services",
+        "description": "Commercial registration services including formation, amendments, and timely renewals for your business",
+        "statValue": "1,500+",
+        "statLabel": "CRs Processed"
+      },
+      "qiwaServices": {
+        "title": "Qiwa Portal Services",
+        "subtitle": "Labor Compliance Made Easy",
+        "description": "Full management of Qiwa platform services for labor compliance and workforce management",
+        "statValue": "100%",
+        "statLabel": "Compliance Rate"
+      },
+      "candidateSourcing": {
+        "title": "Candidate Sourcing",
+        "subtitle": "Talent Acquisition Experts",
+        "description": "Professional sourcing and shortlisting of qualified candidates from our active database",
+        "statValue": "5,000+",
+        "statLabel": "Candidates Ready"
+      },
+      "muqeemServices": {
+        "title": "Muqeem Services",
+        "subtitle": "Visa & Residency Simplified",
+        "description": "Comprehensive Muqeem portal services for visa processing, residency permits, and renewals",
+        "statValue": "2,000+",
+        "statLabel": "Visas Processed"
+      },
+      "trainingPrograms": {
+        "title": "Training Programs",
+        "subtitle": "Employee Development",
+        "description": "Onboarding and training programs designed specifically for new employees and team members",
+        "statValue": "500+",
+        "statLabel": "Employees Trained"
+      },
+      "fleetServices": {
+        "title": "Fleet Services",
+        "subtitle": "Complete Fleet Management",
+        "description": "Comprehensive fleet management including maintenance, tracking, and operational support",
+        "statValue": "200+",
+        "statLabel": "Vehicles Managed"
+      }
+    }
+  },
+  "about": {
+    "badge": "About Us",
+    "title": "Your Trusted Partner in",
+    "titleHighlight": "Facilities Excellence",
+    "description1": "We deliver comprehensive facilities management solutions that transform spaces into efficient, sustainable environments where businesses thrive.",
+    "description2": "With years of experience and a commitment to excellence, we partner with organizations to maintain, optimize, and enhance their facilities with precision and care.",
+    "learnMore": "Learn More About Us",
+    "bottomTitle": "Delivering Excellence Every Day",
+    "bottomDescription": "Our commitment to quality and innovation drives us to exceed expectations and build lasting partnerships with every client we serve.",
+    "features": {
+      "excellence": {
+        "title": "Excellence",
+        "description": "Committed to the highest standards"
+      },
+      "expertTeam": {
+        "title": "Expert Team",
+        "description": "Skilled professionals at your service"
+      },
+      "growth": {
+        "title": "Growth",
+        "description": "Continuously evolving with your needs"
+      },
+      "reliability": {
+        "title": "Reliability",
+        "description": "Trusted by leading organizations"
+      }
+    }
+  },
+  "contact": {
+    "badge": "Get In Touch",
+    "title": "Contact",
+    "subtitle": "Our Team",
+    "description": "We're here to help and answer any question you might have. We look forward to hearing from you.",
+    "phone": "Phone",
+    "email": "Email",
+    "location": "Location",
+    "workingHours": "Working Hours",
+    "workingHoursDetails": {
+      "weekdays": "Mon - Thu: 8:00 AM - 6:00 PM",
+      "saturday": "Sat: 9:00 AM - 2:00 PM",
+      "friday": "Friday: Closed"
+    },
+    "locationText": "Jeddah, Saudi Arabia",
+    "form": {
+      "title": "Send us a Message",
+      "firstName": "First Name",
+      "lastName": "Last Name",
+      "email": "Email Address",
+      "phone": "Phone Number",
+    "serviceInterest": "Service Interest",
+    "message": "Message",
+    "messagePlaceholder": "Tell us about your needs...",
+    "submit": "Send Message",
+    "required": "*",
+    "serviceOptions": {
+      "facilitiesManagement": "Facilities Management",
+      "homeSolutions": "Home Solutions",
+      "hospitalityServices": "Hospitality Services",
+      "technicalServices": "Technical Services",
+      "pestControl": "Pest Control",
+      "other": "Other"
+    }
+    },
+    "map": {
+      "title": "Map Location",
+      "placeholder": "[Interactive map will be added here]"
+    }
+  },
+  "footer": {
+    "description": "Leading facilities management solutions across the region, delivering excellence in every service.",
+    "quickLinks": "Quick Links",
+    "services": "Services",
+    "contactUs": "Contact Us",
+    "servicesList": {
+      "facilitiesManagement": "Facilities Management",
+      "homeSolutions": "Home Solutions",
+      "hospitalityServices": "Hospitality Services",
+      "landscaping": "Landscaping",
+      "technicalServices": "Technical Services"
+    },
+    "location": "Jeddah",
+    "copyright": "© 2025 MahhabFM. All rights reserved.",
+    "privacyPolicy": "Privacy Policy",
+    "termsOfService": "Terms of Service",
+    "cookiePolicy": "Cookie Policy"
+  },
+  "services": {
+    "badge": "What We Offer",
+    "title": "Comprehensive Solutions",
+    "subtitle": "For Every Need",
+    "description": "From facilities management to specialized technical services, we provide end-to-end solutions tailored to your specific requirements.",
+    "viewAll": "View All Services",
+    "contactNow": "Contact Us Now",
+    "sectionBadge": "Facility Management",
+    "sectionTitle": "Our FM Services",
+    "sectionDescription": "Comprehensive facilities management solutions tailored to elevate your property operations",
+    "list": {
+      "facilitiesManagement": {
+        "title": "Facilities Management",
+        "description": "End-to-end management solutions for commercial and residential properties, ensuring optimal performance and tenant satisfaction.",
+        "features": ["24/7 Operations", "Energy Optimization", "Compliance Management"]
+      },
+      "homeSolutions": {
+        "title": "Integrated Home Solutions",
+        "description": "Comprehensive home services including deep cleaning, maintenance, pest control, and sanitization for a healthier living environment.",
+        "features": ["Preventive Maintenance", "Smart Home Integration", "Concierge Service"]
+      },
+      "hospitalityServices": {
+        "title": "Hospitality Services",
+        "description": "Premium hospitality management for hotels, resorts, and commercial spaces with meticulous attention to guest experience.",
+        "features": ["Guest Experience", "Property Upkeep", "Event Support"]
+      },
+      "landscaping": {
+        "title": "Landscaping & Garden",
+        "description": "Expert landscape design, installation, and maintenance services that create and preserve stunning outdoor environments.",
+        "features": ["Seasonal Care", "Irrigation Systems", "Pest Management"]
+      },
+      "technicalServices": {
+        "title": "Technical Services",
+        "description": "Professional HVAC, electrical, plumbing, and mechanical services delivered by certified technicians.",
+        "features": ["HVAC Systems", "Emergency Response", "Preventive Checks"]
+      }
+    }
+  },
+  "serviceTypes": {
+    "badge": "Service Options",
+    "title": "Flexible Service Plans",
+    "subtitle": "Choose What Works Best",
+    "description": "Whether you need a one-time service or ongoing support, we offer flexible plans tailored to your schedule and budget.",
+    "types": {
+      "oneTime": {
+        "title": "One-Time Services",
+        "description": "Enjoy consistent service and One-time bookings",
+        "features": ["Single visit", "No commitment", "Immediate availability", "Project-based pricing"]
+      },
+      "monthly": {
+        "title": "Monthly Services",
+        "description": "Enjoy consistent service with multiple monthly visits",
+        "features": ["Regular visits", "Consistent quality", "Priority scheduling", "Cost-effective"]
+      },
+      "yearly": {
+        "title": "Yearly Services",
+        "description": "Enjoy consistent service through out the year",
+        "features": ["Annual contract", "Best value", "Dedicated account manager", "Comprehensive coverage"]
+      }
+    }
+  },
+  "managementSupport": {
+    "badge": "Administrative Excellence",
+    "title": "Management & Support Services",
+    "subtitle": "Beyond Facilities",
+    "description": "Comprehensive administrative and management support services to streamline your operations and ensure regulatory compliance.",
+    "viewAllServices": "View All Services",
+    "serviceDesk": "Service Desk",
+    "startDiscussion": "Start Discussion",
+    "supportLabel": "24/7 Support",
+    "activeStatus": "Active",
+    "readyToOffload": "Ready to offload?",
+    "handleHeavyLifting": "Let's handle the heavy lifting.",
+    "offloadDescription": "We co-author governance plans, run execution pods, and deliver weekly KPI reviews with live dashboards. You get predictability. We get accountability.",
+    "services": {
+      "crFormation": {
+        "title": "CR Formation & Renewal",
+        "description": "Complete commercial registration services including new business setup, amendments, and timely renewals with full regulatory compliance."
+      },
+      "qiwaPortal": {
+        "title": "Qiwa Portal Services",
+        "description": "Full-service management of Qiwa platform requirements, ensuring seamless labor compliance and workforce administration."
+      },
+      "candidateSourcing": {
+        "title": "Candidate Sourcing",
+        "description": "Professional recruitment services with access to our extensive candidate database, thorough screening, and qualified shortlisting."
+      },
+      "muqeemServices": {
+        "title": "Muqeem Services",
+        "description": "Comprehensive visa and residency services including applications, renewals, transfers, and all Muqeem portal requirements."
+      },
+      "trainingPrograms": {
+        "title": "Training Programs",
+        "description": "Customized onboarding and professional development programs for new hires and existing staff across all service categories."
+      },
+      "vehicleRegistration": {
+        "title": "Vehicle Registration",
+        "description": "Complete vehicle registration services including new registrations, renewals, transfers, and all related documentation."
+      },
+      "drivingLicense": {
+        "title": "Driving License Services",
+        "description": "Full support for driving license applications, renewals, international permits, and all licensing requirements."
+      },
+      "globalVisa": {
+        "title": "Global Visa Applications",
+        "description": "Professional visa application services for international travel including tourist, business, and work visas worldwide."
+      },
+      "fleetServices": {
+        "title": "Fleet Services",
+        "description": "Comprehensive fleet management including vehicle maintenance, tracking, documentation, and operational support."
+      },
+      "adminSupport": {
+        "title": "Admin Support",
+        "description": "Professional administrative services including documentation, correspondence, scheduling, and general office support."
+      },
+      "itSupport": {
+        "title": "IT Support",
+        "description": "Technical IT support services including hardware maintenance, software troubleshooting, and network administration."
+      }
+    }
+  },
+  "stats": {
+    "badge": "Our Impact",
+    "title": "Numbers That Speak",
+    "subtitle": "Excellence by the Numbers",
+    "reach": "Our Reach",
+    "excellence": "Service Excellence",
+    "description": "MahhabFM delivers comprehensive facilities management across diverse sectors",
+    "items": {
+      "facilitiesManaged": {
+        "value": "500+",
+        "label": "Facilities Managed"
+      },
+      "satisfiedClients": {
+        "value": "2,000+",
+        "label": "Satisfied Clients"
+      },
+      "serviceUptime": {
+        "value": "99.8%",
+        "label": "Service Uptime"
+      },
+      "greenInitiatives": {
+        "value": "1000+",
+        "label": "Green Initiatives"
+      },
+      "technicalSupport": {
+        "value": "24/7",
+        "label": "Technical Support"
+      }
+    }
+  },
+  "trustedPartner": {
+    "badge": "Excellence in Service",
+    "title": "Your Trusted",
+    "titleHighlight": "Facilities Partner",
+    "description": "With over a decade of experience in facilities management, we bring unparalleled expertise and dedication to every project. Our team of certified professionals ensures your spaces operate at peak efficiency.",
+    "whyChooseUs": "Why Choose MahhabFM?",
+    "features": {
+      "certifiedProfessionals": {
+        "title": "Certified Professionals",
+        "description": "Our team holds industry certifications and undergoes regular training"
+      },
+      "support": {
+        "title": "24/7 Support",
+        "description": "Round-the-clock availability for emergencies and urgent requests"
+      },
+      "solutions": {
+        "title": "Tailored Solutions",
+        "description": "Customized service packages designed for your specific needs"
+      },
+      "excellence": {
+        "title": "Quality Excellence",
+        "description": "Rigorous quality control and continuous improvement processes"
+      }
+    },
+    "getStarted": "Get Started Today"
+  },
+  "servicesPage": {
+    "badge": "Our Services",
+    "pageBadge": "What We Offer",
+    "title": "Comprehensive Facilities Management",
+    "subtitle": "Professional Solutions for Every Need",
+    "description": "Comprehensive facilities management solutions designed to meet your every need. From technical services to landscaping, we deliver excellence across all domains.",
+    "services": {
+      "managementSupport": {
+        "title": "Management Support Services",
+        "description": "Complete administrative management for growing companies. From visa processing to CR renewals, municipality licenses to residential permits - we handle every aspect of your company's administrative requirements with precision and efficiency.",
+        "features": [
+          "Visa Issuance & Renewals",
+          "Commercial Registration (CR) Services",
+          "Residential Permit Processing",
+          "Municipality License Management",
+          "Employee Documentation Services",
+          "Compliance & Audit Support"
+        ],
+        "stats": {
+          "value": "500+",
+          "label": "Employees Managed"
+        }
+      },
+      "facilitiesManagement": {
+        "title": "Facilities Management",
+        "description": "Comprehensive FM solutions for commercial buildings, retail spaces, and corporate headquarters. We optimize operations, reduce costs, and ensure peak performance.",
+        "features": [
+          "24/7 Operations & Monitoring",
+          "Energy Optimization & Sustainability",
+          "Compliance & Safety Management",
+          "Preventive Maintenance Programs",
+          "Vendor Management & Coordination",
+          "Asset Management Systems"
+        ],
+        "stats": {
+          "value": "500+",
+          "label": "Buildings Managed"
+        }
+      },
+      "homeSolutions": {
+        "title": "Integrated Home Solutions",
+        "description": "Premium maintenance programs designed exclusively for private homes, villas, and residential complexes with specialized preventive care.",
+        "features": [
+          "Regular Home Inspections",
+          "Cleaning & Housekeeping Services",
+          "Plumbing & Electrical Maintenance",
+          "HVAC System Care",
+          "Garden & Outdoor Maintenance",
+          "Emergency Response Services"
+        ],
+        "stats": {
+          "value": "1,000+",
+          "label": "Happy Homes"
+        }
+      },
+      "hospitalityServices": {
+        "title": "Hospitality Services",
+        "description": "Tailored facility management for hotels, resorts, and hospitality venues ensuring exceptional guest experiences and operational excellence.",
+        "features": [
+          "Guest Room Maintenance",
+          "Front-of-House Services",
+          "Back-of-House Operations",
+          "Laundry & Housekeeping",
+          "Food & Beverage Support",
+          "Event Space Management"
+        ],
+        "stats": {
+          "value": "50+",
+          "label": "Hotels Served"
+        }
+      },
+      "landscaping": {
+        "title": "Landscaping & Gardens",
+        "description": "Expert landscape design, maintenance, and outdoor space management creating beautiful, sustainable environments.",
+        "features": [
+          "Landscape Design & Installation",
+          "Lawn Care & Maintenance",
+          "Irrigation System Management",
+          "Tree & Shrub Care",
+          "Seasonal Planting Programs",
+          "Hardscape Maintenance"
+        ],
+        "stats": {
+          "value": "300+",
+          "label": "Gardens Maintained"
+        }
+      },
+      "technicalServices": {
+        "title": "Technical Services",
+        "description": "Expert HVAC, electrical, plumbing, and technical maintenance delivered by certified professionals ensuring system reliability.",
+        "features": [
+          "HVAC Installation & Repair",
+          "Electrical System Maintenance",
+          "Plumbing Services",
+          "Fire Safety Systems",
+          "Building Automation",
+          "Emergency Repairs"
+        ],
+        "stats": {
+          "value": "99.8%",
+          "label": "Uptime Rate"
+        }
+      },
+      "pestControl": {
+        "title": "Pest Control",
+        "description": "Safe, effective, and environmentally responsible pest management solutions protecting your property and health.",
+        "features": [
+          "Comprehensive Pest Inspections",
+          "Eco-Friendly Treatment Methods",
+          "Preventive Pest Programs",
+          "Termite Control & Protection",
+          "Rodent Management",
+          "Regular Monitoring & Reporting"
+        ],
+        "stats": {
+          "value": "2,000+",
+          "label": "Treatments Done"
+        }
+      }
+    },
+    "cta": {
+      "title": "Ready to Get Started?",
+      "description": "Contact us today to discuss your facilities management needs and discover how we can help optimize your operations.",
+      "buttonText": "Contact Us Now"
+    },
+    "premiumService": "Premium Service",
+    "requestService": "Request Service",
+    "certifiedQuality": "Certified & Quality Assured",
+    "contactNow": "Contact Us Now"
+  },
+  "common": {
+    "readMore": "Read More",
+    "learnMore": "Learn More",
+    "getStarted": "Get Started",
+    "contactUs": "Contact Us",
+    "viewDetails": "View Details"
+  }
+}
+

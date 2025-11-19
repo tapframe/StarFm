@@ -1,4 +1,5 @@
 import { useState, useEffect, useRef } from "react"
+import { useTranslation } from "react-i18next"
 import gsap from "gsap"
 import { Navbar } from "@/components/Navbar"
 import { Hero } from "@/components/Hero"
@@ -14,11 +15,19 @@ import { ServicesPage } from "@/pages/ServicesPage"
 import "./App.css"
 
 function App() {
+  const { i18n } = useTranslation()
   const [currentPage, setCurrentPage] = useState<"home" | "contact" | "services">("home")
   const [prevPage, setPrevPage] = useState<"home" | "contact" | "services">("home")
   const homeRef = useRef<HTMLDivElement>(null)
   const contactRef = useRef<HTMLDivElement>(null)
   const servicesRef = useRef<HTMLDivElement>(null)
+
+  // Handle RTL for Arabic
+  useEffect(() => {
+    const dir = i18n.language === 'ar' ? 'rtl' : 'ltr'
+    document.documentElement.dir = dir
+    document.documentElement.lang = i18n.language
+  }, [i18n.language])
 
   const handleContactClick = () => {
     window.scrollTo({ top: 0, behavior: "smooth" })

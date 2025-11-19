@@ -1,4 +1,5 @@
 import { useState, useEffect, useRef } from "react"
+import { useTranslation } from "react-i18next"
 import gsap from "gsap"
 import { ScrollTrigger } from "gsap/ScrollTrigger"
 import { Button } from "@/components/ui/button"
@@ -11,106 +12,120 @@ interface HeroProps {
   onContactClick?: () => void
 }
 
-const heroSlides = [
+const getHeroSlides = (t: any) => [
   {
-    title: "Facilities Management",
-    subtitle: "Excellence in Every Detail",
-    description: "Comprehensive management solutions for commercial and residential properties with 24/7 professional support",
+    key: 'facilitiesManagement',
+    title: t('hero.slides.facilitiesManagement.title'),
+    subtitle: t('hero.slides.facilitiesManagement.subtitle'),
+    description: t('hero.slides.facilitiesManagement.description'),
     icon: Building2,
     image: "https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?w=1920&q=90",
-    stat: { value: "500+", label: "Properties Managed" }
+    stat: { value: t('hero.slides.facilitiesManagement.statValue'), label: t('hero.slides.facilitiesManagement.statLabel') }
   },
   {
-    title: "Home Solutions",
-    subtitle: "Where Comfort Meets Care",
-    description: "Professional cleaning, maintenance, and home care services that transform your living spaces",
+    key: 'homeSolutions',
+    title: t('hero.slides.homeSolutions.title'),
+    subtitle: t('hero.slides.homeSolutions.subtitle'),
+    description: t('hero.slides.homeSolutions.description'),
     icon: Home,
     image: "https://images.unsplash.com/photo-1560448204-e02f11c3d0e2?w=1920&q=90",
-    stat: { value: "1,000+", label: "Happy Homes" }
+    stat: { value: t('hero.slides.homeSolutions.statValue'), label: t('hero.slides.homeSolutions.statLabel') }
   },
   {
-    title: "Hospitality Services",
-    subtitle: "Premium Guest Experiences",
-    description: "Elevated hospitality management for hotels, resorts, and commercial spaces that inspire",
+    key: 'hospitalityServices',
+    title: t('hero.slides.hospitalityServices.title'),
+    subtitle: t('hero.slides.hospitalityServices.subtitle'),
+    description: t('hero.slides.hospitalityServices.description'),
     icon: Hotel,
     image: "https://images.unsplash.com/photo-1566073771259-6a8506099945?w=1920&q=90",
-    stat: { value: "50+", label: "Hotels Served" }
+    stat: { value: t('hero.slides.hospitalityServices.statValue'), label: t('hero.slides.hospitalityServices.statLabel') }
   },
   {
-    title: "Landscaping & Gardens",
-    subtitle: "Nature's Perfect Canvas",
-    description: "Expert landscape design and maintenance services that bring outdoor spaces to life",
+    key: 'landscaping',
+    title: t('hero.slides.landscaping.title'),
+    subtitle: t('hero.slides.landscaping.subtitle'),
+    description: t('hero.slides.landscaping.description'),
     icon: Trees,
     image: "https://images.unsplash.com/photo-1585320806297-9794b3e4eeae?w=1920&q=90",
-    stat: { value: "300+", label: "Gardens Maintained" }
+    stat: { value: t('hero.slides.landscaping.statValue'), label: t('hero.slides.landscaping.statLabel') }
   },
   {
-    title: "Technical Services",
-    subtitle: "Precision Engineering",
-    description: "HVAC, electrical, plumbing, and technical maintenance by certified professionals",
+    key: 'technicalServices',
+    title: t('hero.slides.technicalServices.title'),
+    subtitle: t('hero.slides.technicalServices.subtitle'),
+    description: t('hero.slides.technicalServices.description'),
     icon: Wrench,
     image: "https://images.unsplash.com/photo-1621905251918-48416bd8575a?w=1920&q=90",
-    stat: { value: "99.8%", label: "Uptime Rate" }
+    stat: { value: t('hero.slides.technicalServices.statValue'), label: t('hero.slides.technicalServices.statLabel') }
   },
   {
-    title: "Pest Control",
-    subtitle: "Safe & Effective Solutions",
-    description: "Advanced pest management solutions ensuring healthy, safe environments for all",
+    key: 'pestControl',
+    title: t('hero.slides.pestControl.title'),
+    subtitle: t('hero.slides.pestControl.subtitle'),
+    description: t('hero.slides.pestControl.description'),
     icon: Shield,
     image: "https://images.unsplash.com/photo-1581578731548-c64695cc6952?w=1920&q=90",
-    stat: { value: "2,000+", label: "Treatments Done" }
+    stat: { value: t('hero.slides.pestControl.statValue'), label: t('hero.slides.pestControl.statLabel') }
   },
   {
-    title: "CR Formation & Renewal",
-    subtitle: "Complete Registration Services",
-    description: "Commercial registration services including formation, amendments, and timely renewals for your business",
+    key: 'crFormation',
+    title: t('hero.slides.crFormation.title'),
+    subtitle: t('hero.slides.crFormation.subtitle'),
+    description: t('hero.slides.crFormation.description'),
     icon: FileText,
     image: "https://images.unsplash.com/photo-1554224155-8d04cb21cd6c?w=1920&q=90",
-    stat: { value: "1,500+", label: "CRs Processed" }
+    stat: { value: t('hero.slides.crFormation.statValue'), label: t('hero.slides.crFormation.statLabel') }
   },
   {
-    title: "Qiwa Portal Services",
-    subtitle: "Labor Compliance Made Easy",
-    description: "Full management of Qiwa platform services for labor compliance and workforce management",
+    key: 'qiwaServices',
+    title: t('hero.slides.qiwaServices.title'),
+    subtitle: t('hero.slides.qiwaServices.subtitle'),
+    description: t('hero.slides.qiwaServices.description'),
     icon: Monitor,
     image: "https://images.unsplash.com/photo-1551434678-e076c223a692?w=1920&q=90",
-    stat: { value: "100%", label: "Compliance Rate" }
+    stat: { value: t('hero.slides.qiwaServices.statValue'), label: t('hero.slides.qiwaServices.statLabel') }
   },
   {
-    title: "Candidate Sourcing",
-    subtitle: "Talent Acquisition Experts",
-    description: "Professional sourcing and shortlisting of qualified candidates from our active database",
+    key: 'candidateSourcing',
+    title: t('hero.slides.candidateSourcing.title'),
+    subtitle: t('hero.slides.candidateSourcing.subtitle'),
+    description: t('hero.slides.candidateSourcing.description'),
     icon: Users,
     image: "https://images.unsplash.com/photo-1552664730-d307ca884978?w=1920&q=90",
-    stat: { value: "5,000+", label: "Candidates Ready" }
+    stat: { value: t('hero.slides.candidateSourcing.statValue'), label: t('hero.slides.candidateSourcing.statLabel') }
   },
   {
-    title: "Muqeem Services",
-    subtitle: "Visa & Residency Simplified",
-    description: "Comprehensive Muqeem portal services for visa processing, residency permits, and renewals",
+    key: 'muqeemServices',
+    title: t('hero.slides.muqeemServices.title'),
+    subtitle: t('hero.slides.muqeemServices.subtitle'),
+    description: t('hero.slides.muqeemServices.description'),
     icon: UserCheck,
     image: "https://images.unsplash.com/photo-1554224155-6726b3ff858f?w=1920&q=90",
-    stat: { value: "2,000+", label: "Visas Processed" }
+    stat: { value: t('hero.slides.muqeemServices.statValue'), label: t('hero.slides.muqeemServices.statLabel') }
   },
   {
-    title: "Training Programs",
-    subtitle: "Employee Development",
-    description: "Onboarding and training programs designed specifically for new employees and team members",
+    key: 'trainingPrograms',
+    title: t('hero.slides.trainingPrograms.title'),
+    subtitle: t('hero.slides.trainingPrograms.subtitle'),
+    description: t('hero.slides.trainingPrograms.description'),
     icon: Headphones,
     image: "https://images.unsplash.com/photo-1524178232363-1fb2b075b655?w=1920&q=90",
-    stat: { value: "500+", label: "Employees Trained" }
+    stat: { value: t('hero.slides.trainingPrograms.statValue'), label: t('hero.slides.trainingPrograms.statLabel') }
   },
   {
-    title: "Fleet Services",
-    subtitle: "Complete Fleet Management",
-    description: "Comprehensive fleet management including maintenance, tracking, and operational support",
+    key: 'fleetServices',
+    title: t('hero.slides.fleetServices.title'),
+    subtitle: t('hero.slides.fleetServices.subtitle'),
+    description: t('hero.slides.fleetServices.description'),
     icon: Truck,
     image: "https://images.unsplash.com/photo-1519003722824-194d4455a60c?w=1920&q=90",
-    stat: { value: "200+", label: "Vehicles Managed" }
+    stat: { value: t('hero.slides.fleetServices.statValue'), label: t('hero.slides.fleetServices.statLabel') }
   }
 ]
 
 export function Hero({ onServicesClick, onContactClick }: HeroProps) {
+  const { t } = useTranslation()
+  const heroSlides = getHeroSlides(t)
   const [currentSlide, setCurrentSlide] = useState(0)
   const [prevSlide, setPrevSlide] = useState(0)
   const [isTransitioning, setIsTransitioning] = useState(false)
@@ -444,7 +459,7 @@ export function Hero({ onServicesClick, onContactClick }: HeroProps) {
               className="group relative overflow-hidden rounded-full bg-gradient-to-r from-brand-azure to-brand-sand px-8 py-5 text-brand-deep font-black text-sm shadow-2xl transition-all duration-300 hover:shadow-[0_20px_60px_-15px_rgba(59,130,246,0.8)] hover:scale-105 uppercase tracking-wider"
             >
               <span className="relative z-10 flex items-center justify-center gap-3">
-                Explore Services
+                {t('hero.exploreServices')}
                 <ArrowRight className="h-5 w-5 transition-transform group-hover:translate-x-2" strokeWidth={3} />
               </span>
               <div className="absolute inset-0 bg-gradient-to-r from-brand-sand to-brand-azure opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
@@ -456,7 +471,7 @@ export function Hero({ onServicesClick, onContactClick }: HeroProps) {
               className="group rounded-full border-2 border-white/50 bg-white/10 backdrop-blur-sm px-8 py-5 text-white font-black text-sm transition-all duration-300 hover:bg-white hover:text-brand-deep hover:border-white hover:shadow-2xl hover:scale-105 uppercase tracking-wider"
             >
               <span className="flex items-center justify-center gap-3">
-                Get In Touch
+                {t('hero.getInTouch')}
                 <ArrowRight className="h-5 w-5 transition-transform group-hover:translate-x-2" strokeWidth={3} />
               </span>
             </Button>
@@ -471,7 +486,7 @@ export function Hero({ onServicesClick, onContactClick }: HeroProps) {
               <div className="text-sm font-semibold text-white/90 uppercase tracking-wider">
                 {currentData.stat.label}
               </div>
-              <div className="text-xs text-white/60">And counting...</div>
+              <div className="text-xs text-white/60">{t('hero.andCounting')}</div>
             </div>
           </div>
         </div>
@@ -500,7 +515,7 @@ export function Hero({ onServicesClick, onContactClick }: HeroProps) {
 
         {/* Scroll Indicator */}
         <div className="absolute bottom-8 right-8 hidden lg:flex flex-col items-center gap-2 text-white/60">
-          <div className="text-xs font-bold uppercase tracking-widest rotate-90 origin-center">Scroll</div>
+          <div className="text-xs font-bold uppercase tracking-widest rotate-90 origin-center">{t('hero.scroll')}</div>
           <div className="h-16 w-px bg-gradient-to-b from-white/60 to-transparent" />
         </div>
       </div>

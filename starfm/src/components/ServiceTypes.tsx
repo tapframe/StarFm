@@ -1,4 +1,5 @@
 import { useEffect, useRef } from "react"
+import { useTranslation } from "react-i18next"
 import gsap from "gsap"
 import { ScrollTrigger } from "gsap/ScrollTrigger"
 import { Clock, Calendar, RotateCcw, ArrowRight } from "lucide-react"
@@ -6,6 +7,7 @@ import { Clock, Calendar, RotateCcw, ArrowRight } from "lucide-react"
 gsap.registerPlugin(ScrollTrigger)
 
 export function ServiceTypes() {
+  const { t } = useTranslation()
   const sectionRef = useRef<HTMLElement>(null)
   const headerRef = useRef<HTMLDivElement>(null)
   const badgeRef = useRef<HTMLDivElement>(null)
@@ -20,8 +22,8 @@ export function ServiceTypes() {
   const serviceTypes = [
     {
       icon: Clock,
-      title: "One-Time Services",
-      description: "Enjoy consistent service and One-time bookings",
+      title: t('serviceTypes.types.oneTime.title'),
+      description: t('serviceTypes.types.oneTime.description'),
       gradient: "from-cyan-400 via-cyan-500 to-teal-600",
       iconBg: "from-cyan-500/20 to-teal-500/20",
       hoverGlow: "group-hover:shadow-cyan-500/30",
@@ -29,8 +31,8 @@ export function ServiceTypes() {
     },
     {
       icon: Calendar,
-      title: "Monthly Services",
-      description: "Enjoy consistent service with multiple monthly visits",
+      title: t('serviceTypes.types.monthly.title'),
+      description: t('serviceTypes.types.monthly.description'),
       gradient: "from-emerald-400 via-green-500 to-emerald-600",
       iconBg: "from-emerald-500/20 to-green-500/20",
       hoverGlow: "group-hover:shadow-emerald-500/30",
@@ -38,8 +40,8 @@ export function ServiceTypes() {
     },
     {
       icon: RotateCcw,
-      title: "Yearly Services",
-      description: "Enjoy consistent service through out the year",
+      title: t('serviceTypes.types.yearly.title'),
+      description: t('serviceTypes.types.yearly.description'),
       gradient: "from-blue-400 via-blue-500 to-cyan-600",
       iconBg: "from-blue-500/20 to-cyan-500/20",
       hoverGlow: "group-hover:shadow-blue-500/30",
@@ -314,20 +316,20 @@ export function ServiceTypes() {
           <div ref={badgeRef} className="mb-4 inline-flex items-center gap-2 rounded-full border border-brand-azure/30 bg-brand-azure/10 px-4 py-2 bg-opacity-50">
             <div className="h-2 w-2 animate-pulse rounded-full bg-blue-500" />
             <span className="text-xs font-bold uppercase tracking-widest text-blue-600">
-              Service Plans
+              {t('serviceTypes.badge')}
             </span>
           </div>
           <h2 className="mb-6 font-display text-4xl font-black leading-tight text-brand-deep sm:text-5xl lg:text-6xl">
-            Experience exceptional{" "}
+            {t('serviceTypes.subtitle')}{" "}
             <span className="relative inline-block">
               <span className="gradient-text">
-                Our Service Types
+                {t('serviceTypes.title')}
               </span>
               <div ref={underlineRef} className="absolute -bottom-2 left-0 right-0 h-1 rounded-full bg-gradient-to-r from-blue-500 via-blue-400 to-transparent origin-left" />
             </span>
           </h2>
           <p className="mx-auto max-w-2xl text-xl font-semibold text-brand-forest/70">
-            delivered by our highly trained and trusted professionals
+            {t('serviceTypes.description')}
           </p>
         </div>
 
@@ -393,7 +395,7 @@ export function ServiceTypes() {
                       }}
                       className={`inline-flex items-center gap-2 rounded-full bg-gradient-to-r ${service.gradient} px-6 py-3 font-bold text-white shadow-lg transition-all duration-300 hover:shadow-xl`}
                     >
-                      <span className="text-sm uppercase tracking-wide">Learn More</span>
+                      <span className="text-sm uppercase tracking-wide">{t('common.learnMore')}</span>
                       <ArrowRight className="h-4 w-4 transition-transform group-hover:translate-x-1" />
                     </button>
                   </div>

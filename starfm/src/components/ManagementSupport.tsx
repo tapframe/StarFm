@@ -1,5 +1,6 @@
 import { Sparkles } from "lucide-react"
 import { useEffect, useRef } from "react"
+import { useTranslation } from "react-i18next"
 import gsap from "gsap"
 import { ScrollTrigger } from "gsap/ScrollTrigger"
 
@@ -16,6 +17,7 @@ interface Service {
 }
 
 export function ManagementSupport({ onContactClick }: ManagementSupportProps) {
+  const { t } = useTranslation()
   const headerRef = useRef<HTMLDivElement>(null)
   
   useEffect(() => {
@@ -43,69 +45,58 @@ export function ManagementSupport({ onContactClick }: ManagementSupportProps) {
   
   const services: Service[] = [
     {
-      title: "CR Formation & Renewal",
-      description:
-        "Complete commercial registration services including formation, amendments, and timely renewals.",
+      title: t('managementSupport.services.crFormation.title'),
+      description: t('managementSupport.services.crFormation.description'),
       image: "https://images.unsplash.com/photo-1554224155-8d04cb21cd6c?w=720&h=480&fit=crop&auto=format"
     },
     {
-      title: "Qiwa Portal Services",
-      description:
-        "Full management of Qiwa platform services for labor compliance and workforce management.",
+      title: t('managementSupport.services.qiwaPortal.title'),
+      description: t('managementSupport.services.qiwaPortal.description'),
       image: "https://images.unsplash.com/photo-1551434678-e076c223a692?w=720&h=480&fit=crop&auto=format"
     },
     {
-      title: "Candidate Sourcing",
-      description:
-        "Professional sourcing and shortlisting of qualified candidates from our active database.",
+      title: t('managementSupport.services.candidateSourcing.title'),
+      description: t('managementSupport.services.candidateSourcing.description'),
       image: "https://images.unsplash.com/photo-1552664730-d307ca884978?w=720&h=480&fit=crop&auto=format"
     },
     {
-      title: "Muqeem Services",
-      description:
-        "Comprehensive Muqeem portal services for visa processing, residency permits, and renewals.",
+      title: t('managementSupport.services.muqeemServices.title'),
+      description: t('managementSupport.services.muqeemServices.description'),
       image: "https://images.unsplash.com/photo-1554224155-6726b3ff858f?w=720&h=480&fit=crop&auto=format"
     },
     {
-      title: "Training Programs",
-      description:
-        "Onboarding and training programs designed specifically for new employees and team members.",
+      title: t('managementSupport.services.trainingPrograms.title'),
+      description: t('managementSupport.services.trainingPrograms.description'),
       image: "https://images.unsplash.com/photo-1524178232363-1fb2b075b655?w=720&h=480&fit=crop&auto=format"
     },
     {
-      title: "Vehicle Registration",
-      description:
-        "Complete vehicle registration and annual renewal services for corporate and employee vehicles.",
+      title: t('managementSupport.services.vehicleRegistration.title'),
+      description: t('managementSupport.services.vehicleRegistration.description'),
       image: "https://images.unsplash.com/photo-1449965408869-eaa3f722e40d?w=720&h=480&fit=crop&auto=format"
     },
     {
-      title: "Driving License Services",
-      description:
-        "Driving license issuance, renewal, and related services for your employees.",
+      title: t('managementSupport.services.drivingLicense.title'),
+      description: t('managementSupport.services.drivingLicense.description'),
       image: "https://images.unsplash.com/photo-1449965408869-eaa3f722e40d?w=720&h=480&fit=crop&auto=format"
     },
     {
-      title: "Global Visa Applications",
-      description:
-        "Visa application services for Europe, UK, US, GCC, and other international destinations.",
+      title: t('managementSupport.services.globalVisa.title'),
+      description: t('managementSupport.services.globalVisa.description'),
       image: "https://images.unsplash.com/photo-1436491865332-7a61a109cc05?w=720&h=480&fit=crop&auto=format"
     },
     {
-      title: "Fleet Services",
-      description:
-        "Comprehensive fleet management including maintenance, tracking, and operational support.",
+      title: t('managementSupport.services.fleetServices.title'),
+      description: t('managementSupport.services.fleetServices.description'),
       image: "https://images.unsplash.com/photo-1519003722824-194d4455a60c?w=720&h=480&fit=crop&auto=format"
     },
     {
-      title: "Admin Support",
-      description:
-        "Full administrative support services to streamline your business operations and workflows.",
+      title: t('managementSupport.services.adminSupport.title'),
+      description: t('managementSupport.services.adminSupport.description'),
       image: "https://images.unsplash.com/photo-1497366216548-37526070297c?w=720&h=480&fit=crop&auto=format"
     },
     {
-      title: "IT Support",
-      description:
-        "Professional IT support services including setup, maintenance, and technical assistance.",
+      title: t('managementSupport.services.itSupport.title'),
+      description: t('managementSupport.services.itSupport.description'),
       image: "https://images.unsplash.com/photo-1519389950473-47ba0277781c?w=720&h=480&fit=crop&auto=format"
     }
   ]
@@ -126,13 +117,13 @@ export function ManagementSupport({ onContactClick }: ManagementSupportProps) {
           <div className="mx-auto max-w-3xl text-center">
             <div className="mb-8 inline-flex items-center gap-3 rounded-full border border-white/20 bg-white/5 px-6 py-3 text-xs font-medium uppercase tracking-[0.2em] text-white/90 backdrop-blur-sm shadow-lg">
               <Sparkles className="h-4 w-4 text-white/80" />
-              HR & Management Services
+              {t('managementSupport.badge')}
             </div>
             <h2 className="mb-6 font-display text-6xl font-black leading-[1.1] text-white lg:text-7xl tracking-tight drop-shadow-2xl">
-              Give it to us.
+              {t('managementSupport.title')}
             </h2>
             <p className="text-xl leading-relaxed text-white/95 font-light tracking-wide max-w-2xl mx-auto drop-shadow-lg">
-              From CR formation to global visa applications, we handle all your HR and administrative needs. Focus on growing your business while we manage Qiwa, Muqeem, fleet services, training, and complete operational support.
+              {t('managementSupport.description')}
             </p>
           </div>
         </div>
@@ -164,13 +155,13 @@ export function ManagementSupport({ onContactClick }: ManagementSupportProps) {
 
               <div className="flex flex-1 flex-col gap-4 p-6">
                 <div className="space-y-2">
-                  <p className="text-xs font-semibold uppercase tracking-widest text-slate-500">Service Desk</p>
+                  <p className="text-xs font-semibold uppercase tracking-widest text-slate-500">{t('managementSupport.serviceDesk')}</p>
                   <h3 className="text-xl font-bold text-brand-deep">{service.title}</h3>
                 </div>
                 <p className="flex-1 text-sm leading-relaxed text-slate-600">{service.description}</p>
                 <div className="flex items-center justify-between pt-3 border-t border-slate-100">
-                  <span className="text-xs font-semibold uppercase tracking-wider text-blue-600">24/7 Support</span>
-                  <span className="inline-flex rounded-full bg-emerald-50 px-3 py-1 text-xs font-semibold text-emerald-700">Active</span>
+                  <span className="text-xs font-semibold uppercase tracking-wider text-blue-600">{t('managementSupport.supportLabel')}</span>
+                  <span className="inline-flex rounded-full bg-emerald-50 px-3 py-1 text-xs font-semibold text-emerald-700">{t('managementSupport.activeStatus')}</span>
                 </div>
               </div>
             </article>
@@ -180,19 +171,19 @@ export function ManagementSupport({ onContactClick }: ManagementSupportProps) {
                 <div className="mt-12 rounded-2xl border border-slate-200 bg-gradient-to-br from-blue-50 via-indigo-50/50 to-slate-50 p-8 lg:p-12 shadow-sm">
           <div className="flex flex-col gap-6 lg:flex-row lg:items-center lg:justify-between">
             <div className="flex-1">
-              <p className="text-xs font-semibold uppercase tracking-widest text-slate-500">Ready to offload?</p>
+              <p className="text-xs font-semibold uppercase tracking-widest text-slate-500">{t('managementSupport.readyToOffload')}</p>
               <h3 className="mt-3 text-3xl font-bold text-brand-deep">
-                Let's handle the heavy lifting.
+                {t('managementSupport.handleHeavyLifting')}
               </h3>
               <p className="mt-3 text-base leading-relaxed text-slate-600">
-                We co-author governance plans, run execution pods, and deliver weekly KPI reviews with live dashboards. You get predictability. We get accountability.
+                {t('managementSupport.offloadDescription')}
               </p>
             </div>
             <button
               onClick={onContactClick}
               className="mt-4 inline-flex items-center gap-2 rounded-full bg-gradient-to-r from-blue-600 to-indigo-600 px-8 py-4 text-sm font-bold uppercase tracking-widest text-white shadow-lg transition-all hover:shadow-xl hover:from-blue-700 hover:to-indigo-700 lg:mt-0"
             >
-              Start Discussion
+              {t('managementSupport.startDiscussion')}
               <span className="text-lg">→</span>
             </button>
           </div>

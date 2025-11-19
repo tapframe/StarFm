@@ -1,4 +1,5 @@
 import { useEffect, useRef } from "react"
+import { useTranslation } from "react-i18next"
 import gsap from "gsap"
 import { Mail, Phone, MapPin, Clock, Send } from "lucide-react"
 import { Button } from "@/components/ui/button"
@@ -9,6 +10,7 @@ interface ContactProps {
 }
 
 export function Contact({ onBack }: ContactProps) {
+  const { t } = useTranslation()
   const pageRef = useRef<HTMLDivElement>(null)
   const pageHeaderRef = useRef<HTMLDivElement>(null)
   const badgeRef = useRef<HTMLDivElement>(null)
@@ -20,26 +22,30 @@ export function Contact({ onBack }: ContactProps) {
   const contactInfo = [
     {
       icon: Phone,
-      title: "Phone",
+      title: t('contact.phone'),
       details: ["00966 547770046"],
       color: "from-blue-500 to-cyan-500"
     },
     {
       icon: Mail,
-      title: "Email",
+      title: t('contact.email'),
       details: ["Info@mahhab.com"],
       color: "from-purple-500 to-pink-500"
     },
     {
       icon: MapPin,
-      title: "Location",
-      details: ["Jeddah, Saudi Arabia"],
+      title: t('contact.location'),
+      details: [t('contact.locationText')],
       color: "from-emerald-500 to-teal-500"
     },
     {
       icon: Clock,
-      title: "Working Hours",
-      details: ["Mon - Thu: 8:00 AM - 6:00 PM", "Sat: 9:00 AM - 2:00 PM", "Friday: Closed"],
+      title: t('contact.workingHours'),
+      details: [
+        t('contact.workingHoursDetails.weekdays'),
+        t('contact.workingHoursDetails.saturday'),
+        t('contact.workingHoursDetails.friday')
+      ],
       color: "from-orange-500 to-red-500"
     }
   ]
@@ -151,19 +157,19 @@ export function Contact({ onBack }: ContactProps) {
           <div ref={badgeRef} className="mb-6 inline-flex items-center gap-2 rounded-full border border-blue-500/30 bg-blue-500/10 px-4 py-2 bg-opacity-50">
             <div className="h-2 w-2 animate-pulse rounded-full bg-blue-500" />
             <span className="text-xs font-bold uppercase tracking-[0.15em] text-blue-600">
-              Get In Touch
+              {t('contact.badge')}
             </span>
           </div>
 
           <h1 className="mb-6 font-display text-5xl font-black leading-tight text-brand-deep sm:text-6xl lg:text-7xl">
-            Contact
+            {t('contact.title')}
             <span className="block gradient-text mt-2">
-              Our Team
+              {t('contact.subtitle')}
             </span>
           </h1>
 
           <p className="mx-auto max-w-2xl text-lg leading-relaxed text-brand-forest/70">
-            We're here to help and answer any question you might have. We look forward to hearing from you.
+            {t('contact.description')}
           </p>
         </div>
 
@@ -213,14 +219,14 @@ export function Contact({ onBack }: ContactProps) {
             
             <div className="relative overflow-hidden rounded-3xl border border-brand-azure/20 bg-white/90 p-8 shadow-2xl sm:p-10">
               <h3 className="mb-6 font-display text-3xl font-black text-brand-deep">
-                Send us a Message
+                {t('contact.form.title')}
               </h3>
 
               <form className="space-y-6">
                 <div className="grid gap-6 sm:grid-cols-2">
                   <div>
                     <label className="mb-2 block text-sm font-bold text-brand-deep">
-                      First Name *
+                      {t('contact.form.firstName')} {t('contact.form.required')}
                     </label>
                     <input
                       type="text"
@@ -230,7 +236,7 @@ export function Contact({ onBack }: ContactProps) {
                   </div>
                   <div>
                     <label className="mb-2 block text-sm font-bold text-brand-deep">
-                      Last Name *
+                      {t('contact.form.lastName')} {t('contact.form.required')}
                     </label>
                     <input
                       type="text"
@@ -242,7 +248,7 @@ export function Contact({ onBack }: ContactProps) {
 
                 <div>
                   <label className="mb-2 block text-sm font-bold text-brand-deep">
-                    Email Address *
+                    {t('contact.form.email')} {t('contact.form.required')}
                   </label>
                   <input
                     type="email"
@@ -253,7 +259,7 @@ export function Contact({ onBack }: ContactProps) {
 
                 <div>
                   <label className="mb-2 block text-sm font-bold text-brand-deep">
-                    Phone Number
+                    {t('contact.form.phone')}
                   </label>
                   <input
                     type="tel"
@@ -264,26 +270,25 @@ export function Contact({ onBack }: ContactProps) {
 
                 <div>
                   <label className="mb-2 block text-sm font-bold text-brand-deep">
-                    Service Interest
+                    {t('contact.form.serviceInterest')}
                   </label>
                   <select className="w-full rounded-xl border-2 border-brand-deep/10 bg-white px-4 py-3 text-brand-deep transition-all duration-300 focus:border-blue-500/50 focus:outline-none focus:ring-4 focus:ring-blue-500/10">
-                    <option>Facilities Management</option>
-                    <option>Home Solutions</option>
-                    <option>Hospitality Services</option>
-                    <option>Landscaping & Gardens</option>
-                    <option>Technical Services</option>
-                    <option>Pest Control</option>
-                    <option>Other</option>
+                    <option value="facilitiesManagement">{t('contact.form.serviceOptions.facilitiesManagement')}</option>
+                    <option value="homeSolutions">{t('contact.form.serviceOptions.homeSolutions')}</option>
+                    <option value="hospitalityServices">{t('contact.form.serviceOptions.hospitalityServices')}</option>
+                    <option value="technicalServices">{t('contact.form.serviceOptions.technicalServices')}</option>
+                    <option value="pestControl">{t('contact.form.serviceOptions.pestControl')}</option>
+                    <option value="other">{t('contact.form.serviceOptions.other')}</option>
                   </select>
                 </div>
 
                 <div>
                   <label className="mb-2 block text-sm font-bold text-brand-deep">
-                    Message *
+                    {t('contact.form.message')} {t('contact.form.required')}
                   </label>
                   <textarea
                     rows={5}
-                    placeholder="Tell us about your needs..."
+                    placeholder={t('contact.form.messagePlaceholder')}
                     className="w-full rounded-xl border-2 border-brand-deep/10 bg-white px-4 py-3 text-brand-deep transition-all duration-300 placeholder:text-brand-forest/40 focus:border-blue-500/50 focus:outline-none focus:ring-4 focus:ring-blue-500/10 resize-none"
                   />
                 </div>
@@ -293,7 +298,7 @@ export function Contact({ onBack }: ContactProps) {
                   className="submit-button group relative w-full overflow-hidden rounded-xl bg-gradient-to-r from-blue-500 via-blue-400 to-blue-500 py-6 font-black uppercase tracking-wider text-white shadow-lg transition-all duration-300 hover:shadow-2xl hover:shadow-blue-500/40"
                 >
                   <span className="relative z-10 flex items-center justify-center gap-2">
-                    Send Message
+                    {t('contact.form.submit')}
                     <Send className="h-5 w-5 transition-transform group-hover:translate-x-1" />
                   </span>
                   <div ref={buttonHoverRef} className="absolute inset-0 bg-gradient-to-r from-blue-400 to-blue-500 opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
@@ -313,10 +318,10 @@ export function Contact({ onBack }: ContactProps) {
             <div className="text-center">
               <MapPin className="mx-auto mb-4 h-16 w-16 text-blue-500" strokeWidth={1.5} />
               <h3 className="mb-2 font-display text-2xl font-bold text-brand-deep">
-                Map Location
+                {t('contact.map.title')}
               </h3>
               <p className="text-sm text-brand-forest/70">
-                [Interactive map will be added here]
+                {t('contact.map.placeholder')}
               </p>
             </div>
           </div>

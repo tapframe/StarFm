@@ -1,4 +1,5 @@
 import { useEffect, useRef, useMemo, useCallback } from "react"
+import { useTranslation } from "react-i18next"
 import gsap from "gsap"
 import { ScrollTrigger } from "gsap/ScrollTrigger"
 import { Building2, Home, Hotel, Trees, Wrench, Shield, Briefcase, CheckCircle2, ArrowRight, Star, Clock, Award } from "lucide-react"
@@ -13,6 +14,7 @@ interface ServicesPageProps {
 }
 
 export function ServicesPage({ onBack, onContactClick }: ServicesPageProps) {
+  const { t } = useTranslation()
   const pageRef = useRef<HTMLDivElement>(null)
   const pageHeaderRef = useRef<HTMLDivElement>(null)
   const badgeRef = useRef<HTMLDivElement>(null)
@@ -47,160 +49,91 @@ export function ServicesPage({ onBack, onContactClick }: ServicesPageProps) {
   const services = useMemo(() => [
     {
       icon: Briefcase,
-      title: "Management Support Services",
-      description: "Complete administrative management for growing companies. From visa processing to CR renewals, municipality licenses to residential permits - we handle every aspect of your company's administrative requirements with precision and efficiency.",
+      title: t('servicesPage.services.managementSupport.title'),
+      description: t('servicesPage.services.managementSupport.description'),
       image: "https://images.unsplash.com/photo-1450101499163-c8848c66ca85?w=800&q=80",
       color: "from-indigo-500 to-blue-500",
-      features: [
-        "Visa Issuance & Renewals",
-        "Commercial Registration (CR) Services",
-        "Residential Permit Processing",
-        "Municipality License Management",
-        "Employee Documentation Services",
-        "Compliance & Audit Support"
-      ],
-      stats: { value: "500+", label: "Employees Managed" }
+      features: t('servicesPage.services.managementSupport.features', { returnObjects: true }) as string[],
+      stats: {
+        value: t('servicesPage.services.managementSupport.stats.value'),
+        label: t('servicesPage.services.managementSupport.stats.label')
+      }
     },
     {
       icon: Building2,
-      title: "Facilities Management",
-      description: "Comprehensive FM solutions for commercial buildings, retail spaces, and corporate headquarters. We optimize operations, reduce costs, and ensure peak performance.",
+      title: t('servicesPage.services.facilitiesManagement.title'),
+      description: t('servicesPage.services.facilitiesManagement.description'),
       image: "https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?w=800&q=80",
       color: "from-blue-500 to-cyan-500",
-      features: [
-        "24/7 Operations & Monitoring",
-        "Energy Optimization & Sustainability",
-        "Compliance & Safety Management",
-        "Preventive Maintenance Programs",
-        "Vendor Management & Coordination",
-        "Asset Management Systems"
-      ],
-      stats: { value: "500+", label: "Buildings Managed" }
+      features: t('servicesPage.services.facilitiesManagement.features', { returnObjects: true }) as string[],
+      stats: {
+        value: t('servicesPage.services.facilitiesManagement.stats.value'),
+        label: t('servicesPage.services.facilitiesManagement.stats.label')
+      }
     },
     {
       icon: Home,
-      title: "Integrated Home Solutions",
-      description: "Premium maintenance programs designed exclusively for private homes, villas, and residential complexes with specialized preventive care.",
+      title: t('servicesPage.services.homeSolutions.title'),
+      description: t('servicesPage.services.homeSolutions.description'),
       image: "https://images.unsplash.com/photo-1600596542815-ffad4c1539a9?w=800&q=80",
       color: "from-emerald-500 to-teal-500",
-      features: [
-        "Regular Home Inspections",
-        "Cleaning & Housekeeping Services",
-        "Plumbing & Electrical Maintenance",
-        "HVAC System Care",
-        "Garden & Outdoor Maintenance",
-        "Emergency Response Services"
-      ],
-      stats: { value: "1,000+", label: "Happy Homes" }
+      features: t('servicesPage.services.homeSolutions.features', { returnObjects: true }) as string[],
+      stats: {
+        value: t('servicesPage.services.homeSolutions.stats.value'),
+        label: t('servicesPage.services.homeSolutions.stats.label')
+      }
     },
     {
       icon: Hotel,
-      title: "Hospitality Services",
-      description: "Tailored facility management for hotels, resorts, and hospitality venues ensuring exceptional guest experiences and operational excellence.",
+      title: t('servicesPage.services.hospitalityServices.title'),
+      description: t('servicesPage.services.hospitalityServices.description'),
       image: "https://images.unsplash.com/photo-1566073771259-6a8506099945?w=800&q=80",
       color: "from-purple-500 to-pink-500",
-      features: [
-        "Guest Room Maintenance",
-        "Front-of-House Services",
-        "Back-of-House Operations",
-        "Laundry & Housekeeping",
-        "Food & Beverage Support",
-        "Event Space Management"
-      ],
-      stats: { value: "50+", label: "Hotels Served" }
+      features: t('servicesPage.services.hospitalityServices.features', { returnObjects: true }) as string[],
+      stats: {
+        value: t('servicesPage.services.hospitalityServices.stats.value'),
+        label: t('servicesPage.services.hospitalityServices.stats.label')
+      }
     },
     {
       icon: Trees,
-      title: "Landscaping & Gardens",
-      description: "Expert landscape design, maintenance, and outdoor space management creating beautiful, sustainable environments.",
+      title: t('servicesPage.services.landscaping.title'),
+      description: t('servicesPage.services.landscaping.description'),
       image: "https://images.unsplash.com/photo-1585320806297-9794b3e4eeae?w=800&q=80",
       color: "from-green-500 to-emerald-500",
-      features: [
-        "Landscape Design & Installation",
-        "Lawn Care & Maintenance",
-        "Irrigation System Management",
-        "Tree & Shrub Care",
-        "Seasonal Planting Programs",
-        "Hardscape Maintenance"
-      ],
-      stats: { value: "300+", label: "Gardens Maintained" }
+      features: t('servicesPage.services.landscaping.features', { returnObjects: true }) as string[],
+      stats: {
+        value: t('servicesPage.services.landscaping.stats.value'),
+        label: t('servicesPage.services.landscaping.stats.label')
+      }
     },
     {
       icon: Wrench,
-      title: "Technical Services",
-      description: "Expert HVAC, electrical, plumbing, and technical maintenance delivered by certified professionals ensuring system reliability.",
+      title: t('servicesPage.services.technicalServices.title'),
+      description: t('servicesPage.services.technicalServices.description'),
       image: "https://images.unsplash.com/photo-1621905251918-48416bd8575a?w=800&q=80",
       color: "from-orange-500 to-red-500",
-      features: [
-        "HVAC Installation & Repair",
-        "Electrical System Maintenance",
-        "Plumbing Services",
-        "Fire Safety Systems",
-        "Building Automation",
-        "Emergency Repairs"
-      ],
-      stats: { value: "99.8%", label: "Uptime Rate" }
+      features: t('servicesPage.services.technicalServices.features', { returnObjects: true }) as string[],
+      stats: {
+        value: t('servicesPage.services.technicalServices.stats.value'),
+        label: t('servicesPage.services.technicalServices.stats.label')
+      }
     },
     {
       icon: Shield,
-      title: "Pest Control",
-      description: "Safe, effective, and environmentally responsible pest management solutions protecting your property and health.",
+      title: t('servicesPage.services.pestControl.title'),
+      description: t('servicesPage.services.pestControl.description'),
       image: "https://images.unsplash.com/photo-1581578731548-c64695cc6952?w=800&q=80",
       color: "from-indigo-500 to-purple-500",
-      features: [
-        "Comprehensive Pest Inspections",
-        "Eco-Friendly Treatment Methods",
-        "Preventive Pest Programs",
-        "Termite Control & Protection",
-        "Rodent Management",
-        "Regular Monitoring & Reporting"
-      ],
-      stats: { value: "2,000+", label: "Treatments Done" }
+      features: t('servicesPage.services.pestControl.features', { returnObjects: true }) as string[],
+      stats: {
+        value: t('servicesPage.services.pestControl.stats.value'),
+        label: t('servicesPage.services.pestControl.stats.label')
+      }
     }
-  ], [])
+  ], [t])
 
   // Optimized event handlers with useCallback
-  const handleBackButtonEnter = useCallback(() => {
-    if (backButtonRef.current) {
-      gsap.to(backButtonRef.current, { 
-        scale: 1.05, 
-        x: -8, 
-        duration: 0.3,
-        ease: "back.out(1.7)"
-      })
-    }
-  }, [])
-
-  const handleBackButtonLeave = useCallback(() => {
-    if (backButtonRef.current) {
-      gsap.to(backButtonRef.current, { 
-        scale: 1, 
-        x: 0, 
-        duration: 0.3,
-        ease: "power2.out"
-      })
-    }
-  }, [])
-
-  const handleBackButtonDown = useCallback(() => {
-    if (backButtonRef.current) {
-      gsap.to(backButtonRef.current, { 
-        scale: 0.95, 
-        duration: 0.1,
-        ease: "power2.in"
-      })
-    }
-  }, [])
-
-  const handleBackButtonUp = useCallback(() => {
-    if (backButtonRef.current) {
-      gsap.to(backButtonRef.current, { 
-        scale: 1.05, 
-        duration: 0.2,
-        ease: "back.out(1.7)"
-      })
-    }
-  }, [])
 
   const handleCtaButtonEnter = useCallback(() => {
     if (ctaButtonRef.current) {
@@ -920,13 +853,6 @@ export function ServicesPage({ onBack, onContactClick }: ServicesPageProps) {
       })
     })
 
-    // Back button event listeners
-    if (backButtonRef.current) {
-      backButtonRef.current.addEventListener("mouseenter", handleBackButtonEnter, { passive: true })
-      backButtonRef.current.addEventListener("mouseleave", handleBackButtonLeave, { passive: true })
-      backButtonRef.current.addEventListener("mousedown", handleBackButtonDown, { passive: true })
-      backButtonRef.current.addEventListener("mouseup", handleBackButtonUp, { passive: true })
-    }
 
     // CTA button event listeners
     if (ctaButtonRef.current) {
@@ -947,12 +873,6 @@ export function ServicesPage({ onBack, onContactClick }: ServicesPageProps) {
       animationsRef.current = []
 
       // Cleanup event listeners
-      if (backButtonRef.current) {
-        backButtonRef.current.removeEventListener("mouseenter", handleBackButtonEnter)
-        backButtonRef.current.removeEventListener("mouseleave", handleBackButtonLeave)
-        backButtonRef.current.removeEventListener("mousedown", handleBackButtonDown)
-        backButtonRef.current.removeEventListener("mouseup", handleBackButtonUp)
-      }
       if (ctaButtonRef.current) {
         ctaButtonRef.current.removeEventListener("mouseenter", handleCtaButtonEnter)
         ctaButtonRef.current.removeEventListener("mouseleave", handleCtaButtonLeave)
@@ -975,7 +895,7 @@ export function ServicesPage({ onBack, onContactClick }: ServicesPageProps) {
         })
       })
     }
-  }, [handleBackButtonEnter, handleBackButtonLeave, handleBackButtonDown, handleBackButtonUp, handleCtaButtonEnter, handleCtaButtonLeave])
+  }, [handleCtaButtonEnter, handleCtaButtonLeave])
 
   return (
     <div ref={pageRef} className="min-h-screen bg-gradient-to-br from-white via-brand-cream/20 to-brand-sand/30">
@@ -996,7 +916,7 @@ export function ServicesPage({ onBack, onContactClick }: ServicesPageProps) {
           <div ref={badgeRef} className="mb-6 inline-flex items-center gap-2 rounded-full border border-blue-500/30 bg-blue-500/10 px-4 py-2 bg-opacity-50">
             <div className="h-2 w-2 animate-pulse rounded-full bg-blue-500" />
             <span className="text-xs font-bold uppercase tracking-[0.15em] text-blue-600">
-              What We Offer
+              {t('servicesPage.pageBadge')}
             </span>
           </div>
 
@@ -1008,7 +928,7 @@ export function ServicesPage({ onBack, onContactClick }: ServicesPageProps) {
           </h1>
 
           <p ref={descriptionRef} className="mx-auto max-w-2xl text-lg leading-relaxed text-brand-forest/70">
-            Comprehensive facilities management solutions designed to meet your every need. From technical services to landscaping, we deliver excellence across all domains.
+            {t('servicesPage.description')}
           </p>
         </div>
 
@@ -1135,7 +1055,7 @@ export function ServicesPage({ onBack, onContactClick }: ServicesPageProps) {
                       className="mb-4 inline-flex items-center gap-2 rounded-full border border-brand-azure/30 bg-brand-azure/10 px-3 py-1 bg-opacity-50"
                     >
                       <Star className="h-3 w-3 text-blue-500 fill-blue-500" aria-hidden="true" />
-                      <span className="text-xs font-bold uppercase tracking-wider text-blue-600">Premium Service</span>
+                      <span className="text-xs font-bold uppercase tracking-wider text-blue-600">{t('servicesPage.premiumService')}</span>
                     </div>
 
                     <h2 
@@ -1194,7 +1114,7 @@ export function ServicesPage({ onBack, onContactClick }: ServicesPageProps) {
                         className="group relative overflow-hidden rounded-xl bg-gradient-to-r from-brand-azure via-brand-sand to-brand-azure px-6 py-4 font-bold uppercase tracking-wide text-brand-deep shadow-lg transition-all duration-300 hover:shadow-2xl hover:shadow-brand-azure/50"
                       >
                         <span className="relative z-10 flex items-center gap-2">
-                          Request Service
+                          {t('servicesPage.requestService')}
                           <ArrowRight className="h-5 w-5 transition-transform group-hover:translate-x-1" aria-hidden="true" />
                         </span>
                         <div
@@ -1212,7 +1132,7 @@ export function ServicesPage({ onBack, onContactClick }: ServicesPageProps) {
                       >
                         <span className="flex items-center gap-2">
                           <Clock className="h-5 w-5" aria-hidden="true" />
-                          Learn More
+                          {t('common.learnMore')}
                         </span>
                       </Button>
                     </div>
@@ -1220,7 +1140,7 @@ export function ServicesPage({ onBack, onContactClick }: ServicesPageProps) {
                     {/* Quality badge */}
                     <div className="mt-6 flex items-center gap-2 text-sm text-brand-forest/60">
                       <Award className="h-5 w-5 text-blue-500" aria-hidden="true" />
-                      <span className="font-medium">Certified & Quality Assured</span>
+                      <span className="font-medium">{t('servicesPage.certifiedQuality')}</span>
                     </div>
                   </div>
                 </div>
@@ -1233,10 +1153,10 @@ export function ServicesPage({ onBack, onContactClick }: ServicesPageProps) {
         <div ref={ctaSectionRef} className="mt-24 overflow-hidden rounded-3xl border border-brand-azure/20 bg-gradient-to-br from-brand-deep via-brand-forest to-brand-moss p-12 text-center shadow-2xl sm:p-16">
           <div className="relative">
             <h3 ref={ctaTitleRef} className="mb-4 font-display text-3xl font-black text-white sm:text-4xl lg:text-5xl">
-              Ready to Get Started?
+              {t('servicesPage.cta.title')}
             </h3>
             <p ref={ctaDescriptionRef} className="mx-auto mb-8 max-w-2xl text-lg leading-relaxed text-brand-cream/90">
-              Let us handle your facility management needs. Contact our team today for a customized solution.
+              {t('servicesPage.cta.description')}
             </p>
             <Button
               ref={ctaButtonRef}
@@ -1244,7 +1164,7 @@ export function ServicesPage({ onBack, onContactClick }: ServicesPageProps) {
               className="group relative overflow-hidden rounded-xl bg-gradient-to-r from-brand-azure via-brand-sand to-brand-azure px-10 py-5 text-lg font-black uppercase tracking-wide text-brand-deep shadow-lg transition-all duration-300 hover:shadow-2xl hover:shadow-brand-azure/40"
             >
               <span className="relative z-10 flex items-center gap-2">
-                Contact Us Now
+                {t('servicesPage.contactNow')}
                 <div ref={arrowRef}>
                   <ArrowRight className="h-6 w-6" aria-hidden="true" />
                 </div>
