@@ -112,10 +112,12 @@ const heroSlides = [
 
 export function Hero({ onServicesClick, onContactClick }: HeroProps) {
   const [currentSlide, setCurrentSlide] = useState(0)
+  const [prevSlide, setPrevSlide] = useState(0)
   const [isTransitioning, setIsTransitioning] = useState(false)
   
   const heroRef = useRef<HTMLElement>(null)
-  const bgImageRef = useRef<HTMLDivElement>(null)
+  const currentBgRef = useRef<HTMLDivElement>(null)
+  const nextBgRef = useRef<HTMLDivElement>(null)
   const overlayRef = useRef<HTMLDivElement>(null)
   const contentRef = useRef<HTMLDivElement>(null)
   const titleRef = useRef<HTMLHeadingElement>(null)
@@ -129,10 +131,10 @@ export function Hero({ onServicesClick, onContactClick }: HeroProps) {
   useEffect(() => {
     const tl = gsap.timeline({ delay: 0.2 })
     
-    // Fade in background
-    if (bgImageRef.current) {
-      gsap.set(bgImageRef.current, { scale: 1.1, opacity: 0 })
-      tl.to(bgImageRef.current, {
+    // Initial background animation
+    if (currentBgRef.current) {
+      gsap.set(currentBgRef.current, { scale: 1.1, opacity: 0 })
+      tl.to(currentBgRef.current, {
         opacity: 1,
         scale: 1,
         duration: 1.5,
@@ -217,116 +219,129 @@ export function Hero({ onServicesClick, onContactClick }: HeroProps) {
     }
   }, [])
 
-  // Slide transition animation
-  useEffect(() => {
-    if (isTransitioning) {
+  // Handle manual slide change with transition
+  const handleSlideChange = (nextIndex: number) => {
+    if (nextIndex !== currentSlide && !isTransitioning) {
+      setIsTransitioning(true)
+      
       const tl = gsap.timeline({
-        onComplete: () => setIsTransitioning(false)
+        onComplete: () => {
+          setPrevSlide(currentSlide)
+          setCurrentSlide(nextIndex)
+          // The actual state update triggers the enter animation via useEffect
+        }
       })
 
-      // Animate out current content
+      // Premium Text Exit Animation (Staggered Fade Out & Up)
       tl.to([titleRef.current, subtitleRef.current, descriptionRef.current, statRef.current], {
-        y: -40,
+        y: -20,
         opacity: 0,
-        duration: 0.5,
+        duration: 0.4,
         stagger: 0.05,
         ease: "power2.in"
       })
       
       tl.to(iconRef.current, {
-        scale: 0,
-        rotate: 180,
+        scale: 0.8,
         opacity: 0,
-        duration: 0.5,
+        duration: 0.3,
         ease: "power2.in"
       }, 0)
+    }
+  }
+
+  // Enter Animation Effect - Runs when currentSlide changes
+  useEffect(() => {
+    // Skip initial render
+    if (currentSlide === prevSlide && currentSlide === 0) return
+
+    const tl = gsap.timeline({
+      onComplete: () => setIsTransitioning(false)
+    })
+
+    // Premium Background Transition (Crossfade)
+    if (nextBgRef.current) {
+      // Reset next background state
+      gsap.set(nextBgRef.current, { opacity: 0, scale: 1.1, zIndex: 2 })
       
-      // Change background image with scale animation
-      tl.to(bgImageRef.current, {
-        scale: 1.05,
-        opacity: 0.3,
-        duration: 0.6,
+      // Animate in
+      tl.to(nextBgRef.current, {
+        opacity: 1,
+        scale: 1,
+        duration: 1.2,
         ease: "power2.inOut"
       }, 0)
-      
-      // Update content
-      tl.call(() => {
-        // Content will update via React state
-      })
-      
-      // Animate in new content
-      tl.to(bgImageRef.current, {
+    }
+
+    // Premium Text Enter Animation (Staggered Fade In & Up)
+    tl.fromTo(iconRef.current,
+      { scale: 0, rotate: -45, opacity: 0 },
+      {
         scale: 1,
+        rotate: 0,
+        opacity: 1,
+        duration: 0.6,
+        ease: "back.out(1.7)"
+      }, 0.4)
+    
+    tl.fromTo(titleRef.current,
+      { y: 30, opacity: 0 },
+      {
+        y: 0,
         opacity: 1,
         duration: 0.8,
         ease: "power3.out"
+      }, 0.5)
+    
+    tl.fromTo(subtitleRef.current,
+      { y: 20, opacity: 0 },
+      {
+        y: 0,
+        opacity: 1,
+        duration: 0.7,
+        ease: "power3.out"
       }, 0.6)
-      
-      tl.fromTo(iconRef.current,
-        { scale: 0, rotate: -180, opacity: 0 },
-        {
-          scale: 1,
-          rotate: 0,
-          opacity: 1,
-          duration: 0.7,
-          ease: "back.out(1.7)"
-        }, 0.8)
-      
-      tl.fromTo(titleRef.current,
-        { y: 50, opacity: 0 },
-        {
-          y: 0,
-          opacity: 1,
-          duration: 0.8,
-          ease: "power3.out"
-        }, 0.9)
-      
-      tl.fromTo(subtitleRef.current,
-        { y: 40, opacity: 0 },
-        {
-          y: 0,
-          opacity: 1,
-          duration: 0.7,
-          ease: "power3.out"
-        }, 1)
-      
-      tl.fromTo(descriptionRef.current,
-        { y: 30, opacity: 0 },
-        {
-          y: 0,
-          opacity: 1,
-          duration: 0.7,
-          ease: "power2.out"
-        }, 1.1)
-      
-      tl.fromTo(statRef.current,
-        { y: 20, opacity: 0 },
-        {
-          y: 0,
-          opacity: 1,
-          duration: 0.6,
-          ease: "power2.out"
-        }, 1.2)
+    
+    tl.fromTo(descriptionRef.current,
+      { y: 20, opacity: 0 },
+      {
+        y: 0,
+        opacity: 1,
+        duration: 0.7,
+        ease: "power2.out"
+      }, 0.7)
+    
+    tl.fromTo(statRef.current,
+      { y: 20, opacity: 0 },
+      {
+        y: 0,
+        opacity: 1,
+        duration: 0.6,
+        ease: "power2.out"
+      }, 0.8)
 
-      return () => {
-        tl.kill()
-      }
+    return () => {
+      tl.kill()
     }
-  }, [currentSlide, isTransitioning])
+  }, [currentSlide])
 
   // Parallax scroll effect for background image
   useEffect(() => {
-    const element = bgImageRef.current
-    if (!element) return
-
+    // Apply parallax to both backgrounds if they exist
+    const elements = [currentBgRef.current, nextBgRef.current]
+    
     const parallaxTrigger = ScrollTrigger.create({
       trigger: heroRef.current,
       start: "top top",
       end: "bottom top",
       scrub: 1,
       onUpdate: (self) => {
-        gsap.set(element, {
-          backgroundPosition: `center ${self.progress * -100}px`
+        elements.forEach(el => {
+          if (el) {
+            gsap.set(el, {
+              backgroundPosition: `center ${self.progress * -100}px`
+            })
+          }
         })
       }
     })
@@ -339,37 +354,44 @@ export function Hero({ onServicesClick, onContactClick }: HeroProps) {
   // Auto-play carousel
   useEffect(() => {
     const interval = setInterval(() => {
-      setIsTransitioning(true)
-      setCurrentSlide((prev) => (prev + 1) % heroSlides.length)
+      handleSlideChange((currentSlide + 1) % heroSlides.length)
     }, 7000)
 
     return () => clearInterval(interval)
-  }, [])
-
-  // Handle manual slide change
-  const goToSlide = (index: number) => {
-    if (index !== currentSlide && !isTransitioning) {
-      setIsTransitioning(true)
-      setCurrentSlide(index)
-    }
-  }
+  }, [currentSlide, isTransitioning])
 
   const currentData = heroSlides[currentSlide]
+  const prevData = heroSlides[prevSlide]
   const Icon = currentData.icon
 
   return (
     <section ref={heroRef} className="relative h-[80vh] min-h-[600px] w-full overflow-hidden">
-      {/* Background Image - Full Width */}
-      <div 
-        ref={bgImageRef}
-        className="absolute inset-0 z-0"
-        style={{
-          backgroundImage: `url(${currentData.image})`,
-          backgroundSize: 'cover',
-          backgroundPosition: 'center',
-          backgroundRepeat: 'no-repeat'
-        }}
-      />
+      {/* Background Images - Crossfade Setup */}
+      <div className="absolute inset-0 z-0">
+        {/* Previous/Underlying Image */}
+        <div 
+          ref={currentBgRef}
+          className="absolute inset-0 z-0"
+          style={{
+            backgroundImage: `url(${prevData.image})`,
+            backgroundSize: 'cover',
+            backgroundPosition: 'center',
+            backgroundRepeat: 'no-repeat'
+          }}
+        />
+        {/* Current/Overlay Image - Only visible during/after transition */}
+        <div 
+          ref={nextBgRef}
+          className="absolute inset-0 z-10"
+          style={{
+            backgroundImage: `url(${currentData.image})`,
+            backgroundSize: 'cover',
+            backgroundPosition: 'center',
+            backgroundRepeat: 'no-repeat',
+            opacity: currentSlide === prevSlide ? 0 : 1 // Hide initially if same, let animation handle opacity
+          }}
+        />
+      </div>
       
       {/* Gradient Overlay with Smooth Black Fade - Left on Desktop, Bottom on Mobile */}
       <div 
@@ -459,7 +481,7 @@ export function Hero({ onServicesClick, onContactClick }: HeroProps) {
           {heroSlides.map((_, index) => (
             <button
               key={index}
-              onClick={() => goToSlide(index)}
+              onClick={() => handleSlideChange(index)}
               disabled={isTransitioning}
               className={`group relative transition-all duration-500 ${
                 index === currentSlide
