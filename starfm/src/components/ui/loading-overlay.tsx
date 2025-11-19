@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useRef } from 'react';
 
 interface LoadingOverlayProps {
   isLoading?: boolean;
@@ -11,21 +11,26 @@ export const LoadingOverlay: React.FC<LoadingOverlayProps> = ({
   message,
   subMessage
 }) => {
-  const [isVisible, setIsVisible] = useState(false);
-  const [shouldRender, setShouldRender] = useState(false);
+  const [isVisible, setIsVisible] = useState(isLoading);
+  const [shouldRender, setShouldRender] = useState(isLoading);
+  const isInitialRender = useRef(true);
 
   useEffect(() => {
     if (isLoading) {
-      // Start rendering with initial invisible state
       setShouldRender(true);
-      setIsVisible(false);
-      
-      // Small delay to ensure initial state is rendered before transition
-      const fadeInTimer = setTimeout(() => {
+
+      if (isInitialRender.current) {
+        // Ensure overlay is visible immediately on first render
         setIsVisible(true);
-      }, 50);
-      
-      return () => clearTimeout(fadeInTimer);
+        isInitialRender.current = false;
+      } else {
+        // Start hidden for subsequent shows, then fade in
+        setIsVisible(false);
+        const fadeInTimer = setTimeout(() => {
+          setIsVisible(true);
+        }, 50);
+        return () => clearTimeout(fadeInTimer);
+      }
     } else {
       // Fade out, then stop rendering
       setIsVisible(false);
