@@ -5,9 +5,10 @@ import { Navbar } from "@/components/Navbar"
 import { Hero } from "@/components/Hero"
 import { About } from "@/components/About"
 import { ServiceTypes } from "@/components/ServiceTypes"
-import { ManagementSupport } from "@/components/ManagementSupport"
+// import { ManagementSupport } from "@/components/ManagementSupport"
 import { Stats } from "@/components/Stats"
 import { Services } from "@/components/Services"
+import { Training } from "@/components/Training"
 import { TrustedPartner } from "@/components/TrustedPartner"
 import { Footer } from "@/components/Footer"
 import { Contact } from "@/pages/Contact"
@@ -139,20 +140,21 @@ function App() {
             </div>
             
             {/* Management Support Services - Standalone Section */}
-            <div className="mt-8 sm:mt-12 lg:mt-16">
+            {/* <div className="mt-8 sm:mt-12 lg:mt-16">
               <ManagementSupport onContactClick={handleContactClick} />
-            </div>
+            </div> */}
             
             {/* Facility Management Services Section */}
             <div className="mt-8 space-y-8 sm:mt-12 sm:space-y-12 lg:mt-16 lg:space-y-16">
               <ServiceTypes />
               <Stats />
               <Services onServicesPageClick={handleServicesClick} />
+              <Training onContactClick={handleContactClick} />
             </div>
           </main>
 
           {/* New Hero Section Before Footer */}
-          <TrustedPartner onServicesClick={handleServicesClick} onContactClick={handleContactClick} />
+          <TrustedPartner />
 
           <Footer onContactClick={handleContactClick} onServicesClick={handleServicesClick} />
         </div>

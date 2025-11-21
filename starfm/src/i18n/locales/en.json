@@ -2,6 +2,7 @@
   "nav": {
     "about": "About",
     "programs": "Programs",
+    "training": "Training",
     "services": "Our Services",
     "contactUs": "Contact Us",
     "backToHome": "Back to Home",
@@ -364,7 +365,48 @@
         "description": "Rigorous quality control and continuous improvement processes"
       }
     },
-    "getStarted": "Get Started Today"
+    "getStarted": "Get Started Today",
+    "profmDescription": "We are proud to provide services for all the projects managed by ProFM company."
+  },
+  "training": {
+    "badge": "Workforce Development",
+    "title": "Training",
+    "description": "Delivering end-to-end workforce development through tailored training programs and strategic candidate sourcing.",
+    "programs": {
+      "onboarding": {
+        "title": "Onboarding Programs",
+        "description": "Comprehensive orientation for new employees and team members",
+        "feature1": "Structured curriculum",
+        "feature2": "One-on-one mentoring",
+        "feature3": "Company culture training"
+      },
+      "candidateSourcing": {
+        "title": "Candidate Sourcing",
+        "description": "Professional recruitment and talent acquisition services",
+        "feature1": "Active candidate database",
+        "feature2": "Skill-based matching",
+        "feature3": "Quick placement"
+      },
+      "skillDevelopment": {
+        "title": "Skill Development",
+        "description": "Specialized training modules tailored to industry requirements",
+        "feature1": "Technical certifications",
+        "feature2": "Soft skills training",
+        "feature3": "Continuous learning"
+      },
+      "strategicPlacement": {
+        "title": "Strategic Placement",
+        "description": "Strategic workforce planning and optimal placement solutions",
+        "feature1": "Job matching",
+        "feature2": "Career planning",
+        "feature3": "Performance tracking"
+      }
+    },
+    "cta": {
+      "title": "Ready to Develop Your Team?",
+      "description": "Let us help you build a skilled, motivated workforce with our comprehensive training and sourcing solutions.",
+      "button": "Get Started"
+    }
   },
   "servicesPage": {
     "badge": "Our Services",

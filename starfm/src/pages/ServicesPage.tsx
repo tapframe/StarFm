@@ -2,7 +2,7 @@ import { useEffect, useRef, useMemo, useCallback } from "react"
 import { useTranslation } from "react-i18next"
 import gsap from "gsap"
 import { ScrollTrigger } from "gsap/ScrollTrigger"
-import { Building2, Home, Hotel, Trees, Wrench, Shield, Briefcase, CheckCircle2, ArrowRight, Star, Clock, Award } from "lucide-react"
+import { Building2, Home, Hotel, Trees, Wrench, Shield, /* Briefcase, */ CheckCircle2, ArrowRight, Star, Clock, Award } from "lucide-react"
 import { Button } from "@/components/ui/button"
 import { Navbar } from "@/components/Navbar"
 
@@ -47,6 +47,7 @@ export function ServicesPage({ onBack, onContactClick }: ServicesPageProps) {
 
   // Memoize services data to prevent recreation
   const services = useMemo(() => [
+    /*
     {
       icon: Briefcase,
       title: t('servicesPage.services.managementSupport.title'),
@@ -59,6 +60,7 @@ export function ServicesPage({ onBack, onContactClick }: ServicesPageProps) {
         label: t('servicesPage.services.managementSupport.stats.label')
       }
     },
+    */
     {
       icon: Building2,
       title: t('servicesPage.services.facilitiesManagement.title'),
@@ -863,6 +865,13 @@ export function ServicesPage({ onBack, onContactClick }: ServicesPageProps) {
     // Refresh ScrollTrigger after all animations are set up
     ScrollTrigger.refresh()
 
+    // Capture current ref values for cleanup
+    const currentCtaButton = ctaButtonRef.current
+    const currentImageRefs = imageRefs.current.slice()
+    const currentImageInnerRefs = imageInnerRefs.current.slice()
+    const currentIconRefs = iconRefs.current.slice()
+    const currentFeatureRefs = featureRefs.current.slice()
+
     return () => {
       // Cleanup all ScrollTriggers
       scrollTriggersRef.current.forEach(st => st.kill())
@@ -873,23 +882,23 @@ export function ServicesPage({ onBack, onContactClick }: ServicesPageProps) {
       animationsRef.current = []
 
       // Cleanup event listeners
-      if (ctaButtonRef.current) {
-        ctaButtonRef.current.removeEventListener("mouseenter", handleCtaButtonEnter)
-        ctaButtonRef.current.removeEventListener("mouseleave", handleCtaButtonLeave)
+      if (currentCtaButton) {
+        currentCtaButton.removeEventListener("mouseenter", handleCtaButtonEnter)
+        currentCtaButton.removeEventListener("mouseleave", handleCtaButtonLeave)
       }
       
       // Reset will-change
-      imageRefs.current.forEach(container => {
+      currentImageRefs.forEach(container => {
         if (container) {
           container.style.willChange = "auto"
-          const img = imageInnerRefs.current[imageRefs.current.indexOf(container)]
+          const img = currentImageInnerRefs[currentImageRefs.indexOf(container)]
           if (img) img.style.willChange = "auto"
         }
       })
-      iconRefs.current.forEach(container => {
+      currentIconRefs.forEach(container => {
         if (container) container.style.willChange = "auto"
       })
-      featureRefs.current.forEach(features => {
+      currentFeatureRefs.forEach(features => {
         features.forEach(feature => {
           if (feature) feature.style.willChange = "auto"
         })

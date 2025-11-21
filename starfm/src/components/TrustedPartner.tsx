@@ -5,12 +5,7 @@ import { ScrollTrigger } from "gsap/ScrollTrigger"
 
 gsap.registerPlugin(ScrollTrigger)
 
-interface TrustedPartnerProps {
-  onServicesClick?: () => void
-  onContactClick?: () => void
-}
-
-export function TrustedPartner({ onServicesClick, onContactClick }: TrustedPartnerProps) {
+export function TrustedPartner() {
   const { t } = useTranslation()
   const sectionRef = useRef<HTMLElement>(null)
 
@@ -45,41 +40,28 @@ export function TrustedPartner({ onServicesClick, onContactClick }: TrustedPartn
       <div
         className="absolute inset-0 bg-cover bg-center bg-no-repeat"
         style={{
-          backgroundImage: "url('https://w.wallhaven.cc/full/2y/wallhaven-2yzj9x.png')",
+          backgroundImage: "url('https://w.wallhaven.cc/full/ym/wallhaven-ym1gpx.jpg')",
           backgroundAttachment: "fixed"
         }}
       />
       <div className="absolute inset-0 bg-black/40" />
       <div className="relative mx-auto max-w-6xl px-4 lg:px-6">
-        <div className="mx-auto max-w-3xl text-center">
-          <div className="mb-8 inline-flex items-center gap-3 rounded-full border border-white/20 bg-white/5 px-6 py-3 text-xs font-medium uppercase tracking-[0.2em] text-white/90 backdrop-blur-sm shadow-lg">
-            <span className="text-white/80">★</span>
-            {t('trustedPartner.badge')}
-          </div>
-          <h2 className="mb-6 font-display text-6xl font-black leading-[1.1] text-white lg:text-7xl tracking-tight drop-shadow-2xl">
-            {t('trustedPartner.title')}
-            <span className="block text-transparent bg-gradient-to-r from-blue-400 via-cyan-300 to-blue-400 bg-clip-text mt-2">
-              {t('trustedPartner.titleHighlight')}
-            </span>
-          </h2>
-          <p className="text-xl leading-relaxed text-white/95 font-light tracking-wide max-w-2xl mx-auto drop-shadow-lg">
-            {t('trustedPartner.description')}
+        <div className="text-center">
+          <p className="text-xl leading-relaxed text-white font-light tracking-wide drop-shadow-lg mb-8">
+            {t('trustedPartner.profmDescription')}
           </p>
-          <div className="mt-8 flex flex-col gap-4 sm:flex-row sm:justify-center">
-            <button
-              onClick={onServicesClick}
-              className="inline-flex items-center justify-center gap-3 rounded-full bg-white/10 backdrop-blur-sm border border-white/20 px-8 py-4 text-white font-bold uppercase tracking-wider transition-all hover:bg-white/20 hover:border-white/30 hover:scale-105"
-            >
-              {t('hero.exploreServices')}
-              <span className="text-lg">→</span>
-            </button>
-            <button
-              onClick={onContactClick}
-              className="inline-flex items-center justify-center gap-3 rounded-full border-2 border-white/30 bg-transparent px-8 py-4 text-white font-bold uppercase tracking-wider transition-all hover:bg-white/10 hover:border-white/50 hover:scale-105"
-            >
-              {t('hero.getInTouch')}
-            </button>
-          </div>
+          <a
+            href="https://www.profm.com.sa/"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="inline-block transition-transform duration-300 hover:scale-110"
+          >
+            <img
+              src="https://www.profm.com.sa/logo.svg"
+              alt="ProFM Logo"
+              className="h-16 w-auto"
+            />
+          </a>
         </div>
       </div>
     </section>

@@ -1,9 +1,10 @@
-import { useState, useEffect, useRef } from "react"
+import { useState, useEffect, useRef, useCallback } from "react"
 import { useTranslation } from "react-i18next"
+import type { TFunction } from "i18next"
 import gsap from "gsap"
 import { ScrollTrigger } from "gsap/ScrollTrigger"
 import { Button } from "@/components/ui/button"
-import { ArrowRight, Building2, Home, Hotel, Trees, Wrench, Shield, FileText, Monitor, Users, UserCheck, Truck, Headphones } from "lucide-react"
+import { ArrowRight, Building2, Home, Hotel, Trees, Wrench, Shield } from "lucide-react"
 
 gsap.registerPlugin(ScrollTrigger)
 
@@ -12,7 +13,7 @@ interface HeroProps {
   onContactClick?: () => void
 }
 
-const getHeroSlides = (t: any) => [
+const getHeroSlides = (t: TFunction) => [
   {
     key: 'facilitiesManagement',
     title: t('hero.slides.facilitiesManagement.title'),
@@ -67,68 +68,69 @@ const getHeroSlides = (t: any) => [
     image: "https://images.unsplash.com/photo-1581578731548-c64695cc6952?w=1920&q=90",
     stat: { value: t('hero.slides.pestControl.statValue'), label: t('hero.slides.pestControl.statLabel') }
   },
-  {
-    key: 'crFormation',
-    title: t('hero.slides.crFormation.title'),
-    subtitle: t('hero.slides.crFormation.subtitle'),
-    description: t('hero.slides.crFormation.description'),
-    icon: FileText,
-    image: "https://images.unsplash.com/photo-1554224155-8d04cb21cd6c?w=1920&q=90",
-    stat: { value: t('hero.slides.crFormation.statValue'), label: t('hero.slides.crFormation.statLabel') }
-  },
-  {
-    key: 'qiwaServices',
-    title: t('hero.slides.qiwaServices.title'),
-    subtitle: t('hero.slides.qiwaServices.subtitle'),
-    description: t('hero.slides.qiwaServices.description'),
-    icon: Monitor,
-    image: "https://images.unsplash.com/photo-1551434678-e076c223a692?w=1920&q=90",
-    stat: { value: t('hero.slides.qiwaServices.statValue'), label: t('hero.slides.qiwaServices.statLabel') }
-  },
-  {
-    key: 'candidateSourcing',
-    title: t('hero.slides.candidateSourcing.title'),
-    subtitle: t('hero.slides.candidateSourcing.subtitle'),
-    description: t('hero.slides.candidateSourcing.description'),
-    icon: Users,
-    image: "https://images.unsplash.com/photo-1552664730-d307ca884978?w=1920&q=90",
-    stat: { value: t('hero.slides.candidateSourcing.statValue'), label: t('hero.slides.candidateSourcing.statLabel') }
-  },
-  {
-    key: 'muqeemServices',
-    title: t('hero.slides.muqeemServices.title'),
-    subtitle: t('hero.slides.muqeemServices.subtitle'),
-    description: t('hero.slides.muqeemServices.description'),
-    icon: UserCheck,
-    image: "https://images.unsplash.com/photo-1554224155-6726b3ff858f?w=1920&q=90",
-    stat: { value: t('hero.slides.muqeemServices.statValue'), label: t('hero.slides.muqeemServices.statLabel') }
-  },
-  {
-    key: 'trainingPrograms',
-    title: t('hero.slides.trainingPrograms.title'),
-    subtitle: t('hero.slides.trainingPrograms.subtitle'),
-    description: t('hero.slides.trainingPrograms.description'),
-    icon: Headphones,
-    image: "https://images.unsplash.com/photo-1524178232363-1fb2b075b655?w=1920&q=90",
-    stat: { value: t('hero.slides.trainingPrograms.statValue'), label: t('hero.slides.trainingPrograms.statLabel') }
-  },
-  {
-    key: 'fleetServices',
-    title: t('hero.slides.fleetServices.title'),
-    subtitle: t('hero.slides.fleetServices.subtitle'),
-    description: t('hero.slides.fleetServices.description'),
-    icon: Truck,
-    image: "https://images.unsplash.com/photo-1519003722824-194d4455a60c?w=1920&q=90",
-    stat: { value: t('hero.slides.fleetServices.statValue'), label: t('hero.slides.fleetServices.statLabel') }
-  }
+  // {
+  //   key: 'crFormation',
+  //   title: t('hero.slides.crFormation.title'),
+  //   subtitle: t('hero.slides.crFormation.subtitle'),
+  //   description: t('hero.slides.crFormation.description'),
+  //   icon: FileText,
+  //   image: "https://images.unsplash.com/photo-1554224155-8d04cb21cd6c?w=1920&q=90",
+  //   stat: { value: t('hero.slides.crFormation.statValue'), label: t('hero.slides.crFormation.statLabel') }
+  // },
+  // {
+  //   key: 'qiwaServices',
+  //   title: t('hero.slides.qiwaServices.title'),
+  //   subtitle: t('hero.slides.qiwaServices.subtitle'),
+  //   description: t('hero.slides.qiwaServices.description'),
+  //   icon: Monitor,
+  //   image: "https://images.unsplash.com/photo-1551434678-e076c223a692?w=1920&q=90",
+  //   stat: { value: t('hero.slides.qiwaServices.statValue'), label: t('hero.slides.qiwaServices.statLabel') }
+  // },
+  // {
+  //   key: 'candidateSourcing',
+  //   title: t('hero.slides.candidateSourcing.title'),
+  //   subtitle: t('hero.slides.candidateSourcing.subtitle'),
+  //   description: t('hero.slides.candidateSourcing.description'),
+  //   icon: Users,
+  //   image: "https://images.unsplash.com/photo-1552664730-d307ca884978?w=1920&q=90",
+  //   stat: { value: t('hero.slides.candidateSourcing.statValue'), label: t('hero.slides.candidateSourcing.statLabel') }
+  // },
+  // {
+  //   key: 'muqeemServices',
+  //   title: t('hero.slides.muqeemServices.title'),
+  //   subtitle: t('hero.slides.muqeemServices.subtitle'),
+  //   description: t('hero.slides.muqeemServices.description'),
+  //   icon: UserCheck,
+  //   image: "https://images.unsplash.com/photo-1554224155-6726b3ff858f?w=1920&q=90",
+  //   stat: { value: t('hero.slides.muqeemServices.statValue'), label: t('hero.slides.muqeemServices.statLabel') }
+  // },
+  // {
+  //   key: 'trainingPrograms',
+  //   title: t('hero.slides.trainingPrograms.title'),
+  //   subtitle: t('hero.slides.trainingPrograms.subtitle'),
+  //   description: t('hero.slides.trainingPrograms.description'),
+  //   icon: Headphones,
+  //   image: "https://images.unsplash.com/photo-1524178232363-1fb2b075b655?w=1920&q=90",
+  //   stat: { value: t('hero.slides.trainingPrograms.statValue'), label: t('hero.slides.trainingPrograms.statLabel') }
+  // },
+  // {
+  //   key: 'fleetServices',
+  //   title: t('hero.slides.fleetServices.title'),
+  //   subtitle: t('hero.slides.fleetServices.subtitle'),
+  //   description: t('hero.slides.fleetServices.description'),
+  //   icon: Truck,
+  //   image: "https://images.unsplash.com/photo-1519003722824-194d4455a60c?w=1920&q=90",
+  //   stat: { value: t('hero.slides.fleetServices.statValue'), label: t('hero.slides.fleetServices.statLabel') }
+  // }
 ]
 
 export function Hero({ onServicesClick, onContactClick }: HeroProps) {
-  const { t } = useTranslation()
+  const { t, i18n } = useTranslation()
   const heroSlides = getHeroSlides(t)
   const [currentSlide, setCurrentSlide] = useState(0)
   const [prevSlide, setPrevSlide] = useState(0)
   const [isTransitioning, setIsTransitioning] = useState(false)
+  const isArabic = i18n.language === 'ar'
   
   const heroRef = useRef<HTMLElement>(null)
   const currentBgRef = useRef<HTMLDivElement>(null)
@@ -235,7 +237,7 @@ export function Hero({ onServicesClick, onContactClick }: HeroProps) {
   }, [])
 
   // Handle manual slide change with transition
-  const handleSlideChange = (nextIndex: number) => {
+  const handleSlideChange = useCallback((nextIndex: number) => {
     if (nextIndex !== currentSlide && !isTransitioning) {
       setIsTransitioning(true)
       
@@ -263,7 +265,7 @@ export function Hero({ onServicesClick, onContactClick }: HeroProps) {
         ease: "power2.in"
       }, 0)
     }
-  }
+  }, [currentSlide, isTransitioning])
 
   // Enter Animation Effect - Runs when currentSlide changes
   useEffect(() => {
@@ -338,7 +340,7 @@ export function Hero({ onServicesClick, onContactClick }: HeroProps) {
     return () => {
       tl.kill()
     }
-  }, [currentSlide])
+  }, [currentSlide, prevSlide])
 
   // Parallax scroll effect for background image
   useEffect(() => {
@@ -373,7 +375,7 @@ export function Hero({ onServicesClick, onContactClick }: HeroProps) {
     }, 7000)
 
     return () => clearInterval(interval)
-  }, [currentSlide, isTransitioning])
+  }, [currentSlide, isTransitioning, handleSlideChange, heroSlides.length])
 
   const currentData = heroSlides[currentSlide]
   const prevData = heroSlides[prevSlide]
@@ -409,9 +411,12 @@ export function Hero({ onServicesClick, onContactClick }: HeroProps) {
       </div>
       
       {/* Gradient Overlay with Smooth Black Fade - Left on Desktop, Bottom on Mobile */}
-      <div 
+      <div
         ref={overlayRef}
         className="absolute inset-0 z-10 hero-gradient-overlay"
+        style={{
+          '--gradient-direction': isArabic ? 'to left' : 'to right'
+        } as React.CSSProperties}
       />
       
       {/* Decorative Elements */}
@@ -532,14 +537,14 @@ export function Hero({ onServicesClick, onContactClick }: HeroProps) {
             transform-origin: left;
           }
         }
-        
+
         .animate-progress {
           animation: progress 7s linear;
         }
 
         .hero-gradient-overlay {
-          background: 
-            linear-gradient(to bottom, 
+          background:
+            linear-gradient(to bottom,
               transparent 0%,
               rgba(0, 0, 0, 0.08) 44%,
               rgba(0, 0, 0, 0.15) 48%,
@@ -553,18 +558,18 @@ export function Hero({ onServicesClick, onContactClick }: HeroProps) {
               rgba(0, 0, 0, 0.95) 90%,
               rgba(0, 0, 0, 1) 100%
             ),
-            linear-gradient(to bottom right, 
-              rgba(34, 47, 62, 0.3) 0%, 
-              rgba(34, 47, 62, 0.2) 50%, 
+            linear-gradient(to bottom right,
+              rgba(34, 47, 62, 0.3) 0%,
+              rgba(34, 47, 62, 0.2) 50%,
               rgba(34, 47, 62, 0.25) 100%
             );
         }
 
         @media (min-width: 768px) {
           .hero-gradient-overlay {
-            background: 
-              linear-gradient(to right, 
-                rgba(0, 0, 0, 1) 0%, 
+            background:
+              linear-gradient(var(--gradient-direction),
+                rgba(0, 0, 0, 1) 0%,
                 rgba(0, 0, 0, 0.95) 10%,
                 rgba(0, 0, 0, 0.9) 20%,
                 rgba(0, 0, 0, 0.85) 28%,
@@ -577,9 +582,9 @@ export function Hero({ onServicesClick, onContactClick }: HeroProps) {
                 rgba(0, 0, 0, 0.08) 56%,
                 transparent 60%
               ),
-              linear-gradient(to bottom right, 
-                rgba(34, 47, 62, 0.3) 0%, 
-                rgba(34, 47, 62, 0.2) 50%, 
+              linear-gradient(to bottom right,
+                rgba(34, 47, 62, 0.3) 0%,
+                rgba(34, 47, 62, 0.2) 50%,
                 rgba(34, 47, 62, 0.25) 100%
               );
           }

@@ -215,6 +215,7 @@ export function Navbar({ onContactClick, onServicesClick, isPageView, onBack }: 
   const navItems = [
     { label: t('nav.about'), href: "#about" },
     { label: t('nav.programs'), href: "#programs" },
+    { label: t('nav.training'), href: "#training" },
   ]
 
   return (
