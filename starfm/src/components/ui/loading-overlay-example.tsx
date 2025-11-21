@@ -1,9 +1,11 @@
 /**
  * LoadingOverlay - Usage Examples
- * 
+ *
  * This file demonstrates how to use the LoadingOverlay component
  * in various scenarios throughout your application.
  */
+
+/* eslint-disable react-refresh/only-export-components */
 
 import { useState, useEffect } from 'react';
 import { LoadingOverlay } from './loading-overlay';
@@ -101,7 +103,8 @@ export function Example4_RouteTransition() {
 }
 
 // Example 5: Global loading context (recommended for app-wide loading)
-import { createContext, useContext, ReactNode } from 'react';
+import { createContext, useContext } from 'react';
+import type { ReactNode } from 'react';
 
 interface LoadingContextType {
   isLoading: boolean;

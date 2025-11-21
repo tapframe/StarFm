@@ -1,4 +1,4 @@
-import React, { useState, useEffect, useRef } from 'react';
+import React from 'react';
 
 interface LoadingOverlayProps {
   isLoading?: boolean;
@@ -6,52 +6,18 @@ interface LoadingOverlayProps {
   subMessage?: string;
 }
 
-export const LoadingOverlay: React.FC<LoadingOverlayProps> = ({ 
-  isLoading = true, 
+export const LoadingOverlay: React.FC<LoadingOverlayProps> = ({
+  isLoading = true,
   message,
   subMessage
 }) => {
-  const [isVisible, setIsVisible] = useState(isLoading);
-  const [shouldRender, setShouldRender] = useState(isLoading);
-  const isInitialRender = useRef(true);
-
-  useEffect(() => {
-    if (isLoading) {
-      setShouldRender(true);
-
-      if (isInitialRender.current) {
-        // Ensure overlay is visible immediately on first render
-        setIsVisible(true);
-        isInitialRender.current = false;
-      } else {
-        // Start hidden for subsequent shows, then fade in
-        setIsVisible(false);
-        const fadeInTimer = setTimeout(() => {
-          setIsVisible(true);
-        }, 50);
-        return () => clearTimeout(fadeInTimer);
-      }
-    } else {
-      // Fade out, then stop rendering
-      setIsVisible(false);
-      const fadeOutTimer = setTimeout(() => {
-        setShouldRender(false);
-      }, 500); // Match the transition duration
-      return () => clearTimeout(fadeOutTimer);
-    }
-  }, [isLoading]);
-
-  if (!shouldRender) return null;
+  if (!isLoading) return null;
 
   return (
-    <div 
-      className={`fixed inset-0 z-[9999] flex items-center justify-center bg-white dark:bg-gray-900 transition-opacity duration-500 ${
-        isVisible ? 'opacity-100' : 'opacity-0'
-      }`}
+    <div
+      className="fixed inset-0 z-[9999] flex items-center justify-center bg-white dark:bg-gray-900 opacity-100 transition-opacity duration-500"
     >
-      <div className={`flex flex-col items-center justify-center space-y-8 sm:space-y-10 transition-all duration-500 ${
-        isVisible ? 'scale-100' : 'scale-95'
-      }`}>
+      <div className="flex flex-col items-center justify-center space-y-8 sm:space-y-10 transition-all duration-500 scale-100">
         {/* Animated Logo Container */}
         <div className="relative w-[13rem] h-[13rem] sm:w-[18rem] sm:h-[18rem] flex items-center justify-center">
           {/* Outer rotating ring - furthest */}
