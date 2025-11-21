@@ -43,7 +43,7 @@ export function Services({ onServicesPageClick }: ServicesProps) {
       title: t('services.list.hospitalityServices.title'),
       description: t('services.list.hospitalityServices.description'),
       icon: Sparkles,
-      image: "https://images.unsplash.com/photo-1566073771259-6a8506099945?w=800&q=80",
+      image: "https://images.unsplash.com/photo-1512061942530-e6a4e9a5cf27?w=800&q=80",
       features: t('services.list.hospitalityServices.features', { returnObjects: true }) as string[],
     },
     {

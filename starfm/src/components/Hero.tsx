@@ -38,7 +38,7 @@ const getHeroSlides = (t: TFunction) => [
     subtitle: t('hero.slides.hospitalityServices.subtitle'),
     description: t('hero.slides.hospitalityServices.description'),
     icon: Hotel,
-    image: "https://images.unsplash.com/photo-1566073771259-6a8506099945?w=1920&q=90",
+    image: "https://images.unsplash.com/photo-1512061942530-e6a4e9a5cf27?w=1920&q=90",
     stat: { value: t('hero.slides.hospitalityServices.statValue'), label: t('hero.slides.hospitalityServices.statLabel') }
   },
   {

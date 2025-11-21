@@ -89,7 +89,7 @@ export function ServicesPage({ onBack, onContactClick }: ServicesPageProps) {
       icon: Hotel,
       title: t('servicesPage.services.hospitalityServices.title'),
       description: t('servicesPage.services.hospitalityServices.description'),
-      image: "https://images.unsplash.com/photo-1566073771259-6a8506099945?w=800&q=80",
+      image: "https://images.unsplash.com/photo-1512061942530-e6a4e9a5cf27?w=800&q=80",
       color: "from-purple-500 to-pink-500",
       features: t('servicesPage.services.hospitalityServices.features', { returnObjects: true }) as string[],
       stats: {
