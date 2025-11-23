@@ -4,6 +4,7 @@ import gsap from "gsap"
 import { ScrollTrigger } from "gsap/ScrollTrigger"
 import { BookOpen, Users, Award, Zap, CheckCircle2, ArrowRight } from "lucide-react"
 import { Button } from "@/components/ui/button"
+import { SparklesCore } from "@/components/ui/sparkles"
 
 gsap.registerPlugin(ScrollTrigger)
 
@@ -277,7 +278,7 @@ export function Training({ onContactClick }: TrainingProps) {
         {/* Header */}
         <div
           ref={headerRef}
-          className="mb-16 text-center"
+          className="mb-16 text-center relative"
         >
           <div
             ref={badgeRef}
@@ -291,10 +292,21 @@ export function Training({ onContactClick }: TrainingProps) {
 
           <h2
             ref={titleRef}
-            className="mb-6 font-display text-4xl font-black leading-tight text-brand-deep dark:text-foreground sm:text-5xl lg:text-6xl"
+            className="mb-6 font-display text-4xl font-black leading-tight text-brand-deep dark:text-foreground sm:text-5xl lg:text-6xl relative z-10"
           >
             {t('training.title', { defaultValue: 'Training' })}
           </h2>
+
+          <div className="absolute inset-0 flex items-center justify-center">
+            <SparklesCore
+              background="transparent"
+              minSize={0.4}
+              maxSize={1.4}
+              particleDensity={150}
+              className="h-full w-full max-w-xs"
+              particleColor="#3b82f6"
+            />
+          </div>
 
           <p
             ref={descriptionRef}

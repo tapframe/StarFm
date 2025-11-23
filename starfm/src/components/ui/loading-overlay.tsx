@@ -1,4 +1,5 @@
 import React from 'react';
+import { SparklesCore } from '@/components/ui/sparkles';
 
 interface LoadingOverlayProps {
   isLoading?: boolean;
@@ -17,7 +18,19 @@ export const LoadingOverlay: React.FC<LoadingOverlayProps> = ({
     <div
       className="fixed inset-0 z-[9999] flex items-center justify-center bg-white dark:bg-gray-900 opacity-100 transition-opacity duration-500"
     >
-      <div className="flex flex-col items-center justify-center space-y-8 sm:space-y-10 transition-all duration-500 scale-100">
+      {/* Full-screen sparkles background - subtle and behind content */}
+      <div className="absolute inset-0 pointer-events-none">
+        <SparklesCore
+          background="transparent"
+          minSize={0.3}
+          maxSize={1.2}
+          particleDensity={120}
+          className="h-full w-full opacity-30"
+          particleColor="#3b82f6"
+        />
+      </div>
+
+      <div className="relative z-10 flex flex-col items-center justify-center space-y-8 sm:space-y-10 transition-all duration-500 scale-100">
         {/* Animated Logo Container */}
         <div className="relative w-[13rem] h-[13rem] sm:w-[18rem] sm:h-[18rem] flex items-center justify-center">
           {/* Outer rotating ring - furthest */}

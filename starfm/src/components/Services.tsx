@@ -14,6 +14,7 @@ import {
   ChevronRight,
   ArrowUpRight,
 } from "lucide-react"
+import { SparklesCore } from "@/components/ui/sparkles"
 
 gsap.registerPlugin(ScrollTrigger)
 
@@ -376,15 +377,25 @@ export function Services({ onServicesPageClick }: ServicesProps) {
       </div>
 
       <div className="container relative px-4 sm:px-6">
-        <div ref={headerRef} className="mb-12 text-center sm:mb-16">
+        <div ref={headerRef} className="mb-12 text-center sm:mb-16 relative">
           <div className="mb-4 inline-block">
             <span ref={badgeRef} className="rounded-full border border-blue-500/30 bg-blue-500/10 dark:bg-blue-500/20 px-4 py-1.5 text-xs font-semibold uppercase tracking-widest text-blue-600 dark:text-blue-400 bg-opacity-50">
               {t('services.sectionBadge')}
             </span>
           </div>
-          <h2 ref={titleRef} className="mb-4 bg-gradient-to-r from-foreground via-foreground to-foreground/70 bg-clip-text text-4xl font-bold text-transparent sm:text-5xl lg:text-6xl">
+          <h2 ref={titleRef} className="mb-4 bg-gradient-to-r from-foreground via-foreground to-foreground/70 bg-clip-text text-4xl font-bold text-transparent sm:text-5xl lg:text-6xl relative z-10">
             {t('services.sectionTitle')}
           </h2>
+          <div className="absolute inset-0 flex items-center justify-center">
+            <SparklesCore
+              background="transparent"
+              minSize={0.4}
+              maxSize={1.4}
+              particleDensity={150}
+              className="h-full w-full max-w-xs"
+              particleColor="#3b82f6"
+            />
+          </div>
           <p ref={descriptionRef} className="mx-auto max-w-2xl text-base text-foreground/70 sm:text-lg">
             {t('services.sectionDescription')}
           </p>

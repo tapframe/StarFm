@@ -3,6 +3,7 @@ import { useTranslation } from "react-i18next"
 import gsap from "gsap"
 import { ScrollTrigger } from "gsap/ScrollTrigger"
 import { CheckCircle2, Award, Users, TrendingUp, Handshake } from "lucide-react"
+import { SparklesCore } from "@/components/ui/sparkles"
 
 gsap.registerPlugin(ScrollTrigger)
 
@@ -296,22 +297,29 @@ export function About() {
       gsap.set(bottomSectionRef.current, { opacity: 0, y: 60, scale: 0.95 })
     }
 
+    // Store refs to avoid stale closure warnings
+    const section = sectionRef.current
+    const leftContent = leftContentRef.current
+    const rightContent = rightContentRef.current
+    const button = buttonRef.current
+    const features = featuresRef.current
+
     return () => {
       ScrollTrigger.getAll().forEach(trigger => {
-        if (trigger.vars?.trigger === sectionRef.current ||
-          trigger.vars?.trigger === leftContentRef.current ||
-          trigger.vars?.trigger === rightContentRef.current) {
+        if (trigger.vars?.trigger === section ||
+          trigger.vars?.trigger === leftContent ||
+          trigger.vars?.trigger === rightContent) {
           trigger.kill()
         }
       })
-      if (buttonRef.current) {
-        buttonRef.current.style.willChange = "auto"
-        buttonRef.current.removeEventListener("mouseenter", () => { })
-        buttonRef.current.removeEventListener("mouseleave", () => { })
-        buttonRef.current.removeEventListener("mousedown", () => { })
-        buttonRef.current.removeEventListener("mouseup", () => { })
+      if (button) {
+        button.style.willChange = "auto"
+        button.removeEventListener("mouseenter", () => { })
+        button.removeEventListener("mouseleave", () => { })
+        button.removeEventListener("mousedown", () => { })
+        button.removeEventListener("mouseup", () => { })
       }
-      featuresRef.current.forEach(card => {
+      features.forEach(card => {
         if (card) {
           card.style.willChange = "auto"
           card.removeEventListener("mouseenter", () => { })
@@ -343,13 +351,23 @@ export function About() {
           </div>
 
           {/* Premium Typography - Main Heading */}
-          <div className="text-center">
-            <h3 className="font-display text-3xl font-bold leading-[1.1] tracking-tight text-foreground sm:text-4xl lg:text-5xl">
+          <div className="text-center relative">
+            <h3 className="font-display text-3xl font-bold leading-[1.1] tracking-tight text-foreground sm:text-4xl lg:text-5xl relative z-10">
               {t('about.profm.title')}
               <span className="mt-2 block bg-gradient-to-r from-brand-azure via-brand-forest to-brand-azure bg-clip-text text-transparent">
                 {t('about.profm.titleHighlight')}
               </span>
             </h3>
+            <div className="absolute inset-0 flex items-center justify-center">
+              <SparklesCore
+                background="transparent"
+                minSize={0.4}
+                maxSize={1.4}
+                particleDensity={150}
+                className="h-full w-full max-w-xs"
+                particleColor="#3b82f6"
+              />
+            </div>
           </div>
 
           {/* Elegant Description */}

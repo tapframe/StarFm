@@ -4,6 +4,7 @@ import gsap from "gsap"
 import { ScrollTrigger } from "gsap/ScrollTrigger"
 import { Card, CardContent } from "@/components/ui/card"
 import { Users2, BuildingIcon, Zap, TreesIcon, Wrench } from "lucide-react"
+import { SparklesCore } from "@/components/ui/sparkles"
 
 gsap.registerPlugin(ScrollTrigger)
 
@@ -27,6 +28,10 @@ export function Stats() {
   ]
 
   useEffect(() => {
+    // Store refs to avoid stale closure warnings
+    const section = sectionRef.current
+    const header = headerRef.current
+    const cards = cardsRef.current
     // Background parallax
     if (bgCircle1Ref.current) {
       ScrollTrigger.create({
@@ -206,12 +211,12 @@ export function Stats() {
 
     return () => {
       ScrollTrigger.getAll().forEach(trigger => {
-        if (trigger.vars?.trigger === sectionRef.current || 
-            trigger.vars?.trigger === headerRef.current) {
+        if (trigger.vars?.trigger === section || 
+            trigger.vars?.trigger === header) {
           trigger.kill()
         }
       })
-      cardsRef.current.forEach(card => {
+      cards.forEach(card => {
         if (card) {
           card.style.willChange = "auto"
           card.removeEventListener("mouseenter", () => {})
@@ -230,13 +235,23 @@ export function Stats() {
       </div>
       
       <div className="container relative px-4 sm:px-6">
-        <div ref={headerRef} className="mb-8 text-center sm:mb-12">
+        <div ref={headerRef} className="mb-8 text-center sm:mb-12 relative">
           <p ref={subtitleRef} className="mb-2 text-xs font-semibold uppercase tracking-[0.3em] text-muted-foreground sm:mb-3 sm:text-sm">
             {t('stats.reach')}
           </p>
-          <h2 ref={titleRef} className="text-3xl text-foreground sm:text-4xl lg:text-5xl">
+          <h2 ref={titleRef} className="text-3xl text-foreground sm:text-4xl lg:text-5xl relative z-10">
             {t('stats.excellence')}
           </h2>
+          <div className="absolute inset-0 flex items-center justify-center">
+            <SparklesCore
+              background="transparent"
+              minSize={0.4}
+              maxSize={1.4}
+              particleDensity={150}
+              className="h-full w-full max-w-xs"
+              particleColor="#3b82f6"
+            />
+          </div>
           <p ref={descriptionRef} className="mt-4 text-sm text-foreground/70 sm:text-base">
             {t('stats.description')}
           </p>
