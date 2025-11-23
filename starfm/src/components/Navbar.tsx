@@ -4,6 +4,7 @@ import gsap from "gsap"
 import { Button } from "@/components/ui/button"
 import { Menu, X, ArrowLeft, ChevronDown } from "lucide-react"
 import { LoadingOverlay } from "@/components/ui/loading-overlay"
+import { ModeToggle } from "@/components/mode-toggle"
 
 interface NavbarProps {
   onContactClick?: () => void
@@ -27,7 +28,7 @@ export function Navbar({ onContactClick, onServicesClick, isPageView, onBack }: 
     setLanguageLoading(true)
     const startTime = Date.now()
     const minDisplayTime = 2000 // Minimum 2 seconds
-    
+
     try {
       await i18n.changeLanguage(lng)
     } catch (error) {
@@ -36,7 +37,7 @@ export function Navbar({ onContactClick, onServicesClick, isPageView, onBack }: 
       // Calculate remaining time to reach minimum display time
       const elapsedTime = Date.now() - startTime
       const remainingTime = Math.max(0, minDisplayTime - elapsedTime)
-      
+
       // Wait for remaining time before hiding overlay
       setTimeout(() => {
         setLanguageLoading(false)
@@ -60,9 +61,9 @@ export function Navbar({ onContactClick, onServicesClick, isPageView, onBack }: 
   useEffect(() => {
     const handleScroll = () => {
       const currentScrollY = window.scrollY
-      
+
       setScrolled(currentScrollY > 20)
-      
+
       // Show navbar when scrolling up or at the top
       if (currentScrollY < lastScrollY || currentScrollY < 50) {
         setNavbarVisible(true)
@@ -70,7 +71,7 @@ export function Navbar({ onContactClick, onServicesClick, isPageView, onBack }: 
         // Hide navbar when scrolling down
         setNavbarVisible(false)
       }
-      
+
       setLastScrollY(currentScrollY)
     }
     window.addEventListener("scroll", handleScroll)
@@ -157,18 +158,18 @@ export function Navbar({ onContactClick, onServicesClick, isPageView, onBack }: 
 
     return () => {
       if (logo) {
-        logo.removeEventListener("mouseenter", () => {})
-        logo.removeEventListener("mouseleave", () => {})
+        logo.removeEventListener("mouseenter", () => { })
+        logo.removeEventListener("mouseleave", () => { })
       }
       if (languageToggle) {
-        languageToggle.removeEventListener("mouseenter", () => {})
-        languageToggle.removeEventListener("mouseleave", () => {})
+        languageToggle.removeEventListener("mouseenter", () => { })
+        languageToggle.removeEventListener("mouseleave", () => { })
       }
       if (contactButton) {
-        contactButton.removeEventListener("mouseenter", () => {})
-        contactButton.removeEventListener("mouseleave", () => {})
-        contactButton.removeEventListener("mousedown", () => {})
-        contactButton.removeEventListener("mouseup", () => {})
+        contactButton.removeEventListener("mouseenter", () => { })
+        contactButton.removeEventListener("mouseleave", () => { })
+        contactButton.removeEventListener("mousedown", () => { })
+        contactButton.removeEventListener("mouseup", () => { })
       }
       // clear any pending dropdown close timeout on unmount
       if (closeTimeoutRef.current) {
@@ -274,282 +275,275 @@ export function Navbar({ onContactClick, onServicesClick, isPageView, onBack }: 
         message={t('nav.languageLoadingMessage')}
       />
       <nav
-      ref={navRef}
-      className={`fixed left-0 right-0 top-0 z-50 transition-all duration-500 ${
-        navbarVisible ? "translate-y-0 opacity-100" : "-translate-y-[150%] opacity-0 pointer-events-none"
-      } ${
-        scrolled 
-          ? "bg-white/95 shadow-2xl shadow-brand-deep/5" 
-          : "bg-white/85"
-      }`}
-    >
-      {/* Gradient Border */}
-      <div className={`absolute inset-x-0 bottom-0 h-[2px] bg-gradient-to-r from-transparent via-blue-500 to-transparent transition-opacity duration-500 ${
-        scrolled ? "opacity-100" : "opacity-0"
-      }`} />
-      
-      <div className="container mx-auto flex h-20 items-center justify-between px-4 sm:h-24 lg:px-6">
-        {isPageView ? (
-          <>
-            {/* Page View: Back Button on Left */}
-            <button
-              ref={servicesButtonRef}
-              onClick={onBack}
-              className="flex items-center gap-2 rounded-full border-2 border-brand-deep/10 bg-white px-4 py-2 font-bold text-brand-deep transition-all duration-300 hover:border-blue-500/30 hover:bg-blue-500/10"
-            >
-              <ArrowLeft className="h-5 w-5" strokeWidth={2.5} />
-              {t('nav.backToHome')}
-            </button>
+        ref={navRef}
+        className={`fixed left-0 right-0 top-0 z-50 transition-all duration-500 ${navbarVisible ? "translate-y-0 opacity-100" : "-translate-y-[150%] opacity-0 pointer-events-none"
+          } ${scrolled
+            ? "bg-white/95 dark:bg-slate-900/95 shadow-2xl shadow-brand-deep/5"
+            : "bg-white/85 dark:bg-slate-900/85"
+          }`}
+      >
+        {/* Gradient Border */}
+        <div className={`absolute inset-x-0 bottom-0 h-[2px] bg-gradient-to-r from-transparent via-blue-500 to-transparent transition-opacity duration-500 ${scrolled ? "opacity-100" : "opacity-0"
+          }`} />
+
+        <div className="container mx-auto flex h-20 items-center justify-between px-4 sm:h-24 lg:px-6">
+          {isPageView ? (
+            <>
+              {/* Page View: Back Button on Left */}
+              <button
+                ref={servicesButtonRef}
+                onClick={onBack}
+                className="flex items-center gap-2 rounded-full border-2 border-brand-deep/10 bg-white dark:bg-slate-800 px-4 py-2 font-bold text-brand-deep dark:text-white transition-all duration-300 hover:border-blue-500/30 hover:bg-blue-500/10"
+              >
+                <ArrowLeft className="h-5 w-5" strokeWidth={2.5} />
+                {t('nav.backToHome')}
+              </button>
 
 
-            {/* Logo on Right */}
-            <img
-              src="/image.png"
-              alt="MahhabFM Logo"
-              className="h-20 w-20 sm:h-32 sm:w-32 object-contain"
-            />
-          </>
-        ) : (
-          <>
-            {/* Logo */}
-            <a
-              ref={logoRef}
-              href="#"
-              className="group relative flex items-center gap-2 transition-transform duration-300 hover:scale-105"
-            >
+              {/* Logo on Right */}
               <img
                 src="/image.png"
                 alt="MahhabFM Logo"
                 className="h-20 w-20 sm:h-32 sm:w-32 object-contain"
               />
-            </a>
-
-            {/* Desktop Navigation Links */}
-            <div className="hidden items-center gap-8 lg:flex xl:gap-10">
-              {navItems.map((item, index) => (
-                <a
-                  key={item.label}
-                  ref={(el) => {
-                    if (el) navItemsRef.current[index] = el
-                  }}
-                  href={item.href}
-                  onClick={(e) => {
-                    e.preventDefault();
-                    const target = document.querySelector(item.href);
-                    if (target) {
-                      target.scrollIntoView({ behavior: 'smooth', block: 'start' });
-                    }
-                  }}
-                  className="group relative text-sm font-bold uppercase tracking-wide text-blue-600/70 transition-all duration-300 hover:text-blue-700"
-                >
-                  <span className="relative z-10">{item.label}</span>
-                  <span className="absolute -bottom-1 left-0 h-[3px] w-0 rounded-full bg-gradient-to-r from-blue-500 via-cyan-400 to-blue-500 transition-all duration-300 group-hover:w-full" />
-                  <span className="absolute inset-0 -z-10 scale-0 rounded-lg bg-blue-500/10 transition-transform duration-300 group-hover:scale-100" />
-                </a>
-              ))}
-
-              {/* Services Dropdown */}
-              <div 
-                className="relative group"
-                onMouseEnter={() => {
-                  // cancel any pending close and open immediately
-                  if (closeTimeoutRef.current) {
-                    window.clearTimeout(closeTimeoutRef.current)
-                    closeTimeoutRef.current = null
-                  }
-                  setServicesDropdownOpen(true)
-                }}
-                onMouseLeave={() => {
-                  // add a short delay before closing to allow mouse to move to dropdown
-                  if (closeTimeoutRef.current) window.clearTimeout(closeTimeoutRef.current)
-                  closeTimeoutRef.current = window.setTimeout(() => {
-                    setServicesDropdownOpen(false)
-                    closeTimeoutRef.current = null
-                  }, 160)
-                }}
+            </>
+          ) : (
+            <>
+              {/* Logo */}
+              <a
+                ref={logoRef}
+                href="#"
+                className="group relative flex items-center gap-2 transition-transform duration-300 hover:scale-105"
               >
-                <button
-                  ref={servicesButtonRef}
-                  className="group/btn relative text-sm font-bold uppercase tracking-wide text-blue-600/70 transition-all duration-300 hover:text-blue-700 flex items-center gap-1"
+                <img
+                  src="/image.png"
+                  alt="MahhabFM Logo"
+                  className="h-20 w-20 sm:h-32 sm:w-32 object-contain"
+                />
+              </a>
+
+              {/* Desktop Navigation Links */}
+              <div className="hidden items-center gap-8 lg:flex xl:gap-10">
+                {navItems.map((item, index) => (
+                  <a
+                    key={item.label}
+                    ref={(el) => {
+                      if (el) navItemsRef.current[index] = el
+                    }}
+                    href={item.href}
+                    onClick={(e) => {
+                      e.preventDefault();
+                      const target = document.querySelector(item.href);
+                      if (target) {
+                        target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+                      }
+                    }}
+                    className="group relative text-sm font-bold uppercase tracking-wide text-blue-600/70 dark:text-blue-400/70 transition-all duration-300 hover:text-blue-700 dark:hover:text-blue-300"
+                  >
+                    <span className="relative z-10">{item.label}</span>
+                    <span className="absolute -bottom-1 left-0 h-[3px] w-0 rounded-full bg-gradient-to-r from-blue-500 via-cyan-400 to-blue-500 transition-all duration-300 group-hover:w-full" />
+                    <span className="absolute inset-0 -z-10 scale-0 rounded-lg bg-blue-500/10 transition-transform duration-300 group-hover:scale-100" />
+                  </a>
+                ))}
+
+                {/* Services Dropdown */}
+                <div
+                  className="relative group"
+                  onMouseEnter={() => {
+                    // cancel any pending close and open immediately
+                    if (closeTimeoutRef.current) {
+                      window.clearTimeout(closeTimeoutRef.current)
+                      closeTimeoutRef.current = null
+                    }
+                    setServicesDropdownOpen(true)
+                  }}
+                  onMouseLeave={() => {
+                    // add a short delay before closing to allow mouse to move to dropdown
+                    if (closeTimeoutRef.current) window.clearTimeout(closeTimeoutRef.current)
+                    closeTimeoutRef.current = window.setTimeout(() => {
+                      setServicesDropdownOpen(false)
+                      closeTimeoutRef.current = null
+                    }, 160)
+                  }}
                 >
-                  <span className="relative z-10">{t('nav.services')}</span>
-                  <ChevronDown className="h-4 w-4 transition-transform duration-300 group-hover:rotate-180" />
-                  <span className="absolute -bottom-1 left-0 h-[3px] w-0 rounded-full bg-gradient-to-r from-blue-500 via-cyan-400 to-blue-500 transition-all duration-300 group-hover/btn:w-full" />
-                  <span className="absolute inset-0 -z-10 scale-0 rounded-lg bg-blue-500/10 transition-transform duration-300 group-hover/btn:scale-100" />
-                </button>
+                  <button
+                    ref={servicesButtonRef}
+                    className="group/btn relative text-sm font-bold uppercase tracking-wide text-blue-600/70 dark:text-blue-400/70 transition-all duration-300 hover:text-blue-700 dark:hover:text-blue-300 flex items-center gap-1"
+                  >
+                    <span className="relative z-10">{t('nav.services')}</span>
+                    <ChevronDown className="h-4 w-4 transition-transform duration-300 group-hover:rotate-180" />
+                    <span className="absolute -bottom-1 left-0 h-[3px] w-0 rounded-full bg-gradient-to-r from-blue-500 via-cyan-400 to-blue-500 transition-all duration-300 group-hover/btn:w-full" />
+                    <span className="absolute inset-0 -z-10 scale-0 rounded-lg bg-blue-500/10 transition-transform duration-300 group-hover/btn:scale-100" />
+                  </button>
 
-                {/* Dropdown Menu */}
-                <div className={`absolute left-1/2 -translate-x-1/2 top-full mt-2 w-[850px] rounded-2xl border border-brand-deep/10 bg-white shadow-2xl transition-all duration-300 ${
-                  servicesDropdownOpen ? 'opacity-100 visible translate-y-0' : 'opacity-0 invisible -translate-y-4 pointer-events-none'
-                }`}>
-                  {/* Tabs */}
-                  <div className="flex border-b border-brand-deep/10">
-                    <button
-                      onClick={() => setActiveServiceTab('individual')}
-                      className={`flex-1 px-6 py-4 text-sm font-bold uppercase tracking-wide transition-all duration-300 ${
-                        activeServiceTab === 'individual'
+                  {/* Dropdown Menu */}
+                  <div className={`absolute left-1/2 -translate-x-1/2 top-full mt-2 w-[850px] rounded-2xl border border-brand-deep/10 bg-white dark:bg-slate-900 shadow-2xl transition-all duration-300 ${servicesDropdownOpen ? 'opacity-100 visible translate-y-0' : 'opacity-0 invisible -translate-y-4 pointer-events-none'
+                    }`}>
+                    {/* Tabs */}
+                    <div className="flex border-b border-brand-deep/10">
+                      <button
+                        onClick={() => setActiveServiceTab('individual')}
+                        className={`flex-1 px-6 py-4 text-sm font-bold uppercase tracking-wide transition-all duration-300 ${activeServiceTab === 'individual'
                           ? 'text-brand-azure border-b-2 border-brand-azure bg-brand-azure/5'
                           : 'text-brand-deep/50 hover:text-brand-azure/70 hover:bg-brand-azure/5'
-                      }`}
-                    >
-                      Individual Services
-                    </button>
-                    <button
-                      onClick={() => setActiveServiceTab('corporate')}
-                      className={`flex-1 px-6 py-4 text-sm font-bold uppercase tracking-wide transition-all duration-300 ${
-                        activeServiceTab === 'corporate'
+                          }`}
+                      >
+                        Individual Services
+                      </button>
+                      <button
+                        onClick={() => setActiveServiceTab('corporate')}
+                        className={`flex-1 px-6 py-4 text-sm font-bold uppercase tracking-wide transition-all duration-300 ${activeServiceTab === 'corporate'
                           ? 'text-brand-azure border-b-2 border-brand-azure bg-brand-azure/5'
                           : 'text-brand-deep/50 hover:text-brand-azure/70 hover:bg-brand-azure/5'
-                      }`}
-                    >
-                      Corporate Services
-                    </button>
-                  </div>
+                          }`}
+                      >
+                        Corporate Services
+                      </button>
+                    </div>
 
-                  {/* Services Grid */}
-                  <div className="p-6 max-h-[500px] overflow-y-auto">
-                    <div className="grid grid-cols-3 gap-4">
-                      {(activeServiceTab === 'individual' ? individualServices : corporateServices).map((service, index) => (
-                        <a
-                          key={index}
-                          href={service.href}
-                          className="group/item flex items-center gap-3 rounded-xl border border-transparent p-3 transition-all duration-300 hover:border-brand-azure/20 hover:bg-brand-azure/5"
-                        >
-                          <div className="text-2xl transition-transform duration-300 group-hover/item:scale-110">
-                            {service.icon}
-                          </div>
-                          <span className="text-sm font-semibold text-brand-deep/80 transition-colors duration-300 group-hover/item:text-brand-azure">
-                            {service.label}
-                          </span>
-                        </a>
-                      ))}
+                    {/* Services Grid */}
+                    <div className="p-6 max-h-[500px] overflow-y-auto">
+                      <div className="grid grid-cols-3 gap-4">
+                        {(activeServiceTab === 'individual' ? individualServices : corporateServices).map((service, index) => (
+                          <a
+                            key={index}
+                            href={service.href}
+                            className="group/item flex items-center gap-3 rounded-xl border border-transparent p-3 transition-all duration-300 hover:border-brand-azure/20 hover:bg-brand-azure/5 dark:hover:bg-brand-azure/10"
+                          >
+                            <div className="text-2xl transition-transform duration-300 group-hover/item:scale-110">
+                              {service.icon}
+                            </div>
+                            <span className="text-sm font-semibold text-brand-deep/80 dark:text-white/80 transition-colors duration-300 group-hover/item:text-brand-azure">
+                              {service.label}
+                            </span>
+                          </a>
+                        ))}
+                      </div>
                     </div>
                   </div>
                 </div>
               </div>
-            </div>
 
-            {/* CTA Section */}
-            <div className="flex items-center gap-3 sm:gap-4">
-              {/* Language Toggle */}
-              <div
-                ref={languageToggleRef}
-                className="flex items-center gap-2 rounded-full border-2 border-blue-200/50 bg-white px-3 py-1.5 shadow-sm transition-all duration-300 hover:border-blue-400/50 hover:shadow-md sm:px-4 sm:py-2"
-              >
-                <button 
-                  onClick={() => changeLanguage('en')}
-                  className={`text-xs font-black uppercase transition-opacity hover:opacity-80 ${
-                    i18n.language === 'en' ? 'text-blue-700' : 'text-blue-600/40'
-                  }`}
+              {/* CTA Section */}
+              <div className="flex items-center gap-3 sm:gap-4">
+                <ModeToggle />
+                {/* Language Toggle */}
+                <div
+                  ref={languageToggleRef}
+                  className="flex items-center gap-2 rounded-full border-2 border-blue-200/50 bg-white dark:bg-slate-800 px-3 py-1.5 shadow-sm transition-all duration-300 hover:border-blue-400/50 hover:shadow-md sm:px-4 sm:py-2"
                 >
-                  EN
-                </button>
-                <span className="h-3 w-[2px] bg-blue-300/40" />
-                <button 
-                  onClick={() => changeLanguage('ar')}
-                  className={`text-xs font-black uppercase transition-opacity hover:opacity-100 ${
-                    i18n.language === 'ar' ? 'text-blue-700' : 'text-blue-600/40'
-                  }`}
+                  <button
+                    onClick={() => changeLanguage('en')}
+                    className={`text-xs font-black uppercase transition-opacity hover:opacity-80 ${i18n.language === 'en' ? 'text-blue-700 dark:text-blue-400' : 'text-blue-600/40 dark:text-blue-400/40'
+                      }`}
+                  >
+                    EN
+                  </button>
+                  <span className="h-3 w-[2px] bg-blue-300/40" />
+                  <button
+                    onClick={() => changeLanguage('ar')}
+                    className={`text-xs font-black uppercase transition-opacity hover:opacity-100 ${i18n.language === 'ar' ? 'text-blue-700 dark:text-blue-400' : 'text-blue-600/40 dark:text-blue-400/40'
+                      }`}
+                  >
+                    AR
+                  </button>
+                </div>
+
+                <Button
+                  ref={contactButtonRef}
+                  onClick={onContactClick}
+                  className="group relative hidden overflow-hidden rounded-full bg-gradient-to-r from-blue-600 via-cyan-500 to-blue-600 px-6 py-2.5 font-bold uppercase tracking-wide text-white shadow-lg transition-all duration-300 hover:shadow-2xl hover:shadow-blue-500/40 sm:inline-flex"
                 >
-                  AR
+                  <span className="relative z-10 flex items-center gap-2">
+                    {t('nav.contactUs')}
+                    <span ref={arrowRef}>→</span>
+                  </span>
+                  <div className="absolute inset-0 bg-gradient-to-r from-cyan-500 to-blue-700 opacity-0 transition-opacity duration-300 group-hover:opacity-100" />
+                </Button>
+
+                {/* Mobile Menu Button */}
+                <button
+                  ref={menuButtonRef}
+                  onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
+                  className="flex h-11 w-11 items-center justify-center rounded-xl border-2 border-blue-200/50 bg-white dark:bg-slate-800 shadow-sm transition-all duration-300 hover:border-blue-400/50 hover:bg-blue-50/50 dark:hover:bg-slate-700 hover:shadow-md lg:hidden"
+                  aria-label="Toggle menu"
+                  onMouseDown={() => {
+                    gsap.to(menuButtonRef.current, { scale: 0.9, duration: 0.1 })
+                  }}
+                  onMouseUp={() => {
+                    gsap.to(menuButtonRef.current, { scale: 1, duration: 0.1 })
+                  }}
+                >
+                  {mobileMenuOpen ? (
+                    <X className="h-6 w-6 text-blue-700" strokeWidth={2.5} />
+                  ) : (
+                    <Menu className="h-6 w-6 text-blue-700" strokeWidth={2.5} />
+                  )}
                 </button>
               </div>
+            </>
+          )}
+        </div>
 
-              <Button
-                ref={contactButtonRef}
-                onClick={onContactClick}
-                className="group relative hidden overflow-hidden rounded-full bg-gradient-to-r from-blue-600 via-cyan-500 to-blue-600 px-6 py-2.5 font-bold uppercase tracking-wide text-white shadow-lg transition-all duration-300 hover:shadow-2xl hover:shadow-blue-500/40 sm:inline-flex"
-              >
-                <span className="relative z-10 flex items-center gap-2">
-                  {t('nav.contactUs')}
-                  <span ref={arrowRef}>→</span>
-                </span>
-                <div className="absolute inset-0 bg-gradient-to-r from-cyan-500 to-blue-700 opacity-0 transition-opacity duration-300 group-hover:opacity-100" />
-              </Button>
+        {/* Mobile Menu */}
+        {mobileMenuOpen && (
+          <div
+            ref={mobileMenuRef}
+            className="overflow-hidden border-t-2 border-blue-200/50 bg-white/95 dark:bg-slate-900/95 lg:hidden"
+          >
+            <div className="container mx-auto px-4 py-6">
+              <div className="flex flex-col gap-3">
+                {navItems.map((item, index) => (
+                  <a
+                    key={item.label}
+                    ref={(el) => {
+                      if (el) mobileNavItemsRef.current[index] = el
+                    }}
+                    href={item.href}
+                    onClick={(e) => {
+                      e.preventDefault();
+                      setMobileMenuOpen(false);
+                      const target = document.querySelector(item.href);
+                      if (target) {
+                        target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+                      }
+                    }}
+                    className="group relative overflow-hidden rounded-xl border-2 border-blue-200/50 bg-white dark:bg-slate-800 px-5 py-4 text-base font-bold uppercase tracking-wide text-blue-700/70 dark:text-blue-400/70 transition-all duration-300 hover:border-blue-400/50 hover:bg-blue-50/50 dark:hover:bg-slate-700 hover:text-blue-700 dark:hover:text-blue-400"
+                  >
+                    <span className="relative z-10">{item.label}</span>
+                    <div className="absolute inset-0 -z-10 translate-x-[-100%] bg-gradient-to-r from-blue-500/10 to-transparent transition-transform duration-300 group-hover:translate-x-0" />
+                  </a>
+                ))}
 
-              {/* Mobile Menu Button */}
-              <button
-                ref={menuButtonRef}
-                onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
-                className="flex h-11 w-11 items-center justify-center rounded-xl border-2 border-blue-200/50 bg-white shadow-sm transition-all duration-300 hover:border-blue-400/50 hover:bg-blue-50/50 hover:shadow-md lg:hidden"
-                aria-label="Toggle menu"
-                onMouseDown={() => {
-                  gsap.to(menuButtonRef.current, { scale: 0.9, duration: 0.1 })
-                }}
-                onMouseUp={() => {
-                  gsap.to(menuButtonRef.current, { scale: 1, duration: 0.1 })
-                }}
-              >
-                {mobileMenuOpen ? (
-                  <X className="h-6 w-6 text-blue-700" strokeWidth={2.5} />
-                ) : (
-                  <Menu className="h-6 w-6 text-blue-700" strokeWidth={2.5} />
-                )}
-              </button>
-            </div>
-          </>
-        )}
-      </div>
-
-      {/* Mobile Menu */}
-      {mobileMenuOpen && (
-        <div
-          ref={mobileMenuRef}
-          className="overflow-hidden border-t-2 border-blue-200/50 bg-white/95 lg:hidden"
-        >
-          <div className="container mx-auto px-4 py-6">
-            <div className="flex flex-col gap-3">
-              {navItems.map((item, index) => (
-                <a
-                  key={item.label}
-                  ref={(el) => {
-                    if (el) mobileNavItemsRef.current[index] = el
-                  }}
-                  href={item.href}
-                  onClick={(e) => {
-                    e.preventDefault();
-                    setMobileMenuOpen(false);
-                    const target = document.querySelector(item.href);
-                    if (target) {
-                      target.scrollIntoView({ behavior: 'smooth', block: 'start' });
-                    }
-                  }}
-                  className="group relative overflow-hidden rounded-xl border-2 border-blue-200/50 bg-white px-5 py-4 text-base font-bold uppercase tracking-wide text-blue-700/70 transition-all duration-300 hover:border-blue-400/50 hover:bg-blue-50/50 hover:text-blue-700"
-                >
-                  <span className="relative z-10">{item.label}</span>
-                  <div className="absolute inset-0 -z-10 translate-x-[-100%] bg-gradient-to-r from-blue-500/10 to-transparent transition-transform duration-300 group-hover:translate-x-0" />
-                </a>
-              ))}
-              
-              {/* Services Button */}
-              <button
-                ref={mobileServicesRef}
-                onClick={() => {
-                  setMobileMenuOpen(false);
-                  onServicesClick?.();
-                }}
-                className="group relative overflow-hidden rounded-xl border-2 border-blue-200/50 bg-white px-5 py-4 text-base font-bold uppercase tracking-wide text-blue-700/70 transition-all duration-300 hover:border-blue-400/50 hover:bg-blue-50/50 hover:text-blue-700 text-left"
-              >
-                <span className="relative z-10">{t('nav.services')}</span>
-                <div className="absolute inset-0 -z-10 translate-x-[-100%] bg-gradient-to-r from-blue-500/10 to-transparent transition-transform duration-300 group-hover:translate-x-0" />
-              </button>
-              
-              <div ref={mobileContactRef}>
-                <Button 
+                {/* Services Button */}
+                <button
+                  ref={mobileServicesRef}
                   onClick={() => {
                     setMobileMenuOpen(false);
-                    onContactClick?.();
+                    onServicesClick?.();
                   }}
-                  className="mt-3 w-full rounded-xl bg-gradient-to-r from-blue-600 via-cyan-500 to-blue-600 py-4 font-black uppercase tracking-wide text-white shadow-lg hover:shadow-2xl hover:shadow-blue-500/40"
+                  className="group relative overflow-hidden rounded-xl border-2 border-blue-200/50 bg-white dark:bg-slate-800 px-5 py-4 text-base font-bold uppercase tracking-wide text-blue-700/70 dark:text-blue-400/70 transition-all duration-300 hover:border-blue-400/50 hover:bg-blue-50/50 dark:hover:bg-slate-700 hover:text-blue-700 dark:hover:text-blue-400 text-left"
                 >
-                  {t('nav.contactUs')}
-                </Button>
+                  <span className="relative z-10">{t('nav.services')}</span>
+                  <div className="absolute inset-0 -z-10 translate-x-[-100%] bg-gradient-to-r from-blue-500/10 to-transparent transition-transform duration-300 group-hover:translate-x-0" />
+                </button>
+
+                <div ref={mobileContactRef}>
+                  <Button
+                    onClick={() => {
+                      setMobileMenuOpen(false);
+                      onContactClick?.();
+                    }}
+                    className="mt-3 w-full rounded-xl bg-gradient-to-r from-blue-600 via-cyan-500 to-blue-600 py-4 font-black uppercase tracking-wide text-white shadow-lg hover:shadow-2xl hover:shadow-blue-500/40"
+                  >
+                    {t('nav.contactUs')}
+                  </Button>
+                </div>
               </div>
             </div>
           </div>
-        </div>
-      )}
-    </nav>
+        )}
+      </nav>
     </>
   )
 }

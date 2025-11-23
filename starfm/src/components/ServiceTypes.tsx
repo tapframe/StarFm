@@ -182,8 +182,8 @@ export function ServiceTypes() {
 
         card.style.willChange = "transform"
         card.addEventListener("mouseenter", () => {
-          gsap.to(card, { 
-            y: -6, 
+          gsap.to(card, {
+            y: -6,
             scale: 1.02,
             duration: 0.35,
             ease: "power2.out",
@@ -191,8 +191,8 @@ export function ServiceTypes() {
           })
         }, { passive: true })
         card.addEventListener("mouseleave", () => {
-          gsap.to(card, { 
-            y: 0, 
+          gsap.to(card, {
+            y: 0,
             scale: 1,
             duration: 0.35,
             ease: "power2.out",
@@ -242,32 +242,32 @@ export function ServiceTypes() {
       if (button) {
         button.style.willChange = "transform"
         button.addEventListener("mouseenter", () => {
-          gsap.to(button, { 
-            scale: 1.08, 
+          gsap.to(button, {
+            scale: 1.08,
             duration: 0.3,
             ease: "back.out(1.7)",
             force3D: true
           })
         }, { passive: true })
         button.addEventListener("mouseleave", () => {
-          gsap.to(button, { 
-            scale: 1, 
+          gsap.to(button, {
+            scale: 1,
             duration: 0.3,
             ease: "power2.out",
             force3D: true
           })
         }, { passive: true })
         button.addEventListener("mousedown", () => {
-          gsap.to(button, { 
-            scale: 0.95, 
+          gsap.to(button, {
+            scale: 0.95,
             duration: 0.1,
             ease: "power2.in",
             force3D: true
           })
         }, { passive: true })
         button.addEventListener("mouseup", () => {
-          gsap.to(button, { 
-            scale: 1.08, 
+          gsap.to(button, {
+            scale: 1.08,
             duration: 0.2,
             ease: "back.out(1.7)",
             force3D: true
@@ -285,24 +285,24 @@ export function ServiceTypes() {
       cardsRef.current.forEach(card => {
         if (card) {
           card.style.willChange = "auto"
-          card.removeEventListener("mouseenter", () => {})
-          card.removeEventListener("mouseleave", () => {})
+          card.removeEventListener("mouseenter", () => { })
+          card.removeEventListener("mouseleave", () => { })
         }
       })
       buttonsRef.current.forEach(button => {
         if (button) {
           button.style.willChange = "auto"
-          button.removeEventListener("mouseenter", () => {})
-          button.removeEventListener("mouseleave", () => {})
-          button.removeEventListener("mousedown", () => {})
-          button.removeEventListener("mouseup", () => {})
+          button.removeEventListener("mouseenter", () => { })
+          button.removeEventListener("mouseleave", () => { })
+          button.removeEventListener("mousedown", () => { })
+          button.removeEventListener("mouseup", () => { })
         }
       })
     }
   }, [])
 
   return (
-    <section ref={sectionRef} className="relative overflow-hidden bg-gradient-to-br from-white via-brand-cream/10 to-white py-20 sm:py-24 lg:py-32">
+    <section ref={sectionRef} className="relative overflow-hidden bg-gradient-to-br from-white via-brand-cream/10 to-white dark:from-slate-950 dark:via-slate-900 dark:to-slate-950 py-20 sm:py-24 lg:py-32">
       {/* Enhanced Background Pattern */}
       <div className="pointer-events-none absolute inset-0">
         <div ref={bgCircle1Ref} className="absolute left-1/4 top-20 h-[500px] w-[500px] rounded-full bg-gradient-to-r from-brand-azure/15 to-brand-sand/10 opacity-50" />
@@ -313,13 +313,13 @@ export function ServiceTypes() {
       <div className="container relative px-4 sm:px-6">
         {/* Section Header */}
         <div ref={headerRef} className="mb-16 text-center sm:mb-20">
-          <div ref={badgeRef} className="mb-4 inline-flex items-center gap-2 rounded-full border border-brand-azure/30 bg-brand-azure/10 px-4 py-2 bg-opacity-50">
+          <div ref={badgeRef} className="mb-4 inline-flex items-center gap-2 rounded-full border border-brand-azure/30 bg-brand-azure/10 dark:bg-brand-azure/20 px-4 py-2 bg-opacity-50">
             <div className="h-2 w-2 animate-pulse rounded-full bg-blue-500" />
             <span className="text-xs font-bold uppercase tracking-widest text-blue-600">
               {t('serviceTypes.badge')}
             </span>
           </div>
-          <h2 className="mb-6 font-display text-4xl font-black leading-tight text-brand-deep sm:text-5xl lg:text-6xl">
+          <h2 className="mb-6 font-display text-4xl font-black leading-tight text-brand-deep dark:text-foreground sm:text-5xl lg:text-6xl">
             {t('serviceTypes.subtitle')}{" "}
             <span className="relative inline-block">
               <span className="gradient-text">
@@ -328,7 +328,7 @@ export function ServiceTypes() {
               <div ref={underlineRef} className="absolute -bottom-2 left-0 right-0 h-1 rounded-full bg-gradient-to-r from-blue-500 via-blue-400 to-transparent origin-left" />
             </span>
           </h2>
-          <p className="mx-auto max-w-2xl text-xl font-semibold text-brand-forest/70">
+          <p className="mx-auto max-w-2xl text-xl font-semibold text-brand-forest/70 dark:text-muted-foreground">
             {t('serviceTypes.description')}
           </p>
         </div>
@@ -345,11 +345,11 @@ export function ServiceTypes() {
             >
               {/* Glowing Background */}
               <div className={`absolute -inset-1 rounded-3xl bg-gradient-to-r ${service.gradient} opacity-0 transition-all duration-500 group-hover:opacity-40`} />
-              
-              <div className={`relative h-full overflow-hidden rounded-3xl border-2 border-white bg-white/80 shadow-xl transition-all duration-500 ${service.hoverGlow} group-hover:border-transparent group-hover:shadow-2xl`}>
+
+              <div className={`relative h-full overflow-hidden rounded-3xl border-2 border-white dark:border-slate-800 bg-white/80 dark:bg-slate-900/80 shadow-xl transition-all duration-500 ${service.hoverGlow} group-hover:border-transparent group-hover:shadow-2xl`}>
                 {/* Gradient Overlay */}
                 <div className={`absolute inset-0 bg-gradient-to-br ${service.iconBg} opacity-0 transition-opacity duration-500 group-hover:opacity-100`} />
-                
+
                 {/* Card Content */}
                 <div className="relative p-8 sm:p-10">
                   {/* Icon Section */}
@@ -360,8 +360,8 @@ export function ServiceTypes() {
                     className="relative mx-auto mb-8 h-36 w-36"
                   >
                     {/* Outer Ring */}
-                    <div className="absolute inset-0 rounded-full bg-gradient-to-br from-gray-50 to-gray-100 shadow-inner" />
-                    
+                    <div className="absolute inset-0 rounded-full bg-gradient-to-br from-gray-50 to-gray-100 dark:from-slate-800 dark:to-slate-700 shadow-inner" />
+
                     {/* Animated Ring */}
                     <div
                       ref={(el) => {
@@ -369,25 +369,25 @@ export function ServiceTypes() {
                       }}
                       className={`absolute inset-2 rounded-full bg-gradient-to-br ${service.gradient} opacity-20`}
                     />
-                    
+
                     {/* Icon Container */}
-                    <div className={`absolute inset-3 flex items-center justify-center rounded-full bg-gradient-to-br ${service.gradient} shadow-2xl ring-4 ring-white transition-transform duration-500 group-hover:scale-110 group-hover:rotate-12`}>
+                    <div className={`absolute inset-3 flex items-center justify-center rounded-full bg-gradient-to-br ${service.gradient} shadow-2xl ring-4 ring-white dark:ring-slate-800 transition-transform duration-500 group-hover:scale-110 group-hover:rotate-12`}>
                       <service.icon className="h-14 w-14 text-white drop-shadow-lg" strokeWidth={2.5} />
                     </div>
-                    
+
                     {/* Glow Effect */}
                     <div className={`absolute inset-0 rounded-full bg-gradient-to-br ${service.gradient} opacity-0 transition-opacity duration-500 group-hover:opacity-60`} />
                   </div>
 
                   {/* Text Content */}
                   <div className="text-center">
-                    <h3 className="mb-4 font-display text-2xl font-black text-brand-deep transition-colors duration-300 group-hover:text-brand-forest sm:text-3xl">
+                    <h3 className="mb-4 font-display text-2xl font-black text-brand-deep dark:text-foreground transition-colors duration-300 group-hover:text-brand-forest dark:group-hover:text-brand-azure sm:text-3xl">
                       {service.title}
                     </h3>
-                    <p className="mb-6 text-base font-semibold leading-relaxed text-brand-forest/70 transition-colors duration-300 group-hover:text-brand-forest/90 sm:text-lg">
+                    <p className="mb-6 text-base font-semibold leading-relaxed text-brand-forest/70 dark:text-muted-foreground transition-colors duration-300 group-hover:text-brand-forest/90 dark:group-hover:text-muted-foreground/90 sm:text-lg">
                       {service.description}
                     </p>
-                    
+
                     {/* CTA Button */}
                     <button
                       ref={(el) => {

@@ -398,7 +398,7 @@ export function ServicesPage({ onBack, onContactClick }: ServicesPageProps) {
   useEffect(() => {
     // Ensure page starts at top
     window.scrollTo({ top: 0, behavior: "instant" })
-    
+
     // Set GSAP defaults for better performance
     gsap.config({
       nullTargetWarn: false
@@ -410,9 +410,9 @@ export function ServicesPage({ onBack, onContactClick }: ServicesPageProps) {
       if (pageRef.current) {
         const anim = gsap.fromTo(pageRef.current,
           { opacity: 0, scale: 0.99 },
-          { 
-            opacity: 1, 
-            scale: 1, 
+          {
+            opacity: 1,
+            scale: 1,
             duration: 0.6,
             ease: "power2.out",
             force3D: true
@@ -424,7 +424,7 @@ export function ServicesPage({ onBack, onContactClick }: ServicesPageProps) {
 
       // Subtle page header stagger
       const headerTl = gsap.timeline({ delay: 0.1 })
-      
+
       if (pageHeaderRef.current) {
         gsap.set(pageHeaderRef.current, { opacity: 0, y: 15 })
         headerTl.to(pageHeaderRef.current, {
@@ -543,8 +543,8 @@ export function ServicesPage({ onBack, onContactClick }: ServicesPageProps) {
             refreshPriority: -1
           })
           scrollTriggersRef.current.push(st3)
-          gsap.set(imageContainer, { 
-            opacity: 0, 
+          gsap.set(imageContainer, {
+            opacity: 0,
             x: isEven ? -30 : 30,
             scale: 0.97,
             rotation: isEven ? -1 : 1
@@ -571,9 +571,9 @@ export function ServicesPage({ onBack, onContactClick }: ServicesPageProps) {
           // Optimized hover effects with will-change
           imageContainer.style.willChange = "transform"
           const handleImageEnter = () => {
-            gsap.to(imageContainer, { 
-              scale: 1.02, 
-              y: -4, 
+            gsap.to(imageContainer, {
+              scale: 1.02,
+              y: -4,
               rotation: isEven ? 0.5 : -0.5,
               duration: 0.5,
               ease: "power2.out",
@@ -582,8 +582,8 @@ export function ServicesPage({ onBack, onContactClick }: ServicesPageProps) {
             const img = imageInnerRefs.current[index]
             if (img) {
               img.style.willChange = "transform"
-              gsap.to(img, { 
-                scale: 1.05, 
+              gsap.to(img, {
+                scale: 1.05,
                 duration: 0.6,
                 ease: "power2.out",
                 force3D: true
@@ -600,10 +600,10 @@ export function ServicesPage({ onBack, onContactClick }: ServicesPageProps) {
               })
             }
           }
-          
+
           const handleImageLeave = () => {
-            gsap.to(imageContainer, { 
-              scale: 1, 
+            gsap.to(imageContainer, {
+              scale: 1,
               y: 0,
               rotation: 0,
               duration: 0.5,
@@ -612,8 +612,8 @@ export function ServicesPage({ onBack, onContactClick }: ServicesPageProps) {
             })
             const img = imageInnerRefs.current[index]
             if (img) {
-              gsap.to(img, { 
-                scale: 1, 
+              gsap.to(img, {
+                scale: 1,
                 duration: 0.6,
                 ease: "power2.out",
                 force3D: true,
@@ -657,8 +657,8 @@ export function ServicesPage({ onBack, onContactClick }: ServicesPageProps) {
             refreshPriority: -1
           })
           scrollTriggersRef.current.push(st5)
-          gsap.set(contentContainer, { 
-            opacity: 0, 
+          gsap.set(contentContainer, {
+            opacity: 0,
             x: isEven ? -25 : 25,
             y: 15
           })
@@ -751,8 +751,8 @@ export function ServicesPage({ onBack, onContactClick }: ServicesPageProps) {
             refreshPriority: -1
           })
           scrollTriggersRef.current.push(st9)
-          gsap.set(iconContainer, { 
-            opacity: 0, 
+          gsap.set(iconContainer, {
+            opacity: 0,
             scale: 0.9,
             rotation: -10,
             y: -10
@@ -760,8 +760,8 @@ export function ServicesPage({ onBack, onContactClick }: ServicesPageProps) {
 
           iconContainer.style.willChange = "transform"
           const handleIconEnter = () => {
-            gsap.to(iconContainer, { 
-              scale: 1.08, 
+            gsap.to(iconContainer, {
+              scale: 1.08,
               rotation: 3,
               y: -3,
               duration: 0.35,
@@ -779,10 +779,10 @@ export function ServicesPage({ onBack, onContactClick }: ServicesPageProps) {
               })
             }
           }
-          
+
           const handleIconLeave = () => {
-            gsap.to(iconContainer, { 
-              scale: 1, 
+            gsap.to(iconContainer, {
+              scale: 1,
               rotation: 0,
               y: 0,
               duration: 0.35,
@@ -852,8 +852,8 @@ export function ServicesPage({ onBack, onContactClick }: ServicesPageProps) {
             refreshPriority: -1
           })
           scrollTriggersRef.current.push(st10)
-          gsap.set(statsBadge, { 
-            opacity: 0, 
+          gsap.set(statsBadge, {
+            opacity: 0,
             scale: 0.96,
             y: 15,
             rotation: -2
@@ -898,8 +898,8 @@ export function ServicesPage({ onBack, onContactClick }: ServicesPageProps) {
               refreshPriority: -1
             })
             scrollTriggersRef.current.push(st11)
-            gsap.set(feature, { 
-              opacity: 0, 
+            gsap.set(feature, {
+              opacity: 0,
               x: -20,
               scale: 0.97
             })
@@ -910,8 +910,8 @@ export function ServicesPage({ onBack, onContactClick }: ServicesPageProps) {
 
             feature.style.willChange = "transform"
             const handleFeatureEnter = () => {
-              gsap.to(feature, { 
-                x: 4, 
+              gsap.to(feature, {
+                x: 4,
                 scale: 1.02,
                 duration: 0.3,
                 ease: "power2.out",
@@ -928,10 +928,10 @@ export function ServicesPage({ onBack, onContactClick }: ServicesPageProps) {
                 })
               }
             }
-            
+
             const handleFeatureLeave = () => {
-              gsap.to(feature, { 
-                x: 0, 
+              gsap.to(feature, {
+                x: 0,
                 scale: 1,
                 duration: 0.3,
                 ease: "power2.out",
@@ -1021,8 +1021,8 @@ export function ServicesPage({ onBack, onContactClick }: ServicesPageProps) {
           refreshPriority: -1
         })
         scrollTriggersRef.current.push(st12)
-        gsap.set(ctaSectionRef.current, { 
-          opacity: 0, 
+        gsap.set(ctaSectionRef.current, {
+          opacity: 0,
           y: 25,
           scale: 0.98
         })
@@ -1057,8 +1057,8 @@ export function ServicesPage({ onBack, onContactClick }: ServicesPageProps) {
           if (button) {
             gsap.set(hoverDiv, { x: "-100%" })
             const handleButtonEnter = () => {
-              gsap.to(hoverDiv, { 
-                x: 0, 
+              gsap.to(hoverDiv, {
+                x: 0,
                 duration: 0.4,
                 ease: "power2.out",
                 force3D: true
@@ -1071,8 +1071,8 @@ export function ServicesPage({ onBack, onContactClick }: ServicesPageProps) {
               })
             }
             const handleButtonLeave = () => {
-              gsap.to(hoverDiv, { 
-                x: "-100%", 
+              gsap.to(hoverDiv, {
+                x: "-100%",
                 duration: 0.4,
                 ease: "power2.in",
                 force3D: true
@@ -1112,7 +1112,7 @@ export function ServicesPage({ onBack, onContactClick }: ServicesPageProps) {
       // Cleanup all ScrollTriggers
       scrollTriggersRef.current.forEach(st => st.kill())
       scrollTriggersRef.current = []
-      
+
       // Cleanup all animations
       animationsRef.current.forEach(anim => anim.kill())
       animationsRef.current = []
@@ -1122,7 +1122,7 @@ export function ServicesPage({ onBack, onContactClick }: ServicesPageProps) {
         currentCtaButton.removeEventListener("mouseenter", handleCtaButtonEnter)
         currentCtaButton.removeEventListener("mouseleave", handleCtaButtonLeave)
       }
-      
+
       // Reset will-change
       currentImageRefs.forEach(container => {
         if (container) {
@@ -1143,7 +1143,7 @@ export function ServicesPage({ onBack, onContactClick }: ServicesPageProps) {
   }, [handleCtaButtonEnter, handleCtaButtonLeave])
 
   return (
-    <div ref={pageRef} className="min-h-screen bg-gradient-to-br from-white via-brand-cream/20 to-brand-sand/30">
+    <div ref={pageRef} className="min-h-screen bg-gradient-to-br from-white via-brand-cream/20 to-brand-sand/30 dark:from-slate-950 dark:via-slate-900 dark:to-slate-950">
       {/* Background decorations */}
       <div className="pointer-events-none fixed inset-0">
         <div className="absolute left-1/4 top-20 h-96 w-96 rounded-full bg-brand-azure/10 opacity-50" />
@@ -1158,44 +1158,42 @@ export function ServicesPage({ onBack, onContactClick }: ServicesPageProps) {
       <div className="container relative mx-auto px-4 pt-24 pb-12 sm:px-6 sm:pt-28 sm:pb-16 lg:pt-32 lg:pb-24">
         {/* Page Header */}
         <div ref={pageHeaderRef} className="mb-16 text-center">
-          <div ref={badgeRef} className="mb-6 inline-flex items-center gap-2 rounded-full border border-blue-500/30 bg-blue-500/10 px-4 py-2 bg-opacity-50">
+          <div ref={badgeRef} className="mb-6 inline-flex items-center gap-2 rounded-full border border-blue-500/30 bg-blue-500/10 dark:bg-blue-500/20 px-4 py-2 bg-opacity-50">
             <div className="h-2 w-2 animate-pulse rounded-full bg-blue-500" />
-            <span className="text-xs font-bold uppercase tracking-[0.15em] text-blue-600">
+            <span className="text-xs font-bold uppercase tracking-[0.15em] text-blue-600 dark:text-blue-400">
               {t('servicesPage.pageBadge')}
             </span>
           </div>
 
-          <h1 ref={titleRef} className="mb-6 font-display text-5xl font-black leading-tight text-brand-deep sm:text-6xl lg:text-7xl">
+          <h1 ref={titleRef} className="mb-6 font-display text-5xl font-black leading-tight text-brand-deep dark:text-foreground sm:text-6xl lg:text-7xl">
             Our
             <span className="block gradient-text mt-2">
               Services
             </span>
           </h1>
 
-          <p ref={descriptionRef} className="mx-auto max-w-2xl text-lg leading-relaxed text-brand-forest/70">
+          <p ref={descriptionRef} className="mx-auto max-w-2xl text-lg leading-relaxed text-brand-forest/70 dark:text-muted-foreground">
             {t('servicesPage.description')}
           </p>
 
           {/* Tabs */}
           <div className="mt-12 flex justify-center">
-            <div className="inline-flex rounded-xl border border-brand-deep/10 bg-white p-1 shadow-md">
+            <div className="inline-flex rounded-xl border border-brand-deep/10 bg-white dark:bg-slate-900 dark:border-slate-800 p-1 shadow-md">
               <button
                 onClick={() => setActiveTab('individual')}
-                className={`px-8 py-3 rounded-lg text-sm font-bold uppercase tracking-wide transition-all duration-300 ${
-                  activeTab === 'individual'
-                    ? 'bg-brand-azure text-white shadow-md'
-                    : 'text-brand-deep/60 hover:text-brand-azure'
-                }`}
+                className={`px-8 py-3 rounded-lg text-sm font-bold uppercase tracking-wide transition-all duration-300 ${activeTab === 'individual'
+                  ? 'bg-brand-azure text-white shadow-md dark:bg-brand-azure/80 dark:text-white'
+                  : 'text-brand-deep/60 hover:text-brand-azure dark:text-slate-400 dark:hover:text-brand-azure'
+                  }`}
               >
                 Individual Services
               </button>
               <button
                 onClick={() => setActiveTab('corporate')}
-                className={`px-8 py-3 rounded-lg text-sm font-bold uppercase tracking-wide transition-all duration-300 ${
-                  activeTab === 'corporate'
-                    ? 'bg-brand-azure text-white shadow-md'
-                    : 'text-brand-deep/60 hover:text-brand-azure'
-                }`}
+                className={`px-8 py-3 rounded-lg text-sm font-bold uppercase tracking-wide transition-all duration-300 ${activeTab === 'corporate'
+                  ? 'bg-brand-azure text-white shadow-md dark:bg-brand-azure/80 dark:text-white'
+                  : 'text-brand-deep/60 hover:text-brand-azure dark:text-slate-400 dark:hover:text-brand-azure'
+                  }`}
               >
                 Corporate Services
               </button>
@@ -1219,11 +1217,11 @@ export function ServicesPage({ onBack, onContactClick }: ServicesPageProps) {
               >
                 {/* Decorative number */}
                 <div className="absolute -top-8 left-0 lg:-left-8 pointer-events-none">
-                  <span 
+                  <span
                     ref={(el) => {
                       if (el) decorativeNumberRefs.current[index] = el
                     }}
-                    className="font-display text-8xl font-black text-blue-500/5 select-none"
+                    className="font-display text-8xl font-black text-blue-500/5 dark:text-blue-400/5 select-none"
                     aria-hidden="true"
                   >
                     {String(index + 1).padStart(2, '0')}
@@ -1245,10 +1243,10 @@ export function ServicesPage({ onBack, onContactClick }: ServicesPageProps) {
                     className="absolute -inset-4 bg-gradient-to-r from-brand-azure/40 via-brand-moss/40 to-brand-azure/40 rounded-3xl opacity-0 -z-10 blur-xl"
                     aria-hidden="true"
                   />
-                  
-                  <div className="relative aspect-[4/3] overflow-hidden rounded-3xl border border-brand-azure/30 bg-white shadow-2xl">
+
+                  <div className="relative aspect-[4/3] overflow-hidden rounded-3xl border border-brand-azure/30 bg-white dark:bg-slate-900 dark:border-slate-800 shadow-2xl">
                     {/* Image with lazy loading */}
-                    <img 
+                    <img
                       ref={(el) => {
                         if (el) imageInnerRefs.current[index] = el
                       }}
@@ -1258,10 +1256,10 @@ export function ServicesPage({ onBack, onContactClick }: ServicesPageProps) {
                       loading="lazy"
                       decoding="async"
                     />
-                    
+
                     {/* Gradient overlay */}
-                    <div className="absolute inset-0 bg-gradient-to-br from-brand-deep/40 via-brand-forest/30 to-transparent transition-opacity duration-500 group-hover:opacity-70" aria-hidden="true" />
-                    
+                    <div className="absolute inset-0 bg-gradient-to-br from-brand-deep/40 via-brand-forest/30 to-transparent dark:from-slate-900/60 dark:via-slate-900/40 transition-opacity duration-500 group-hover:opacity-70" aria-hidden="true" />
+
                     {/* Floating Icon Badge with pulse */}
                     <div
                       ref={(el) => {
@@ -1269,11 +1267,11 @@ export function ServicesPage({ onBack, onContactClick }: ServicesPageProps) {
                       }}
                       className="absolute left-6 top-6"
                     >
-                      <div 
+                      <div
                         ref={(el) => {
                           if (el) iconInnerRefs.current[index] = el
                         }}
-                        className={`relative flex h-16 w-16 items-center justify-center rounded-2xl bg-gradient-to-br ${service.color} shadow-2xl ring-4 ring-white/40`}
+                        className={`relative flex h-16 w-16 items-center justify-center rounded-2xl bg-gradient-to-br ${service.color} shadow-2xl ring-4 ring-white/40 dark:ring-slate-900/40`}
                       >
                         <span className="text-3xl" role="img" aria-label={service.title}>{service.icon}</span>
                         <div
@@ -1291,10 +1289,10 @@ export function ServicesPage({ onBack, onContactClick }: ServicesPageProps) {
                       ref={(el) => {
                         if (el) statsBadgeRefs.current[index] = el
                       }}
-                      className="absolute bottom-6 right-6 rounded-xl border border-white/30 bg-white/95 backdrop-blur-sm px-4 py-3 shadow-lg"
+                      className="absolute bottom-6 right-6 rounded-xl border border-white/30 bg-white/95 dark:bg-slate-900/95 dark:border-slate-700 backdrop-blur-sm px-4 py-3 shadow-lg"
                     >
                       <div className="flex items-baseline gap-2">
-                        <span 
+                        <span
                           ref={(el) => {
                             if (el) statsValueRefs.current[index] = el
                           }}
@@ -1302,7 +1300,7 @@ export function ServicesPage({ onBack, onContactClick }: ServicesPageProps) {
                         >
                           {service.stats.value}
                         </span>
-                        <span className="text-xs font-bold text-brand-deep/70 uppercase">
+                        <span className="text-xs font-bold text-brand-deep/70 dark:text-muted-foreground uppercase">
                           {service.stats.label}
                         </span>
                       </div>
@@ -1318,30 +1316,30 @@ export function ServicesPage({ onBack, onContactClick }: ServicesPageProps) {
                     }}
                   >
                     {/* Category badge */}
-                    <div 
+                    <div
                       ref={(el) => {
                         if (el) categoryBadgeRefs.current[index] = el
                       }}
-                      className="mb-4 inline-flex items-center gap-2 rounded-full border border-brand-azure/30 bg-brand-azure/10 px-3 py-1 bg-opacity-50"
+                      className="mb-4 inline-flex items-center gap-2 rounded-full border border-brand-azure/30 bg-brand-azure/10 dark:bg-brand-azure/20 px-3 py-1 bg-opacity-50"
                     >
                       <Star className="h-3 w-3 text-blue-500 fill-blue-500" aria-hidden="true" />
-                      <span className="text-xs font-bold uppercase tracking-wider text-blue-600">{t('servicesPage.premiumService')}</span>
+                      <span className="text-xs font-bold uppercase tracking-wider text-blue-600 dark:text-blue-400">{t('servicesPage.premiumService')}</span>
                     </div>
 
-                    <h2 
+                    <h2
                       ref={(el) => {
                         if (el) titleTextRefs.current[index] = el
                       }}
-                      className="mb-4 font-display text-3xl font-black text-brand-deep sm:text-4xl lg:text-5xl"
+                      className="mb-4 font-display text-3xl font-black text-brand-deep dark:text-foreground sm:text-4xl lg:text-5xl"
                     >
                       {service.title}
                     </h2>
-                    
-                    <p 
+
+                    <p
                       ref={(el) => {
                         if (el) descriptionTextRefs.current[index] = el
                       }}
-                      className="mb-8 text-base leading-relaxed text-brand-forest/80 sm:text-lg"
+                      className="mb-8 text-base leading-relaxed text-brand-forest/80 dark:text-muted-foreground sm:text-lg"
                     >
                       {service.description}
                     </p>
@@ -1357,9 +1355,9 @@ export function ServicesPage({ onBack, onContactClick }: ServicesPageProps) {
                             }
                             if (el) featureRefs.current[index][idx] = el
                           }}
-                          className="group flex items-center gap-3 rounded-lg border border-transparent p-3 transition-all hover:border-brand-azure/20 hover:bg-brand-azure/5 hover:shadow-md"
+                          className="group flex items-center gap-3 rounded-lg border border-transparent p-3 transition-all hover:border-brand-azure/20 hover:bg-brand-azure/5 dark:hover:bg-brand-azure/10 hover:shadow-md"
                         >
-                          <div 
+                          <div
                             ref={(el) => {
                               if (!featureIconRefs.current[index]) {
                                 featureIconRefs.current[index] = []
@@ -1370,7 +1368,7 @@ export function ServicesPage({ onBack, onContactClick }: ServicesPageProps) {
                           >
                             <CheckCircle2 className="h-4 w-4 text-white" strokeWidth={2.5} aria-hidden="true" />
                           </div>
-                          <span className="text-sm font-semibold text-brand-forest/80 transition-colors group-hover:text-brand-deep">
+                          <span className="text-sm font-semibold text-brand-forest/80 dark:text-muted-foreground/80 transition-colors group-hover:text-brand-deep dark:group-hover:text-foreground">
                             {feature}
                           </span>
                         </div>
@@ -1381,7 +1379,7 @@ export function ServicesPage({ onBack, onContactClick }: ServicesPageProps) {
                     <div className="flex flex-col gap-3 sm:flex-row sm:gap-4">
                       <Button
                         onClick={onContactClick}
-                        className="group relative overflow-hidden rounded-xl bg-gradient-to-r from-brand-azure via-brand-sand to-brand-azure px-6 py-4 font-bold uppercase tracking-wide text-brand-deep shadow-lg transition-all duration-300 hover:shadow-2xl hover:shadow-brand-azure/50"
+                        className="group relative overflow-hidden rounded-xl bg-gradient-to-r from-brand-azure via-brand-sand to-brand-azure px-6 py-4 font-bold uppercase tracking-wide text-brand-deep dark:text-slate-900 shadow-lg transition-all duration-300 hover:shadow-2xl hover:shadow-brand-azure/50"
                       >
                         <span className="relative z-10 flex items-center gap-2">
                           {t('servicesPage.requestService')}
@@ -1398,7 +1396,7 @@ export function ServicesPage({ onBack, onContactClick }: ServicesPageProps) {
 
                       <Button
                         variant="outline"
-                        className="group rounded-xl border-2 border-brand-deep/20 bg-white/50 px-6 py-4 font-bold uppercase tracking-wide text-brand-deep bg-opacity-50 transition-all hover:border-brand-azure hover:bg-brand-azure/10"
+                        className="group rounded-xl border-2 border-brand-deep/20 dark:border-white/20 bg-white/50 dark:bg-slate-800/50 px-6 py-4 font-bold uppercase tracking-wide text-brand-deep dark:text-white bg-opacity-50 transition-all hover:border-brand-azure hover:bg-brand-azure/10"
                       >
                         <span className="flex items-center gap-2">
                           <Clock className="h-5 w-5" aria-hidden="true" />
@@ -1408,7 +1406,7 @@ export function ServicesPage({ onBack, onContactClick }: ServicesPageProps) {
                     </div>
 
                     {/* Quality badge */}
-                    <div className="mt-6 flex items-center gap-2 text-sm text-brand-forest/60">
+                    <div className="mt-6 flex items-center gap-2 text-sm text-brand-forest/60 dark:text-muted-foreground/60">
                       <Award className="h-5 w-5 text-blue-500" aria-hidden="true" />
                       <span className="font-medium">{t('servicesPage.certifiedQuality')}</span>
                     </div>
@@ -1420,18 +1418,18 @@ export function ServicesPage({ onBack, onContactClick }: ServicesPageProps) {
         </div>
 
         {/* CTA Section */}
-        <div ref={ctaSectionRef} className="mt-24 overflow-hidden rounded-3xl border border-brand-azure/20 bg-gradient-to-br from-brand-deep via-brand-forest to-brand-moss p-12 text-center shadow-2xl sm:p-16">
+        <div ref={ctaSectionRef} className="mt-24 overflow-hidden rounded-3xl border border-brand-azure/20 dark:border-brand-azure/10 bg-gradient-to-br from-brand-deep via-brand-forest to-brand-moss dark:from-slate-900 dark:via-slate-800 dark:to-slate-900 p-12 text-center shadow-2xl sm:p-16">
           <div className="relative">
             <h3 ref={ctaTitleRef} className="mb-4 font-display text-3xl font-black text-white sm:text-4xl lg:text-5xl">
               {t('servicesPage.cta.title')}
             </h3>
-            <p ref={ctaDescriptionRef} className="mx-auto mb-8 max-w-2xl text-lg leading-relaxed text-brand-cream/90">
+            <p ref={ctaDescriptionRef} className="mx-auto mb-8 max-w-2xl text-lg leading-relaxed text-brand-cream/90 dark:text-slate-300">
               {t('servicesPage.cta.description')}
             </p>
             <Button
               ref={ctaButtonRef}
               onClick={onContactClick}
-              className="group relative overflow-hidden rounded-xl bg-gradient-to-r from-brand-azure via-brand-sand to-brand-azure px-10 py-5 text-lg font-black uppercase tracking-wide text-brand-deep shadow-lg transition-all duration-300 hover:shadow-2xl hover:shadow-brand-azure/40"
+              className="group relative overflow-hidden rounded-xl bg-gradient-to-r from-brand-azure via-brand-sand to-brand-azure px-10 py-5 text-lg font-black uppercase tracking-wide text-brand-deep dark:text-slate-900 shadow-lg transition-all duration-300 hover:shadow-2xl hover:shadow-brand-azure/40"
             >
               <span className="relative z-10 flex items-center gap-2">
                 {t('servicesPage.contactNow')}

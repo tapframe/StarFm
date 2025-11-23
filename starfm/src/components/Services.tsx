@@ -23,7 +23,7 @@ interface ServicesProps {
 
 export function Services({ onServicesPageClick }: ServicesProps) {
   const { t } = useTranslation()
-  
+
   const services = [
     {
       title: t('services.list.facilitiesManagement.title'),
@@ -63,7 +63,7 @@ export function Services({ onServicesPageClick }: ServicesProps) {
   ]
   const [currentIndex, setCurrentIndex] = useState(0)
   const [direction, setDirection] = useState(0)
-  
+
   const sectionRef = useRef<HTMLElement>(null)
   const headerRef = useRef<HTMLDivElement>(null)
   const badgeRef = useRef<HTMLSpanElement>(null)
@@ -79,7 +79,7 @@ export function Services({ onServicesPageClick }: ServicesProps) {
   const bgCircle1Ref = useRef<HTMLDivElement>(null)
   const bgCircle2Ref = useRef<HTMLDivElement>(null)
   const bgCircle3Ref = useRef<HTMLDivElement>(null)
-  
+
   const startXRef = useRef<number>(0)
   const currentXRef = useRef<number>(0)
   const isDraggingRef = useRef<boolean>(false)
@@ -224,9 +224,9 @@ export function Services({ onServicesPageClick }: ServicesProps) {
 
     return () => {
       ScrollTrigger.getAll().forEach(trigger => {
-        if (trigger.vars?.trigger === section || 
-            trigger.vars?.trigger === header ||
-            trigger.vars?.trigger === carousel) {
+        if (trigger.vars?.trigger === section ||
+          trigger.vars?.trigger === header ||
+          trigger.vars?.trigger === carousel) {
           trigger.kill()
         }
       })
@@ -237,11 +237,11 @@ export function Services({ onServicesPageClick }: ServicesProps) {
   useEffect(() => {
     if (slideRef.current && imageRef.current && iconRef.current && contentRef.current && featuresRef.current && buttonRef.current) {
       const tl = gsap.timeline({ defaults: { force3D: true, ease: "power3.inOut" } })
-      
+
       // Professional slide direction: next slides left, previous slides right
       const exitX = direction > 0 ? -600 : 600
       const enterX = direction > 0 ? 600 : -600
-      
+
       // Elegant exit with fade
       tl.to(slideRef.current, {
         x: exitX,
@@ -249,13 +249,13 @@ export function Services({ onServicesPageClick }: ServicesProps) {
         duration: 0.35,
         ease: "power2.in"
       })
-      
+
       // Reset position
       tl.set(slideRef.current, {
         x: enterX,
         opacity: 0
       })
-      
+
       // Smooth professional enter
       tl.to(slideRef.current, {
         x: 0,
@@ -263,7 +263,7 @@ export function Services({ onServicesPageClick }: ServicesProps) {
         duration: 0.5,
         ease: "power3.out"
       })
-      
+
       // Refined icon reveal
       gsap.set(iconRef.current, { scale: 0.9, opacity: 0 })
       tl.to(iconRef.current, {
@@ -272,7 +272,7 @@ export function Services({ onServicesPageClick }: ServicesProps) {
         duration: 0.4,
         ease: "power2.out"
       }, 0.2)
-      
+
       // Professional content fade
       gsap.set(contentRef.current, { opacity: 0, y: 15 })
       tl.to(contentRef.current, {
@@ -281,7 +281,7 @@ export function Services({ onServicesPageClick }: ServicesProps) {
         duration: 0.45,
         ease: "power2.out"
       }, 0.25)
-      
+
       // Elegant staggered features
       const featureElements = featuresRef.current.querySelectorAll('.feature-item')
       featureElements.forEach((feature, idx) => {
@@ -293,7 +293,7 @@ export function Services({ onServicesPageClick }: ServicesProps) {
           ease: "power2.out"
         }, 0.3 + idx * 0.06)
       })
-      
+
       // Refined button reveal
       gsap.set(buttonRef.current, { opacity: 0, scale: 0.97 })
       tl.to(buttonRef.current, {
@@ -302,7 +302,7 @@ export function Services({ onServicesPageClick }: ServicesProps) {
         duration: 0.4,
         ease: "power2.out"
       }, 0.4)
-      
+
       // Smooth image hover effect
       if (imageRef.current) {
         const img = imageRef.current.querySelector('img')
@@ -310,16 +310,16 @@ export function Services({ onServicesPageClick }: ServicesProps) {
           imageRef.current.style.willChange = "transform"
           img.style.willChange = "transform"
           imageRef.current.addEventListener("mouseenter", () => {
-            gsap.to(img, { 
-              scale: 1.03, 
+            gsap.to(img, {
+              scale: 1.03,
               duration: 0.5,
               ease: "power2.out",
               force3D: true
             })
           }, { passive: true })
           imageRef.current.addEventListener("mouseleave", () => {
-            gsap.to(img, { 
-              scale: 1, 
+            gsap.to(img, {
+              scale: 1,
               duration: 0.5,
               ease: "power2.out",
               force3D: true,
@@ -350,7 +350,7 @@ export function Services({ onServicesPageClick }: ServicesProps) {
   const handleDragEnd = () => {
     if (!isDraggingRef.current) return
     isDraggingRef.current = false
-    
+
     const offset = currentXRef.current - startXRef.current
     const velocity = Math.abs(offset) > 50 ? (offset > 0 ? 1 : -1) : 0
     const swipe = swipePower(offset, velocity)
@@ -360,7 +360,7 @@ export function Services({ onServicesPageClick }: ServicesProps) {
     } else if (swipe > swipeConfidenceThreshold) {
       paginate(-1)
     }
-    
+
     startXRef.current = 0
     currentXRef.current = 0
   }
@@ -378,7 +378,7 @@ export function Services({ onServicesPageClick }: ServicesProps) {
       <div className="container relative px-4 sm:px-6">
         <div ref={headerRef} className="mb-12 text-center sm:mb-16">
           <div className="mb-4 inline-block">
-            <span ref={badgeRef} className="rounded-full border border-blue-500/30 bg-blue-500/10 px-4 py-1.5 text-xs font-semibold uppercase tracking-widest text-blue-600 bg-opacity-50">
+            <span ref={badgeRef} className="rounded-full border border-blue-500/30 bg-blue-500/10 dark:bg-blue-500/20 px-4 py-1.5 text-xs font-semibold uppercase tracking-widest text-blue-600 dark:text-blue-400 bg-opacity-50">
               {t('services.sectionBadge')}
             </span>
           </div>
@@ -405,10 +405,10 @@ export function Services({ onServicesPageClick }: ServicesProps) {
                 onTouchEnd={handleDragEnd}
                 className="absolute w-full cursor-grab active:cursor-grabbing"
               >
-                <Card className="group relative overflow-hidden border border-white/10 bg-white/95 shadow-2xl">
+                <Card className="group relative overflow-hidden border border-white/10 bg-white/95 dark:bg-slate-900/95 shadow-2xl">
                   {/* Subtle glow effect */}
                   <div className="absolute inset-0 bg-gradient-to-br from-brand-azure/5 via-transparent to-brand-forest/5 opacity-0 transition-opacity duration-500 group-hover:opacity-100" />
-                  
+
                   <div className="relative grid gap-0 lg:grid-cols-[1.2fr_0.8fr]">
                     {/* Image Section */}
                     <div ref={imageRef} className="relative h-[240px] overflow-hidden sm:h-[280px] lg:h-[500px]">
@@ -425,13 +425,13 @@ export function Services({ onServicesPageClick }: ServicesProps) {
 
                       {/* Icon Badge */}
                       <div ref={iconRef} className="absolute left-4 top-4 sm:left-6 sm:top-6">
-                        <div className="flex h-12 w-12 items-center justify-center rounded-xl bg-white/90 shadow-lg sm:h-16 sm:w-16 sm:rounded-2xl">
+                        <div className="flex h-12 w-12 items-center justify-center rounded-xl bg-white/90 dark:bg-slate-800/90 shadow-lg sm:h-16 sm:w-16 sm:rounded-2xl">
                           <currentService.icon className="h-6 w-6 text-primary sm:h-8 sm:w-8" />
                         </div>
                       </div>
 
                       {/* Index Badge */}
-                      <div className="absolute bottom-4 right-4 rounded-full bg-white/20 px-3 py-1.5 bg-opacity-50 sm:bottom-6 sm:right-6 sm:px-4 sm:py-2">
+                      <div className="absolute bottom-4 right-4 rounded-full bg-white/20 dark:bg-black/40 px-3 py-1.5 bg-opacity-50 sm:bottom-6 sm:right-6 sm:px-4 sm:py-2">
                         <span className="text-xs font-semibold text-white sm:text-sm">
                           {String(currentIndex + 1).padStart(2, "0")} / {String(services.length).padStart(2, "0")}
                         </span>
@@ -478,7 +478,7 @@ export function Services({ onServicesPageClick }: ServicesProps) {
           <div className="mt-8 flex items-center justify-center gap-4 sm:mt-10">
             <button
               onClick={() => paginate(-1)}
-              className="flex h-12 w-12 items-center justify-center rounded-full border-2 border-brand-forest/20 bg-white shadow-lg transition-all hover:border-brand-azure hover:bg-brand-azure/10 hover:shadow-xl"
+              className="flex h-12 w-12 items-center justify-center rounded-full border-2 border-brand-forest/20 bg-white dark:bg-slate-800 dark:border-slate-700 shadow-lg transition-all hover:border-brand-azure hover:bg-brand-azure/10 hover:shadow-xl"
               aria-label="Previous service"
               onMouseEnter={(e) => {
                 gsap.to(e.currentTarget, { scale: 1.03, duration: 0.3, ease: "power2.out", force3D: true })
@@ -505,11 +505,10 @@ export function Services({ onServicesPageClick }: ServicesProps) {
                     setDirection(idx > currentIndex ? 1 : -1)
                     setCurrentIndex(idx)
                   }}
-                  className={`h-2 rounded-full transition-all duration-300 ${
-                    idx === currentIndex
+                  className={`h-2 rounded-full transition-all duration-300 ${idx === currentIndex
                       ? "w-8 bg-brand-azure"
                       : "w-2 bg-brand-forest/30 hover:bg-brand-azure/50"
-                  }`}
+                    }`}
                   aria-label={`Go to service ${idx + 1}`}
                   onMouseEnter={(e) => {
                     if (idx !== currentIndex) {
@@ -533,7 +532,7 @@ export function Services({ onServicesPageClick }: ServicesProps) {
 
             <button
               onClick={() => paginate(1)}
-              className="flex h-12 w-12 items-center justify-center rounded-full border-2 border-brand-forest/20 bg-white shadow-lg transition-all hover:border-brand-azure hover:bg-brand-azure/10 hover:shadow-xl"
+              className="flex h-12 w-12 items-center justify-center rounded-full border-2 border-brand-forest/20 bg-white dark:bg-slate-800 dark:border-slate-700 shadow-lg transition-all hover:border-brand-azure hover:bg-brand-azure/10 hover:shadow-xl"
               aria-label="Next service"
               onMouseEnter={(e) => {
                 gsap.to(e.currentTarget, { scale: 1.03, duration: 0.3, ease: "power2.out", force3D: true })

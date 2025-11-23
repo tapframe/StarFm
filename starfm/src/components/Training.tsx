@@ -13,7 +13,7 @@ interface TrainingProps {
 
 export function Training({ onContactClick }: TrainingProps) {
   const { t } = useTranslation()
-  
+
   const sectionRef = useRef<HTMLElement>(null)
   const headerRef = useRef<HTMLDivElement>(null)
   const badgeRef = useRef<HTMLDivElement>(null)
@@ -254,51 +254,51 @@ export function Training({ onContactClick }: TrainingProps) {
   }, [])
 
   return (
-    <section 
+    <section
       id="training"
       ref={sectionRef}
-      className="relative overflow-hidden bg-gradient-to-br from-white via-blue-50/30 to-slate-50 py-16 lg:py-24"
+      className="relative overflow-hidden bg-gradient-to-br from-white via-blue-50/30 to-slate-50 dark:from-slate-950 dark:via-slate-900 dark:to-slate-950 py-16 lg:py-24"
     >
       {/* Background decorative circles */}
       <div className="pointer-events-none absolute inset-0">
-        <div 
+        <div
           ref={bgCircle1Ref}
           className="absolute -right-20 top-0 h-80 w-80 rounded-full bg-blue-100/40 blur-3xl"
           aria-hidden="true"
         />
-        <div 
+        <div
           ref={bgCircle2Ref}
-          className="absolute -left-32 bottom-0 h-96 w-96 rounded-full bg-indigo-100/30 blur-3xl"
+          className="absolute -left-32 bottom-0 h-96 w-96 rounded-full bg-indigo-100/30 dark:bg-indigo-900/10 blur-3xl"
           aria-hidden="true"
         />
       </div>
 
       <div className="relative mx-auto max-w-6xl px-4 lg:px-6">
         {/* Header */}
-        <div 
+        <div
           ref={headerRef}
           className="mb-16 text-center"
         >
-          <div 
+          <div
             ref={badgeRef}
-            className="mb-6 inline-flex items-center gap-2 rounded-full border border-blue-500/30 bg-blue-500/10 px-4 py-2 bg-opacity-50"
+            className="mb-6 inline-flex items-center gap-2 rounded-full border border-blue-500/30 bg-blue-500/10 dark:bg-blue-500/20 px-4 py-2 bg-opacity-50"
           >
             <div className="h-2 w-2 animate-pulse rounded-full bg-blue-500" />
-            <span className="text-xs font-bold uppercase tracking-[0.15em] text-blue-600">
+            <span className="text-xs font-bold uppercase tracking-[0.15em] text-blue-600 dark:text-blue-400">
               {t('training.badge', { defaultValue: 'Workforce Development' })}
             </span>
           </div>
 
-          <h2 
+          <h2
             ref={titleRef}
-            className="mb-6 font-display text-4xl font-black leading-tight text-brand-deep sm:text-5xl lg:text-6xl"
+            className="mb-6 font-display text-4xl font-black leading-tight text-brand-deep dark:text-foreground sm:text-5xl lg:text-6xl"
           >
             {t('training.title', { defaultValue: 'Training' })}
           </h2>
 
-          <p 
+          <p
             ref={descriptionRef}
-            className="mx-auto max-w-2xl text-lg leading-relaxed text-brand-forest/80 sm:text-xl"
+            className="mx-auto max-w-2xl text-lg leading-relaxed text-brand-forest/80 dark:text-muted-foreground sm:text-xl"
           >
             {t('training.description', { defaultValue: 'Delivering end-to-end workforce development through tailored training programs and strategic candidate sourcing.' })}
           </p>
@@ -314,7 +314,7 @@ export function Training({ onContactClick }: TrainingProps) {
                 ref={(el) => {
                   if (el) cardsRef.current[index] = el
                 }}
-                className="group relative overflow-hidden rounded-2xl border border-blue-200/50 bg-white/80 backdrop-blur-sm p-6 shadow-md transition-all duration-300 hover:shadow-xl"
+                className="group relative overflow-hidden rounded-2xl border border-blue-200/50 dark:border-blue-800/50 bg-white/80 dark:bg-slate-900/80 backdrop-blur-sm p-6 shadow-md transition-all duration-300 hover:shadow-xl"
               >
                 {/* Icon badge */}
                 <div className="mb-6 inline-flex h-12 w-12 items-center justify-center rounded-xl bg-gradient-to-br from-blue-500 to-indigo-600 shadow-lg">
@@ -322,12 +322,12 @@ export function Training({ onContactClick }: TrainingProps) {
                 </div>
 
                 {/* Title */}
-                <h3 className="mb-3 text-lg font-bold text-brand-deep">
+                <h3 className="mb-3 text-lg font-bold text-brand-deep dark:text-foreground">
                   {program.title}
                 </h3>
 
                 {/* Description */}
-                <p className="mb-6 text-sm leading-relaxed text-brand-forest/70">
+                <p className="mb-6 text-sm leading-relaxed text-brand-forest/70 dark:text-muted-foreground/80">
                   {program.description}
                 </p>
 
@@ -336,13 +336,13 @@ export function Training({ onContactClick }: TrainingProps) {
                   {program.features.map((feature, idx) => (
                     <div key={`feature-${idx}`} className="flex items-start gap-2">
                       <CheckCircle2 className="h-4 w-4 text-blue-500 shrink-0 mt-0.5" aria-hidden="true" />
-                      <span className="text-xs text-brand-forest/60">{feature}</span>
+                      <span className="text-xs text-brand-forest/60 dark:text-muted-foreground/60">{feature}</span>
                     </div>
                   ))}
                 </div>
 
                 {/* Gradient overlay on hover */}
-                <div 
+                <div
                   className="absolute inset-0 opacity-0 group-hover:opacity-5 bg-gradient-to-br from-blue-500 to-indigo-600 transition-opacity duration-300"
                   aria-hidden="true"
                 />
@@ -352,12 +352,12 @@ export function Training({ onContactClick }: TrainingProps) {
         </div>
 
         {/* CTA Section */}
-        <div className="flex flex-col items-center justify-center gap-6 rounded-2xl border border-blue-200/50 bg-gradient-to-br from-blue-50 to-indigo-50/50 p-12 text-center md:p-16">
+        <div className="flex flex-col items-center justify-center gap-6 rounded-2xl border border-blue-200/50 dark:border-blue-800/50 bg-gradient-to-br from-blue-50 to-indigo-50/50 dark:from-slate-900 dark:to-indigo-950/30 p-12 text-center md:p-16">
           <div>
-            <h3 className="mb-3 text-2xl font-bold text-brand-deep sm:text-3xl">
+            <h3 className="mb-3 text-2xl font-bold text-brand-deep dark:text-foreground sm:text-3xl">
               {t('training.cta.title', { defaultValue: 'Ready to Develop Your Team?' })}
             </h3>
-            <p className="mx-auto max-w-2xl text-base leading-relaxed text-brand-forest/70">
+            <p className="mx-auto max-w-2xl text-base leading-relaxed text-brand-forest/70 dark:text-muted-foreground">
               {t('training.cta.description', { defaultValue: 'Let us help you build a skilled, motivated workforce with our comprehensive training and sourcing solutions.' })}
             </p>
           </div>

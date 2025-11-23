@@ -14,6 +14,7 @@ import { Footer } from "@/components/Footer"
 import { Contact } from "@/pages/Contact"
 import { ServicesPage } from "@/pages/ServicesPage"
 import { LoadingOverlay } from "@/components/ui/loading-overlay"
+import { ThemeProvider } from "@/components/theme-provider"
 import "./App.css"
 
 function App() {
@@ -41,7 +42,7 @@ function App() {
     const handleLoad = () => {
       const elapsedTime = Date.now() - startTime
       const remainingTime = Math.max(0, minLoadTime - elapsedTime)
-      
+
       setTimeout(() => {
         setIsInitialLoading(false)
       }, remainingTime)
@@ -123,53 +124,53 @@ function App() {
   }, [currentPage])
 
   return (
-    <>
-      <LoadingOverlay 
-        isLoading={isInitialLoading} 
+    <ThemeProvider defaultTheme="dark" storageKey="vite-ui-theme">
+      <LoadingOverlay
+        isLoading={isInitialLoading}
         message={t('loading.initialMessage')}
         subMessage={t('loading.initialSubtitle')}
       />
       <div className="min-h-screen">
         {currentPage === "home" ? (
-        <div ref={homeRef} key="home">
-          <Navbar onContactClick={handleContactClick} onServicesClick={handleServicesClick} />
-          <main className="space-y-0 pb-12 pt-20 sm:pb-16 sm:pt-24 lg:pb-24 lg:pt-24">
-            <div className="space-y-8 sm:space-y-12 lg:space-y-16">
-              <Hero onServicesClick={handleServicesClick} onContactClick={handleContactClick} />
-              <About />
-            </div>
-            
-            {/* Management Support Services - Standalone Section */}
-            {/* <div className="mt-8 sm:mt-12 lg:mt-16">
+          <div ref={homeRef} key="home">
+            <Navbar onContactClick={handleContactClick} onServicesClick={handleServicesClick} />
+            <main className="space-y-0 pb-12 pt-20 sm:pb-16 sm:pt-24 lg:pb-24 lg:pt-24">
+              <div className="space-y-8 sm:space-y-12 lg:space-y-16">
+                <Hero onServicesClick={handleServicesClick} onContactClick={handleContactClick} />
+                <About />
+              </div>
+
+              {/* Management Support Services - Standalone Section */}
+              {/* <div className="mt-8 sm:mt-12 lg:mt-16">
               <ManagementSupport onContactClick={handleContactClick} />
             </div> */}
-            
-            {/* Facility Management Services Section */}
-            <div className="mt-8 space-y-8 sm:mt-12 sm:space-y-12 lg:mt-16 lg:space-y-16">
-              <ServiceTypes />
-              <Stats />
-              <Services onServicesPageClick={handleServicesClick} />
-              <Training onContactClick={handleContactClick} />
-            </div>
-          </main>
 
-          {/* New Hero Section Before Footer */}
-          <TrustedPartner />
+              {/* Facility Management Services Section */}
+              <div className="mt-8 space-y-8 sm:mt-12 sm:space-y-12 lg:mt-16 lg:space-y-16">
+                <ServiceTypes />
+                <Stats />
+                <Services onServicesPageClick={handleServicesClick} />
+                <Training onContactClick={handleContactClick} />
+              </div>
+            </main>
 
-          <Footer onContactClick={handleContactClick} onServicesClick={handleServicesClick} />
-        </div>
-      ) : currentPage === "contact" ? (
-        <div ref={contactRef} key="contact">
-          <Contact onBack={handleBackHome} />
-        </div>
-      ) : (
-        <div ref={servicesRef} key="services">
-          <ServicesPage onBack={handleBackHome} onContactClick={handleContactClick} />
-          <Footer onContactClick={handleContactClick} onServicesClick={handleServicesClick} />
-        </div>
-      )}
+            {/* New Hero Section Before Footer */}
+            <TrustedPartner />
+
+            <Footer onContactClick={handleContactClick} onServicesClick={handleServicesClick} />
+          </div>
+        ) : currentPage === "contact" ? (
+          <div ref={contactRef} key="contact">
+            <Contact onBack={handleBackHome} />
+          </div>
+        ) : (
+          <div ref={servicesRef} key="services">
+            <ServicesPage onBack={handleBackHome} onContactClick={handleContactClick} />
+            <Footer onContactClick={handleContactClick} onServicesClick={handleServicesClick} />
+          </div>
+        )}
       </div>
-    </>
+    </ThemeProvider>
   )
 }
 

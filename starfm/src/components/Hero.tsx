@@ -131,7 +131,7 @@ export function Hero({ onServicesClick, onContactClick }: HeroProps) {
   const [prevSlide, setPrevSlide] = useState(0)
   const [isTransitioning, setIsTransitioning] = useState(false)
   const isArabic = i18n.language === 'ar'
-  
+
   const heroRef = useRef<HTMLElement>(null)
   const currentBgRef = useRef<HTMLDivElement>(null)
   const nextBgRef = useRef<HTMLDivElement>(null)
@@ -147,7 +147,7 @@ export function Hero({ onServicesClick, onContactClick }: HeroProps) {
   // Initial page load animation
   useEffect(() => {
     const tl = gsap.timeline({ delay: 0.2 })
-    
+
     // Initial background animation
     if (currentBgRef.current) {
       gsap.set(currentBgRef.current, { scale: 1.1, opacity: 0 })
@@ -158,7 +158,7 @@ export function Hero({ onServicesClick, onContactClick }: HeroProps) {
         ease: "power3.out"
       })
     }
-    
+
     // Fade in overlay
     if (overlayRef.current) {
       gsap.set(overlayRef.current, { opacity: 0 })
@@ -168,7 +168,7 @@ export function Hero({ onServicesClick, onContactClick }: HeroProps) {
         ease: "power2.out"
       }, 0.2)
     }
-    
+
     // Animate content
     if (iconRef.current) {
       gsap.set(iconRef.current, { scale: 0, opacity: 0, rotate: -180 })
@@ -180,7 +180,7 @@ export function Hero({ onServicesClick, onContactClick }: HeroProps) {
         ease: "back.out(1.7)"
       }, 0.5)
     }
-    
+
     if (titleRef.current) {
       gsap.set(titleRef.current, { y: 60, opacity: 0 })
       tl.to(titleRef.current, {
@@ -190,7 +190,7 @@ export function Hero({ onServicesClick, onContactClick }: HeroProps) {
         ease: "power3.out"
       }, 0.6)
     }
-    
+
     if (subtitleRef.current) {
       gsap.set(subtitleRef.current, { y: 40, opacity: 0 })
       tl.to(subtitleRef.current, {
@@ -200,7 +200,7 @@ export function Hero({ onServicesClick, onContactClick }: HeroProps) {
         ease: "power3.out"
       }, 0.75)
     }
-    
+
     if (descriptionRef.current) {
       gsap.set(descriptionRef.current, { y: 30, opacity: 0 })
       tl.to(descriptionRef.current, {
@@ -210,7 +210,7 @@ export function Hero({ onServicesClick, onContactClick }: HeroProps) {
         ease: "power2.out"
       }, 0.9)
     }
-    
+
     if (buttonsRef.current) {
       gsap.set(buttonsRef.current, { y: 30, opacity: 0 })
       tl.to(buttonsRef.current, {
@@ -220,7 +220,7 @@ export function Hero({ onServicesClick, onContactClick }: HeroProps) {
         ease: "power2.out"
       }, 1.05)
     }
-    
+
     if (statRef.current) {
       gsap.set(statRef.current, { y: 20, opacity: 0 })
       tl.to(statRef.current, {
@@ -240,7 +240,7 @@ export function Hero({ onServicesClick, onContactClick }: HeroProps) {
   const handleSlideChange = useCallback((nextIndex: number) => {
     if (nextIndex !== currentSlide && !isTransitioning) {
       setIsTransitioning(true)
-      
+
       const tl = gsap.timeline({
         onComplete: () => {
           setPrevSlide(currentSlide)
@@ -257,7 +257,7 @@ export function Hero({ onServicesClick, onContactClick }: HeroProps) {
         stagger: 0.05,
         ease: "power2.in"
       })
-      
+
       tl.to(iconRef.current, {
         scale: 0.8,
         opacity: 0,
@@ -280,7 +280,7 @@ export function Hero({ onServicesClick, onContactClick }: HeroProps) {
     if (nextBgRef.current) {
       // Reset next background state
       gsap.set(nextBgRef.current, { opacity: 0, scale: 1.1, zIndex: 2 })
-      
+
       // Animate in
       tl.to(nextBgRef.current, {
         opacity: 1,
@@ -300,7 +300,7 @@ export function Hero({ onServicesClick, onContactClick }: HeroProps) {
         duration: 0.6,
         ease: "back.out(1.7)"
       }, 0.4)
-    
+
     tl.fromTo(titleRef.current,
       { y: 30, opacity: 0 },
       {
@@ -309,7 +309,7 @@ export function Hero({ onServicesClick, onContactClick }: HeroProps) {
         duration: 0.8,
         ease: "power3.out"
       }, 0.5)
-    
+
     tl.fromTo(subtitleRef.current,
       { y: 20, opacity: 0 },
       {
@@ -318,7 +318,7 @@ export function Hero({ onServicesClick, onContactClick }: HeroProps) {
         duration: 0.7,
         ease: "power3.out"
       }, 0.6)
-    
+
     tl.fromTo(descriptionRef.current,
       { y: 20, opacity: 0 },
       {
@@ -327,7 +327,7 @@ export function Hero({ onServicesClick, onContactClick }: HeroProps) {
         duration: 0.7,
         ease: "power2.out"
       }, 0.7)
-    
+
     tl.fromTo(statRef.current,
       { y: 20, opacity: 0 },
       {
@@ -346,7 +346,7 @@ export function Hero({ onServicesClick, onContactClick }: HeroProps) {
   useEffect(() => {
     // Apply parallax to both backgrounds if they exist
     const elements = [currentBgRef.current, nextBgRef.current]
-    
+
     const parallaxTrigger = ScrollTrigger.create({
       trigger: heroRef.current,
       start: "top top",
@@ -386,7 +386,7 @@ export function Hero({ onServicesClick, onContactClick }: HeroProps) {
       {/* Background Images - Crossfade Setup */}
       <div className="absolute inset-0 z-0">
         {/* Previous/Underlying Image */}
-        <div 
+        <div
           ref={currentBgRef}
           className="absolute inset-0 z-0"
           style={{
@@ -397,7 +397,7 @@ export function Hero({ onServicesClick, onContactClick }: HeroProps) {
           }}
         />
         {/* Current/Overlay Image - Only visible during/after transition */}
-        <div 
+        <div
           ref={nextBgRef}
           className="absolute inset-0 z-10"
           style={{
@@ -409,7 +409,7 @@ export function Hero({ onServicesClick, onContactClick }: HeroProps) {
           }}
         />
       </div>
-      
+
       {/* Gradient Overlay with Smooth Black Fade - Left on Desktop, Bottom on Mobile */}
       <div
         ref={overlayRef}
@@ -418,13 +418,13 @@ export function Hero({ onServicesClick, onContactClick }: HeroProps) {
           '--gradient-direction': isArabic ? 'to left' : 'to right'
         } as React.CSSProperties}
       />
-      
+
       {/* Decorative Elements */}
       <div className="absolute inset-0 z-10">
         <div className="absolute top-1/4 left-1/4 h-96 w-96 rounded-full bg-brand-azure/10 blur-3xl animate-pulse" />
         <div className="absolute bottom-1/4 right-1/3 h-80 w-80 rounded-full bg-brand-sand/10 blur-3xl animate-pulse" style={{ animationDelay: '1s' }} />
       </div>
-      
+
       {/* Grid Pattern */}
       <div className="absolute inset-0 z-10 bg-[linear-gradient(to_right,#80808008_1px,transparent_1px),linear-gradient(to_bottom,#80808008_1px,transparent_1px)] bg-[size:40px_40px]" />
 
@@ -442,7 +442,7 @@ export function Hero({ onServicesClick, onContactClick }: HeroProps) {
           </div>
 
           {/* Subtitle */}
-          <p ref={subtitleRef} className="mb-2 text-white/80 font-semibold text-sm sm:text-base uppercase tracking-[0.2em] hero-text-shadow">
+          <p ref={subtitleRef} className="mb-2 text-white/80 dark:text-white/90 font-semibold text-sm sm:text-base uppercase tracking-[0.2em] hero-text-shadow">
             {currentData.subtitle}
           </p>
 
@@ -452,7 +452,7 @@ export function Hero({ onServicesClick, onContactClick }: HeroProps) {
           </h1>
 
           {/* Description */}
-          <p ref={descriptionRef} className="mb-6 text-base sm:text-base lg:text-lg text-white/80 font-normal leading-relaxed max-w-2xl hero-text-shadow">
+          <p ref={descriptionRef} className="mb-6 text-base sm:text-base lg:text-lg text-white/80 dark:text-white/90 font-normal leading-relaxed max-w-2xl hero-text-shadow">
             {currentData.description}
           </p>
 
@@ -473,7 +473,7 @@ export function Hero({ onServicesClick, onContactClick }: HeroProps) {
             <Button
               size="lg"
               onClick={onContactClick}
-              className="group rounded-full border-2 border-white/50 bg-white/10 backdrop-blur-sm px-8 py-5 text-white font-black text-sm transition-all duration-300 hover:bg-white hover:text-brand-deep hover:border-white hover:shadow-2xl hover:scale-105 uppercase tracking-wider"
+              className="group rounded-full border-2 border-white/50 bg-white/10 backdrop-blur-sm px-8 py-5 text-white font-black text-sm transition-all duration-300 hover:bg-white hover:text-brand-deep hover:border-white hover:shadow-2xl hover:scale-105 uppercase tracking-wider dark:hover:bg-slate-800 dark:hover:text-white dark:hover:border-slate-800"
             >
               <span className="flex items-center justify-center gap-3">
                 {t('hero.getInTouch')}
@@ -483,7 +483,7 @@ export function Hero({ onServicesClick, onContactClick }: HeroProps) {
           </div>
 
           {/* Stat Badge */}
-          <div ref={statRef} className="inline-flex items-baseline gap-4 px-8 py-4 rounded-2xl bg-white/10 backdrop-blur-md border border-white/20">
+          <div ref={statRef} className="inline-flex items-baseline gap-4 px-8 py-4 rounded-2xl bg-white/10 dark:bg-slate-900/50 backdrop-blur-md border border-white/20">
             <div className="font-sans text-4xl font-bold text-white">
               {currentData.stat.value}
             </div>
@@ -503,11 +503,10 @@ export function Hero({ onServicesClick, onContactClick }: HeroProps) {
               key={index}
               onClick={() => handleSlideChange(index)}
               disabled={isTransitioning}
-              className={`group relative transition-all duration-500 ${
-                index === currentSlide
+              className={`group relative transition-all duration-500 ${index === currentSlide
                   ? "h-3 w-16 bg-brand-azure shadow-[0_0_30px_rgba(59,130,246,0.8)]"
                   : "h-2.5 w-2.5 bg-white/40 hover:bg-white/80 hover:scale-125"
-              } rounded-full`}
+                } rounded-full`}
               aria-label={`Go to slide ${index + 1}: ${heroSlides[index].title}`}
             >
               {/* Progress bar for active slide */}
