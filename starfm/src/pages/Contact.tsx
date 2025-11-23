@@ -53,7 +53,7 @@ export function Contact({ onBack }: ContactProps) {
   useEffect(() => {
     // Ensure page starts at top
     window.scrollTo({ top: 0, behavior: "instant" })
-    
+
     // Page fade in
     if (pageRef.current) {
       gsap.fromTo(pageRef.current,
@@ -131,15 +131,15 @@ export function Contact({ onBack }: ContactProps) {
     return () => {
       contactCardsRef.current.forEach(card => {
         if (card) {
-          card.removeEventListener("mouseenter", () => {})
-          card.removeEventListener("mouseleave", () => {})
+          card.removeEventListener("mouseenter", () => { })
+          card.removeEventListener("mouseleave", () => { })
         }
       })
     }
   }, [])
 
   return (
-    <div ref={pageRef} className="min-h-screen bg-gradient-to-br from-white via-brand-cream/20 to-blue-400/30">
+    <div ref={pageRef} className="min-h-screen bg-gradient-to-br from-white via-brand-cream/20 to-blue-400/30 dark:from-slate-950 dark:via-slate-900 dark:to-slate-950">
       {/* Background decorations */}
       <div className="pointer-events-none fixed inset-0">
         <div className="absolute left-1/4 top-20 h-96 w-96 rounded-full bg-blue-500/10 opacity-50" />
@@ -154,21 +154,21 @@ export function Contact({ onBack }: ContactProps) {
       <div className="container relative mx-auto px-4 pt-24 pb-12 sm:px-6 sm:pt-28 sm:pb-16 lg:pt-32 lg:pb-24">
         {/* Page Header */}
         <div ref={pageHeaderRef} className="mb-16 text-center">
-          <div ref={badgeRef} className="mb-6 inline-flex items-center gap-2 rounded-full border border-blue-500/30 bg-blue-500/10 px-4 py-2 bg-opacity-50">
+          <div ref={badgeRef} className="mb-6 inline-flex items-center gap-2 rounded-full border border-blue-500/30 bg-blue-500/10 dark:bg-blue-500/20 px-4 py-2 bg-opacity-50">
             <div className="h-2 w-2 animate-pulse rounded-full bg-blue-500" />
-            <span className="text-xs font-bold uppercase tracking-[0.15em] text-blue-600">
+            <span className="text-xs font-bold uppercase tracking-[0.15em] text-blue-600 dark:text-blue-400">
               {t('contact.badge')}
             </span>
           </div>
 
-          <h1 className="mb-6 font-display text-5xl font-black leading-tight text-brand-deep sm:text-6xl lg:text-7xl">
+          <h1 className="mb-6 font-display text-5xl font-black leading-tight text-brand-deep dark:text-foreground sm:text-6xl lg:text-7xl">
             {t('contact.title')}
             <span className="block gradient-text mt-2">
               {t('contact.subtitle')}
             </span>
           </h1>
 
-          <p className="mx-auto max-w-2xl text-lg leading-relaxed text-brand-forest/70">
+          <p className="mx-auto max-w-2xl text-lg leading-relaxed text-brand-forest/70 dark:text-muted-foreground">
             {t('contact.description')}
           </p>
         </div>
@@ -184,22 +184,22 @@ export function Contact({ onBack }: ContactProps) {
                   ref={(el) => {
                     if (el) contactCardsRef.current[index] = el
                   }}
-                  className="group relative overflow-hidden rounded-2xl border border-brand-deep/10 bg-white/80 p-6 shadow-lg transition-all duration-300 hover:border-blue-500/30 hover:shadow-xl"
+                  className="group relative overflow-hidden rounded-2xl border border-brand-deep/10 dark:border-white/10 bg-white/80 dark:bg-slate-900/80 p-6 shadow-lg transition-all duration-300 hover:border-blue-500/30 hover:shadow-xl"
                 >
                   <div className="absolute inset-0 bg-gradient-to-br from-blue-500/5 to-transparent opacity-0 transition-opacity duration-300 group-hover:opacity-100" />
-                  
+
                   <div className="relative flex items-start gap-4">
                     <div className={`flex h-14 w-14 shrink-0 items-center justify-center rounded-xl bg-gradient-to-br ${info.color} shadow-lg transition-transform duration-300 group-hover:scale-110`}>
                       <Icon className="h-7 w-7 text-white" strokeWidth={2} />
                     </div>
-                    
+
                     <div className="flex-1">
-                      <h3 className="mb-3 font-display text-xl font-bold text-brand-deep">
+                      <h3 className="mb-3 font-display text-xl font-bold text-brand-deep dark:text-foreground">
                         {info.title}
                       </h3>
                       <div className="space-y-1">
                         {info.details.map((detail, idx) => (
-                          <p key={idx} className="text-sm font-medium leading-relaxed text-brand-forest/70">
+                          <p key={idx} className="text-sm font-medium leading-relaxed text-brand-forest/70 dark:text-muted-foreground/80">
                             {detail}
                           </p>
                         ))}
@@ -216,22 +216,22 @@ export function Contact({ onBack }: ContactProps) {
           {/* Contact Form */}
           <div ref={formRef} className="relative">
             <div className="absolute -inset-4 bg-gradient-to-r from-brand-azure/20 to-brand-moss/20 rounded-3xl opacity-60 -z-10" />
-            
-            <div className="relative overflow-hidden rounded-3xl border border-brand-azure/20 bg-white/90 p-8 shadow-2xl sm:p-10">
-              <h3 className="mb-6 font-display text-3xl font-black text-brand-deep">
+
+            <div className="relative overflow-hidden rounded-3xl border border-brand-azure/20 dark:border-white/10 bg-white/90 dark:bg-slate-900/90 p-8 shadow-2xl sm:p-10">
+              <h3 className="mb-6 font-display text-3xl font-black text-brand-deep dark:text-foreground">
                 {t('contact.form.title')}
               </h3>
 
               <form className="space-y-6">
                 <div className="grid gap-6 sm:grid-cols-2">
                   <div>
-                    <label className="mb-2 block text-sm font-bold text-brand-deep">
+                    <label className="mb-2 block text-sm font-bold text-brand-deep dark:text-foreground">
                       {t('contact.form.firstName')} {t('contact.form.required')}
                     </label>
                     <input
                       type="text"
                       placeholder="John"
-                      className="w-full rounded-xl border-2 border-brand-deep/10 bg-white px-4 py-3 text-brand-deep transition-all duration-300 placeholder:text-brand-forest/40 focus:border-blue-500/50 focus:outline-none focus:ring-4 focus:ring-blue-500/10"
+                      className="w-full rounded-xl border-2 border-brand-deep/10 dark:border-white/10 bg-white dark:bg-slate-800 px-4 py-3 text-brand-deep dark:text-white transition-all duration-300 placeholder:text-brand-forest/40 dark:placeholder:text-slate-500 focus:border-blue-500/50 focus:outline-none focus:ring-4 focus:ring-blue-500/10"
                     />
                   </div>
                   <div>
@@ -241,38 +241,38 @@ export function Contact({ onBack }: ContactProps) {
                     <input
                       type="text"
                       placeholder="Doe"
-                      className="w-full rounded-xl border-2 border-brand-deep/10 bg-white px-4 py-3 text-brand-deep transition-all duration-300 placeholder:text-brand-forest/40 focus:border-blue-500/50 focus:outline-none focus:ring-4 focus:ring-blue-500/10"
+                      className="w-full rounded-xl border-2 border-brand-deep/10 dark:border-white/10 bg-white dark:bg-slate-800 px-4 py-3 text-brand-deep dark:text-white transition-all duration-300 placeholder:text-brand-forest/40 dark:placeholder:text-slate-500 focus:border-blue-500/50 focus:outline-none focus:ring-4 focus:ring-blue-500/10"
                     />
                   </div>
                 </div>
 
                 <div>
-                  <label className="mb-2 block text-sm font-bold text-brand-deep">
+                  <label className="mb-2 block text-sm font-bold text-brand-deep dark:text-foreground">
                     {t('contact.form.email')} {t('contact.form.required')}
                   </label>
                   <input
                     type="email"
                     placeholder="john.doe@example.com"
-                    className="w-full rounded-xl border-2 border-brand-deep/10 bg-white px-4 py-3 text-brand-deep transition-all duration-300 placeholder:text-brand-forest/40 focus:border-blue-500/50 focus:outline-none focus:ring-4 focus:ring-blue-500/10"
+                    className="w-full rounded-xl border-2 border-brand-deep/10 dark:border-white/10 bg-white dark:bg-slate-800 px-4 py-3 text-brand-deep dark:text-white transition-all duration-300 placeholder:text-brand-forest/40 dark:placeholder:text-slate-500 focus:border-blue-500/50 focus:outline-none focus:ring-4 focus:ring-blue-500/10"
                   />
                 </div>
 
                 <div>
-                  <label className="mb-2 block text-sm font-bold text-brand-deep">
+                  <label className="mb-2 block text-sm font-bold text-brand-deep dark:text-foreground">
                     {t('contact.form.phone')}
                   </label>
                   <input
                     type="tel"
                     placeholder="+XXX XXX XXXX"
-                    className="w-full rounded-xl border-2 border-brand-deep/10 bg-white px-4 py-3 text-brand-deep transition-all duration-300 placeholder:text-brand-forest/40 focus:border-blue-500/50 focus:outline-none focus:ring-4 focus:ring-blue-500/10"
+                    className="w-full rounded-xl border-2 border-brand-deep/10 dark:border-white/10 bg-white dark:bg-slate-800 px-4 py-3 text-brand-deep dark:text-white transition-all duration-300 placeholder:text-brand-forest/40 dark:placeholder:text-slate-500 focus:border-blue-500/50 focus:outline-none focus:ring-4 focus:ring-blue-500/10"
                   />
                 </div>
 
                 <div>
-                  <label className="mb-2 block text-sm font-bold text-brand-deep">
+                  <label className="mb-2 block text-sm font-bold text-brand-deep dark:text-foreground">
                     {t('contact.form.serviceInterest')}
                   </label>
-                  <select className="w-full rounded-xl border-2 border-brand-deep/10 bg-white px-4 py-3 text-brand-deep transition-all duration-300 focus:border-blue-500/50 focus:outline-none focus:ring-4 focus:ring-blue-500/10">
+                  <select className="w-full rounded-xl border-2 border-brand-deep/10 dark:border-white/10 bg-white dark:bg-slate-800 px-4 py-3 text-brand-deep dark:text-white transition-all duration-300 focus:border-blue-500/50 focus:outline-none focus:ring-4 focus:ring-blue-500/10">
                     <option value="facilitiesManagement">{t('contact.form.serviceOptions.facilitiesManagement')}</option>
                     <option value="homeSolutions">{t('contact.form.serviceOptions.homeSolutions')}</option>
                     <option value="hospitalityServices">{t('contact.form.serviceOptions.hospitalityServices')}</option>
@@ -283,13 +283,13 @@ export function Contact({ onBack }: ContactProps) {
                 </div>
 
                 <div>
-                  <label className="mb-2 block text-sm font-bold text-brand-deep">
+                  <label className="mb-2 block text-sm font-bold text-brand-deep dark:text-foreground">
                     {t('contact.form.message')} {t('contact.form.required')}
                   </label>
                   <textarea
                     rows={5}
                     placeholder={t('contact.form.messagePlaceholder')}
-                    className="w-full rounded-xl border-2 border-brand-deep/10 bg-white px-4 py-3 text-brand-deep transition-all duration-300 placeholder:text-brand-forest/40 focus:border-blue-500/50 focus:outline-none focus:ring-4 focus:ring-blue-500/10 resize-none"
+                    className="w-full rounded-xl border-2 border-brand-deep/10 dark:border-white/10 bg-white dark:bg-slate-800 px-4 py-3 text-brand-deep dark:text-white transition-all duration-300 placeholder:text-brand-forest/40 dark:placeholder:text-slate-500 focus:border-blue-500/50 focus:outline-none focus:ring-4 focus:ring-blue-500/10 resize-none"
                   />
                 </div>
 
@@ -313,14 +313,14 @@ export function Contact({ onBack }: ContactProps) {
         </div>
 
         {/* Map Section Placeholder */}
-        <div ref={mapRef} className="mt-16 overflow-hidden rounded-3xl border border-blue-500/20 bg-gradient-to-br from-blue-500/10 via-white/50 to-blue-400/10 shadow-2xl">
+        <div ref={mapRef} className="mt-16 overflow-hidden rounded-3xl border border-blue-500/20 dark:border-blue-500/10 bg-gradient-to-br from-blue-500/10 via-white/50 to-blue-400/10 dark:from-slate-900 dark:via-slate-800 dark:to-slate-900 shadow-2xl">
           <div className="flex h-96 items-center justify-center">
             <div className="text-center">
               <MapPin className="mx-auto mb-4 h-16 w-16 text-blue-500" strokeWidth={1.5} />
-              <h3 className="mb-2 font-display text-2xl font-bold text-brand-deep">
+              <h3 className="mb-2 font-display text-2xl font-bold text-brand-deep dark:text-foreground">
                 {t('contact.map.title')}
               </h3>
-              <p className="text-sm text-brand-forest/70">
+              <p className="text-sm text-brand-forest/70 dark:text-muted-foreground">
                 {t('contact.map.placeholder')}
               </p>
             </div>
