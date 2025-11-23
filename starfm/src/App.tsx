@@ -165,6 +165,7 @@ function App() {
       ) : (
         <div ref={servicesRef} key="services">
           <ServicesPage onBack={handleBackHome} onContactClick={handleContactClick} />
+          <Footer onContactClick={handleContactClick} onServicesClick={handleServicesClick} />
         </div>
       )}
       </div>

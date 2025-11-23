@@ -2,7 +2,7 @@ import { useEffect, useRef } from "react"
 import { useTranslation } from "react-i18next"
 import gsap from "gsap"
 import { ScrollTrigger } from "gsap/ScrollTrigger"
-import { CheckCircle2, Award, Users, TrendingUp } from "lucide-react"
+import { CheckCircle2, Award, Users, TrendingUp, Handshake } from "lucide-react"
 
 gsap.registerPlugin(ScrollTrigger)
 
@@ -442,8 +442,29 @@ export function About() {
             </p>
           </div>
 
-          {/* Logo with Elegant Presentation */}
-          <div className="flex justify-center pt-4">
+          {/* Logos with Handshake Icon */}
+          <div className="flex items-center justify-center gap-8 pt-4">
+            {/* Mahhab Logo */}
+            <a
+              href="#"
+              className="group relative inline-block"
+            >
+              <div className="absolute -inset-4 rounded-2xl bg-gradient-to-r from-brand-azure/10 via-brand-sand/10 to-brand-azure/10 opacity-0 blur-xl transition-opacity duration-500 group-hover:opacity-100" />
+              <div className="relative rounded-xl border border-brand-deep/5 bg-white p-6 shadow-card transition-all duration-300 group-hover:border-brand-azure/20 group-hover:shadow-brand">
+                <img
+                  src="/image.png"
+                  alt="MahhabFM Logo"
+                  className="h-12 w-auto transition-transform duration-500 group-hover:scale-105 sm:h-16"
+                />
+              </div>
+            </a>
+
+            {/* Handshake Icon */}
+            <div className="flex items-center justify-center">
+              <Handshake className="h-8 w-8 text-brand-azure" strokeWidth={2} />
+            </div>
+
+            {/* PROFM Logo */}
             <a
               href="https://www.profm.com.sa/"
               target="_blank"
@@ -451,11 +472,11 @@ export function About() {
               className="group relative inline-block"
             >
               <div className="absolute -inset-4 rounded-2xl bg-gradient-to-r from-brand-azure/10 via-brand-sand/10 to-brand-azure/10 opacity-0 blur-xl transition-opacity duration-500 group-hover:opacity-100" />
-              <div className="relative rounded-xl border border-brand-deep/5 bg-white p-8 shadow-card transition-all duration-300 group-hover:border-brand-azure/20 group-hover:shadow-brand">
+              <div className="relative rounded-xl border border-brand-deep/5 bg-white p-6 shadow-card transition-all duration-300 group-hover:border-brand-azure/20 group-hover:shadow-brand">
                 <img
                   src="https://www.profm.com.sa/logo.svg"
                   alt="ProFM Logo"
-                  className="h-16 w-auto transition-transform duration-500 group-hover:scale-105 sm:h-20"
+                  className="h-12 w-auto transition-transform duration-500 group-hover:scale-105 sm:h-16"
                 />
               </div>
             </a>

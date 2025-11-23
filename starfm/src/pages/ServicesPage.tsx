@@ -5,6 +5,7 @@ import { ScrollTrigger } from "gsap/ScrollTrigger"
 import { CheckCircle2, ArrowRight, Star, Clock, Award } from "lucide-react"
 import { Button } from "@/components/ui/button"
 import { Navbar } from "@/components/Navbar"
+import { TrustedPartner } from "@/components/TrustedPartner"
 
 gsap.registerPlugin(ScrollTrigger)
 
@@ -1447,6 +1448,9 @@ export function ServicesPage({ onBack, onContactClick }: ServicesPageProps) {
           </div>
         </div>
       </div>
+
+      {/* Trusted Partner Section */}
+      <TrustedPartner />
     </div>
   )
 }
