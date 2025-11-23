@@ -158,19 +158,19 @@
       "lastName": "Last Name",
       "email": "Email Address",
       "phone": "Phone Number",
-    "serviceInterest": "Service Interest",
-    "message": "Message",
-    "messagePlaceholder": "Tell us about your needs...",
-    "submit": "Send Message",
-    "required": "*",
-    "serviceOptions": {
-      "facilitiesManagement": "Facilities Management",
-      "homeSolutions": "Home Solutions",
-      "hospitalityServices": "Hospitality Services",
-      "technicalServices": "Technical Services",
-      "pestControl": "Pest Control",
-      "other": "Other"
-    }
+      "serviceInterest": "Service Interest",
+      "message": "Message",
+      "messagePlaceholder": "Tell us about your needs...",
+      "submit": "Send Message",
+      "required": "*",
+      "serviceOptions": {
+        "facilitiesManagement": "Facilities Management",
+        "homeSolutions": "Home Solutions",
+        "hospitalityServices": "Hospitality Services",
+        "technicalServices": "Technical Services",
+        "pestControl": "Pest Control",
+        "other": "Other"
+      }
     },
     "map": {
       "title": "Map Location",
@@ -209,27 +209,47 @@
       "facilitiesManagement": {
         "title": "Facilities Management",
         "description": "End-to-end management solutions for commercial and residential properties, ensuring optimal performance and tenant satisfaction.",
-        "features": ["24/7 Operations", "Energy Optimization", "Compliance Management"]
+        "features": [
+          "24/7 Operations",
+          "Energy Optimization",
+          "Compliance Management"
+        ]
       },
       "homeSolutions": {
         "title": "Integrated Home Solutions",
         "description": "Comprehensive home services including deep cleaning, maintenance, pest control, and sanitization for a healthier living environment.",
-        "features": ["Preventive Maintenance", "Smart Home Integration", "Concierge Service"]
+        "features": [
+          "Preventive Maintenance",
+          "Smart Home Integration",
+          "Concierge Service"
+        ]
       },
       "hospitalityServices": {
         "title": "Hospitality Services",
         "description": "Premium hospitality management for hotels, resorts, and commercial spaces with meticulous attention to guest experience.",
-        "features": ["Guest Experience", "Property Upkeep", "Event Support"]
+        "features": [
+          "Guest Experience",
+          "Property Upkeep",
+          "Event Support"
+        ]
       },
       "landscaping": {
         "title": "Landscaping & Garden",
         "description": "Expert landscape design, installation, and maintenance services that create and preserve stunning outdoor environments.",
-        "features": ["Seasonal Care", "Irrigation Systems", "Pest Management"]
+        "features": [
+          "Seasonal Care",
+          "Irrigation Systems",
+          "Pest Management"
+        ]
       },
       "technicalServices": {
         "title": "Technical Services",
         "description": "Professional HVAC, electrical, plumbing, and mechanical services delivered by certified technicians.",
-        "features": ["HVAC Systems", "Emergency Response", "Preventive Checks"]
+        "features": [
+          "HVAC Systems",
+          "Emergency Response",
+          "Preventive Checks"
+        ]
       }
     }
   },
@@ -242,17 +262,32 @@
       "oneTime": {
         "title": "One-Time Services",
         "description": "Enjoy consistent service and One-time bookings",
-        "features": ["Single visit", "No commitment", "Immediate availability", "Project-based pricing"]
+        "features": [
+          "Single visit",
+          "No commitment",
+          "Immediate availability",
+          "Project-based pricing"
+        ]
       },
       "monthly": {
         "title": "Monthly Services",
         "description": "Enjoy consistent service with multiple monthly visits",
-        "features": ["Regular visits", "Consistent quality", "Priority scheduling", "Cost-effective"]
+        "features": [
+          "Regular visits",
+          "Consistent quality",
+          "Priority scheduling",
+          "Cost-effective"
+        ]
       },
       "yearly": {
         "title": "Yearly Services",
         "description": "Enjoy consistent service through out the year",
-        "features": ["Annual contract", "Best value", "Dedicated account manager", "Comprehensive coverage"]
+        "features": [
+          "Annual contract",
+          "Best value",
+          "Dedicated account manager",
+          "Comprehensive coverage"
+        ]
       }
     }
   },
@@ -543,6 +578,44 @@
     "certifiedQuality": "Certified & Quality Assured",
     "contactNow": "Contact Us Now"
   },
+  "testimonials": {
+    "badge": "Client Testimonials",
+    "title": "What Our Clients",
+    "titleHighlight": "Say About Us",
+    "subtitle": "Trusted by leading organizations across the region for exceptional facilities management and professional services",
+    "items": [
+      {
+        "name": "Ahmed Al-Rashid",
+        "role": "Homeowner",
+        "content": "MahhabFM takes care of everything in my villa. From AC maintenance to garden care, they're always professional and on time. Highly recommended!"
+      },
+      {
+        "name": "Fatima Al-Zahrani",
+        "role": "Resident",
+        "content": "Their cleaning service is exceptional. My home always looks spotless and the team is very respectful and trustworthy. Best decision I made!"
+      },
+      {
+        "name": "Mohammed Al-Qahtani",
+        "role": "Villa Owner",
+        "content": "I've been using their monthly maintenance service for over a year. Professional team, fair pricing, and they genuinely care about quality."
+      },
+      {
+        "name": "Sara Al-Mutairi",
+        "role": "Apartment Resident",
+        "content": "Quick response when my AC broke down in summer. The technician was skilled and fixed it within hours. Very grateful for their 24/7 service!"
+      },
+      {
+        "name": "Khalid Al-Harbi",
+        "role": "Homeowner",
+        "content": "Their landscaping team transformed my garden completely. Regular maintenance keeps it looking beautiful all year. Worth every riyal!"
+      },
+      {
+        "name": "Noura Al-Saud",
+        "role": "Resident",
+        "content": "Reliable, honest, and professional. They handle all my home maintenance needs and I never have to worry. Truly a trusted partner!"
+      }
+    ]
+  },
   "common": {
     "readMore": "Read More",
     "learnMore": "Learn More",
@@ -551,4 +624,3 @@
     "viewDetails": "View Details"
   }
 }
-

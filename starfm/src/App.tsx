@@ -9,6 +9,7 @@ import { ServiceTypes } from "@/components/ServiceTypes"
 import { Stats } from "@/components/Stats"
 import { Services } from "@/components/Services"
 import { Training } from "@/components/Training"
+import { Testimonials } from "@/components/Testimonials"
 import { TrustedPartner } from "@/components/TrustedPartner"
 import { Footer } from "@/components/Footer"
 import { Contact } from "@/pages/Contact"
@@ -41,12 +42,12 @@ function App() {
     const checkDarkMode = () => {
       setIsDarkMode(document.documentElement.classList.contains('dark'))
     }
-    
+
     checkDarkMode()
-    
+
     const observer = new MutationObserver(checkDarkMode)
     observer.observe(document.documentElement, { attributes: true, attributeFilter: ['class'] })
-    
+
     return () => observer.disconnect()
   }, [])
 
@@ -193,6 +194,7 @@ function App() {
                 <Stats />
                 <Services onServicesPageClick={handleServicesClick} />
                 <Training onContactClick={handleContactClick} />
+                <Testimonials />
               </div>
             </main>
 
