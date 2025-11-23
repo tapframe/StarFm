@@ -318,7 +318,7 @@ export function Navbar({ onContactClick, onServicesClick, isPageView, onBack }: 
                 <img
                   src="/image.png"
                   alt="MahhabFM Logo"
-                  className="h-20 w-20 sm:h-16 sm:w-16 md:h-24 md:w-24 object-contain"
+                  className="h-20 w-20 sm:h-16 sm:w-16 md:h-24 md:w-24 lg:h-28 lg:w-28 object-contain"
                 />
               </a>
 
