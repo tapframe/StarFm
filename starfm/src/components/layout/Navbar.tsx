@@ -4,7 +4,7 @@ import gsap from "gsap"
 import { Button } from "@/components/ui/button"
 import { Menu, X, ArrowLeft, ChevronDown } from "lucide-react"
 import { LoadingOverlay } from "@/components/ui/loading-overlay"
-import { ModeToggle } from "@/components/mode-toggle"
+import { ModeToggle } from "@/components/layout/mode-toggle"
 
 interface NavbarProps {
   onContactClick?: () => void

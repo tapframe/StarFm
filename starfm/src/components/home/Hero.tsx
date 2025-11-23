@@ -5,7 +5,7 @@ import gsap from "gsap"
 import { ScrollTrigger } from "gsap/ScrollTrigger"
 import { Button } from "@/components/ui/button"
 import { ArrowRight, Building2, Home, Hotel, Trees, Wrench, Shield } from "lucide-react"
-import BlurText from "@/components/BlurText"
+import BlurText from "@/components/effects/BlurText"
 
 gsap.registerPlugin(ScrollTrigger)
 

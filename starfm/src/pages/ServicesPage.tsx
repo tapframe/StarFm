@@ -4,8 +4,8 @@ import gsap from "gsap"
 import { ScrollTrigger } from "gsap/ScrollTrigger"
 import { CheckCircle2, ArrowRight, Star, Clock, Award } from "lucide-react"
 import { Button } from "@/components/ui/button"
-import { Navbar } from "@/components/Navbar"
-import { TrustedPartner } from "@/components/TrustedPartner"
+import { Navbar } from "@/components/layout/Navbar"
+import { TrustedPartner } from "@/components/home/TrustedPartner"
 
 gsap.registerPlugin(ScrollTrigger)
 

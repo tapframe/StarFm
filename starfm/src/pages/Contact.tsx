@@ -3,7 +3,7 @@ import { useTranslation } from "react-i18next"
 import gsap from "gsap"
 import { Mail, Phone, MapPin, Clock, Send } from "lucide-react"
 import { Button } from "@/components/ui/button"
-import { Navbar } from "@/components/Navbar"
+import { Navbar } from "@/components/layout/Navbar"
 
 interface ContactProps {
   onBack: () => void
