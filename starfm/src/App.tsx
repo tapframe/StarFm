@@ -15,6 +15,7 @@ import { Contact } from "@/pages/Contact"
 import { ServicesPage } from "@/pages/ServicesPage"
 import { LoadingOverlay } from "@/components/ui/loading-overlay"
 import { ThemeProvider } from "@/components/theme-provider"
+import GradualBlur from "@/components/GradualBlur"
 import "./App.css"
 
 function App() {
@@ -22,6 +23,8 @@ function App() {
   const [currentPage, setCurrentPage] = useState<"home" | "contact" | "services">("home")
   const [prevPage, setPrevPage] = useState<"home" | "contact" | "services">("home")
   const [isInitialLoading, setIsInitialLoading] = useState(true)
+  const [isDarkMode, setIsDarkMode] = useState(false)
+  const [isAtBottom, setIsAtBottom] = useState(false)
   const homeRef = useRef<HTMLDivElement>(null)
   const contactRef = useRef<HTMLDivElement>(null)
   const servicesRef = useRef<HTMLDivElement>(null)
@@ -32,6 +35,31 @@ function App() {
     document.documentElement.dir = dir
     document.documentElement.lang = i18n.language
   }, [i18n.language])
+
+  // Track dark mode
+  useEffect(() => {
+    const checkDarkMode = () => {
+      setIsDarkMode(document.documentElement.classList.contains('dark'))
+    }
+    
+    checkDarkMode()
+    
+    const observer = new MutationObserver(checkDarkMode)
+    observer.observe(document.documentElement, { attributes: true, attributeFilter: ['class'] })
+    
+    return () => observer.disconnect()
+  }, [])
+
+  // Track scroll position to check if at bottom
+  useEffect(() => {
+    const handleScroll = () => {
+      const isBottom = window.innerHeight + window.scrollY >= document.body.offsetHeight - 100
+      setIsAtBottom(isBottom)
+    }
+
+    window.addEventListener('scroll', handleScroll)
+    return () => window.removeEventListener('scroll', handleScroll)
+  }, [])
 
   // Handle initial loading
   useEffect(() => {
@@ -130,7 +158,21 @@ function App() {
         message={t('loading.initialMessage')}
         subMessage={t('loading.initialSubtitle')}
       />
-      <div className="min-h-screen">
+      <div className="min-h-screen relative">
+        {/* Gradual Blur at bottom of viewport - only in dark mode and not at bottom */}
+        {isDarkMode && !isAtBottom && (
+          <GradualBlur
+            target="page"
+            position="bottom"
+            height="6rem"
+            strength={2}
+            divCount={5}
+            curve="bezier"
+            exponential={true}
+            opacity={1}
+            zIndex={999}
+          />
+        )}
         {currentPage === "home" ? (
           <div ref={homeRef} key="home">
             <Navbar onContactClick={handleContactClick} onServicesClick={handleServicesClick} />

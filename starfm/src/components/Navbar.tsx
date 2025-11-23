@@ -304,7 +304,7 @@ export function Navbar({ onContactClick, onServicesClick, isPageView, onBack }: 
               <img
                 src="/image.png"
                 alt="MahhabFM Logo"
-                className="h-20 w-20 sm:h-32 sm:w-32 object-contain"
+                className="h-16 w-16 sm:h-28 sm:w-28 object-contain"
               />
             </>
           ) : (
@@ -313,12 +313,12 @@ export function Navbar({ onContactClick, onServicesClick, isPageView, onBack }: 
               <a
                 ref={logoRef}
                 href="#"
-                className="group relative flex items-center gap-2 transition-transform duration-300 hover:scale-105"
+                className="group relative flex items-center gap-2 transition-transform duration-300 hover:scale-105 mt-3"
               >
                 <img
                   src="/image.png"
                   alt="MahhabFM Logo"
-                  className="h-20 w-20 sm:h-32 sm:w-32 object-contain"
+                  className="h-20 w-20 sm:h-16 sm:w-16 md:h-28 md:w-28 object-contain"
                 />
               </a>
 

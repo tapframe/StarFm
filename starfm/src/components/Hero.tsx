@@ -5,6 +5,7 @@ import gsap from "gsap"
 import { ScrollTrigger } from "gsap/ScrollTrigger"
 import { Button } from "@/components/ui/button"
 import { ArrowRight, Building2, Home, Hotel, Trees, Wrench, Shield } from "lucide-react"
+import BlurText from "@/components/BlurText"
 
 gsap.registerPlugin(ScrollTrigger)
 
@@ -137,7 +138,6 @@ export function Hero({ onServicesClick, onContactClick }: HeroProps) {
   const nextBgRef = useRef<HTMLDivElement>(null)
   const overlayRef = useRef<HTMLDivElement>(null)
   const contentRef = useRef<HTMLDivElement>(null)
-  const titleRef = useRef<HTMLHeadingElement>(null)
   const subtitleRef = useRef<HTMLParagraphElement>(null)
   const descriptionRef = useRef<HTMLParagraphElement>(null)
   const buttonsRef = useRef<HTMLDivElement>(null)
@@ -181,15 +181,7 @@ export function Hero({ onServicesClick, onContactClick }: HeroProps) {
       }, 0.5)
     }
 
-    if (titleRef.current) {
-      gsap.set(titleRef.current, { y: 60, opacity: 0 })
-      tl.to(titleRef.current, {
-        y: 0,
-        opacity: 1,
-        duration: 1,
-        ease: "power3.out"
-      }, 0.6)
-    }
+    // Title animation is now handled by BlurText component
 
     if (subtitleRef.current) {
       gsap.set(subtitleRef.current, { y: 40, opacity: 0 })
@@ -250,7 +242,7 @@ export function Hero({ onServicesClick, onContactClick }: HeroProps) {
       })
 
       // Premium Text Exit Animation (Staggered Fade Out & Up)
-      tl.to([titleRef.current, subtitleRef.current, descriptionRef.current, statRef.current], {
+      tl.to([subtitleRef.current, descriptionRef.current, statRef.current], {
         y: -20,
         opacity: 0,
         duration: 0.4,
@@ -301,14 +293,7 @@ export function Hero({ onServicesClick, onContactClick }: HeroProps) {
         ease: "back.out(1.7)"
       }, 0.4)
 
-    tl.fromTo(titleRef.current,
-      { y: 30, opacity: 0 },
-      {
-        y: 0,
-        opacity: 1,
-        duration: 0.8,
-        ease: "power3.out"
-      }, 0.5)
+    // Title animation is handled by BlurText component
 
     tl.fromTo(subtitleRef.current,
       { y: 20, opacity: 0 },
@@ -455,9 +440,14 @@ export function Hero({ onServicesClick, onContactClick }: HeroProps) {
           </p>
 
           {/* Title */}
-          <h1 ref={titleRef} className="mb-4 font-sans text-4xl sm:text-5xl md:text-6xl lg:text-6xl font-bold text-white leading-tight tracking-normal hero-text-shadow">
-            {currentData.title}
-          </h1>
+          <BlurText
+            text={currentData.title}
+            delay={100}
+            animateBy="words"
+            direction="top"
+            className="mb-4 font-sans text-4xl sm:text-5xl md:text-6xl lg:text-6xl font-bold text-white leading-tight tracking-normal hero-text-shadow"
+            onAnimationComplete={() => console.log('Title animation completed!')}
+          />
 
           {/* Description */}
           <p ref={descriptionRef} className="mb-6 text-base sm:text-base lg:text-lg text-white/80 dark:text-white/90 font-normal leading-relaxed max-w-2xl hero-text-shadow">
