@@ -96,6 +96,25 @@ export const LoadingOverlay: React.FC<LoadingOverlayProps> = ({
             }}
           ></div>
         </div>
+
+        {/* Partnership Section */}
+        <div className="mt-6 flex flex-col items-center space-y-2 opacity-90">
+          <p className="text-xs font-medium text-gray-600 dark:text-gray-400 uppercase tracking-wider">
+            In Partnership With
+          </p>
+          <a
+            href="https://www.profm.com.sa/"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="transition-transform duration-300 hover:scale-105"
+          >
+            <img
+              src="https://www.profm.com.sa/logo.svg"
+              alt="PROFM Logo"
+              className="h-6 w-auto opacity-80 hover:opacity-100 transition-opacity duration-300"
+            />
+          </a>
+        </div>
       </div>
     </div>
   );
