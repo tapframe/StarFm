@@ -1,8 +1,8 @@
-import { useEffect, useRef, useMemo, useCallback } from "react"
+import { useEffect, useRef, useMemo, useCallback, useState } from "react"
 import { useTranslation } from "react-i18next"
 import gsap from "gsap"
 import { ScrollTrigger } from "gsap/ScrollTrigger"
-import { Building2, Home, Hotel, Trees, Wrench, Shield, /* Briefcase, */ CheckCircle2, ArrowRight, Star, Clock, Award } from "lucide-react"
+import { CheckCircle2, ArrowRight, Star, Clock, Award } from "lucide-react"
 import { Button } from "@/components/ui/button"
 import { Navbar } from "@/components/Navbar"
 
@@ -15,6 +15,7 @@ interface ServicesPageProps {
 
 export function ServicesPage({ onBack, onContactClick }: ServicesPageProps) {
   const { t } = useTranslation()
+  const [activeTab, setActiveTab] = useState<'individual' | 'corporate'>('individual')
   const pageRef = useRef<HTMLDivElement>(null)
   const pageHeaderRef = useRef<HTMLDivElement>(null)
   const badgeRef = useRef<HTMLDivElement>(null)
@@ -46,94 +47,328 @@ export function ServicesPage({ onBack, onContactClick }: ServicesPageProps) {
   const animationsRef = useRef<gsap.core.Tween[]>([])
 
   // Memoize services data to prevent recreation
-  const services = useMemo(() => [
-    /*
+  const individualServices = useMemo(() => [
     {
-      icon: Briefcase,
-      title: t('servicesPage.services.managementSupport.title'),
-      description: t('servicesPage.services.managementSupport.description'),
-      image: "https://images.unsplash.com/photo-1450101499163-c8848c66ca85?w=800&q=80",
-      color: "from-indigo-500 to-blue-500",
-      features: t('servicesPage.services.managementSupport.features', { returnObjects: true }) as string[],
-      stats: {
-        value: t('servicesPage.services.managementSupport.stats.value'),
-        label: t('servicesPage.services.managementSupport.stats.label')
-      }
-    },
-    */
-    {
-      icon: Building2,
-      title: t('servicesPage.services.facilitiesManagement.title'),
-      description: t('servicesPage.services.facilitiesManagement.description'),
-      image: "https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?w=800&q=80",
+      icon: "🧹",
+      title: "Cleaning Services",
+      description: "Professional cleaning solutions for homes and businesses with attention to detail and quality.",
+      image: "https://images.unsplash.com/photo-1581578731548-c64695cc6952?w=800&q=80",
       color: "from-blue-500 to-cyan-500",
-      features: t('servicesPage.services.facilitiesManagement.features', { returnObjects: true }) as string[],
-      stats: {
-        value: t('servicesPage.services.facilitiesManagement.stats.value'),
-        label: t('servicesPage.services.facilitiesManagement.stats.label')
-      }
+      features: ["Deep Cleaning", "Regular Maintenance", "Eco-Friendly Products", "Flexible Scheduling", "Quality Assurance", "Trained Staff"],
+      stats: { value: "1,000+", label: "Spaces Cleaned" }
     },
     {
-      icon: Home,
-      title: t('servicesPage.services.homeSolutions.title'),
-      description: t('servicesPage.services.homeSolutions.description'),
-      image: "https://images.unsplash.com/photo-1600596542815-ffad4c1539a9?w=800&q=80",
-      color: "from-emerald-500 to-teal-500",
-      features: t('servicesPage.services.homeSolutions.features', { returnObjects: true }) as string[],
-      stats: {
-        value: t('servicesPage.services.homeSolutions.stats.value'),
-        label: t('servicesPage.services.homeSolutions.stats.label')
-      }
-    },
-    {
-      icon: Hotel,
-      title: t('servicesPage.services.hospitalityServices.title'),
-      description: t('servicesPage.services.hospitalityServices.description'),
+      icon: "🏨",
+      title: "Hospitality Services",
+      description: "Premium hospitality management for exceptional guest experiences and operational excellence.",
       image: "https://images.unsplash.com/photo-1512061942530-e6a4e9a5cf27?w=800&q=80",
       color: "from-purple-500 to-pink-500",
-      features: t('servicesPage.services.hospitalityServices.features', { returnObjects: true }) as string[],
-      stats: {
-        value: t('servicesPage.services.hospitalityServices.stats.value'),
-        label: t('servicesPage.services.hospitalityServices.stats.label')
-      }
+      features: ["Guest Services", "Housekeeping", "Front Desk Support", "Event Management", "Laundry Services", "Quality Control"],
+      stats: { value: "50+", label: "Hotels Served" }
     },
     {
-      icon: Trees,
-      title: t('servicesPage.services.landscaping.title'),
-      description: t('servicesPage.services.landscaping.description'),
-      image: "https://images.unsplash.com/photo-1585320806297-9794b3e4eeae?w=800&q=80",
-      color: "from-green-500 to-emerald-500",
-      features: t('servicesPage.services.landscaping.features', { returnObjects: true }) as string[],
-      stats: {
-        value: t('servicesPage.services.landscaping.stats.value'),
-        label: t('servicesPage.services.landscaping.stats.label')
-      }
-    },
-    {
-      icon: Wrench,
-      title: t('servicesPage.services.technicalServices.title'),
-      description: t('servicesPage.services.technicalServices.description'),
+      icon: "🔧",
+      title: "Air Conditioner Repair",
+      description: "Expert AC installation, maintenance, and repair services ensuring optimal cooling performance.",
       image: "https://images.unsplash.com/photo-1621905251918-48416bd8575a?w=800&q=80",
       color: "from-orange-500 to-red-500",
-      features: t('servicesPage.services.technicalServices.features', { returnObjects: true }) as string[],
-      stats: {
-        value: t('servicesPage.services.technicalServices.stats.value'),
-        label: t('servicesPage.services.technicalServices.stats.label')
-      }
+      features: ["AC Installation", "Preventive Maintenance", "Emergency Repairs", "System Upgrades", "Energy Optimization", "24/7 Support"],
+      stats: { value: "99.8%", label: "Uptime Rate" }
     },
     {
-      icon: Shield,
-      title: t('servicesPage.services.pestControl.title'),
-      description: t('servicesPage.services.pestControl.description'),
+      icon: "⚡",
+      title: "Electrical Services",
+      description: "Comprehensive electrical solutions from installation to maintenance by certified electricians.",
+      image: "https://images.unsplash.com/photo-1621905251918-48416bd8575a?w=800&q=80",
+      color: "from-yellow-500 to-orange-500",
+      features: ["Wiring & Installation", "Safety Inspections", "Panel Upgrades", "Emergency Services", "LED Solutions", "Energy Audits"],
+      stats: { value: "500+", label: "Projects Done" }
+    },
+    {
+      icon: "🏊",
+      title: "Pool Cleaning",
+      description: "Professional pool maintenance and cleaning services for crystal-clear water year-round.",
+      image: "https://images.unsplash.com/photo-1576013551627-0cc20b96c2a7?w=800&q=80",
+      color: "from-cyan-500 to-blue-500",
+      features: ["Water Testing", "Chemical Balance", "Filter Cleaning", "Equipment Maintenance", "Regular Service", "Emergency Support"],
+      stats: { value: "200+", label: "Pools Maintained" }
+    },
+    {
+      icon: "🏖️",
+      title: "Beach Cleaning",
+      description: "Specialized beach and coastal area cleaning for pristine shorelines and environments.",
+      image: "https://images.unsplash.com/photo-1559827260-dc66d52bef19?w=800&q=80",
+      color: "from-teal-500 to-cyan-500",
+      features: ["Sand Cleaning", "Debris Removal", "Equipment Setup", "Seasonal Service", "Eco-Friendly Methods", "Regular Maintenance"],
+      stats: { value: "50+", label: "Beaches Served" }
+    },
+    {
+      icon: "🌱",
+      title: "Landscaping",
+      description: "Expert landscape design and maintenance creating beautiful sustainable outdoor spaces.",
+      image: "https://images.unsplash.com/photo-1585320806297-9794b3e4eeae?w=800&q=80",
+      color: "from-green-500 to-emerald-500",
+      features: ["Landscape Design", "Lawn Care", "Irrigation Systems", "Tree Services", "Seasonal Planting", "Garden Maintenance"],
+      stats: { value: "300+", label: "Gardens Maintained" }
+    },
+    {
+      icon: "🦟",
+      title: "Pest Control Services",
+      description: "Safe and effective pest management solutions protecting your property and health.",
       image: "https://images.unsplash.com/photo-1581578731548-c64695cc6952?w=800&q=80",
       color: "from-indigo-500 to-purple-500",
-      features: t('servicesPage.services.pestControl.features', { returnObjects: true }) as string[],
-      stats: {
-        value: t('servicesPage.services.pestControl.stats.value'),
-        label: t('servicesPage.services.pestControl.stats.label')
-      }
+      features: ["Pest Inspections", "Eco-Friendly Treatments", "Preventive Programs", "Termite Control", "Rodent Management", "Regular Monitoring"],
+      stats: { value: "2,000+", label: "Treatments Done" }
+    },
+    {
+      icon: "🚰",
+      title: "Plumbing Services",
+      description: "Complete plumbing solutions from repairs to installations by licensed plumbers.",
+      image: "https://images.unsplash.com/photo-1607472586893-edb57bdc0e39?w=800&q=80",
+      color: "from-blue-600 to-cyan-600",
+      features: ["Leak Repairs", "Pipe Installation", "Drain Cleaning", "Water Heaters", "Emergency Service", "Preventive Maintenance"],
+      stats: { value: "800+", label: "Jobs Completed" }
+    },
+    {
+      icon: "🏢",
+      title: "Facade Cleaning",
+      description: "Professional building exterior cleaning for impressive and well-maintained facades.",
+      image: "https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?w=800&q=80",
+      color: "from-slate-500 to-gray-500",
+      features: ["Pressure Washing", "Window Cleaning", "Stone Restoration", "Safety Compliance", "Eco-Friendly Products", "High-Rise Service"],
+      stats: { value: "100+", label: "Buildings Cleaned" }
+    },
+    {
+      icon: "🚛",
+      title: "Sweeper Services",
+      description: "Industrial sweeping and cleaning services for roads, parking lots, and large areas.",
+      image: "https://images.unsplash.com/photo-1581578731548-c64695cc6952?w=800&q=80",
+      color: "from-amber-500 to-orange-500",
+      features: ["Street Sweeping", "Parking Lot Cleaning", "Construction Site Cleanup", "Dust Control", "Regular Service", "Emergency Response"],
+      stats: { value: "500+", label: "Sites Serviced" }
+    },
+    {
+      icon: "🚚",
+      title: "Sewage Trucks",
+      description: "Professional sewage removal and waste management services with modern equipment.",
+      image: "https://images.unsplash.com/photo-1581578731548-c64695cc6952?w=800&q=80",
+      color: "from-gray-600 to-slate-600",
+      features: ["Septic Tank Pumping", "Waste Removal", "Emergency Service", "Scheduled Maintenance", "Modern Fleet", "Licensed Operators"],
+      stats: { value: "1,000+", label: "Services Done" }
+    },
+    {
+      icon: "📦",
+      title: "Logistics Services",
+      description: "Efficient logistics and transportation solutions for seamless operations.",
+      image: "https://images.unsplash.com/photo-1586528116311-ad8dd3c8310d?w=800&q=80",
+      color: "from-indigo-600 to-blue-600",
+      features: ["Transportation", "Warehousing", "Inventory Management", "Route Optimization", "Tracking Systems", "Timely Delivery"],
+      stats: { value: "5,000+", label: "Deliveries Made" }
+    },
+    {
+      icon: "💧",
+      title: "Water Services",
+      description: "Comprehensive water supply and management solutions for various needs.",
+      image: "https://images.unsplash.com/photo-1581093577421-f561a654a353?w=800&q=80",
+      color: "from-cyan-600 to-blue-600",
+      features: ["Water Delivery", "Storage Solutions", "Quality Testing", "Emergency Supply", "Regular Service", "24/7 Availability"],
+      stats: { value: "2,000+", label: "Deliveries Monthly" }
+    },
+    {
+      icon: "🪣",
+      title: "Water Tank Cleaning",
+      description: "Professional water tank cleaning and sanitization for safe water storage.",
+      image: "https://images.unsplash.com/photo-1581093577421-f561a654a353?w=800&q=80",
+      color: "from-blue-500 to-teal-500",
+      features: ["Deep Cleaning", "Sanitization", "Inspection Service", "Preventive Care", "Quality Assurance", "Regular Maintenance"],
+      stats: { value: "1,500+", label: "Tanks Cleaned" }
+    },
+    {
+      icon: "⛵",
+      title: "Yacht Cleaning",
+      description: "Specialized yacht and boat cleaning services for pristine marine vessels.",
+      image: "https://images.unsplash.com/photo-1567899378494-47b22a2ae96a?w=800&q=80",
+      color: "from-blue-600 to-indigo-600",
+      features: ["Exterior Washing", "Interior Detailing", "Deck Cleaning", "Hull Maintenance", "Polish & Wax", "Regular Service"],
+      stats: { value: "150+", label: "Yachts Serviced" }
+    },
+    {
+      icon: "🏠",
+      title: "Renovation Services",
+      description: "Complete renovation and remodeling services transforming spaces beautifully.",
+      image: "https://images.unsplash.com/photo-1581858726788-75bc0f6a952d?w=800&q=80",
+      color: "from-orange-600 to-red-600",
+      features: ["Design Consultation", "Full Remodeling", "Kitchen & Bath", "Flooring", "Painting", "Project Management"],
+      stats: { value: "200+", label: "Projects Done" }
     }
-  ], [t])
+  ], [])
+
+  const corporateServices = useMemo(() => [
+    {
+      icon: "🧹",
+      title: "Regular Cleaning",
+      description: "Comprehensive commercial cleaning services maintaining professional environments daily.",
+      image: "https://images.unsplash.com/photo-1581578731548-c64695cc6952?w=800&q=80",
+      color: "from-blue-500 to-cyan-500",
+      features: ["Office Cleaning", "Daily Service", "Floor Care", "Restroom Sanitization", "Common Areas", "Quality Standards"],
+      stats: { value: "500+", label: "Offices Serviced" }
+    },
+    {
+      icon: "🏊",
+      title: "Pool Cleaning Services",
+      description: "Commercial pool maintenance for hotels, resorts, and corporate facilities.",
+      image: "https://images.unsplash.com/photo-1576013551627-0cc20b96c2a7?w=800&q=80",
+      color: "from-cyan-500 to-blue-500",
+      features: ["Chemical Management", "Equipment Service", "Water Quality Testing", "Regular Maintenance", "Compliance Standards", "Emergency Support"],
+      stats: { value: "100+", label: "Commercial Pools" }
+    },
+    {
+      icon: "🚰",
+      title: "Plumbing Services",
+      description: "Corporate plumbing solutions for buildings, offices, and commercial spaces.",
+      image: "https://images.unsplash.com/photo-1607472586893-edb57bdc0e39?w=800&q=80",
+      color: "from-blue-600 to-cyan-600",
+      features: ["System Installation", "Preventive Maintenance", "Emergency Repairs", "Pipe Management", "Compliance", "24/7 Service"],
+      stats: { value: "300+", label: "Buildings Served" }
+    },
+    {
+      icon: "🏖️",
+      title: "Beach Cleaning",
+      description: "Large-scale beach maintenance for resorts, hotels, and commercial coastal areas.",
+      image: "https://images.unsplash.com/photo-1559827260-dc66d52bef19?w=800&q=80",
+      color: "from-teal-500 to-cyan-500",
+      features: ["Daily Maintenance", "Equipment Management", "Waste Removal", "Sand Grooming", "Seasonal Service", "Event Support"],
+      stats: { value: "30+", label: "Resorts Served" }
+    },
+    {
+      icon: "🏢",
+      title: "Facade Cleaning",
+      description: "Commercial building exterior cleaning for corporate towers and office buildings.",
+      image: "https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?w=800&q=80",
+      color: "from-slate-500 to-gray-500",
+      features: ["High-Rise Cleaning", "Window Washing", "Pressure Washing", "Safety Certified", "Minimal Disruption", "Scheduled Service"],
+      stats: { value: "200+", label: "Buildings Maintained" }
+    },
+    {
+      icon: "🚛",
+      title: "Sweeper Services",
+      description: "Industrial sweeping for corporate campuses, parking structures, and facilities.",
+      image: "https://images.unsplash.com/photo-1581578731548-c64695cc6952?w=800&q=80",
+      color: "from-amber-500 to-orange-500",
+      features: ["Parking Lot Sweeping", "Loading Dock Cleaning", "Campus Maintenance", "Night Service", "Fleet Management", "Regular Schedules"],
+      stats: { value: "150+", label: "Facilities Serviced" }
+    },
+    {
+      icon: "🚚",
+      title: "Sewage Trucks Services",
+      description: "Corporate waste management and sewage removal for commercial properties.",
+      image: "https://images.unsplash.com/photo-1581578731548-c64695cc6952?w=800&q=80",
+      color: "from-gray-600 to-slate-600",
+      features: ["Commercial Pumping", "Scheduled Service", "Emergency Response", "Compliance", "Modern Equipment", "Certified Operators"],
+      stats: { value: "500+", label: "Corporate Clients" }
+    },
+    {
+      icon: "📦",
+      title: "Logistics Services",
+      description: "Enterprise logistics and supply chain management for corporate operations.",
+      image: "https://images.unsplash.com/photo-1586528116311-ad8dd3c8310d?w=800&q=80",
+      color: "from-indigo-600 to-blue-600",
+      features: ["Supply Chain", "Warehouse Management", "Distribution", "Fleet Management", "Route Planning", "Real-Time Tracking"],
+      stats: { value: "10,000+", label: "Monthly Shipments" }
+    },
+    {
+      icon: "🪣",
+      title: "Water Tank Cleaning",
+      description: "Commercial water tank maintenance for buildings and corporate facilities.",
+      image: "https://images.unsplash.com/photo-1581093577421-f561a654a353?w=800&q=80",
+      color: "from-blue-500 to-teal-500",
+      features: ["Large Tank Service", "Scheduled Maintenance", "Quality Testing", "Compliance Reports", "Minimal Downtime", "Certified Process"],
+      stats: { value: "800+", label: "Commercial Tanks" }
+    },
+    {
+      icon: "🧽",
+      title: "Deep Cleaning",
+      description: "Intensive deep cleaning services for corporate spaces and commercial buildings.",
+      image: "https://images.unsplash.com/photo-1581578731548-c64695cc6952?w=800&q=80",
+      color: "from-purple-500 to-indigo-500",
+      features: ["Intensive Cleaning", "Sanitization", "Carpet Deep Clean", "Air Duct Cleaning", "Post-Construction", "Quarterly Service"],
+      stats: { value: "400+", label: "Projects Completed" }
+    },
+    {
+      icon: "👩‍💼",
+      title: "Housekeeping Services",
+      description: "Corporate housekeeping management for hotels, offices, and facilities.",
+      image: "https://images.unsplash.com/photo-1581578731548-c64695cc6952?w=800&q=80",
+      color: "from-pink-500 to-rose-500",
+      features: ["Staff Management", "Quality Control", "Supply Management", "Training Programs", "Standards Compliance", "24/7 Operations"],
+      stats: { value: "100+", label: "Facilities Managed" }
+    },
+    {
+      icon: "🏨",
+      title: "Hospitality Services",
+      description: "Complete hospitality management for hotels, resorts, and corporate venues.",
+      image: "https://images.unsplash.com/photo-1512061942530-e6a4e9a5cf27?w=800&q=80",
+      color: "from-purple-500 to-pink-500",
+      features: ["Full Service Management", "Guest Experience", "Staff Training", "Quality Standards", "Operations Management", "Brand Compliance"],
+      stats: { value: "50+", label: "Properties Managed" }
+    },
+    {
+      icon: "🔧",
+      title: "Air Conditioner Repair",
+      description: "Commercial HVAC services for corporate buildings and facilities.",
+      image: "https://images.unsplash.com/photo-1621905251918-48416bd8575a?w=800&q=80",
+      color: "from-orange-500 to-red-500",
+      features: ["Central AC Systems", "VRF Systems", "Preventive Maintenance", "Emergency Repairs", "Energy Management", "24/7 Support"],
+      stats: { value: "300+", label: "Buildings Serviced" }
+    },
+    {
+      icon: "🦟",
+      title: "Pest Control Services",
+      description: "Corporate pest management programs for commercial properties and facilities.",
+      image: "https://images.unsplash.com/photo-1581578731548-c64695cc6952?w=800&q=80",
+      color: "from-indigo-500 to-purple-500",
+      features: ["Integrated Pest Management", "Regular Inspections", "Preventive Programs", "Compliance Reports", "Eco-Friendly", "Emergency Response"],
+      stats: { value: "500+", label: "Corporate Clients" }
+    },
+    {
+      icon: "🔨",
+      title: "Maintenance Operation Services",
+      description: "Comprehensive facility maintenance operations for corporate properties.",
+      image: "https://images.unsplash.com/photo-1581578731548-c64695cc6952?w=800&q=80",
+      color: "from-slate-600 to-zinc-600",
+      features: ["Preventive Maintenance", "Repairs & Fixes", "Asset Management", "Work Order System", "Vendor Management", "Compliance"],
+      stats: { value: "200+", label: "Facilities Managed" }
+    },
+    {
+      icon: "⚙️",
+      title: "Restoration Renovation Services",
+      description: "Large-scale renovation and restoration for commercial properties.",
+      image: "https://images.unsplash.com/photo-1581858726788-75bc0f6a952d?w=800&q=80",
+      color: "from-orange-600 to-red-600",
+      features: ["Commercial Renovation", "Historic Restoration", "Tenant Improvements", "Building Upgrades", "Project Management", "Minimal Disruption"],
+      stats: { value: "100+", label: "Projects Completed" }
+    },
+    {
+      icon: "🌾",
+      title: "Agricultural Services",
+      description: "Corporate agricultural and green space management for large properties.",
+      image: "https://images.unsplash.com/photo-1574943320219-553eb213f72d?w=800&q=80",
+      color: "from-green-600 to-lime-600",
+      features: ["Landscape Management", "Irrigation Systems", "Grounds Maintenance", "Seasonal Planting", "Turf Management", "Sustainability"],
+      stats: { value: "50+", label: "Properties Managed" }
+    },
+    {
+      icon: "⛵",
+      title: "Yacht Cleaning",
+      description: "Corporate yacht and marine vessel maintenance for fleets and charters.",
+      image: "https://images.unsplash.com/photo-1567899378494-47b22a2ae96a?w=800&q=80",
+      color: "from-blue-600 to-indigo-600",
+      features: ["Fleet Management", "Regular Maintenance", "Detail Cleaning", "Hull Care", "Interior Service", "Scheduled Programs"],
+      stats: { value: "50+", label: "Corporate Fleets" }
+    }
+  ], [])
+
+  const services = activeTab === 'individual' ? individualServices : corporateServices
 
   // Optimized event handlers with useCallback
 
@@ -939,12 +1174,37 @@ export function ServicesPage({ onBack, onContactClick }: ServicesPageProps) {
           <p ref={descriptionRef} className="mx-auto max-w-2xl text-lg leading-relaxed text-brand-forest/70">
             {t('servicesPage.description')}
           </p>
+
+          {/* Tabs */}
+          <div className="mt-12 flex justify-center">
+            <div className="inline-flex rounded-xl border border-brand-deep/10 bg-white p-1 shadow-md">
+              <button
+                onClick={() => setActiveTab('individual')}
+                className={`px-8 py-3 rounded-lg text-sm font-bold uppercase tracking-wide transition-all duration-300 ${
+                  activeTab === 'individual'
+                    ? 'bg-brand-azure text-white shadow-md'
+                    : 'text-brand-deep/60 hover:text-brand-azure'
+                }`}
+              >
+                Individual Services
+              </button>
+              <button
+                onClick={() => setActiveTab('corporate')}
+                className={`px-8 py-3 rounded-lg text-sm font-bold uppercase tracking-wide transition-all duration-300 ${
+                  activeTab === 'corporate'
+                    ? 'bg-brand-azure text-white shadow-md'
+                    : 'text-brand-deep/60 hover:text-brand-azure'
+                }`}
+              >
+                Corporate Services
+              </button>
+            </div>
+          </div>
         </div>
 
         {/* Services Grid */}
         <div className="space-y-32">
           {services.map((service, index) => {
-            const Icon = service.icon
             const isEven = index % 2 === 0
 
             return (
@@ -1014,7 +1274,7 @@ export function ServicesPage({ onBack, onContactClick }: ServicesPageProps) {
                         }}
                         className={`relative flex h-16 w-16 items-center justify-center rounded-2xl bg-gradient-to-br ${service.color} shadow-2xl ring-4 ring-white/40`}
                       >
-                        <Icon className="h-8 w-8 text-white drop-shadow-lg" strokeWidth={2.5} aria-hidden="true" />
+                        <span className="text-3xl" role="img" aria-label={service.title}>{service.icon}</span>
                         <div
                           ref={(el) => {
                             if (el) pulseRefs.current[index] = el

@@ -111,8 +111,13 @@
     "description1": "We deliver comprehensive facilities management solutions that transform spaces into efficient, sustainable environments where businesses thrive.",
     "description2": "With years of experience and a commitment to excellence, we partner with organizations to maintain, optimize, and enhance their facilities with precision and care.",
     "learnMore": "Learn More About Us",
-    "bottomTitle": "Delivering Excellence Every Day",
-    "bottomDescription": "Our commitment to quality and innovation drives us to exceed expectations and build lasting partnerships with every client we serve.",
+    "profm": {
+      "badge": "Trusted Partnership",
+      "title": "Guided by Excellence",
+      "titleHighlight": "Powered by PROFM",
+      "description": "Our company operates with the guidance and support of our trusted business partner — PROFM company, strengthened by its full support to deliver reliable, high-quality services with technical and professional excellence.",
+      "subtitle": "Together, we bring decades of expertise and unwavering commitment to facilities management excellence across the region."
+    },
     "features": {
       "excellence": {
         "title": "Excellence",

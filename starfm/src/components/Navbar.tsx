@@ -2,7 +2,7 @@ import { useState, useEffect, useRef } from "react"
 import { useTranslation } from "react-i18next"
 import gsap from "gsap"
 import { Button } from "@/components/ui/button"
-import { Menu, X, ArrowLeft } from "lucide-react"
+import { Menu, X, ArrowLeft, ChevronDown } from "lucide-react"
 import { LoadingOverlay } from "@/components/ui/loading-overlay"
 
 interface NavbarProps {
@@ -19,6 +19,8 @@ export function Navbar({ onContactClick, onServicesClick, isPageView, onBack }: 
   const [navbarVisible, setNavbarVisible] = useState(true)
   const [lastScrollY, setLastScrollY] = useState(0)
   const [languageLoading, setLanguageLoading] = useState(false)
+  const [servicesDropdownOpen, setServicesDropdownOpen] = useState(false)
+  const [activeServiceTab, setActiveServiceTab] = useState<'individual' | 'corporate'>('individual')
 
   const changeLanguage = async (lng: string) => {
     if (lng === i18n.language) return
@@ -45,6 +47,7 @@ export function Navbar({ onContactClick, onServicesClick, isPageView, onBack }: 
   const logoRef = useRef<HTMLAnchorElement>(null)
   const navItemsRef = useRef<HTMLAnchorElement[]>([])
   const servicesButtonRef = useRef<HTMLButtonElement>(null)
+  const closeTimeoutRef = useRef<number | null>(null)
   const languageToggleRef = useRef<HTMLDivElement>(null)
   const contactButtonRef = useRef<HTMLButtonElement>(null)
   const menuButtonRef = useRef<HTMLButtonElement>(null)
@@ -167,6 +170,11 @@ export function Navbar({ onContactClick, onServicesClick, isPageView, onBack }: 
         contactButton.removeEventListener("mousedown", () => {})
         contactButton.removeEventListener("mouseup", () => {})
       }
+      // clear any pending dropdown close timeout on unmount
+      if (closeTimeoutRef.current) {
+        window.clearTimeout(closeTimeoutRef.current)
+        closeTimeoutRef.current = null
+      }
     }
   }, [])
 
@@ -216,6 +224,47 @@ export function Navbar({ onContactClick, onServicesClick, isPageView, onBack }: 
     { label: t('nav.about'), href: "#about" },
     { label: t('nav.programs'), href: "#programs" },
     { label: t('nav.training'), href: "#training" },
+  ]
+
+  const individualServices = [
+    { label: "Cleaning Services", icon: "🧹", href: "/services/cleaning" },
+    { label: "Hospitality Services", icon: "🏨", href: "/services/hospitality" },
+    { label: "Air Conditioner Repair", icon: "🔧", href: "/services/ac-repair" },
+    { label: "Electrical Services", icon: "⚡", href: "/services/electrical" },
+    { label: "Pool Cleaning", icon: "🏊", href: "/services/pool-cleaning" },
+    { label: "Beach Cleaning", icon: "🏖️", href: "/services/beach-cleaning" },
+    { label: "Landscaping", icon: "🌱", href: "/services/landscaping" },
+    { label: "Pest Control Services", icon: "🦟", href: "/services/pest-control" },
+    { label: "Plumbing Services", icon: "🚰", href: "/services/plumbing" },
+    { label: "Facade Cleaning", icon: "🏢", href: "/services/facade-cleaning" },
+    { label: "Sweeper Services", icon: "🚛", href: "/services/sweeper" },
+    { label: "Sewage Trucks", icon: "🚚", href: "/services/sewage-trucks" },
+    { label: "Logistics Services", icon: "📦", href: "/services/logistics" },
+    { label: "Water Services", icon: "💧", href: "/services/water" },
+    { label: "Water Tank Cleaning", icon: "🪣", href: "/services/water-tank-cleaning" },
+    { label: "Yacht Cleaning", icon: "⛵", href: "/services/yacht-cleaning" },
+    { label: "Renovation Services", icon: "🏠", href: "/services/renovation" },
+  ]
+
+  const corporateServices = [
+    { label: "Regular Cleaning", icon: "🧹", href: "/services/corporate/regular-cleaning" },
+    { label: "Pool Cleaning Services", icon: "🏊", href: "/services/corporate/pool-cleaning" },
+    { label: "Plumbing Services", icon: "🚰", href: "/services/corporate/plumbing" },
+    { label: "Beach Cleaning", icon: "🏖️", href: "/services/corporate/beach-cleaning" },
+    { label: "Facade Cleaning", icon: "🏢", href: "/services/corporate/facade-cleaning" },
+    { label: "Sweeper Services", icon: "🚛", href: "/services/corporate/sweeper" },
+    { label: "Sewage Trucks Services", icon: "🚚", href: "/services/corporate/sewage-trucks" },
+    { label: "Logistics Services", icon: "📦", href: "/services/corporate/logistics" },
+    { label: "Water Tank Cleaning", icon: "🪣", href: "/services/corporate/water-tank-cleaning" },
+    { label: "Deep Cleaning", icon: "🧽", href: "/services/corporate/deep-cleaning" },
+    { label: "Housekeeping Services", icon: "👩‍💼", href: "/services/corporate/housekeeping" },
+    { label: "Hospitality Services", icon: "🏨", href: "/services/corporate/hospitality" },
+    { label: "Air Conditioner Repair", icon: "🔧", href: "/services/corporate/ac-repair" },
+    { label: "Pest Control Services", icon: "🦟", href: "/services/corporate/pest-control" },
+    { label: "Maintenance Operation Services", icon: "🔨", href: "/services/corporate/maintenance" },
+    { label: "Restoration Renovation Services", icon: "⚙️", href: "/services/corporate/restoration" },
+    { label: "Agricultural Services", icon: "🌾", href: "/services/corporate/agricultural" },
+    { label: "Yacht Cleaning", icon: "⛵", href: "/services/corporate/yacht-cleaning" },
   ]
 
   return (
@@ -299,16 +348,85 @@ export function Navbar({ onContactClick, onServicesClick, isPageView, onBack }: 
                 </a>
               ))}
 
-              {/* Services Link */}
-              <button
-                ref={servicesButtonRef}
-                onClick={onServicesClick}
-                className="group relative text-sm font-bold uppercase tracking-wide text-blue-600/70 transition-all duration-300 hover:text-blue-700"
+              {/* Services Dropdown */}
+              <div 
+                className="relative group"
+                onMouseEnter={() => {
+                  // cancel any pending close and open immediately
+                  if (closeTimeoutRef.current) {
+                    window.clearTimeout(closeTimeoutRef.current)
+                    closeTimeoutRef.current = null
+                  }
+                  setServicesDropdownOpen(true)
+                }}
+                onMouseLeave={() => {
+                  // add a short delay before closing to allow mouse to move to dropdown
+                  if (closeTimeoutRef.current) window.clearTimeout(closeTimeoutRef.current)
+                  closeTimeoutRef.current = window.setTimeout(() => {
+                    setServicesDropdownOpen(false)
+                    closeTimeoutRef.current = null
+                  }, 160)
+                }}
               >
-                <span className="relative z-10">{t('nav.services')}</span>
-                <span className="absolute -bottom-1 left-0 h-[3px] w-0 rounded-full bg-gradient-to-r from-blue-500 via-cyan-400 to-blue-500 transition-all duration-300 group-hover:w-full" />
-                <span className="absolute inset-0 -z-10 scale-0 rounded-lg bg-blue-500/10 transition-transform duration-300 group-hover:scale-100" />
-              </button>
+                <button
+                  ref={servicesButtonRef}
+                  className="group/btn relative text-sm font-bold uppercase tracking-wide text-blue-600/70 transition-all duration-300 hover:text-blue-700 flex items-center gap-1"
+                >
+                  <span className="relative z-10">{t('nav.services')}</span>
+                  <ChevronDown className="h-4 w-4 transition-transform duration-300 group-hover:rotate-180" />
+                  <span className="absolute -bottom-1 left-0 h-[3px] w-0 rounded-full bg-gradient-to-r from-blue-500 via-cyan-400 to-blue-500 transition-all duration-300 group-hover/btn:w-full" />
+                  <span className="absolute inset-0 -z-10 scale-0 rounded-lg bg-blue-500/10 transition-transform duration-300 group-hover/btn:scale-100" />
+                </button>
+
+                {/* Dropdown Menu */}
+                <div className={`absolute left-1/2 -translate-x-1/2 top-full mt-2 w-[850px] rounded-2xl border border-brand-deep/10 bg-white shadow-2xl transition-all duration-300 ${
+                  servicesDropdownOpen ? 'opacity-100 visible translate-y-0' : 'opacity-0 invisible -translate-y-4 pointer-events-none'
+                }`}>
+                  {/* Tabs */}
+                  <div className="flex border-b border-brand-deep/10">
+                    <button
+                      onClick={() => setActiveServiceTab('individual')}
+                      className={`flex-1 px-6 py-4 text-sm font-bold uppercase tracking-wide transition-all duration-300 ${
+                        activeServiceTab === 'individual'
+                          ? 'text-brand-azure border-b-2 border-brand-azure bg-brand-azure/5'
+                          : 'text-brand-deep/50 hover:text-brand-azure/70 hover:bg-brand-azure/5'
+                      }`}
+                    >
+                      Individual Services
+                    </button>
+                    <button
+                      onClick={() => setActiveServiceTab('corporate')}
+                      className={`flex-1 px-6 py-4 text-sm font-bold uppercase tracking-wide transition-all duration-300 ${
+                        activeServiceTab === 'corporate'
+                          ? 'text-brand-azure border-b-2 border-brand-azure bg-brand-azure/5'
+                          : 'text-brand-deep/50 hover:text-brand-azure/70 hover:bg-brand-azure/5'
+                      }`}
+                    >
+                      Corporate Services
+                    </button>
+                  </div>
+
+                  {/* Services Grid */}
+                  <div className="p-6 max-h-[500px] overflow-y-auto">
+                    <div className="grid grid-cols-3 gap-4">
+                      {(activeServiceTab === 'individual' ? individualServices : corporateServices).map((service, index) => (
+                        <a
+                          key={index}
+                          href={service.href}
+                          className="group/item flex items-center gap-3 rounded-xl border border-transparent p-3 transition-all duration-300 hover:border-brand-azure/20 hover:bg-brand-azure/5"
+                        >
+                          <div className="text-2xl transition-transform duration-300 group-hover/item:scale-110">
+                            {service.icon}
+                          </div>
+                          <span className="text-sm font-semibold text-brand-deep/80 transition-colors duration-300 group-hover/item:text-brand-azure">
+                            {service.label}
+                          </span>
+                        </a>
+                      ))}
+                    </div>
+                  </div>
+                </div>
+              </div>
             </div>
 
             {/* CTA Section */}

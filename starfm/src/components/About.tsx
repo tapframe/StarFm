@@ -403,16 +403,69 @@ export function About() {
             })}
           </div>
         </div>
+      </div>
 
-        {/* Bottom Stats Section */}
-        <div ref={bottomSectionRef} className="mt-24 rounded-3xl border border-brand-deep/5 bg-gradient-to-br from-brand-azure/5 via-transparent to-brand-sand/5 p-12 sm:p-16">
+      {/* PROFM Partnership Section - Full Width */}
+      <div ref={bottomSectionRef} className="mt-24 -mx-6 sm:-mx-8 lg:-mx-12 rounded-3xl border border-brand-deep/5 bg-gradient-to-br from-brand-azure/5 via-white to-brand-sand/5 p-12 sm:p-16 lg:p-20 shadow-brand backdrop-blur-sm">
+        <div className="mx-auto max-w-7xl space-y-8">
+          {/* Superior Badge */}
+          <div className="flex justify-center">
+            <div className="inline-flex items-center gap-2.5 rounded-full border border-brand-azure/20 bg-white/80 px-5 py-2.5 shadow-sm backdrop-blur-sm">
+              <div className="h-2 w-2 animate-pulse rounded-full bg-brand-azure" />
+              <span className="font-display text-xs font-bold uppercase tracking-[0.2em] text-brand-azure">
+                {t('about.profm.badge')}
+              </span>
+            </div>
+          </div>
+
+          {/* Premium Typography - Main Heading */}
           <div className="text-center">
-            <h3 className="mb-4 font-display text-3xl font-bold text-brand-deep sm:text-4xl">
-              {t('about.bottomTitle')}
+            <h3 className="font-display text-[2.75rem] font-bold leading-[1.1] tracking-tight text-brand-deep sm:text-5xl lg:text-6xl">
+              {t('about.profm.title')}
+              <span className="mt-3 block bg-gradient-to-r from-brand-azure via-brand-forest to-brand-azure bg-clip-text text-transparent">
+                {t('about.profm.titleHighlight')}
+              </span>
             </h3>
-            <p className="mx-auto max-w-2xl text-base leading-relaxed text-brand-forest/60">
-              {t('about.bottomDescription')}
+          </div>
+
+          {/* Elegant Description */}
+          <div className="mx-auto max-w-3xl text-center">
+            <p className="font-display text-xl font-light leading-[1.8] tracking-wide text-brand-forest/80 sm:text-2xl">
+              {t('about.profm.description')}
             </p>
+          </div>
+
+          {/* Refined Subtext */}
+          <div className="mx-auto max-w-2xl text-center">
+            <p className="text-base leading-[1.75] text-brand-forest/60">
+              {t('about.profm.subtitle')}
+            </p>
+          </div>
+
+          {/* Logo with Elegant Presentation */}
+          <div className="flex justify-center pt-4">
+            <a
+              href="https://www.profm.com.sa/"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="group relative inline-block"
+            >
+              <div className="absolute -inset-4 rounded-2xl bg-gradient-to-r from-brand-azure/10 via-brand-sand/10 to-brand-azure/10 opacity-0 blur-xl transition-opacity duration-500 group-hover:opacity-100" />
+              <div className="relative rounded-xl border border-brand-deep/5 bg-white p-8 shadow-card transition-all duration-300 group-hover:border-brand-azure/20 group-hover:shadow-brand">
+                <img
+                  src="https://www.profm.com.sa/logo.svg"
+                  alt="ProFM Logo"
+                  className="h-16 w-auto transition-transform duration-500 group-hover:scale-105 sm:h-20"
+                />
+              </div>
+            </a>
+          </div>
+
+          {/* Decorative Divider */}
+          <div className="flex items-center justify-center gap-3 pt-2">
+            <div className="h-px w-16 bg-gradient-to-r from-transparent via-brand-azure/30 to-transparent" />
+            <div className="h-1.5 w-1.5 rounded-full bg-brand-azure/40" />
+            <div className="h-px w-16 bg-gradient-to-r from-transparent via-brand-azure/30 to-transparent" />
           </div>
         </div>
       </div>
