@@ -22,38 +22,38 @@ export const LoadingOverlay: React.FC<LoadingOverlayProps> = ({
         <div className="relative w-[13rem] h-[13rem] sm:w-[18rem] sm:h-[18rem] flex items-center justify-center">
           {/* Outer rotating ring - furthest */}
           <div className="absolute inset-0 flex items-center justify-center">
-            <div 
+            <div
               className="w-[11.5rem] h-[11.5rem] sm:w-[15.5rem] sm:h-[15.5rem] rounded-full border-[3px] border-transparent border-t-cyan-400 border-r-blue-500 animate-spin"
-              style={{ 
+              style={{
                 animationDuration: '3s'
               }}
             ></div>
           </div>
-          
+
           {/* Middle rotating ring - opposite direction */}
           <div className="absolute inset-0 flex items-center justify-center">
-            <div 
+            <div
               className="w-[10rem] h-[10rem] sm:w-[13.5rem] sm:h-[13.5rem] rounded-full border-[3px] border-transparent border-b-purple-500 border-l-indigo-400 animate-spin-reverse"
-              style={{ 
+              style={{
                 animationDuration: '4s'
               }}
             ></div>
           </div>
-          
+
           {/* Inner accent ring - slow spin */}
           <div className="absolute inset-0 flex items-center justify-center">
-            <div 
+            <div
               className="w-[8.75rem] h-[8.75rem] sm:w-[11.5rem] sm:h-[11.5rem] rounded-full border-[2.5px] border-transparent border-t-blue-400 border-b-cyan-300 animate-spin"
               style={{ animationDuration: '6s' }}
             ></div>
           </div>
-          
+
           {/* Logo with pulse and float */}
           <div className="relative z-10 animate-pulse-slow">
             <div className="animate-float">
-              <img 
-                src="/favico.png" 
-                alt="Loading" 
+              <img
+                src="/favico.png"
+                alt="Loading"
                 className="w-24 h-24 sm:w-32 sm:h-32 object-contain"
                 style={{ filter: 'drop-shadow(0 10px 20px rgba(59, 130, 246, 0.25))' }}
               />
@@ -74,32 +74,32 @@ export const LoadingOverlay: React.FC<LoadingOverlayProps> = ({
             )}
           </div>
         )}
-        
+
         {/* Animated dots */}
         <div className="flex space-x-2.5 sm:space-x-3">
-          <div 
-            className="w-2.5 h-2.5 sm:w-3 sm:h-3 bg-cyan-400 rounded-full animate-bounce" 
-            style={{ 
+          <div
+            className="w-2.5 h-2.5 sm:w-3 sm:h-3 bg-cyan-400 rounded-full animate-bounce"
+            style={{
               animationDelay: '0ms'
             }}
           ></div>
-          <div 
-            className="w-2.5 h-2.5 sm:w-3 sm:h-3 bg-blue-500 rounded-full animate-bounce" 
-            style={{ 
+          <div
+            className="w-2.5 h-2.5 sm:w-3 sm:h-3 bg-blue-500 rounded-full animate-bounce"
+            style={{
               animationDelay: '150ms'
             }}
           ></div>
-          <div 
-            className="w-2.5 h-2.5 sm:w-3 sm:h-3 bg-purple-500 rounded-full animate-bounce" 
-            style={{ 
+          <div
+            className="w-2.5 h-2.5 sm:w-3 sm:h-3 bg-purple-500 rounded-full animate-bounce"
+            style={{
               animationDelay: '300ms'
             }}
           ></div>
         </div>
 
         {/* Partnership Section */}
-        <div className="mt-6 flex flex-col items-center space-y-2 opacity-90">
-          <p className="text-xs font-medium text-gray-600 dark:text-gray-400 uppercase tracking-wider">
+        <div className="mt-6 flex flex-col items-center space-y-3 opacity-90 max-w-2xl px-6">
+          <p className="text-base sm:text-lg font-medium text-gray-600 dark:text-gray-400 uppercase tracking-wider">
             In Partnership With
           </p>
           <a
@@ -111,9 +111,12 @@ export const LoadingOverlay: React.FC<LoadingOverlayProps> = ({
             <img
               src="https://www.profm.com.sa/logo.svg"
               alt="PROFM Logo"
-              className="h-6 w-auto opacity-80 hover:opacity-100 transition-opacity duration-300"
+              className="h-12 sm:h-16 w-auto opacity-80 hover:opacity-100 transition-opacity duration-300"
             />
           </a>
+          <p className="text-sm sm:text-base text-center text-gray-500 dark:text-gray-400 leading-relaxed max-w-xl font-medium">
+            Delivering reliable, high-quality services with technical and professional excellence.
+          </p>
         </div>
       </div>
     </div>

@@ -428,6 +428,14 @@ export function Hero({ onServicesClick, onContactClick }: HeroProps) {
       {/* Grid Pattern */}
       <div className="absolute inset-0 z-10 bg-[linear-gradient(to_right,#80808008_1px,transparent_1px),linear-gradient(to_bottom,#80808008_1px,transparent_1px)] bg-[size:40px_40px]" />
 
+      {/* Proud Partner Logo - Top Right */}
+      <div className="absolute top-0 right-0 z-30 flex flex-col items-center gap-1 md:gap-2 p-4 md:p-8 bg-gradient-to-bl from-black/80 via-black/20 to-transparent">
+        <span className="text-[8px] md:text-xs font-semibold uppercase tracking-widest text-white/90 shadow-sm">Proud Partner</span>
+        <div className="transition-transform hover:scale-105 duration-300">
+          <img src="https://www.profm.com.sa/logo.svg" alt="PROFM Logo" className="h-6 md:h-10 w-auto drop-shadow-xl filter" />
+        </div>
+      </div>
+
       {/* Content */}
       <div className="container relative z-20 h-full flex flex-col justify-center px-4 sm:px-6 lg:px-8 pb-16 sm:pb-0">
         <div ref={contentRef} className="max-w-4xl">
@@ -504,8 +512,8 @@ export function Hero({ onServicesClick, onContactClick }: HeroProps) {
               onClick={() => handleSlideChange(index)}
               disabled={isTransitioning}
               className={`group relative transition-all duration-500 ${index === currentSlide
-                  ? "h-3 w-16 bg-brand-azure shadow-[0_0_30px_rgba(59,130,246,0.8)]"
-                  : "h-2.5 w-2.5 bg-white/40 hover:bg-white/80 hover:scale-125"
+                ? "h-3 w-16 bg-brand-azure shadow-[0_0_30px_rgba(59,130,246,0.8)]"
+                : "h-2.5 w-2.5 bg-white/40 hover:bg-white/80 hover:scale-125"
                 } rounded-full`}
               aria-label={`Go to slide ${index + 1}: ${heroSlides[index].title}`}
             >
