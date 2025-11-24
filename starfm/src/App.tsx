@@ -10,7 +10,7 @@ import { Stats } from "@/components/home/Stats"
 import { Services } from "@/components/services/Services"
 import { Training } from "@/components/services/Training"
 import { Testimonials } from "@/components/home/Testimonials"
-import { TrustedPartner } from "@/components/home/TrustedPartner"
+// import { TrustedPartner } from "@/components/home/TrustedPartner"
 import { Footer } from "@/components/layout/Footer"
 import { Contact } from "@/pages/Contact"
 import { ServicesPage } from "@/pages/ServicesPage"
@@ -199,7 +199,7 @@ function App() {
             </main>
 
             {/* New Hero Section Before Footer */}
-            <TrustedPartner />
+            {/* <TrustedPartner /> */}
 
             <Footer onContactClick={handleContactClick} onServicesClick={handleServicesClick} />
           </div>

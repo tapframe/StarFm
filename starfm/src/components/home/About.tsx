@@ -2,8 +2,8 @@ import { useEffect, useRef } from "react"
 import { useTranslation } from "react-i18next"
 import gsap from "gsap"
 import { ScrollTrigger } from "gsap/ScrollTrigger"
-import { CheckCircle2, Award, Users, TrendingUp, Handshake } from "lucide-react"
-import { SparklesCore } from "@/components/ui/sparkles"
+import { CheckCircle2, Award, Users, TrendingUp } from "lucide-react"
+// import { SparklesCore } from "@/components/ui/sparkles"
 
 gsap.registerPlugin(ScrollTrigger)
 
@@ -338,9 +338,8 @@ export function About() {
 
     <div className="container relative mx-auto max-w-7xl px-6 sm:px-8 lg:px-12">
       {/* PROFM Partnership Section - Full Width */}
-      <div ref={bottomSectionRef} className="mb-16 -mx-6 sm:-mx-8 lg:-mx-12 rounded-3xl border border-brand-deep/5 dark:border-white/10 bg-gradient-to-br from-brand-azure/5 via-white to-brand-sand/5 dark:via-slate-900 dark:to-brand-azure/5 p-8 sm:p-10 lg:p-12 shadow-brand backdrop-blur-sm">
+      {/* <div ref={bottomSectionRef} className="mb-16 -mx-6 sm:-mx-8 lg:-mx-12 rounded-3xl border border-brand-deep/5 dark:border-white/10 bg-gradient-to-br from-brand-azure/5 via-white to-brand-sand/5 dark:via-slate-900 dark:to-brand-azure/5 p-8 sm:p-10 lg:p-12 shadow-brand backdrop-blur-sm">
         <div className="mx-auto max-w-7xl space-y-6">
-          {/* Superior Badge */}
           <div className="flex justify-center">
             <div className="inline-flex items-center gap-2 rounded-full border border-brand-azure/20 bg-white/80 dark:bg-slate-800/80 px-4 py-1.5 shadow-sm backdrop-blur-sm">
               <div className="h-1.5 w-1.5 animate-pulse rounded-full bg-brand-azure" />
@@ -350,7 +349,6 @@ export function About() {
             </div>
           </div>
 
-          {/* Premium Typography - Main Heading */}
           <div className="text-center relative">
             <h3 className="font-display text-3xl font-bold leading-[1.1] tracking-tight text-foreground sm:text-4xl lg:text-5xl relative z-10">
               {t('about.profm.title')}
@@ -370,23 +368,19 @@ export function About() {
             </div>
           </div>
 
-          {/* Elegant Description */}
           <div className="mx-auto max-w-3xl text-center">
             <p className="font-display text-lg font-light leading-[1.6] tracking-wide text-muted-foreground sm:text-xl">
               {t('about.profm.description')}
             </p>
           </div>
 
-          {/* Refined Subtext */}
           <div className="mx-auto max-w-2xl text-center">
             <p className="text-sm leading-[1.6] text-muted-foreground/80">
               {t('about.profm.subtitle')}
             </p>
           </div>
 
-          {/* Logos with Handshake Icon */}
           <div className="flex items-center justify-center gap-6 pt-2">
-            {/* Mahhab Logo */}
             <a
               href="#"
               className="group relative inline-block"
@@ -401,12 +395,10 @@ export function About() {
               </div>
             </a>
 
-            {/* Handshake Icon */}
             <div className="flex items-center justify-center">
               <Handshake className="h-6 w-6 text-brand-azure" strokeWidth={2} />
             </div>
 
-            {/* PROFM Logo */}
             <a
               href="https://www.profm.com.sa/"
               target="_blank"
@@ -424,14 +416,13 @@ export function About() {
             </a>
           </div>
 
-          {/* Decorative Divider */}
           <div className="flex items-center justify-center gap-3 pt-2">
             <div className="h-px w-16 bg-gradient-to-r from-transparent via-brand-azure/30 to-transparent" />
             <div className="h-1.5 w-1.5 rounded-full bg-brand-azure/40" />
             <div className="h-px w-16 bg-gradient-to-r from-transparent via-brand-azure/30 to-transparent" />
           </div>
         </div>
-      </div>
+      </div> */}
 
       <div className="grid gap-16 lg:grid-cols-2 lg:gap-20 items-center">
         {/* Left Content */}
