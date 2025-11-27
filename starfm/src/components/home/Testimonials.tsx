@@ -7,7 +7,7 @@ import { Quote, Star } from "lucide-react"
 gsap.registerPlugin(ScrollTrigger)
 
 export function Testimonials() {
-    const { t } = useTranslation()
+    const { t, i18n } = useTranslation()
     const sectionRef = useRef<HTMLElement>(null)
     const badgeRef = useRef<HTMLDivElement>(null)
     const titleRef = useRef<HTMLHeadingElement>(null)
@@ -120,26 +120,36 @@ export function Testimonials() {
             const carousel = carouselRef.current
             const cardWidth = 384 // w-96 = 384px
             const gap = 32 // gap-8 = 32px
-            const totalWidth = (cardWidth + gap) * testimonials.length
+            const singleSetWidth = (cardWidth + gap) * testimonials.length
+            const isRTL = i18n.language === 'ar'
+
+            // Kill any existing animation
+            gsap.killTweensOf(carousel)
 
             // Create infinite loop animation
-            const animation = gsap.to(carousel, {
-                x: -totalWidth,
-                duration: 40,
-                ease: "none",
-                repeat: -1,
-                modifiers: {
-                    x: gsap.utils.unitize(x => parseFloat(x) % totalWidth)
+            // In RTL (Arabic), we move in positive x direction; in LTR (English), negative
+            const animation = gsap.fromTo(
+                carousel,
+                { x: 0 },
+                {
+                    x: isRTL ? singleSetWidth : -singleSetWidth,
+                    duration: 40,
+                    ease: "none",
+                    repeat: -1,
+                    onRepeat: () => {
+                        // Reset to start position for seamless loop
+                        gsap.set(carousel, { x: 0 })
+                    }
                 }
-            })
+            )
 
             // Pause/resume on hover
             const handleMouseEnter = () => {
-                gsap.to(animation, { timeScale: 0.2, duration: 0.5, ease: "power2.out" })
+                animation.pause()
             }
 
             const handleMouseLeave = () => {
-                gsap.to(animation, { timeScale: 1, duration: 0.5, ease: "power2.in" })
+                animation.play()
             }
 
             carousel.addEventListener('mouseenter', handleMouseEnter)
@@ -161,7 +171,7 @@ export function Testimonials() {
                 }
             })
         }
-    }, [testimonials.length])
+    }, [i18n.language])
 
     return (
         <section ref={sectionRef} className="relative overflow-hidden py-24 sm:py-32 lg:py-40 bg-background">
