@@ -413,9 +413,9 @@ export function Hero({ onServicesClick, onContactClick }: HeroProps) {
       {/* Grid Pattern */}
       <div className="absolute inset-0 z-10 bg-[linear-gradient(to_right,#80808008_1px,transparent_1px),linear-gradient(to_bottom,#80808008_1px,transparent_1px)] bg-[size:40px_40px]" />
 
-      {/* Proud Partner Logo - Top Right */}
-      <div className="absolute top-0 right-0 z-30 flex flex-col items-center gap-1 md:gap-2 p-4 md:p-8 bg-gradient-to-bl from-black/80 via-black/20 to-transparent">
-        <span className="text-[8px] md:text-xs font-semibold uppercase tracking-widest text-white/90 shadow-sm">Proud Partner</span>
+      {/* Proud Partner Logo - Top Right (LTR) / Top Left (RTL) */}
+      <div className={`absolute top-0 z-30 flex flex-col items-center gap-1 md:gap-2 p-4 md:p-8 bg-gradient-to-bl from-black/80 via-black/20 to-transparent ${isArabic ? 'left-0' : 'right-0'}`}>
+        <span className="text-[8px] md:text-xs font-semibold uppercase tracking-widest text-white/90 shadow-sm">{t('hero.proudPartner')}</span>
         <div className="transition-transform hover:scale-105 duration-300">
           <img src="https://www.profm.com.sa/logo.svg" alt="PROFM Logo" className="h-6 md:h-10 w-auto drop-shadow-xl filter" />
         </div>
