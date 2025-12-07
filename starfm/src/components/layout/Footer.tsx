@@ -2,7 +2,7 @@ import { useEffect, useRef } from "react"
 import { useTranslation } from "react-i18next"
 import gsap from "gsap"
 import { ScrollTrigger } from "gsap/ScrollTrigger"
-import { Mail, Phone, MapPin, Facebook, Twitter, Linkedin, Instagram } from "lucide-react"
+import { Mail, Phone, MapPin, Facebook, Twitter, Linkedin, Instagram, FileText } from "lucide-react"
 
 gsap.registerPlugin(ScrollTrigger)
 
@@ -233,6 +233,12 @@ export function Footer({ onContactClick, onServicesClick }: FooterProps) {
                 <a href="mailto:Info@mahhab.com" className="text-sm text-brand-cream/80 transition-colors hover:text-brand-gold">
                   Info@mahhab.com
                 </a>
+              </li>
+              <li className="flex items-center gap-3">
+                <FileText className="h-5 w-5 shrink-0 text-brand-gold" />
+                <span className="text-sm text-brand-cream/80">
+                  CR: 7052747198
+                </span>
               </li>
             </ul>
           </div>
