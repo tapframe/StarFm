@@ -4,6 +4,7 @@ import gsap from "gsap"
 import { Navbar } from "@/components/layout/Navbar"
 import { Hero } from "@/components/home/Hero"
 import { About } from "@/components/home/About"
+import { BrandCarousel } from "@/components/home/BrandCarousel"
 import { ServiceTypes } from "@/components/home/ServiceTypes"
 // import { ManagementSupport } from "@/components/services/ManagementSupport"
 import { Stats } from "@/components/home/Stats"
@@ -181,6 +182,7 @@ function App() {
               <div className="space-y-8 sm:space-y-12 lg:space-y-16">
                 <Hero onServicesClick={handleServicesClick} onContactClick={handleContactClick} />
                 <About />
+                <BrandCarousel />
               </div>
 
               {/* Management Support Services - Standalone Section */}
