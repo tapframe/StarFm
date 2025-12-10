@@ -12,6 +12,10 @@
     "initialMessage": "مرحباً بكم في مهب",
     "initialSubtitle": "إدارة المرافق"
   },
+  "brandCarousel": {
+    "title": "موثوق من قبل قادة الصناعة",
+    "subtitle": "شركاؤنا"
+  },
   "hero": {
     "exploreServices": "استكشف الخدمات",
     "getInTouch": "تواصل معنا",

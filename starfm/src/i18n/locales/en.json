@@ -12,6 +12,10 @@
     "initialMessage": "Welcome to Mahhab",
     "initialSubtitle": "Facility Management"
   },
+  "brandCarousel": {
+    "title": "Trusted by Industry Leaders",
+    "subtitle": "Our Partners"
+  },
   "hero": {
     "exploreServices": "Explore Services",
     "getInTouch": "Get In Touch",
