@@ -1,6 +1,5 @@
 import { useState, useEffect, useRef } from "react"
 import { useTranslation } from "react-i18next"
-import gsap from "gsap"
 import { Navbar } from "@/components/layout/Navbar"
 import { Hero } from "@/components/home/Hero"
 import { About } from "@/components/home/About"
@@ -8,6 +7,7 @@ import { BrandCarousel } from "@/components/home/BrandCarousel"
 import { ServiceTypes } from "@/components/home/ServiceTypes"
 // import { ManagementSupport } from "@/components/services/ManagementSupport"
 import { Stats } from "@/components/home/Stats"
+import { SectionDivider } from "@/components/ui/SectionDivider"
 import { Services } from "@/components/services/Services"
 import { Training } from "@/components/services/Training"
 import { Testimonials } from "@/components/home/Testimonials"
@@ -105,41 +105,11 @@ function App() {
     setCurrentPage("home")
   }
 
+  // Page transition logic removed (GSAP)
   useEffect(() => {
-    // Page transition animations
-    const tl = gsap.timeline()
-
+    // Simple scroll to top on page change
     if (prevPage !== currentPage) {
-      // Fade out previous page
-      const prevRef = prevPage === "home" ? homeRef : prevPage === "contact" ? contactRef : servicesRef
-      const currentRef = currentPage === "home" ? homeRef : currentPage === "contact" ? contactRef : servicesRef
-
-      if (prevRef.current) {
-        tl.to(prevRef.current, {
-          opacity: 0,
-          duration: 0.3,
-          ease: "power2.in"
-        })
-      }
-
-      // Fade in new page
-      if (currentRef.current) {
-        tl.set(currentRef.current, { opacity: 0 })
-        tl.to(currentRef.current, {
-          opacity: 1,
-          duration: 0.3,
-          ease: "power2.out"
-        }, 0.15)
-      }
-    } else {
-      // Initial page load
-      const currentRef = currentPage === "home" ? homeRef : currentPage === "contact" ? contactRef : servicesRef
-      if (currentRef.current) {
-        gsap.fromTo(currentRef.current,
-          { opacity: 0 },
-          { opacity: 1, duration: 0.3 }
-        )
-      }
+      // window.scrollTo({ top: 0, behavior: "instant" }) // Already handled in click handlers or separate effect
     }
   }, [currentPage, prevPage])
 
@@ -178,12 +148,17 @@ function App() {
         {currentPage === "home" ? (
           <div ref={homeRef} key="home">
             <Navbar onContactClick={handleContactClick} onServicesClick={handleServicesClick} />
-            <main className="space-y-0 pb-12 pt-20 sm:pb-16 sm:pt-24 lg:pb-24 lg:pt-24">
-              <div className="space-y-8 sm:space-y-12 lg:space-y-16">
+            <main className="space-y-0 pb-0 pt-20 sm:pb-0 sm:pt-24 lg:pb-0 lg:pt-24">
+              {/* Hero Section with proper spacing */}
+              <div className="mb-8 sm:mb-12 lg:mb-16">
                 <Hero onServicesClick={handleServicesClick} onContactClick={handleContactClick} />
-                <About />
-                <BrandCarousel />
               </div>
+
+              {/* About Section - No margin after to connect with BrandCarousel */}
+              <About />
+
+              {/* Brand Carousel - No margin before */}
+              <BrandCarousel />
 
               {/* Management Support Services - Standalone Section */}
               {/* <div className="mt-8 sm:mt-12 lg:mt-16">
@@ -191,10 +166,20 @@ function App() {
             </div> */}
 
               {/* Facility Management Services Section */}
-              <div className="mt-8 space-y-8 sm:mt-12 sm:space-y-12 lg:mt-16 lg:space-y-16">
-                <ServiceTypes />
-                <Stats />
-                <Services onServicesPageClick={handleServicesClick} />
+              <ServiceTypes />
+
+              {/* Wave Divider between ServiceTypes and Stats */}
+              <SectionDivider fillColor="fill-brand-deep" />
+
+              <Stats />
+
+              {/* Wave Divider between Stats and Services */}
+              <SectionDivider fillColor="fill-background" />
+
+              <Services onServicesPageClick={handleServicesClick} />
+
+              {/* Training and Testimonials - Connected */}
+              <div className="mt-8 sm:mt-12 lg:mt-16">
                 <Training onContactClick={handleContactClick} />
                 <Testimonials />
               </div>

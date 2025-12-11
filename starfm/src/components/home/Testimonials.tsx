@@ -1,17 +1,11 @@
 import { useEffect, useRef } from "react"
 import { useTranslation } from "react-i18next"
 import gsap from "gsap"
-import { ScrollTrigger } from "gsap/ScrollTrigger"
 import { Quote, Star } from "lucide-react"
-
-gsap.registerPlugin(ScrollTrigger)
 
 export function Testimonials() {
     const { t, i18n } = useTranslation()
     const sectionRef = useRef<HTMLElement>(null)
-    const badgeRef = useRef<HTMLDivElement>(null)
-    const titleRef = useRef<HTMLHeadingElement>(null)
-    const subtitleRef = useRef<HTMLParagraphElement>(null)
     const carouselRef = useRef<HTMLDivElement>(null)
 
     const testimonials = [
@@ -57,64 +51,6 @@ export function Testimonials() {
     const duplicatedTestimonials = [...testimonials, ...testimonials]
 
     useEffect(() => {
-        // Badge reveal
-        if (badgeRef.current) {
-            ScrollTrigger.create({
-                trigger: badgeRef.current,
-                start: "top 80%",
-                onEnter: () => {
-                    gsap.to(badgeRef.current, {
-                        opacity: 1,
-                        scale: 1,
-                        duration: 0.5,
-                        ease: "power2.out",
-                        force3D: true
-                    })
-                },
-                markers: false
-            })
-            gsap.set(badgeRef.current, { opacity: 0, scale: 0.96 })
-        }
-
-        // Title fade
-        if (titleRef.current) {
-            ScrollTrigger.create({
-                trigger: titleRef.current,
-                start: "top 80%",
-                onEnter: () => {
-                    gsap.to(titleRef.current, {
-                        opacity: 1,
-                        y: 0,
-                        duration: 0.65,
-                        ease: "power3.out",
-                        force3D: true
-                    })
-                },
-                markers: false
-            })
-            gsap.set(titleRef.current, { opacity: 0, y: 15 })
-        }
-
-        // Subtitle fade
-        if (subtitleRef.current) {
-            ScrollTrigger.create({
-                trigger: subtitleRef.current,
-                start: "top 80%",
-                onEnter: () => {
-                    gsap.to(subtitleRef.current, {
-                        opacity: 1,
-                        y: 0,
-                        duration: 0.7,
-                        delay: 0.15,
-                        ease: "power2.out",
-                        force3D: true
-                    })
-                },
-                markers: false
-            })
-            gsap.set(subtitleRef.current, { opacity: 0, y: 20 })
-        }
-
         // Infinite scroll animation
         if (carouselRef.current) {
             const carousel = carouselRef.current
@@ -161,20 +97,10 @@ export function Testimonials() {
                 animation.kill()
             }
         }
-
-        const section = sectionRef.current
-
-        return () => {
-            ScrollTrigger.getAll().forEach(trigger => {
-                if (trigger.vars?.trigger === section) {
-                    trigger.kill()
-                }
-            })
-        }
-    }, [i18n.language])
+    }, [i18n.language, testimonials.length]) // check dependencies
 
     return (
-        <section ref={sectionRef} className="relative overflow-hidden py-24 sm:py-32 lg:py-40">
+        <section ref={sectionRef} className="relative overflow-hidden pb-12 pt-8 sm:pb-16 sm:pt-12 lg:pb-24">
             {/* Arabic Corporate Background Image */}
             <div className="absolute inset-0 z-0">
                 <img
@@ -189,21 +115,21 @@ export function Testimonials() {
             <div className="container relative z-10 mx-auto max-w-7xl px-6 sm:px-8 lg:px-12">
                 {/* Header */}
                 <div className="mx-auto max-w-3xl text-center mb-16 sm:mb-20">
-                    <div ref={badgeRef} className="inline-flex items-center gap-2 rounded-full bg-white/10 backdrop-blur-sm border border-white/20 px-4 py-2 mb-6">
+                    <div className="inline-flex items-center gap-2 rounded-full bg-white/10 backdrop-blur-sm border border-white/20 px-4 py-2 mb-6">
                         <div className="h-1.5 w-1.5 rounded-full bg-brand-azure" />
                         <span className="text-xs font-semibold uppercase tracking-wider text-brand-azure">
                             {t('testimonials.badge')}
                         </span>
                     </div>
 
-                    <h2 ref={titleRef} className="font-display text-4xl font-bold leading-[1.1] text-white sm:text-5xl lg:text-6xl mb-6">
+                    <h2 className="font-display text-4xl font-bold leading-[1.1] text-white sm:text-5xl lg:text-6xl mb-6">
                         {t('testimonials.title')}
                         <span className="mt-2 block bg-gradient-to-r from-brand-azure to-brand-sand bg-clip-text text-transparent">
                             {t('testimonials.titleHighlight')}
                         </span>
                     </h2>
 
-                    <p ref={subtitleRef} className="text-lg leading-relaxed text-white/80">
+                    <p className="text-lg leading-relaxed text-white/80">
                         {t('testimonials.subtitle')}
                     </p>
                 </div>

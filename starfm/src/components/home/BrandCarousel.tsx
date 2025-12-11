@@ -1,5 +1,4 @@
 import { useRef } from "react"
-import { motion, useScroll, useTransform } from "framer-motion"
 import { useTranslation } from "react-i18next"
 
 const logos = [
@@ -17,20 +16,12 @@ export function BrandCarousel() {
     const { t } = useTranslation()
     const containerRef = useRef<HTMLDivElement>(null)
 
-    // Fade in the whole section on scroll
-    const { scrollYProgress } = useScroll({
-        target: containerRef,
-        offset: ["start end", "end start"],
-    })
-    const opacity = useTransform(scrollYProgress, [0, 0.2, 0.9, 1], [0, 1, 1, 0])
-
     return (
         <section
             ref={containerRef}
-            className="w-full py-20 sm:py-24 overflow-hidden bg-background"
+            className="w-full pb-20 pt-8 sm:pb-24 sm:pt-12 overflow-hidden bg-background"
         >
-            <motion.div
-                style={{ opacity }}
+            <div
                 className="container mx-auto px-4 mb-16 text-center"
             >
                 <h2 className="font-display text-3xl font-bold leading-[1.1] text-foreground sm:text-4xl lg:text-5xl">
@@ -39,7 +30,7 @@ export function BrandCarousel() {
                         {t('brandCarousel.subtitle')}
                     </span>
                 </h2>
-            </motion.div>
+            </div>
 
             {/* Force LTR context for the entire marquee area */}
             <div

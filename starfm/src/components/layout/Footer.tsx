@@ -1,10 +1,6 @@
-import { useEffect, useRef } from "react"
+import { useRef } from "react"
 import { useTranslation } from "react-i18next"
-import gsap from "gsap"
-import { ScrollTrigger } from "gsap/ScrollTrigger"
 import { Mail, Phone, MapPin, Facebook, Twitter, Linkedin, Instagram, FileText } from "lucide-react"
-
-gsap.registerPlugin(ScrollTrigger)
 
 interface FooterProps {
   onContactClick?: () => void
@@ -17,79 +13,6 @@ export function Footer({ onContactClick, onServicesClick }: FooterProps) {
   const quickLinksRef = useRef<HTMLDivElement>(null)
   const servicesRef = useRef<HTMLDivElement>(null)
   const contactRef = useRef<HTMLDivElement>(null)
-
-  useEffect(() => {
-    if (brandRef.current) {
-      gsap.fromTo(brandRef.current,
-        { opacity: 0, y: 30 },
-        {
-          opacity: 1,
-          y: 0,
-          duration: 0.6,
-          scrollTrigger: {
-            trigger: brandRef.current,
-            start: "top 90%",
-            toggleActions: "play none none none"
-          }
-        }
-      )
-    }
-
-    if (quickLinksRef.current) {
-      gsap.fromTo(quickLinksRef.current,
-        { opacity: 0, y: 30 },
-        {
-          opacity: 1,
-          y: 0,
-          duration: 0.6,
-          delay: 0.1,
-          scrollTrigger: {
-            trigger: quickLinksRef.current,
-            start: "top 90%",
-            toggleActions: "play none none none"
-          }
-        }
-      )
-    }
-
-    if (servicesRef.current) {
-      gsap.fromTo(servicesRef.current,
-        { opacity: 0, y: 30 },
-        {
-          opacity: 1,
-          y: 0,
-          duration: 0.6,
-          delay: 0.2,
-          scrollTrigger: {
-            trigger: servicesRef.current,
-            start: "top 90%",
-            toggleActions: "play none none none"
-          }
-        }
-      )
-    }
-
-    if (contactRef.current) {
-      gsap.fromTo(contactRef.current,
-        { opacity: 0, y: 30 },
-        {
-          opacity: 1,
-          y: 0,
-          duration: 0.6,
-          delay: 0.3,
-          scrollTrigger: {
-            trigger: contactRef.current,
-            start: "top 90%",
-            toggleActions: "play none none none"
-          }
-        }
-      )
-    }
-
-    return () => {
-      ScrollTrigger.getAll().forEach(trigger => trigger.kill())
-    }
-  }, [])
 
   return (
     <footer className="relative border-t border-white/10 bg-gradient-to-b from-brand-deep to-brand-forest">
