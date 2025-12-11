@@ -85,7 +85,7 @@ export function Hero({ onServicesClick, onContactClick }: HeroProps) {
   const Icon = currentData.icon
 
   return (
-    <section className="relative h-[80vh] min-h-[600px] w-full overflow-hidden">
+    <section className="relative h-[calc(100vh-5rem)] sm:h-[calc(100vh-6rem)] min-h-[600px] w-full overflow-hidden">
       {/* Background Images - Crossfade with CSS */}
       <div className="absolute inset-0 z-0">
         {heroSlides.map((slide, index) => (
