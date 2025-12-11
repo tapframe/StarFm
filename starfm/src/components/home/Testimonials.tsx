@@ -265,8 +265,7 @@ export function Testimonials() {
                     </div>
 
                     {/* Gradient overlays for fade effect */}
-                    <div className="pointer-events-none absolute left-0 top-0 h-full w-32 bg-gradient-to-r from-black/90 to-transparent" />
-                    <div className="pointer-events-none absolute right-0 top-0 h-full w-32 bg-gradient-to-l from-black/90 to-transparent" />
+
                 </div>
             </div>
         </section>
