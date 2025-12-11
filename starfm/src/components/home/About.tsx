@@ -329,14 +329,25 @@ export function About() {
     }
   }, [])
 
-  return <section ref={sectionRef} id="about" className="relative overflow-hidden py-24 sm:py-32 lg:py-40 bg-background">
-    {/* Minimal Background decorations */}
-    <div className="pointer-events-none absolute inset-0">
-      <div ref={bgCircle1Ref} className="absolute -left-32 top-0 h-[500px] w-[500px] rounded-full bg-gradient-to-br from-brand-azure/5 to-transparent blur-3xl" />
-      <div ref={bgCircle2Ref} className="absolute -right-32 bottom-0 h-[500px] w-[500px] rounded-full bg-gradient-to-tl from-brand-sand/5 to-transparent blur-3xl" />
+  return <section ref={sectionRef} id="about" className="relative overflow-hidden py-24 sm:py-32 lg:py-40">
+    {/* Arabic Corporate Background Image */}
+    <div className="absolute inset-0 z-0">
+      <img
+        src="/backgrounds/about-bg.png"
+        alt=""
+        className="h-full w-full object-cover"
+      />
+      {/* Lighter gradient overlay for better image visibility */}
+      <div className="absolute inset-0 bg-gradient-to-r from-black/70 via-black/40 to-black/30 dark:from-black/80 dark:via-black/60 dark:to-black/50" />
     </div>
 
-    <div className="container relative mx-auto max-w-7xl px-6 sm:px-8 lg:px-12">
+    {/* Minimal Background decorations */}
+    <div className="pointer-events-none absolute inset-0 z-10">
+      <div ref={bgCircle1Ref} className="absolute -left-32 top-0 h-[500px] w-[500px] rounded-full bg-gradient-to-br from-brand-azure/10 to-transparent blur-3xl" />
+      <div ref={bgCircle2Ref} className="absolute -right-32 bottom-0 h-[500px] w-[500px] rounded-full bg-gradient-to-tl from-brand-sand/10 to-transparent blur-3xl" />
+    </div>
+
+    <div className="container relative z-20 mx-auto max-w-7xl px-6 sm:px-8 lg:px-12">
       {/* PROFM Partnership Section - Full Width */}
       {/* <div ref={bottomSectionRef} className="mb-16 -mx-6 sm:-mx-8 lg:-mx-12 rounded-3xl border border-brand-deep/5 dark:border-white/10 bg-gradient-to-br from-brand-azure/5 via-white to-brand-sand/5 dark:via-slate-900 dark:to-brand-azure/5 p-8 sm:p-10 lg:p-12 shadow-brand backdrop-blur-sm">
         <div className="mx-auto max-w-7xl space-y-6">
@@ -427,14 +438,14 @@ export function About() {
       <div className="grid gap-16 lg:grid-cols-2 lg:gap-20 items-center">
         {/* Left Content */}
         <div ref={leftContentRef} className="space-y-8">
-          <div ref={badgeRef} className="inline-flex items-center gap-2 rounded-full bg-brand-azure/5 dark:bg-brand-azure/10 px-4 py-2">
+          <div ref={badgeRef} className="inline-flex items-center gap-2 rounded-full bg-white/10 backdrop-blur-sm px-4 py-2 border border-white/20">
             <div className="h-1.5 w-1.5 rounded-full bg-brand-azure" />
             <span className="text-xs font-semibold uppercase tracking-wider text-brand-azure">
               {t('about.badge')}
             </span>
           </div>
 
-          <h2 ref={titleRef} className="font-display text-4xl font-bold leading-[1.1] text-foreground sm:text-5xl lg:text-6xl">
+          <h2 ref={titleRef} className="font-display text-4xl font-bold leading-[1.1] text-white sm:text-5xl lg:text-6xl">
             {t('about.title')}
             <span className="mt-2 block bg-gradient-to-r from-brand-azure to-brand-sand bg-clip-text text-transparent">
               {t('about.titleHighlight')}
@@ -442,10 +453,10 @@ export function About() {
           </h2>
 
           <div ref={descriptionRef} className="space-y-5">
-            <p className="text-lg leading-relaxed text-muted-foreground">
+            <p className="text-lg leading-relaxed text-white/90">
               {t('about.description1')}
             </p>
-            <p className="text-base leading-relaxed text-muted-foreground/80">
+            <p className="text-base leading-relaxed text-white/70">
               {t('about.description2')}
             </p>
           </div>
@@ -472,17 +483,17 @@ export function About() {
                 ref={(el) => {
                   if (el) featuresRef.current[index] = el
                 }}
-                className="group relative rounded-2xl border border-brand-deep/5 dark:border-white/10 bg-card p-8 shadow-sm transition-all duration-300 hover:border-brand-azure/20 hover:shadow-md"
+                className="group relative rounded-2xl border border-white/10 bg-white/5 backdrop-blur-md p-8 shadow-sm transition-all duration-300 hover:border-brand-azure/30 hover:shadow-lg hover:bg-white/10"
               >
-                <div className="mb-5 inline-flex h-12 w-12 items-center justify-center rounded-xl bg-brand-azure/10 transition-all duration-300 group-hover:bg-brand-azure/15 group-hover:scale-110">
+                <div className="mb-5 inline-flex h-12 w-12 items-center justify-center rounded-xl bg-brand-azure/20 transition-all duration-300 group-hover:bg-brand-azure/30 group-hover:scale-110">
                   <Icon className="h-6 w-6 text-brand-azure" strokeWidth={2} />
                 </div>
 
-                <h3 className="mb-2 font-display text-lg font-semibold text-card-foreground">
+                <h3 className="mb-2 font-display text-lg font-semibold text-white">
                   {feature.title}
                 </h3>
 
-                <p className="text-sm leading-relaxed text-muted-foreground">
+                <p className="text-sm leading-relaxed text-white/70">
                   {feature.description}
                 </p>
               </div>

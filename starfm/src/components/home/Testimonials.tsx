@@ -174,87 +174,100 @@ export function Testimonials() {
     }, [i18n.language])
 
     return (
-        <section ref={sectionRef} className="relative overflow-hidden py-24 sm:py-32 lg:py-40 bg-background">
-            <div className="container relative mx-auto max-w-7xl px-6 sm:px-8 lg:px-12">
+        <section ref={sectionRef} className="relative overflow-hidden py-24 sm:py-32 lg:py-40">
+            {/* Arabic Corporate Background Image */}
+            <div className="absolute inset-0 z-0">
+                <img
+                    src="/backgrounds/testimonials-bg.png"
+                    alt=""
+                    className="h-full w-full object-cover"
+                />
+                {/* Lighter gradient overlay for better image visibility */}
+                <div className="absolute inset-0 bg-gradient-to-b from-black/70 via-black/50 to-black/70 dark:from-black/80 dark:via-black/60 dark:to-black/80" />
+            </div>
+
+            <div className="container relative z-10 mx-auto max-w-7xl px-6 sm:px-8 lg:px-12">
                 {/* Header */}
                 <div className="mx-auto max-w-3xl text-center mb-16 sm:mb-20">
-                    <div ref={badgeRef} className="inline-flex items-center gap-2 rounded-full bg-brand-azure/5 dark:bg-brand-azure/10 px-4 py-2 mb-6">
+                    <div ref={badgeRef} className="inline-flex items-center gap-2 rounded-full bg-white/10 backdrop-blur-sm border border-white/20 px-4 py-2 mb-6">
                         <div className="h-1.5 w-1.5 rounded-full bg-brand-azure" />
                         <span className="text-xs font-semibold uppercase tracking-wider text-brand-azure">
                             {t('testimonials.badge')}
                         </span>
                     </div>
 
-                    <h2 ref={titleRef} className="font-display text-4xl font-bold leading-[1.1] text-foreground sm:text-5xl lg:text-6xl mb-6">
+                    <h2 ref={titleRef} className="font-display text-4xl font-bold leading-[1.1] text-white sm:text-5xl lg:text-6xl mb-6">
                         {t('testimonials.title')}
                         <span className="mt-2 block bg-gradient-to-r from-brand-azure to-brand-sand bg-clip-text text-transparent">
                             {t('testimonials.titleHighlight')}
                         </span>
                     </h2>
 
-                    <p ref={subtitleRef} className="text-lg leading-relaxed text-muted-foreground">
+                    <p ref={subtitleRef} className="text-lg leading-relaxed text-white/80">
                         {t('testimonials.subtitle')}
                     </p>
                 </div>
             </div>
 
             {/* Infinite Carousel */}
-            <div className="relative">
-                <div className="overflow-hidden">
-                    <div
-                        ref={carouselRef}
-                        className="flex gap-8"
-                        style={{ width: 'fit-content' }}
-                    >
-                        {duplicatedTestimonials.map((testimonial, index) => (
-                            <div
-                                key={index}
-                                className="group relative w-96 flex-shrink-0 rounded-2xl border border-brand-deep/5 dark:border-white/10 bg-gradient-to-br from-white via-white to-brand-sand/5 dark:from-slate-900 dark:via-slate-900 dark:to-brand-azure/5 p-6 shadow-sm transition-all duration-300 hover:border-brand-azure/20 hover:shadow-lg backdrop-blur-sm"
-                            >
-                                {/* Quote Icon */}
-                                <div className="mb-4 inline-flex h-10 w-10 items-center justify-center rounded-xl bg-brand-azure/10 transition-all duration-300 group-hover:bg-brand-azure/15 group-hover:scale-110">
-                                    <Quote className="h-5 w-5 text-brand-azure" strokeWidth={2} />
-                                </div>
+            <div className="relative z-10">
+                <div className="relative">
+                    <div className="overflow-hidden">
+                        <div
+                            ref={carouselRef}
+                            className="flex gap-8"
+                            style={{ width: 'fit-content' }}
+                        >
+                            {duplicatedTestimonials.map((testimonial, index) => (
+                                <div
+                                    key={index}
+                                    className="group relative w-96 flex-shrink-0 rounded-2xl border border-brand-deep/5 dark:border-white/10 bg-white dark:bg-slate-950 p-6 shadow-sm transition-all duration-300 hover:border-brand-azure/20 hover:shadow-lg"
+                                >
+                                    {/* Quote Icon */}
+                                    <div className="mb-4 inline-flex h-10 w-10 items-center justify-center rounded-xl bg-brand-azure/10 transition-all duration-300 group-hover:bg-brand-azure/15 group-hover:scale-110">
+                                        <Quote className="h-5 w-5 text-brand-azure" strokeWidth={2} />
+                                    </div>
 
-                                {/* Rating */}
-                                <div className="mb-3 flex gap-1">
-                                    {[...Array(testimonial.rating)].map((_, i) => (
-                                        <Star
-                                            key={i}
-                                            className="h-3.5 w-3.5 fill-brand-azure text-brand-azure"
-                                            strokeWidth={0}
-                                        />
-                                    ))}
-                                </div>
+                                    {/* Rating */}
+                                    <div className="mb-3 flex gap-1">
+                                        {[...Array(testimonial.rating)].map((_, i) => (
+                                            <Star
+                                                key={i}
+                                                className="h-3.5 w-3.5 fill-brand-azure text-brand-azure"
+                                                strokeWidth={0}
+                                            />
+                                        ))}
+                                    </div>
 
-                                {/* Content */}
-                                <p className="mb-4 text-sm leading-relaxed text-muted-foreground line-clamp-4">
-                                    "{testimonial.content}"
-                                </p>
-
-                                {/* Divider */}
-                                <div className="mb-4 h-px w-full bg-gradient-to-r from-transparent via-brand-azure/20 to-transparent" />
-
-                                {/* Author Info */}
-                                <div className="space-y-0.5">
-                                    <h4 className="font-display text-base font-semibold text-card-foreground">
-                                        {testimonial.name}
-                                    </h4>
-                                    <p className="text-xs text-muted-foreground">
-                                        {testimonial.role}
+                                    {/* Content */}
+                                    <p className="mb-4 text-sm leading-relaxed text-muted-foreground line-clamp-4">
+                                        "{testimonial.content}"
                                     </p>
+
+                                    {/* Divider */}
+                                    <div className="mb-4 h-px w-full bg-gradient-to-r from-transparent via-brand-azure/20 to-transparent" />
+
+                                    {/* Author Info */}
+                                    <div className="space-y-0.5">
+                                        <h4 className="font-display text-base font-semibold text-card-foreground">
+                                            {testimonial.name}
+                                        </h4>
+                                        <p className="text-xs text-muted-foreground">
+                                            {testimonial.role}
+                                        </p>
+                                    </div>
+
+                                    {/* Decorative corner accent */}
+                                    <div className="absolute -right-px -top-px h-16 w-16 rounded-bl-2xl rounded-tr-2xl bg-gradient-to-br from-brand-azure/5 to-transparent opacity-0 transition-opacity duration-300 group-hover:opacity-100" />
                                 </div>
-
-                                {/* Decorative corner accent */}
-                                <div className="absolute -right-px -top-px h-16 w-16 rounded-bl-2xl rounded-tr-2xl bg-gradient-to-br from-brand-azure/5 to-transparent opacity-0 transition-opacity duration-300 group-hover:opacity-100" />
-                            </div>
-                        ))}
+                            ))}
+                        </div>
                     </div>
-                </div>
 
-                {/* Gradient overlays for fade effect */}
-                <div className="pointer-events-none absolute left-0 top-0 h-full w-32 bg-gradient-to-r from-background to-transparent" />
-                <div className="pointer-events-none absolute right-0 top-0 h-full w-32 bg-gradient-to-l from-background to-transparent" />
+                    {/* Gradient overlays for fade effect */}
+                    <div className="pointer-events-none absolute left-0 top-0 h-full w-32 bg-gradient-to-r from-black/90 to-transparent" />
+                    <div className="pointer-events-none absolute right-0 top-0 h-full w-32 bg-gradient-to-l from-black/90 to-transparent" />
+                </div>
             </div>
         </section>
     )

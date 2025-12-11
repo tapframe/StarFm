@@ -152,17 +152,17 @@ export function Stats() {
         const iconContainer = card.querySelector('.icon-container')
         const valueElement = card.querySelector('.font-display')
         card.style.willChange = "transform"
-        
+
         card.addEventListener("mouseenter", () => {
-          gsap.to(card, { 
-            scale: 1.03, 
+          gsap.to(card, {
+            scale: 1.03,
             y: -4,
             duration: 0.35,
             ease: "power2.out",
             force3D: true
           })
           if (iconContainer) {
-            gsap.to(iconContainer, { 
+            gsap.to(iconContainer, {
               scale: 1.08,
               rotation: -3,
               duration: 0.35,
@@ -181,17 +181,17 @@ export function Stats() {
         }, { passive: true })
 
         card.addEventListener("mouseleave", () => {
-          gsap.to(card, { 
-            scale: 1, 
+          gsap.to(card, {
+            scale: 1,
             y: 0,
             duration: 0.35,
             ease: "power2.out",
             force3D: true
           })
           if (iconContainer) {
-            gsap.to(iconContainer, { 
-              scale: 1, 
-              rotation: 0, 
+            gsap.to(iconContainer, {
+              scale: 1,
+              rotation: 0,
               duration: 0.35,
               ease: "power2.out",
               force3D: true
@@ -211,35 +211,46 @@ export function Stats() {
 
     return () => {
       ScrollTrigger.getAll().forEach(trigger => {
-        if (trigger.vars?.trigger === section || 
-            trigger.vars?.trigger === header) {
+        if (trigger.vars?.trigger === section ||
+          trigger.vars?.trigger === header) {
           trigger.kill()
         }
       })
       cards.forEach(card => {
         if (card) {
           card.style.willChange = "auto"
-          card.removeEventListener("mouseenter", () => {})
-          card.removeEventListener("mouseleave", () => {})
+          card.removeEventListener("mouseenter", () => { })
+          card.removeEventListener("mouseleave", () => { })
         }
       })
     }
   }, [])
 
   return (
-    <section ref={sectionRef} className="relative py-16 sm:py-20 lg:py-24">
-      {/* Background decoration */}
-      <div className="pointer-events-none absolute inset-0 overflow-hidden">
-        <div ref={bgCircle1Ref} className="absolute -left-32 top-0 h-64 w-64 rounded-full bg-blue-500/5 opacity-50" />
-        <div ref={bgCircle2Ref} className="absolute -right-32 bottom-0 h-64 w-64 rounded-full bg-brand-forest/5 opacity-50" />
+    <section ref={sectionRef} className="relative py-16 sm:py-20 lg:py-24 overflow-hidden">
+      {/* Arabic Corporate Background Image */}
+      <div className="absolute inset-0 z-0">
+        <img
+          src="/backgrounds/stats-bg.png"
+          alt=""
+          className="h-full w-full object-cover"
+        />
+        {/* Lighter gradient overlay for better image visibility */}
+        <div className="absolute inset-0 bg-gradient-to-b from-black/60 via-black/40 to-black/60 dark:from-black/70 dark:via-black/50 dark:to-black/70" />
       </div>
-      
-      <div className="container relative px-4 sm:px-6">
+
+      {/* Background decoration */}
+      <div className="pointer-events-none absolute inset-0 overflow-hidden z-10">
+        <div ref={bgCircle1Ref} className="absolute -left-32 top-0 h-64 w-64 rounded-full bg-blue-500/10 opacity-50" />
+        <div ref={bgCircle2Ref} className="absolute -right-32 bottom-0 h-64 w-64 rounded-full bg-brand-forest/10 opacity-50" />
+      </div>
+
+      <div className="container relative z-20 px-4 sm:px-6">
         <div ref={headerRef} className="mb-8 text-center sm:mb-12 relative">
-          <p ref={subtitleRef} className="mb-2 text-xs font-semibold uppercase tracking-[0.3em] text-muted-foreground sm:mb-3 sm:text-sm">
+          <p ref={subtitleRef} className="mb-2 text-xs font-semibold uppercase tracking-[0.3em] text-white/80 sm:mb-3 sm:text-sm">
             {t('stats.reach')}
           </p>
-          <h2 ref={titleRef} className="text-3xl text-foreground sm:text-4xl lg:text-5xl relative z-10">
+          <h2 ref={titleRef} className="text-3xl text-white sm:text-4xl lg:text-5xl relative z-10">
             {t('stats.excellence')}
           </h2>
           <div className="absolute inset-0 flex items-center justify-center">
@@ -252,7 +263,7 @@ export function Stats() {
               particleColor="#3b82f6"
             />
           </div>
-          <p ref={descriptionRef} className="mt-4 text-sm text-foreground/70 sm:text-base">
+          <p ref={descriptionRef} className="mt-4 text-sm text-white/70 sm:text-base">
             {t('stats.description')}
           </p>
         </div>

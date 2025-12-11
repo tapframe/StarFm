@@ -302,33 +302,44 @@ export function ServiceTypes() {
   }, [])
 
   return (
-    <section ref={sectionRef} className="relative overflow-hidden bg-gradient-to-br from-white via-brand-cream/10 to-white dark:from-slate-950 dark:via-slate-900 dark:to-slate-950 py-20 sm:py-24 lg:py-32">
-      {/* Enhanced Background Pattern */}
-      <div className="pointer-events-none absolute inset-0">
-        <div ref={bgCircle1Ref} className="absolute left-1/4 top-20 h-[500px] w-[500px] rounded-full bg-gradient-to-r from-brand-azure/15 to-brand-sand/10 opacity-50" />
-        <div ref={bgCircle2Ref} className="absolute right-1/4 bottom-20 h-[500px] w-[500px] rounded-full bg-gradient-to-r from-brand-moss/15 to-brand-forest/10 opacity-50" />
-        <div className="absolute inset-0 bg-[radial-gradient(circle_at_50%_120%,rgba(120,119,198,0.05),rgba(255,255,255,0))]" />
+    <section ref={sectionRef} className="relative overflow-hidden py-20 sm:py-24 lg:py-32">
+      {/* Arabic Corporate Background Image */}
+      <div className="absolute inset-0 z-0">
+        <img
+          src="/backgrounds/services-bg.png"
+          alt=""
+          className="h-full w-full object-cover"
+        />
+        {/* Lighter gradient overlay for better image visibility */}
+        <div className="absolute inset-0 bg-gradient-to-br from-black/60 via-black/40 to-black/50 dark:from-black/70 dark:via-black/50 dark:to-black/60" />
       </div>
 
-      <div className="container relative px-4 sm:px-6">
+      {/* Enhanced Background Pattern */}
+      <div className="pointer-events-none absolute inset-0 z-10">
+        <div ref={bgCircle1Ref} className="absolute left-1/4 top-20 h-[500px] w-[500px] rounded-full bg-gradient-to-r from-brand-azure/20 to-brand-sand/15 opacity-50" />
+        <div ref={bgCircle2Ref} className="absolute right-1/4 bottom-20 h-[500px] w-[500px] rounded-full bg-gradient-to-r from-brand-moss/20 to-brand-forest/15 opacity-50" />
+        <div className="absolute inset-0 bg-[radial-gradient(circle_at_50%_120%,rgba(120,119,198,0.08),rgba(255,255,255,0))]" />
+      </div>
+
+      <div className="container relative z-20 px-4 sm:px-6">
         {/* Section Header */}
         <div ref={headerRef} className="mb-16 text-center sm:mb-20">
-          <div ref={badgeRef} className="mb-4 inline-flex items-center gap-2 rounded-full border border-brand-azure/30 bg-brand-azure/10 dark:bg-brand-azure/20 px-4 py-2 bg-opacity-50">
-            <div className="h-2 w-2 animate-pulse rounded-full bg-blue-500" />
-            <span className="text-xs font-bold uppercase tracking-widest text-blue-600">
+          <div ref={badgeRef} className="mb-4 inline-flex items-center gap-2 rounded-full border border-white/20 bg-white/10 backdrop-blur-sm px-4 py-2">
+            <div className="h-2 w-2 animate-pulse rounded-full bg-brand-azure" />
+            <span className="text-xs font-bold uppercase tracking-widest text-brand-azure">
               {t('serviceTypes.badge')}
             </span>
           </div>
-          <h2 className="mb-6 font-display text-4xl font-black leading-tight text-brand-deep dark:text-foreground sm:text-5xl lg:text-6xl">
+          <h2 className="mb-6 font-display text-4xl font-black leading-tight text-white sm:text-5xl lg:text-6xl">
             {t('serviceTypes.subtitle')}{" "}
             <span className="relative inline-block">
-              <span className="gradient-text">
+              <span className="bg-gradient-to-r from-brand-azure to-brand-sand bg-clip-text text-transparent">
                 {t('serviceTypes.title')}
               </span>
-              <div ref={underlineRef} className="absolute -bottom-2 left-0 right-0 h-1 rounded-full bg-gradient-to-r from-blue-500 via-blue-400 to-transparent origin-left" />
+              <div ref={underlineRef} className="absolute -bottom-2 left-0 right-0 h-1 rounded-full bg-gradient-to-r from-brand-azure via-brand-sand to-transparent origin-left" />
             </span>
           </h2>
-          <p className="mx-auto max-w-2xl text-xl font-semibold text-brand-forest/70 dark:text-muted-foreground">
+          <p className="mx-auto max-w-2xl text-xl font-semibold text-white/80">
             {t('serviceTypes.description')}
           </p>
         </div>
